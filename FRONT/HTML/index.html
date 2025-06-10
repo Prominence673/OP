@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LUXURY - Tu aventura comienza aquí</title>
-  <link rel="stylesheet" href="../CSS/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ViajesMundo - Tu aventura comienza aquí</title>
+  <link rel="stylesheet" href="../CSS/index.css" />
 </head>
 <body>
   <header>
-    <h1>LUXURY</h1>
+    <h1>ViajesMundo</h1>
     <nav>
       <ul>
         <li><a href="#">Inicio</a></li>
         <li><a href="#paquetes">Paquetes</a></li>
+        <li><a href="#autos">Alquiler de Autos</a></li>
+        <li><a href="#combos">Combos</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -20,11 +22,18 @@
 
   <main>
     <section class="hero">
-      <h2>Descubrí el mundo con nosotros</h2>
-      <p>Ofrecemos pasajes, estadías, autos y combos turísticos a los mejores destinos.</p>
-      <a href="#paquetes" class="btn">Explorar Paquetes</a>
+      <video autoplay muted loop playsinline class="background-video">
+        <source src="../SOURCE/5884_Rainbow_Mountains_1280x720.mp4 type="video/mp4" />
+        Tu navegador no soporta videos HTML5.
+      </video>
+      <div class="hero-content">
+        <h2>Descubrí el mundo con nosotros</h2>
+        <p>Paquetes, pasajes, estadías y más a un solo clic.</p>
+        <a href="#paquetes" class="btn">Explorar Paquetes</a>
+      </div>
     </section>
 
+    <!-- Resto igual -->
     <section id="paquetes">
       <h2>Paquetes Turísticos</h2>
       <div class="card-grid">
@@ -36,7 +45,6 @@
           <h3>Caribe All-Inclusive</h3>
           <p>7 noches - Todo incluido</p>
         </div>
-        <!-- Puedes añadir más paquetes -->
       </div>
     </section>
 
@@ -54,10 +62,10 @@
       <h2>Contacto</h2>
       <form>
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <input type="text" id="nombre" name="nombre" required />
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required />
 
         <label for="mensaje">Mensaje:</label>
         <textarea id="mensaje" name="mensaje" rows="4"></textarea>
@@ -67,6 +75,10 @@
     </section>
   </main>
 
+  <video autoplay muted loop playsinline width="100%">
+  <source src="../SOURCE/5884_Rainbow_Mountains_1280x720.mp4" type="video/mp4">
+  Tu navegador no soporta la etiqueta de video.
+</video>
   <footer>
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
