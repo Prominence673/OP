@@ -1,42 +1,58 @@
+/* Fuente base */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-header {
-  background: #0077cc;
-  color: white;
-  padding: 1rem;
-  text-align: center;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header */
+.site-header {
+  background-color: #ffffff;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e0e0e0;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
 }
 
-nav ul {
+.site-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #0077cc;
+}
+
+.nav-menu {
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
 
-nav a {
-  color: white;
+.nav-menu li a {
   text-decoration: none;
+  color: #333;
+  font-weight: 500;
 }
 
+.nav-menu li a:hover {
+  color: #0077cc;
+}
+
+/* Hero con video */
 .hero {
   position: relative;
   height: 90vh;
   overflow: hidden;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 .background-video {
@@ -46,46 +62,162 @@ nav a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
+  z-index: 1;
 }
 
-.hero-content {
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.4);
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 2rem;
-  border-radius: 12px;
+}
+
+.hero-overlay h2 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .btn {
-  display: inline-block;
-  background: #0077cc;
+  background-color: #0077cc;
   color: white;
-  padding: 0.7rem 1.2rem;
-  margin-top: 1rem;
+  padding: 0.8rem 1.6rem;
   text-decoration: none;
-  border-radius: 5px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-section {
-  padding: 2rem;
+.btn:hover {
+  background-color: #005fa3;
 }
 
-.card-grid {
+/* Secciones principales */
+.section {
+  padding: 4rem 1.5rem;
+  background-color: #fff;
+  margin-bottom: 2rem;
+}
+
+.section:nth-child(even) {
+  background-color: #f0f4f8;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #0077cc;
+  margin-bottom: 2rem;
+}
+
+/* Centrado de imagenes */
+
+.with-image {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  align-items: center;   /* centra verticalmente imagen y texto */
+  gap: 1.5rem;           /* espacio entre imagen y texto */
+  max-width: 700px;      /* ancho máximo para que no ocupe toda la pantalla */
+  margin: 2rem auto;     /* centrado horizontal con margen vertical */
+}
+
+.with-image img {
+  flex-shrink: 0;        /* evita que la imagen se achique */
+  width: 300px;          /* tamaño mediano fijo */
+  height: auto;
+  border-radius: 8px;    /* opcional: bordes redondeados para mejor estética */
+}
+
+.with-image .text-content {
+  flex: 1;               /* ocupa el resto del espacio disponible */
+  text-align: left;      /* alinear texto a la izquierda, puedes cambiar a center si prefieres */
+}
+
+
+
+/* Tarjetas */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
 }
 
 .card {
-  background: #eee;
-  padding: 1rem;
-  flex: 1 1 200px;
-  border-radius: 8px;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
 
-footer {
-  background: #333;
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #0077cc;
+}
+
+/* Formulario */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  margin-top: 1.5rem;
+  background-color: #0077cc;
   color: white;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #005fa3;
+}
+
+/* Footer */
+.site-footer {
   text-align: center;
-  padding: 1rem;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  color: #777;
 }

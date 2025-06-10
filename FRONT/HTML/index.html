@@ -7,60 +7,61 @@
   <link rel="stylesheet" href="../CSS/index.css" />
 </head>
 <body>
-  <header>
-    <h1>ViajesMundo</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#paquetes">Paquetes</a></li>
-        <li><a href="#autos">Alquiler de Autos</a></li>
-        <li><a href="#combos">Combos</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container">
+      <h1>TRAVEL</h1>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#paquetes">Paquetes</a></li>
+          <li><a href="login.html">Iniciar sesión</a></li>
+          <li><a href="register.html">Registrarse</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <video autoplay muted loop playsinline class="background-video">
-        <source src="../SOURCE/5884_Rainbow_Mountains_1280x720.mp4 type="video/mp4" />
-        Tu navegador no soporta videos HTML5.
-      </video>
-      <div class="hero-content">
-        <h2>Descubrí el mundo con nosotros</h2>
-        <p>Paquetes, pasajes, estadías y más a un solo clic.</p>
-        <a href="#paquetes" class="btn">Explorar Paquetes</a>
+  <section class="hero">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="../../SOURCE/paisaje.mp4" type="video/mp4" />
+      Tu navegador no soporta la etiqueta de video.
+    </video>
+    <div class="hero-overlay">
+      <h2>Descubrí el mundo con nosotros</h2>
+      <p>Paquetes, pasajes, estadías y más a un solo clic.</p>
+      <a href="#paquetes" class="btn">Explorar Paquetes</a>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <section id="paquetes" class="section with-image">
+      <img src="../../SOURCE/pack-turistico.jpeg" alt="Imagen de paquetes turísticos" />
+      <div class="text-content">
+        <h2>Paquetes Turísticos</h2>
+        <p>Explorá destinos únicos con nuestras ofertas a medida.</p>
       </div>
     </section>
 
-    <!-- Resto igual -->
-    <section id="paquetes">
-      <h2>Paquetes Turísticos</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Europa Clásica</h3>
-          <p>15 días - Incluye vuelos y hoteles</p>
-        </div>
-        <div class="card">
-          <h3>Caribe All-Inclusive</h3>
-          <p>7 noches - Todo incluido</p>
-        </div>
+    <section id="autos" class="section with-image">
+      <img src="../../SOURCE/5ff7b19f967c0_950_534!.jpg" alt="Alquiler de autos" />
+      <div class="text-content">
+        <h2>Alquiler de Autos</h2>
+        <p>Elige entre cientos de modelos con tarifas exclusivas alrededor del mundo.</p>
       </div>
     </section>
 
-    <section id="autos">
-      <h2>Alquiler de Autos</h2>
-      <p>Elige entre cientos de modelos en todo el mundo con tarifas exclusivas.</p>
+    <section id="combos" class="section with-image">
+      <img src="../../SOURCE/pack-de-viaje.jpeg" alt="Combos turísticos" />
+      <div class="text-content">
+        <h2>Combos Especiales</h2>
+        <p>Aprovechá nuestras ofertas que combinan vuelos, hospedaje y auto en un solo paquete.</p>
+      </div>
     </section>
 
-    <section id="combos">
-      <h2>Combos Especiales</h2>
-      <p>Ofertas que combinan vuelos, alojamiento y auto para que ahorres más.</p>
-    </section>
-
-    <section id="contacto">
+    <section id="contacto" class="section center">
       <h2>Contacto</h2>
-      <form>
+      <form class="contact-form">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required />
 
@@ -75,11 +76,7 @@
     </section>
   </main>
 
-  <video autoplay muted loop playsinline width="100%">
-  <source src="../SOURCE/5884_Rainbow_Mountains_1280x720.mp4" type="video/mp4">
-  Tu navegador no soporta la etiqueta de video.
-</video>
-  <footer>
+  <footer class="site-footer center">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
 </body>
