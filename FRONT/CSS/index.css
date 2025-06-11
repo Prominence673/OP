@@ -29,6 +29,13 @@ body {
   color: #0077cc;
 }
 
+/* NUEVO: Flex para separar h1, nav y usuario */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .nav-menu {
   list-style: none;
   padding: 0;
@@ -46,6 +53,52 @@ body {
 
 .nav-menu li a:hover {
   color: #0077cc;
+}
+
+/* NUEVO: Menú de usuario */
+.user-menu {
+  position: relative;
+}
+
+.user-icon {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #0077cc;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 160px;
+  z-index: 10;
+}
+
+.dropdown li {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Hero con video */
@@ -148,8 +201,6 @@ body {
   text-align: left;      /* alinear texto a la izquierda, puedes cambiar a center si prefieres */
 }
 
-
-
 /* Tarjetas */
 .card-grid {
   display: grid;
@@ -220,4 +271,68 @@ body {
   border-top: 1px solid #e0e0e0;
   font-size: 0.9rem;
   color: #777;
+}
+
+/* User menu */
+.user-menu .user-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-menu .user-icon svg {
+  fill: #0077cc; /* mismo color que el h1 */
+  transition: fill 0.3s ease;
+}
+
+.user-menu .user-icon:hover svg {
+  fill: #005fa3; /* efecto hover más oscuro */
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  padding: 0.5rem 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+.dropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown li {
+  padding: 0.6rem 1rem;
+  text-align: left;
+}
+
+.dropdown li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  font-weight: 500;
+}
+
+.dropdown li a:hover {
+  background-color: #f0f4f8;
+}
+
+/* Oculta el menú por defecto */
+.hidden {
+  display: none;
 }

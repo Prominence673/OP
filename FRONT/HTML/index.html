@@ -5,22 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ViajesMundo - Tu aventura comienza aquí</title>
   <link rel="stylesheet" href="../CSS/index.css" />
+  
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1>TRAVEL</h1>
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#paquetes">Paquetes</a></li>
-          <li><a href="login.html">Iniciar sesión</a></li>
-          <li><a href="register.html">Registrarse</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
+<header class="site-header">
+  <div class="container header-container">
+    <h1>TRAVEL</h1>
+    <nav class="main-nav">
+      <ul class="nav-menu">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#paquetes">Paquetes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="user-menu">
+      <button class="user-icon" aria-label="Menú de usuario">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+        <path d="M12 12c2.67 0 8 1.34 8 4v2H4v-2c0-2.66 5.33-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+      </svg>
+      </button>
+      <ul class="dropdown">
+        <li><a href="login.html">Iniciar sesión</a></li>
+        <li><a href="register.html">Registrarse</a></li>
+      </ul>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <section class="hero">
     <video autoplay muted loop playsinline class="background-video">
@@ -79,5 +90,6 @@
   <footer class="site-footer center">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
+    <script src="../JS DISEÑO/menu.js"></script>
 </body>
 </html>
