@@ -1,6 +1,7 @@
 /* ==== Paquetes.css ==== */
-
-
+body{
+  background: linear-gradient(to bottom, #ffffff, #b5d8fd);
+}
 
 main {
   max-width: 1200px;
