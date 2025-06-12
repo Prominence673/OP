@@ -13,3 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+window.addEventListener('scroll', function () {
+  const nosotros = document.querySelector('.section-nosotros');
+  if (nosotros) {
+    let offset = window.pageYOffset;
+    nosotros.style.backgroundPositionY = `${offset * 0.5}px`;
+  }
+});
+

@@ -162,14 +162,24 @@ body {
 }
 
 /* Secciones principales */
+
+/* Quitamos fondo blanco sólido para que no tape el degradado */
 .section {
   padding: 4rem 1.5rem;
-  background-color: #fff;
   margin-bottom: 2rem;
+  background-color: transparent;
 }
 
+/* CORREGIDO el ID para el contenedor: */
+#section-paquetes {
+  background: linear-gradient(to bottom, #c2dcf8, #ffffff);
+  padding: 2rem 0;
+}
+
+/* Si quieres que las secciones pares tengan fondo distinto, 
+   pero ojo, no tapen el degradado, usa transparencia */
 .section:nth-child(even) {
-  background-color: #f0f4f8;
+  background-color: rgba(182, 163, 252, 0.6);
 }
 
 .section h2 {
@@ -180,13 +190,18 @@ body {
 }
 
 /* Centrado de imagenes */
-
 .with-image {
   display: flex;
   align-items: center;   /* centra verticalmente imagen y texto */
   gap: 1.5rem;           /* espacio entre imagen y texto */
   max-width: 700px;      /* ancho máximo para que no ocupe toda la pantalla */
   margin: 2rem auto;     /* centrado horizontal con margen vertical */
+  
+  /* Fondo blanco semitransparente para destacar contenido sin tapar degradado */
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .with-image img {
@@ -226,42 +241,48 @@ body {
   color: #0077cc;
 }
 
-/* Formulario */
-.contact-form {
-  max-width: 600px;
+.section-nosotros {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('../../SOURCE/cerrar-personas-sosteniendo-mapa.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.nosotros-overlay {
+  position: absolute; /* 🔹 Cubre toda la sección */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* 🔹 Oscurece toda la imagen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.contenido-nosotros {
+  max-width: 800px;
+  color: white;
+  z-index: 2; /* 🔹 Asegura que el texto esté encima del fondo oscuro */
+}
+
+.section-nosotros h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-nosotros p {
+  font-size: 1.2rem;
+  line-height: 1.6;
   margin: 0 auto;
 }
 
-.contact-form label {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 0.3rem;
-  font-weight: 600;
-}
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.contact-form button {
-  margin-top: 1.5rem;
-  background-color: #0077cc;
-  color: white;
-  padding: 0.8rem 1.6rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.contact-form button:hover {
-  background-color: #005fa3;
-}
 
 /* Footer */
 .site-footer {
