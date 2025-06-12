@@ -248,7 +248,7 @@ body {
 .section-nosotros {
   position: relative;
   min-height: 100vh;
-  background-image: url('../../SOURCE/cerrar-personas-sosteniendo-mapa.jpg');
+  background-image: url('../../SOURCE/RESOURCES/cerrar-personas-sosteniendo-mapa.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center -10px; /* <- ajustado para evitar línea gris */

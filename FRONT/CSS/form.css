@@ -43,3 +43,50 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+.show-password-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .password-wrapper input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #password-rules {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 5px;
+    width: max-content;
+    z-index: 10;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  #password-rules.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  #password-rules p {
+    margin: 4px 0;
+  }
