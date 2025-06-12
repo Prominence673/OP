@@ -2,7 +2,6 @@ body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  background: linear-gradient(to bottom, #ffffff, #c2dcf8);
   color: #333;
 }
 .container {
@@ -118,6 +117,38 @@ body {
 
 .user-menu .user-icon:hover svg {
   fill: #005fa3; /* efecto hover más oscuro */
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Estilo compartido para ambos íconos */
+.user-icon,
+.cart-icon {
+  background: none;
+  border: none;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.user-icon svg,
+.cart-icon svg {
+  fill: #0077cc;
+  width: 24px;
+  height: 24px;
+  transition: fill 0.3s ease;
+}
+
+.user-icon:hover svg,
+.cart-icon:hover svg {
+  fill: #005fa3;
 }
 
 .dropdown {
