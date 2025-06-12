@@ -1,10 +1,19 @@
-/* Fuente base */
+@font-face {
+  font-family: 'Savate';
+  src: url('../../SOURCE/FONT/Savate/static/Savate-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   background-color: #f9f9f9;
   color: #333;
+}
+.main-content{
+  background: linear-gradient(to bottom, #ffffff, #b5d8fd);
 }
 
 .container {
@@ -174,12 +183,6 @@ body {
   background-color: transparent;
 }
 
-/* CORREGIDO el ID para el contenedor: */
-#section-paquetes {
-  background: linear-gradient(to bottom, #c2dcf8, #ffffff);
-  padding: 2rem 0;
-}
-
 /* Si quieres que las secciones pares tengan fondo distinto, 
    pero ojo, no tapen el degradado, usa transparencia */
 .section:nth-child(even) {
@@ -193,6 +196,176 @@ body {
   margin-bottom: 2rem;
 }
 
+.separator-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  margin: 3rem auto 2rem;
+  padding: 1.5rem 2rem;
+
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #afc0f7, #004aad);
+  color: #fff;
+
+  border-radius: 12px;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.separator-title h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.separator-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ffffff;
+  margin-top: 0.75rem;
+  border-radius: 10px;
+}
+
+#section-testimonios {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 4rem auto;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+
+#section-testimonios .section {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+}
+
+#section-testimonios .section:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+#section-testimonios img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+#section-testimonios .text-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.text-content P{
+  font-family: Savate;
+}
+
+#section-testimonios h2 {
+  font-size: 1.1rem;
+  color: #004aad;
+  margin: 0;
+}
+
+#section-testimonios p {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+/* SECTION VENTAJAS */
+
+.ico-ventaja {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-around;
+}
+
+.ico-ventaja {
+  text-align: center;
+  max-width: 250px;
+}
+
+.ico-ventaja i {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+
+#section-ventajas {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 4rem auto;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+
+#section-ventajas .section {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #f4f9ff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 64, 128, 0.1);
+  transition: transform 0.3s ease;
+}
+
+#section-ventajas .section:nth-child(2) {
+  margin-top: 3rem;
+}
+
+#section-ventajas .section:nth-child(3) {
+  margin-top: 6rem;
+}
+
+#section-ventajas img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+#section-ventajas h2 {
+  color: #003366;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+#section-ventajas p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+#section-ventajas .section:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 15px rgba(0, 64, 128, 0.2);
+}
+
 /* Centrado de imagenes */
 .with-image {
   display: flex;
@@ -202,10 +375,10 @@ body {
   margin: 2rem auto;     /* centrado horizontal con margen vertical */
   
   /* Fondo blanco semitransparente para destacar contenido sin tapar degradado */
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(216, 215, 215, 0.85);
   border-radius: 8px;
   padding: 2rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,1);
 }
 
 .with-image img {
@@ -218,31 +391,6 @@ body {
 .with-image .text-content {
   flex: 1;               /* ocupa el resto del espacio disponible */
   text-align: left;      /* alinear texto a la izquierda, puedes cambiar a center si prefieres */
-}
-
-/* Tarjetas */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 0 1rem;
-}
-
-.card {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card h3 {
-  margin-top: 0;
-  color: #0077cc;
 }
 
 .section-nosotros {
