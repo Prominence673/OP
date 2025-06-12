@@ -1,3 +1,7 @@
+body{
+  background: linear-gradient(to bottom, #ffffff, #b5d8fd);
+}
+
 .form-container {
   max-width: 400px;
   margin: 5rem auto;
@@ -5,7 +9,13 @@
   border: 1px solid #ccc;
   border-radius: 12px;
   background: #f9f9f9;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 1px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.4s ease-in-out;
+}
+
+.form-container:hover{
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.5);
+
 }
 
 .form-container h2 {
@@ -49,6 +59,10 @@
   align-items: center;
   gap: 8px;
   margin-top: 8px
+}
+
+.show-password-container input[type="checkbox"] {
+  transform: translateY(6.8px); /* Ajuste fino para alineación vertical */
 }
 
 .password-wrapper {
