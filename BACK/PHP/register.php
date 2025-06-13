@@ -1,30 +1,24 @@
 <?php
-$mysqli = new mysqli(hostname: "localhost", username: "root", password: "", database: "paquetes_viajes");
+require_once 'connection.php';    
+require_once 'registerModel.php';      
 
-$datos = json_decode(json: file_get_contents(filename: "php://input"), associative: true);
+$registro = new registerModel($conn);  
 
-$name = trim(string: $datos['name'] ?? '');
-$email = trim(string: $datos['email'] ?? '');
-$password = trim(string: $datos['password'] ?? '');
-$confirm = trim(string: $datos['confirm'] ?? '');
+[$name, $mail, $password, $confirm] = $registro->bringInput();
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(["error" => "Email inválido"]);
-    return;
-}
-if (!$name || !$email || !$password || !$confirm && $password == $confirm) {
-    echo json_encode(["error" => "Completar todos los campos"]);
+$validacionInput = $registro->verifyInput($name, $mail, $password, $confirm);
+if (!$validacionInput["success"]) {
+    echo json_encode(["error" => $validacionInput["error"]]);
     exit;
 }
-$hashPassword = password_hash($password, PASSWORD_DEFAULT);
-$stmt = $mysqli->prepare("CALL SPRegistrarUsuario(?, ?, ?)");
-$stmt->bind_param("sss", $name, $email, $hashPassword);
-$stmt->execute();
-if ($stmt->affected_rows > 0) {
-    echo json_encode(["mensaje" => "Registro correcto"]);
-} else {
-    echo json_encode(["error" => "Error en el registro"]);
+
+$validacionEmail = $registro->verifyMail($mail);
+if (!$validacionEmail["success"]) {
+    echo json_encode(["error" => $validacionEmail["error"]]);
+    exit;
 }
-$stmt->close();
-$mysqli->close();
+
+$hashPassword = $registro->hashPassword($password);
+
+$registro->registerUser($name, $mail, $hashPassword);
 ?>

@@ -2,17 +2,17 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$bd = "paquetes_viajes";
+$dbname = "paquetes_viajes";
 
 try {
-    $conn = new mysqli($host, $username, $pass, $dbname);
+    $conn = new mysqli($host, $user, $pass, $dbname);
     
     if ($conn->connect_error) {
         throw new Exception("Error de conexión: " . $conn->connect_error);
     }
 
 } catch (Exception $e) {
-    echo "Ocurrió un error en la conexión: " . $e->getMessage();
+    echo json_encode(["error" => "Ocurrió un error en la conexión: " . $e->getMessage()]);
     die();
 }
 ?>

@@ -1,34 +1,14 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "paquetes_viajes");
+require_once 'connection.php';
+require_once 'loginModel.php';
+require_once 'registerModel.php';
 
-$datos = json_decode(file_get_contents("php://input"), true);
+$login = new LoginModel($conn);
+$register = new registerModel($conn);
+[$mail, $password] = $register->bringInput();
 
-$email = $datos['email'] ?? '';
-$password = $datos['password'] ?? '';
+$hashGuardado = $login->bringPassword($mail);
+$resultado = $login->verifyPassword($password, $hashGuardado);
 
-$stmt = $mysqli->prepare("CALL SPTraerUsuario(?)");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$resultado = $stmt->get_result();
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(["error" => "Email inválido"]);
-    return;
-}
-if ($resultado && $resultado->num_rows > 0) {
-    $usuario = $resultado->fetch_assoc(); 
-    $hashGuardado = $usuario['password']; 
-
-    if (!password_verify($password, $hashGuardado)) {
-    echo json_encode(["error" => "Contraseña incorrecta"]);
-    return;
-    } 
-    echo json_encode(["mensaje" => "Login correcto"]);
-   
-} else {
-    echo json_encode(["error" => "Usuario no encontrado"]);
-}
-
-$stmt->close();
-$mysqli->close();
+echo json_encode($resultado);
 ?>
