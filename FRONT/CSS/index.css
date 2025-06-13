@@ -5,6 +5,7 @@
   font-style: normal;
 }
 
+/* ========== BASE ========== */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,7 +13,8 @@ body {
   background-color: #f9f9f9;
   color: #333;
 }
-.main-content{
+
+.main-content {
   background: linear-gradient(to bottom, #ffffff, #b5d8fd);
 }
 
@@ -22,9 +24,29 @@ body {
   padding: 0 1.5rem;
 }
 
-/* Header */
+.hidden {
+  display: none;
+}
+
+.btn {
+  background-color: #0077cc;
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #005fa3;
+}
+
+/* ========== HEADER ========== */
 .site-header {
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 1rem 0;
   border-bottom: 1px solid #e0e0e0;
   position: sticky;
@@ -38,7 +60,6 @@ body {
   color: #0077cc;
 }
 
-/* NUEVO: Flex para separar h1, nav y usuario */
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -48,10 +69,10 @@ body {
 .nav-menu {
   list-style: none;
   padding: 0;
-  display: flex;
-  gap: 1.5rem;
   margin-top: 0.5rem;
+  display: flex;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .nav-menu li a {
@@ -64,57 +85,78 @@ body {
   color: #0077cc;
 }
 
-/* NUEVO: Menú de usuario */
+/* ========== USER MENU ========== */
 .user-menu {
   display: flex;
   align-items: center;
-  gap: 1rem; /* separa el ícono del usuario y el carrito */
+  gap: 1rem;
   position: relative;
 }
 
-.user-icon, 
+.user-icon,
 .cart-icon {
-  background-color: transparent;
+  background: none;
   border: none;
-  font-size: 1.5rem;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  color: #0077cc;
+}
+
+.user-icon svg,
+.cart-icon svg {
+  fill: #0077cc;
+  width: 24px;
+  height: 24px;
+  transition: fill 0.3s ease;
+}
+
+.user-icon:hover svg,
+.cart-icon:hover svg {
+  fill: #005fa3;
 }
 
 .dropdown {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  list-style: none;
-  margin: 0;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
   padding: 0.5rem 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 160px;
-  z-index: 10;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+.dropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown li {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
+  text-align: left;
 }
 
 .dropdown li a {
+  display: block;
   text-decoration: none;
   color: #333;
-  display: block;
+  font-weight: 500;
 }
 
-.dropdown li:hover {
-  background-color: #f0f0f0;
+.dropdown li a:hover {
+  background-color: #f0f4f8;
 }
 
-.hidden {
-  display: none;
-}
-
-/* Hero con video */
+/* ========== HERO ========== */
 .hero {
   position: relative;
   height: 90vh;
@@ -158,33 +200,13 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.btn {
-  background-color: #0077cc;
-  color: white;
-  padding: 0.8rem 1.6rem;
-  text-decoration: none;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #005fa3;
-}
-
-/* Secciones principales */
-
-/* Quitamos fondo blanco sólido para que no tape el degradado */
+/* ========== SECTION GENERAL ========== */
 .section {
   padding: 4rem 1.5rem;
   margin-bottom: 2rem;
   background-color: transparent;
 }
 
-/* Si quieres que las secciones pares tengan fondo distinto, 
-   pero ojo, no tapen el degradado, usa transparencia */
 .section:nth-child(even) {
   background-color: rgba(182, 163, 252, 0.6);
 }
@@ -196,62 +218,57 @@ body {
   margin-bottom: 2rem;
 }
 
+/* ========== SEPARATOR ========== */
 .separator-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-
   margin: 3rem auto 2rem;
   padding: 1.5rem 2rem;
-
   font-size: 1.8rem;
   background: linear-gradient(135deg, #afc0f7, #004aad);
   color: #fff;
-
   border-radius: 12px;
   max-width: 500px;
-  position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .separator-title h3 {
   margin: 0;
   font-weight: 700;
-  font-size: 1.8rem;
 }
 
 .separator-title::after {
   content: "";
-  display: block;
   width: 60px;
   height: 4px;
-  background: #ffffff;
+  background: #fff;
   margin-top: 0.75rem;
   border-radius: 10px;
 }
 
+/* ========== TESTIMONIOS ========== */
 #section-testimonios {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
   margin: 4rem auto;
   max-width: 1200px;
-  flex-wrap: wrap;
 }
 
 #section-testimonios .section {
   width: 300px;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   cursor: pointer;
   text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #section-testimonios .section:hover {
@@ -263,7 +280,6 @@ body {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  display: block;
 }
 
 #section-testimonios .text-content {
@@ -273,8 +289,8 @@ body {
   gap: 0.5rem;
 }
 
-.text-content P{
-  font-family: Savate;
+#section-testimonios .text-content p {
+  font-family: 'Savate';
 }
 
 #section-testimonios h2 {
@@ -290,34 +306,14 @@ body {
   line-height: 1.4;
 }
 
-
-/* SECTION VENTAJAS */
-
-.ico-ventaja {
-  display: flex;
-  gap: 2rem;
-  justify-content: space-around;
-}
-
-.ico-ventaja {
-  text-align: center;
-  max-width: 250px;
-}
-
-.ico-ventaja i {
-  font-size: 2.5rem;
-  color: #007bff;
-  margin-bottom: 10px;
-}
-
-
+/* ========== VENTAJAS ========== */
 #section-ventajas {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
   margin: 4rem auto;
   max-width: 1200px;
-  flex-wrap: wrap;
 }
 
 #section-ventajas .section {
@@ -329,18 +325,12 @@ body {
   background: #f4f9ff;
   border-radius: 16px;
   padding: 1.5rem;
-  position: relative;
   box-shadow: 0 0 10px rgba(0, 64, 128, 0.1);
   transition: transform 0.3s ease;
 }
 
-#section-ventajas .section:nth-child(2) {
-  margin-top: 3rem;
-}
-
-#section-ventajas .section:nth-child(3) {
-  margin-top: 6rem;
-}
+#section-ventajas .section:nth-child(2) { margin-top: 3rem; }
+#section-ventajas .section:nth-child(3) { margin-top: 6rem; }
 
 #section-ventajas img {
   width: 60px;
@@ -350,8 +340,8 @@ body {
 }
 
 #section-ventajas h2 {
-  color: #003366;
   font-size: 1.1rem;
+  color: #003366;
   margin-bottom: 0.5rem;
 }
 
@@ -366,15 +356,19 @@ body {
   box-shadow: 0 10px 15px rgba(0, 64, 128, 0.2);
 }
 
-/* Centrado de imagenes */
+.ico-ventaja{
+  color: #005fa3;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+/* ========== CON IMAGEN ========== */
 .with-image {
   display: flex;
-  align-items: center;   /* centra verticalmente imagen y texto */
-  gap: 1.5rem;           /* espacio entre imagen y texto */
-  max-width: 700px;      /* ancho máximo para que no ocupe toda la pantalla */
-  margin: 2rem auto;     /* centrado horizontal con margen vertical */
-  
-  /* Fondo blanco semitransparente para destacar contenido sin tapar degradado */
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 2rem auto;
   background-color: rgba(216, 215, 215, 0.85);
   border-radius: 8px;
   padding: 2rem 1.5rem;
@@ -382,35 +376,32 @@ body {
 }
 
 .with-image img {
-  flex-shrink: 0;        /* evita que la imagen se achique */
-  width: 300px;          /* tamaño mediano fijo */
+  flex-shrink: 0;
+  width: 300px;
   height: auto;
-  border-radius: 8px;    /* opcional: bordes redondeados para mejor estética */
+  border-radius: 8px;
 }
 
 .with-image .text-content {
-  flex: 1;               /* ocupa el resto del espacio disponible */
-  text-align: left;      /* alinear texto a la izquierda, puedes cambiar a center si prefieres */
+  flex: 1;
+  text-align: left;
 }
 
+/* ========== NOSOTROS ========== */
 .section-nosotros {
   position: relative;
   min-height: 100vh;
-  background-image: url('../../SOURCE/RESOURCES/cerrar-personas-sosteniendo-mapa.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center -10px; /* <- ajustado para evitar línea gris */
-  background-attachment: fixed;
+  background: url('../../SOURCE/RESOURCES/cerrar-personas-sosteniendo-mapa.jpg') center -10px / cover no-repeat fixed;
   overflow: hidden;
 }
 
 .nosotros-overlay {
-  position: absolute; /* 🔹 Cubre toda la sección */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* 🔹 Oscurece toda la imagen */
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -421,7 +412,7 @@ body {
 .contenido-nosotros {
   max-width: 800px;
   color: white;
-  z-index: 2; /* 🔹 Asegura que el texto esté encima del fondo oscuro */
+  z-index: 2;
 }
 
 .section-nosotros h2 {
@@ -435,113 +426,12 @@ body {
   margin: 0 auto;
 }
 
-
-
-/* Footer */
+/* ========== FOOTER ========== */
 .site-footer {
   text-align: center;
   padding: 2rem 1rem;
-  background-color: #ffffff;
+  background-color: #fff;
   border-top: 1px solid #e0e0e0;
   font-size: 0.9rem;
   color: #777;
-}
-
-/* User menu */
-.user-menu .user-icon .cart-icon  {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-menu .user-icon svg,
-.cart-icon svg{
-  fill: #0077cc; /* mismo color que el h1 */
-  transition: fill 0.3s ease;
-}
-
-.user-menu .user-icon:hover svg,
-.cart-icon svg{
-  fill: #005fa3; /* efecto hover más oscuro */
-}
-
-.user-menu {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  position: relative;
-}
-
-/* Estilo compartido para ambos íconos */
-.user-icon,
-.cart-icon {
-  background: none;
-  border: none;
-  padding: 0.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.user-icon svg,
-.cart-icon svg {
-  fill: #0077cc;
-  width: 24px;
-  height: 24px;
-  transition: fill 0.3s ease;
-}
-
-.user-icon:hover svg,
-.cart-icon:hover svg {
-  fill: #005fa3;
-}
-
-
-.dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  min-width: 180px;
-  padding: 0.5rem 0;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 999;
-}
-
-.dropdown.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.dropdown li {
-  padding: 0.6rem 1rem;
-  text-align: left;
-}
-
-.dropdown li a {
-  text-decoration: none;
-  color: #333;
-  display: block;
-  font-weight: 500;
-}
-
-.dropdown li a:hover {
-  background-color: #f0f4f8;
-}
-
-/* Oculta el menú por defecto */
-.hidden {
-  display: none;
 }
