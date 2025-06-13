@@ -16,7 +16,7 @@ class registerModel{
         }
     public function verifyInput($name , $mail, $password, $confirm){
             if (!$name || !$mail || !$password || !$confirm && $password == $confirm) {
-                return ["succes" => false, "error" => "Completar todos los campos"];
+                return ["success" => false, "error" => "Completar todos los campos"];
             }
             return ["success"=> true];
     }
