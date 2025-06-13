@@ -15,15 +15,15 @@ class registerModel{
         return ["success" => true];
         }
     public function verifyInput($name , $mail, $password, $confirm){
-            if (!$name || !$mail || !$password || !$confirm && $password == $confirm) {
+            if (!$name || !$mail || !$password || !$confirm && ($password == $confirm)) {
                 return ["success" => false, "error" => "Completar todos los campos"];
             }
             return ["success"=> true];
     }
     public function bringInput(){
-            $datos = json_decode(json: file_get_contents(filename: "php://input"), associative: true);
+            $datos = json_decode(file_get_contents("php://input"), true);
 
-            $name = trim($datos['name'] ?? '');
+            $name = trim($datos['nombre'] ?? '');
             $mail = trim($datos['email'] ?? '');
             $password = trim($datos['password'] ?? '');
             $confirm = trim($datos['confirm'] ?? '');
