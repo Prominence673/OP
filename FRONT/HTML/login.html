@@ -44,7 +44,7 @@
 </header>
   <main class="form-container">
     <h2>Iniciar Sesión</h2>
-    <form action="../../BACK/PHP/login.php" method="post" id="session">
+    <form method="post" id="session">
       <label for="email">Correo electrónico:</label>
       <input type="email" id="email" name="email" required />
 
@@ -53,12 +53,17 @@
 
       <button type="submit">Entrar</button>
     </form>
-    <script src="../../BACK/JS LOGICA/login.js"></script>
-    <p>¿No tenés cuenta? <a href="register.html">Registrate aquí</a></p>
+    <script src="../../BACK/JS LOGICA/submitdataLogin.js"></script>
+    <div>
+      <p>¿No tenés cuenta? <a href="register.html">Registrate aquí</a></p>
+      <p><a href="recoverPassword.html">¿Olvidaste la contraseña?</a></p>
+    </div>
+    
   </main>
   <footer class="site-footer center">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
     <script src="../JS DISEÑO/menu.js"></script>
+    <script src="../../BACK/JS LOGICA/submitdataLogin.js"></script>
 </body>
 </html>

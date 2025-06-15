@@ -3,54 +3,68 @@ class registerModel{
     private $conn;
     public function __construct($conn){
         $this->conn = $conn;
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     }
     public function hashPassword($password){
         return password_hash($password, PASSWORD_DEFAULT);
     }
-    public function verifyMail($mail){
-            if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-            echo json_encode(["error" => "Email inválido"]);
+    public function verifyMail($email){
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return ["success" => false, "error" => "Email inválido"];
             }
         return ["success" => true];
         }
-    public function verifyInput($name , $mail, $password, $confirm){
-            if (!$name || !$mail || !$password || !$confirm && ($password == $confirm)) {
+    public function verifyInput($name , $email, $password, $confirm){
+             if ($name === '' || $email === '' || $password === '' || $confirm === '') {
                 return ["success" => false, "error" => "Completar todos los campos"];
             }
-            return ["success"=> true];
+
+            if ($password !== $confirm) {
+                return ["success" => false, "error" => "Las contraseñas no coinciden"];
+            }
+
+            return ["success" => true];
     }
     public function bringInput(){
-            $datos = json_decode(file_get_contents("php://input"), true);
+                $raw = file_get_contents("php://input");
+                $datos = json_decode($raw, true);
 
-            $name = trim($datos['nombre'] ?? '');
-            $mail = trim($datos['email'] ?? '');
-            $password = trim($datos['password'] ?? '');
-            $confirm = trim($datos['confirm'] ?? '');
-            return [$name, $mail, $password, $confirm];
+                if (!$datos) {
+                    echo json_encode(["error" => "No se pudo decodificar JSON"]);
+                    exit;
+                }
+
+                $name = trim($datos['name'] ?? '');
+                $email = trim($datos['email'] ?? '');
+                $password = trim($datos['password'] ?? '');
+                $confirm = trim($datos['confirm'] ?? '');
+
+                return [$name, $email, $password, $confirm];
             }
-    public function registerUser($name, $mail, $hash_password){
+    public function registerUser($name, $email, $hash_password){
          try {
             $stmt = $this->conn->prepare("CALL SPRegistrarUsuario(?, ?, ?)");
             if (!$stmt) {
                 throw new Exception("Error al preparar la consulta: " . $this->conn->error);
             }
-
-            $stmt->bind_param("sss", $name, $mail, $hash_password);
+            $stmt->bind_param("sss", $name, $email, $hash_password);
             $stmt->execute();
-
             if ($stmt->affected_rows > 0) {
-                echo json_encode(["mensaje" => "Registro correcto"]);
+                return ["success" => true];
             } else {
-                echo json_encode(["error" => "Error en el registro"]);
+                return ["success" => false, "error" => "Error en el registro"];
             }
-
-            $stmt->close();
-            $this->conn->close();
-
-        } catch (Exception $e) {
-            echo json_encode(["error" => "Excepción: " . $e->getMessage()]);
+         } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() === 1062) {
+                
+                return ["success" => false, "error" => "El email ya está en uso"];
+            }
+          
+            return ["success" => false, "error" => "Excepción: " . $e->getMessage()];
         }
+    }
+    public function closeConn(){
+        $this->conn->close();
     }
 }
 

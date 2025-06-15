@@ -2,17 +2,17 @@
 require_once 'connection.php';    
 require_once 'registerModel.php';      
 
-$registro = new registerModel($conn);  
+$registro = new registerModel($conn);
 
-[$name, $mail, $password, $confirm] = $registro->bringInput();
+[$name, $email, $password, $confirm] = $registro->bringInput();
 
-$validacionInput = $registro->verifyInput($name, $mail, $password, $confirm);
+$validacionInput = $registro->verifyInput($name, $email, $password, $confirm);
 if (!$validacionInput["success"]) {
     echo json_encode(["error" => $validacionInput["error"]]);
     exit;
 }
 
-$validacionEmail = $registro->verifyMail($mail);
+$validacionEmail = $registro->verifyMail($email);
 if (!$validacionEmail["success"]) {
     echo json_encode(["error" => $validacionEmail["error"]]);
     exit;
@@ -20,5 +20,12 @@ if (!$validacionEmail["success"]) {
 
 $hashPassword = $registro->hashPassword($password);
 
-$registro->registerUser($name, $mail, $hashPassword);
+$result = $registro->registerUser($name, $email, $hashPassword);
+
+if ($result["success"]) {
+    echo json_encode(["mensaje" => "Usuario registrado correctamente"]);
+} else {
+    echo json_encode(["error" => $result["error"] ?? "Error desconocido"]);
+}
+$registro->closeConn();
 ?>
