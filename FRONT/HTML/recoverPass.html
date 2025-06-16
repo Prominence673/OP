@@ -45,16 +45,33 @@
   <main class="form-container">
     <h2>Recuperar contraseña</h2>
     <form method="post" id="recoverPassword">
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required />
+          <label for="password">Contraseña:</label>
+    <div class="password-wrapper" style="position: relative;">
+      <input type="password" id="password" name="password" max="16" required />
+      <div id="password-rules">
+        <p id="min-length">8 caracteres</p>
+        <p id="lowercase">Una minúscula</p>
+        <p id="uppercase">Una mayúscula</p>
+        <p id="number">Un número</p>
+        <p id="special">Un carácter especial @ # $ ^ & + = . ! ? - _ *</p>
+      </div>
+    </div>
+
+    <label for="confirmar">Confirmar contraseña:</label>
+    <input type="password" id="confirm" name="confirm" required />
+    <div class="show-password-container">
+      <label for="showpassword">Mostrar Contraseña</label>
+      <input type="checkbox" id="showpassword" name="showpass">
+    </div>
       <button type="submit">Entrar</button>
     </form>
-    <script src="../../BACK/JS LOGICA/submitdataLogin.js"></script>
+    
   </main>
   <footer class="site-footer center">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
+    <script src="../../BACK/JS LOGICA/passParameters.js"></script>
     <script src="../JS DISEÑO/menu.js"></script>
-    <script src="../../BACK/JS LOGICA/submitdataLogin.js"></script>
+    <script src="../../BACK/JS LOGICA/submitdataRPassword.js"></script>
 </body>
 </html>
