@@ -44,7 +44,7 @@
   <main class="form-container">
   <h2>Crear Cuenta</h2>
   <form method="post" id="register">
-    <label for="nombre">Nombre completo:</label>
+    <label for="name">Nombre completo:</label>
     <input type="text" id="name" name="name" max=50 required />
 
     <label for="email">Correo electrónico:</label>
@@ -61,7 +61,7 @@
         <p id="special">Un carácter especial @ # $ ^ & + = . ! ? - _ *</p>
       </div>
     </div>
-    <label for="confirmar">Confirmar contraseña:</label>
+    <label for="confirm">Confirmar contraseña:</label>
     <input type="password" id="confirm" name="confirm" required />
     <div class="show-password-container">
       <label for="showpassword">Mostrar Contraseña</label>
@@ -71,14 +71,41 @@
     <button type="submit">Registrarse</button>
   </form>
   <p>¿Ya tenés cuenta? <a href="login.html">Iniciar sesión</a></p>
+  <script src="../../BACK/JS LOGICA/passParameters.js"></script>
+  <script src="../../BACK/JS LOGICA/submitdata.js"></script>
+  <script src="../JS DISEÑO/menu.js"></script>
+  <script>
+    //submitdata
+    document.addEventListener("DOMContentLoaded", () => {
+  new FormHandler({
+    formSelector: "#register", //id del form
+    endpoint: "../../BACK/PHP/register.php"  //PHP
+  });
+  });
+    //passParameters
+  document.addEventListener("DOMContentLoaded", () => {
+    new PasswordValidator({
+      passwordSelector: "#password",
+      confirmSelector: "#confirm",
+      toggleSelector: "#showpassword",
+      rulesContainerSelector: "#password-rules",
+      formSelector: "#register",
+      ruleSelectors: {
+        minLength: "#min-length",
+        lowercase: "#lowercase",
+        uppercase: "#uppercase",
+        number: "#number",
+        special: "#special"
+      }
+    });
+  });
+</script>
+
   </main>
 
   <footer class="site-footer center">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
   
-  <script src="../../BACK/JS LOGICA/passParameters.js"></script>
-  <script src="../../BACK/JS LOGICA/submitdata.js"></script>
-  <script src="../JS DISEÑO/menu.js"></script>
   </body>
   </html>

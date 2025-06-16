@@ -105,7 +105,7 @@ class recoverPassModel {
             $mail->isHTML(true);
             $mail->Subject = 'Password recovery';
 
-            $recoveryLink = "https://tu-sitio.com/reset-password.php?token=" . urlencode($token);
+            $recoveryLink = "http://localhost/OP/BACK/PHP/recoveryPass.php?token=" . urlencode($token);
 
             $mail->Body = "
             <div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; overflow: hidden;'>

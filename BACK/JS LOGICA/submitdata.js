@@ -2,7 +2,7 @@ class FormHandler {
   constructor({ formSelector, endpoint }) {
     this.form = document.querySelector(formSelector);
     this.endpoint = endpoint;
-
+    
     if (!this.form) {
       console.error("Formulario no encontrado:", formSelector);
       return;
@@ -15,7 +15,8 @@ class FormHandler {
     e.preventDefault();
 
     const data = this.getFormData();
-
+    console.log("Datos enviados:", data);
+    console.log("Endpoint:", this.endpoint);
     try {
       const response = await fetch(this.endpoint, {
         method: "POST",
