@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2025 a las 20:54:20
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 16-06-2025 a las 21:19:41
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,9 +57,53 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPAgregarAlCarrito` (IN `p_id_usuar
     END IF;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPBringPassword` (IN `p_email` VARCHAR(60))   BEGIN
+ SELECT contraseña FROM usuarios WHERE email = p_email;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPChangePassword` (IN `p_email` VARCHAR(64), IN `p_hash_password` VARCHAR(255))   BEGIN
+    UPDATE usuarios
+    SET contraseña = p_hash_password
+    WHERE email = p_email
+    LIMIT 1;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPGetPasswordResetByToken` (IN `p_token` VARCHAR(64))   BEGIN
+    SELECT id_usuario, expires_at
+    FROM password_resets
+    WHERE token = p_token;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPInsertPasswordReset` (IN `p_id_usuario` INT, IN `p_token` VARCHAR(64), IN `p_expires_at` DATETIME)   BEGIN
+    INSERT INTO password_resets (id_usuario, token, expires_at)
+    VALUES (p_id_usuario, p_token, p_expires_at);
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPRegistrarUsuario` (IN `p_nombre` VARCHAR(50), IN `p_email` VARCHAR(100), IN `p_password` VARCHAR(255))   BEGIN
     INSERT INTO usuarios (nombre, email, contraseña)
     VALUES (p_nombre, p_email, p_password);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPResetPasswordAndDeleteToken` (IN `p_token` VARCHAR(64), IN `p_new_password` VARCHAR(255))   BEGIN
+    DECLARE v_id_usuario INT;
+
+    -- Obtener el ID del usuario con ese token
+    SELECT id_usuario INTO v_id_usuario
+    FROM password_resets
+    WHERE token = p_token;
+
+    -- Actualizar contraseña
+    UPDATE usuarios
+    SET contraseña = p_new_password
+    WHERE id_usuario = v_id_usuario;
+
+    -- Eliminar token
+    DELETE FROM password_resets
+    WHERE token = p_token;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPUserExists` (IN `p_email` VARCHAR(64))   BEGIN
+SELECT nombre FROM usuarios WHERE email = p_email;
 END$$
 
 DELIMITER ;
@@ -204,6 +248,20 @@ CREATE TABLE `paquetes_transportes` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `expires_at` datetime NOT NULL,
+  `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `reservas`
 --
 
@@ -247,7 +305,15 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `contraseña`) VALUES
-(1, 'Usuario Prueba', 'usuario@test.com', '123456');
+(1, 'Usuario Prueba', 'usuario@test.com', '123456'),
+(2, 'dasdsadasdad', 'safarakiri@gmail.com', '$2y$10$ynwiUFmU9IXlxay3fd2YJuNKoc/wfcS0IYgMQYobV4RyfugNJD9q6'),
+(6, 'dasdsadasdad', 'blabla@gmail.com', '$2y$10$hiDxNgTnMrIIoVGf6BZ3FOxJb6CcOfFtIFnuPLnXL9FUm198kpQmi'),
+(26, 'dasdsadasdad', 'elmeme@gmail.com', '$2y$10$KCyxXkJqvDJ8QFRtPRxzE.oIN2SQcU/2eobfXu3nZR.gW8J3PLt3.'),
+(27, 'dsadasd', 'dadasdas@gmail.com', '$2y$10$hrtTHyW/oPUQTKlzZHTpauNReeOpc2qSj2KMcHIwgljYkSuRSrwrC'),
+(29, 'dasdsadasdad', 'safarakir2i@gmail.com', '$2y$10$3n4vJ/e.yjtymLYzMFgN8ONtFRsn1VIQ4csK4VPSdlCzChDIXms0G'),
+(30, 'dasdsadasdad', 'safarakiri2323232@gmail.com', '$2y$10$AGXQkwjxC/vH7Mxd3wSXM.Ha6gxm7ptYlexdOtOZwZ/R7Wkq5H1v2'),
+(31, 'dasdsadasdad', 'safarakir23232i@gmail.com', '$2y$10$WjzwqR.n11lI8nc.f8AzWu8sgN18zwdbGEv35EJ/y5BRO1Y/pIqFC'),
+(32, 'dasdsadasdad', 'safarak232323232iri@gmail.com', '$2y$10$6uKidD46WwyN8A5hBrQ50OLPPT81Pl7DmS1OurvrEKFEaucwtbkTu');
 
 --
 -- Índices para tablas volcadas
@@ -322,6 +388,14 @@ ALTER TABLE `paquetes_transportes`
   ADD KEY `id_transporte` (`id_transporte`);
 
 --
+-- Indices de la tabla `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `token` (`token`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
 -- Indices de la tabla `reservas`
 --
 ALTER TABLE `reservas`
@@ -389,6 +463,12 @@ ALTER TABLE `paquetes`
   MODIFY `id_paquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `password_resets`
+--
+ALTER TABLE `password_resets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
@@ -404,7 +484,7 @@ ALTER TABLE `transportes`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Restricciones para tablas volcadas
@@ -449,6 +529,12 @@ ALTER TABLE `paquetes_destinos`
 ALTER TABLE `paquetes_transportes`
   ADD CONSTRAINT `paquetes_transportes_ibfk_1` FOREIGN KEY (`id_paquete`) REFERENCES `paquetes` (`id_paquete`),
   ADD CONSTRAINT `paquetes_transportes_ibfk_2` FOREIGN KEY (`id_transporte`) REFERENCES `transportes` (`id_transporte`);
+
+--
+-- Filtros para la tabla `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD CONSTRAINT `password_resets_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `reservas`
