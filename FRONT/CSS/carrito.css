@@ -1,0 +1,235 @@
+/* Contenedor principal del carrito */
+.carrito-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* Título del carrito */
+.carrito-container h1 {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Sección de items del carrito */
+.carrito-items {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Resumen del carrito */
+.resumen-carrito {
+    width: 300px;
+    padding: 1.5rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Cada item individual del carrito */
+.item-carrito {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    gap: 1rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+/* Info del producto */
+.info-item {
+    flex: 1;
+    min-width: 200px;
+}
+
+.info-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.info-item p {
+    margin: 0.25rem 0;
+    color: #7f8c8d;
+}
+
+/* Controles de cantidad */
+.cantidad-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ESTILOS PARA LOS BOTONES DEL CARRITO */
+
+/* Botones de cantidad (+/-) */
+.btn-cantidad {
+    padding: 8px 12px;
+    margin: 0 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    color: #495057;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 32px;
+}
+
+.btn-cantidad:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.btn-cantidad:active {
+    transform: scale(0.95);
+    background-color: #dee2e6;
+}
+
+/* Botón de eliminar */
+.eliminar-item {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.eliminar-item:hover {
+    background-color: #c82333;
+}
+
+.eliminar-item:active {
+    transform: scale(0.95);
+}
+
+/* Botón de finalizar compra */
+.btn-finalizar {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.btn-finalizar:hover {
+    background-color: #218838;
+}
+
+.btn-finalizar:active {
+    transform: scale(0.98);
+}
+
+.btn-finalizar:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Efecto de carga para botón finalizar */
+.btn-finalizar.procesando::after {
+    content: "...";
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: "."; }
+    40% { content: ".."; }
+    60%, 100% { content: "..."; }
+}
+/* Total y botón finalizar */
+.total-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin: 1.5rem 0;
+    font-weight: bold;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+}
+
+.btn-finalizar {
+    width: 100%;
+    padding: 1rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-finalizar:hover {
+    background: #45a049;
+}
+
+.btn-finalizar:active {
+    transform: scale(0.98);
+}
+
+/* Estados especiales */
+.carrito-vacio, .cargando, .error-carrito {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+/* Efecto al eliminar */
+.item-carrito.eliminando {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carrito-container {
+        flex-direction: column;
+    }
+    
+    .resumen-carrito {
+        width: 100%;
+        order: -1;
+        margin-bottom: 2rem;
+    }
+    
+    .item-carrito {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .info-item {
+        margin-bottom: 1rem;
+    }
+    
+    .subtotal-item {
+        text-align: left;
+        margin-top: 1rem;
+    }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Exitosa | Travel Rock Argentina</title>
+    <link rel="stylesheet" href="/op/FRONT/CSS/header-footer.css">
+    <link rel="stylesheet" href="/op/FRONT/CSS/confirmacion.css">
+       <script>
+        // Verificar que existe una transacción antes de mostrar la página
+        if (!localStorage.getItem('ultimaTransaccion')) {
+            window.location.href = '/op/FRONT/HTML/carrito.html';
+        }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <!-- Tu header existente -->
+    </header>
+
+    <main class="confirmation-container">
+        <div class="confirmation-card">
+            <div class="confirmation-icon">✓</div>
+            <h1>¡Pago realizado con éxito!</h1>
+            <p>Hemos recibido tu pago correctamente. En breve recibirás un correo con los detalles de tu compra.</p>
+            
+            <div class="order-details">
+                <h2>Detalles de tu orden</h2>
+                <div id="order-details-content">
+                    <!-- Los detalles se cargarán aquí -->
+                </div>
+            </div>
+            
+            <div class="confirmation-actions">
+                <a href="/op/FRONT/HTML/paquetes.html" class="btn btn-secondary">Ver más paquetes</a>
+                <a href="/op/FRONT/HTML/index.html" class="btn btn-primary">Volver al inicio</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer center">
+        <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/op/BACK/JS LOGICA/confirmacion.js"></script>
+</body>
+</html>
