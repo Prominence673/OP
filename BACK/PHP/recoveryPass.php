@@ -1,11 +1,46 @@
+<?php
+require_once "connection.php"; 
+require_once "recoverPassModel.php";
+
+$model = new recoverPassModel($conn);
+$token = $_GET['token'] ?? '';
+
+$data = $model->getTokenData($token);
+if (!$data || strtotime($data['expires_at']) < time()) {
+    echo "<h2>El enlace expiró o es inválido</h2>";
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $newPass = $_POST['newpass'] ?? '';
+    $confirm = $_POST['confirm'] ?? '';
+
+    if ($newPass !== $confirm) {
+        $error = "Las contraseñas no coinciden";
+    } elseif (strlen($newPass) < 8) {
+        $error = "La contraseña es demasiado corta";
+    } else {
+        $hash = password_hash($newPass, PASSWORD_BCRYPT);
+        $res = $model->changePassword($email, $hash);
+        if ($res['success']) {
+            $model->deleteToken($token);
+            echo "<h2>Contraseña actualizada correctamente</h2>";
+            exit;
+        } else {
+            $error = $res['error'];
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registrarse - ViajesMundo</title>
-  <link rel="stylesheet" href="../CSS/form.css"/>
-  <link rel="stylesheet" href="../CSS/header-footer.css"/>
+  <title>Iniciar Sesión - ViajesMundo</title>
+  <link rel="stylesheet" href="../../FRONT/CSS/form.css" />
+  <link rel="stylesheet" href="../../FRONT/CSS/header-footer.css"/>
+
 </head>
 <body>
 <header class="site-header">
@@ -13,8 +48,8 @@
     <h1>TRAVEL</h1>
     <nav class="main-nav">
       <ul class="nav-menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="paquetes.html">Paquetes</a></li>
+        <li><a href="../../FRONT/HTML/index.html">Inicio</a></li>
+        <li><a href="../../FRONT/HTML/paquetes.html">Paquetes</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -35,22 +70,16 @@
       </svg>
       </button>
       <ul class="dropdown">
-        <li><a href="login.html">Iniciar sesión</a></li>
-        <li><a href="register.html">Registrarse</a></li>
+        <li><a href="../../FRONT/HTML/login.html">Iniciar sesión</a></li>
+        <li><a href="../../FRONT/HTML/register.html">Registrarse</a></li>
       </ul>
     </div>
   </div>
 </header>
   <main class="form-container">
-  <h2>Crear Cuenta</h2>
-  <form method="post" id="register">
-    <label for="name">Nombre completo:</label>
-    <input type="text" id="name" name="name" max=50 required />
-
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" max="320" required />
-
-    <label for="password">Contraseña:</label>
+    <h2>Recuperar contraseña</h2>
+    <form method="post" id="recoverPassword">
+          <label for="password">Contraseña:</label>
     <div class="password-wrapper" style="position: relative;">
       <input type="password" id="password" name="password" max="16" required />
       <div id="password-rules">
@@ -61,25 +90,24 @@
         <p id="special">Un carácter especial @ # $ ^ & + = . ! ? - _ *</p>
       </div>
     </div>
-    <label for="confirm">Confirmar contraseña:</label>
+
+    <label for="confirmar">Confirmar contraseña:</label>
     <input type="password" id="confirm" name="confirm" required />
     <div class="show-password-container">
       <label for="showpassword">Mostrar Contraseña</label>
       <input type="checkbox" id="showpassword" name="showpass">
     </div>
-
-    <button type="submit">Registrarse</button>
-  </form>
-  <p>¿Ya tenés cuenta? <a href="login.html">Iniciar sesión</a></p>
-  <script src="../../BACK/JS LOGICA/passParameters.js"></script>
-  <script src="../../BACK/JS LOGICA/submitdata.js"></script>
-  <script src="../JS DISEÑO/menu.js"></script>
-  <script>
+      <button type="submit">Entrar</button>
+    </form>
+     <script src="../../BACK/JS LOGICA/passParameters.js"></script>
+    <script src="../../FRONT/JS DISEÑO/menu.js"></script>
+    <script src="../../BACK/JS LOGICA/submitdata.js"></script>
+     <script>
     //submitdata
     document.addEventListener("DOMContentLoaded", () => {
   new FormHandler({
-    formSelector: "#register", //id del form
-    endpoint: "../../BACK/PHP/register.php"  //PHP
+    formSelector: "#recoverPassword", //id del form
+    endpoint: "../../BACK/PHP/recoveryPass.php"  //PHP
   });
   });
     //passParameters
@@ -100,12 +128,10 @@
     });
   });
 </script>
-
   </main>
-
   <footer class="site-footer center">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
-  
-  </body>
-  </html>
+   
+</body>
+</html>
