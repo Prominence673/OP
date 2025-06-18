@@ -63,23 +63,23 @@ document.addEventListener("DOMContentLoaded", function() {
         const btn = this;
         btn.innerHTML = '<i class="icon-spinner"></i> Generando código...';
         btn.disabled = true;
-        
+
         setTimeout(() => {
             // Generar código de pago único
             const codigoPago = "EF-" + Math.random().toString(36).substr(2, 8).toUpperCase();
-            
+
             // Guardar datos de la transacción
             const transaccion = {
-                metodo: "efectivo",
+                metodo: "cash", // <-- Cambia aquí
                 codigo: codigoPago,
                 total: total,
                 items: carrito,
                 fecha: new Date().toISOString()
             };
-            
+
             localStorage.setItem("ultimaTransaccion", JSON.stringify(transaccion));
             localStorage.removeItem("carritoCheckout");
-            
+
             // Redirigir a confirmación
             window.location.href = "/op/FRONT/HTML/confirmacion.html";
         }, 1500);
@@ -190,16 +190,26 @@ function procesarPago() {
     spinner.innerHTML = '<div class="spinner-content"><div class="spinner"></div><p>Procesando tu pago...</p></div>';
     document.body.appendChild(spinner);
 
+    // Validar que haya productos en el carrito
+    const carrito = JSON.parse(localStorage.getItem("carritoCheckout"));
+    if (!carrito || carrito.length === 0) {
+        document.body.removeChild(spinner);
+        btnPay.disabled = false;
+        btnPay.innerHTML = '<i class="icon-lock"></i> PAGAR $<span id="total-amount">0.00</span>';
+        alert("Tu carrito está vacío. No se puede procesar el pago.");
+        return;
+    }
+
     // Simular procesamiento de pago (2 segundos)
     const procesamiento = setTimeout(() => {
         const metodo = document.querySelector(".payment-method.active").dataset.method;
         const transaccion = {
             metodo: metodo,
             total: parseFloat(document.getElementById("total-amount").textContent.replace(/[^0-9.]/g, '')),
-            items: JSON.parse(localStorage.getItem("carritoCheckout")),
+            items: carrito,
             fecha: new Date().toISOString()
         };
-        
+
         if (metodo === "credit" || metodo === "debit") {
             transaccion.tarjeta = {
                 ultimos4: document.getElementById("card-number").value.slice(-4),
@@ -207,14 +217,14 @@ function procesarPago() {
                 cuotas: metodo === "credit" ? parseInt(document.getElementById("card-installments").value) : 1
             };
         }
-        
+
         // Guardar transacción y limpiar carrito
         localStorage.setItem("ultimaTransaccion", JSON.stringify(transaccion));
         localStorage.removeItem("carritoCheckout");
-        
+
         // Remover spinner
         document.body.removeChild(spinner);
-        
+
         // Redirigir a página de confirmación
         window.location.href = "/op/FRONT/HTML/confirmacion.html";
     }, 2000);
@@ -227,5 +237,5 @@ function procesarPago() {
         btnPay.innerHTML = '<i class="icon-lock"></i> PAGAR $<span id="total-amount">0.00</span>';
         alert('El proceso está tomando más tiempo de lo normal. Por favor intenta nuevamente.');
     }, 10000);
-}        
-    
+}
+
