@@ -5,6 +5,17 @@ body {
   padding: 0;
 }
 
+input:focus, input:-webkit-autofill {
+  outline: none;
+  box-shadow: none;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .form-container {
   max-width: 400px;
   margin: 5rem auto;
@@ -28,9 +39,13 @@ body {
 
 /* Íconos dentro del input */
 .input-icon {
+  color: #004aad;
+  font-size: 1.2em;
+  margin-right: 8px;
+  vertical-align: middle;
   position: absolute;
   left: 10px;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
@@ -54,7 +69,6 @@ body {
   outline: none;
   border-radius: 8px;
   position: relative;
-  background: #f4faff;
   font-size: 1rem;
   box-sizing: border-box;
 }
@@ -120,16 +134,28 @@ body {
   text-decoration: underline;
 }
 
-.show-password-container {
+.checkbox-group {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: -1rem;
-  margin-bottom: 1.2rem;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.show-password-container input[type="checkbox"] {
-  transform: translateY(2px);
+.checkbox-group input[type="checkbox"] {
+  accent-color: #004aad;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  font-size: 1rem;
+  color: #222;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  line-height: 1;
 }
 
 /* Password rules */
