@@ -1,16 +1,18 @@
+/* === BASE === */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* Header */
+/* === HEADER === */
 .site-header {
   background-color: #ffffff;
   padding: 1rem 0;
@@ -26,13 +28,13 @@ body {
   color: #0077cc;
 }
 
-/* NUEVO: Flex para separar h1, nav y usuario */
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* === NAVEGACIÓN === */
 .nav-menu {
   list-style: none;
   padding: 0;
@@ -52,73 +54,7 @@ body {
   color: #0077cc;
 }
 
-/* NUEVO: Menú de usuario */
-.user-menu {
-  position: relative;
-}
-
-.user-icon {
-  background-color: transparent;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #0077cc;
-}
-
-.dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  list-style: none;
-  margin: 0;
-  padding: 0.5rem 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 160px;
-  z-index: 10;
-}
-
-.dropdown li {
-  padding: 0.5rem 1rem;
-}
-
-.dropdown li a {
-  text-decoration: none;
-  color: #333;
-  display: block;
-}
-
-.dropdown li:hover {
-  background-color: #f0f0f0;
-}
-
-.hidden {
-  display: none;
-}
-
-
-/* User menu */
-.user-menu .user-icon {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-menu .user-icon svg {
-  fill: #0077cc; /* mismo color que el h1 */
-  transition: fill 0.3s ease;
-}
-
-.user-menu .user-icon:hover svg {
-  fill: #005fa3; /* efecto hover más oscuro */
-}
-
+/* === MENÚ DE USUARIO === */
 .user-menu {
   display: flex;
   align-items: center;
@@ -126,7 +62,7 @@ body {
   position: relative;
 }
 
-/* Estilo compartido para ambos íconos */
+/* Íconos de usuario y carrito (Font Awesome) */
 .user-icon,
 .cart-icon {
   background: none;
@@ -136,26 +72,22 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: #0077cc;
+  font-size: 1.5rem;
+  transition: color 0.3s;
 }
 
-.user-icon svg,
-.cart-icon svg {
-  fill: #0077cc;
-  width: 24px;
-  height: 24px;
-  transition: fill 0.3s ease;
+.user-icon:hover,
+.cart-icon:hover {
+  color: #005fa3;
 }
 
-.user-icon:hover svg,
-.cart-icon:hover svg {
-  fill: #005fa3;
-}
-
+/* === DROPDOWN MENU === */
 .dropdown {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #ffffff;
+  background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -166,6 +98,8 @@ body {
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 999;
+  list-style: none;
+  margin: 0;
 }
 
 .dropdown.show {
@@ -184,6 +118,7 @@ body {
   color: #333;
   display: block;
   font-weight: 500;
+  transition: background 0.2s;
 }
 
 .dropdown li a:hover {
@@ -195,7 +130,7 @@ body {
   display: none;
 }
 
-/* Footer */
+/* === FOOTER === */
 .site-footer {
   text-align: center;
   padding: 2rem 1rem;
@@ -203,4 +138,31 @@ body {
   border-top: 1px solid #e0e0e0;
   font-size: 0.9rem;
   color: #777;
+}
+
+/* === ICONOS EN <i> (Font Awesome) === */
+.icon-link,
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
+.user-menu i.user-icon {
+  color: #0077cc;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-link:hover .user-icon,
+.icon-btn:hover .user-icon,
+.icon-btn:focus .user-icon {
+  color: #005fa3;
 }

@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const userIcon = document.querySelector(".user-icon");
+  const userMenuBtn = document.getElementById("user-menu-btn");
   const dropdown = document.querySelector(".dropdown");
 
-  userIcon.addEventListener("click", (e) => {
-    e.stopPropagation(); // evita cierre inmediato por el listener global
+  userMenuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
     dropdown.classList.toggle("show");
   });
 
