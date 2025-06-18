@@ -1,61 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../CSS/header-footer.css"/>
-
+    <title>Carrito de Compras | Travel Rock Argentina</title>
+    <link rel="stylesheet" href="/op/FRONT/CSS/header-footer.css">
+    <link rel="stylesheet" href="/op/FRONT/CSS/carrito.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-container">
-    <h1>TRAVEL</h1>
-    <nav class="main-nav">
-      <ul class="nav-menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="paquetes.html">Paquetes</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="user-menu">
-      <a href="carrito.html" class="cart-icon" aria-label="Ir al carrito de compras">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="blue" viewBox="0 0 24 24">
-          <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 
-                   0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 
-                   2-2-.9-2-2-2zM7.82 13h8.45c.75 0 1.41-.41 
-                   1.75-1.03l3.58-6.49A1 1 0 0 0 21 4H5.21L4.27 
-                   2H1v2h2l3.6 7.59-1.35 2.44C4.52 14.37 5.48 
-                   16 7 16h12v-2H7.82l1.1-2z"/>
-        </svg>
-      </a>
-      <button class="user-icon" aria-label="Menú de usuario">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
-        <path d="M12 12c2.67 0 8 1.34 8 4v2H4v-2c0-2.66 5.33-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
-      </svg>
-      </button>
-      <ul class="dropdown">
-       <li id="user"></li>
-        <li><a href="user_panel.html">Panel</a></li>
-        <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
-        <li id="register_panel"><a href="register.html">Registrarse</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
-<main>
-    <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
-    <script>
-    const actions = new SessionActions();
-    actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5"); 
-    actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
-    </script>
-    <script src="../JS DISEÑO/menu.js"></script>
-    <script src="../../BACK/JS LOGICA/user.js"></script>
+    <header class="site-header">
+        <!-- Tu header existente -->
+    </header>
 
-</main>
-  <footer class="site-footer center">
-    <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
-  </footer>
+    <main class="carrito-container">
+        <h1>Tu Carrito de Compras</h1>
+        
+        <div class="carrito-items" id="lista-carrito">
+            <!-- Los items se cargarán aquí dinámicamente -->
+            <div class="cargando">Cargando tu carrito...</div>
+        </div>
+        
+        <div class="resumen-carrito">
+            <h2>Resumen de Compra</h2>
+            <div class="total-container">
+                <span>Total:</span>
+                <span id="total-carrito">$0</span>
+            </div>
+            <button id="finalizar-compra" class="btn-finalizar">Finalizar Compra</button>
+        </div>
+    </main>
+
+    <footer class="site-footer center">
+        <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/op/BACK/JS LOGICA/carrito-logica.js"></script>
 </body>
 </html>

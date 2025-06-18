@@ -58,7 +58,7 @@
           <p><strong>Duración:</strong> 5 días / 4 noches</p>
           <p><strong>Incluye:</strong> Vuelo, hotel 4 estrellas, traslados, excursiones opcionales.</p>
           <p><strong>Precio aprox:</strong> AR$ 300.000</p>
-          <button>Añadir al carrito</button>
+<button data-id_paquete="2" class="add-to-cart">Añadir al carrito</button>
         </div>
       </article>
 
@@ -72,7 +72,8 @@
           <p><strong>Duración:</strong> 4 días / 3 noches</p>
           <p><strong>Incluye:</strong> Vuelo, alojamiento, visitas guiadas a las cataratas.</p>
           <p><strong>Precio aprox:</strong> AR$ 266.000</p>
-          <button>Añadir al carrito</button>
+<button data-id_paquete="3" class="add-to-cart">Añadir al carrito</button>
+
         </div>
       </article>
 
@@ -86,7 +87,7 @@
           <p><strong>Duración:</strong> 4 días / 3 noches</p>
           <p><strong>Incluye:</strong> Vuelo, hotel, tours de bodegas y degustaciones.</p>
           <p><strong>Precio aprox:</strong> AR$ 220.000</p>
-          <button>Añadir al carrito</button>
+          <button data-id_paquete="4" class="add-to-cart">Añadir al carrito</button>
         </div>
       </article>
 
@@ -100,7 +101,7 @@
           <p><strong>Duración:</strong> 3 días / 2 noches</p>
           <p><strong>Incluye:</strong> Hotel, city tour, paseo por el delta.</p>
           <p><strong>Precio aprox:</strong> AR$ 120.000</p>
-          <button>Añadir al carrito</button>
+          <button data-id_paquete="5" class="add-to-cart">Añadir al carrito</button>
         </div>
       </article>
 
@@ -114,7 +115,7 @@
           <p><strong>Duración:</strong> 4 días / 3 noches</p>
           <p><strong>Incluye:</strong> Vuelos, hotel, excursión al glaciar.</p>
           <p><strong>Precio aprox:</strong> AR$ 350.000</p>
-          <button>Añadir al carrito</button>
+<button data-id_paquete="6" class="add-to-cart">Añadir al carrito</button>
         </div>
       </article>
 
@@ -128,7 +129,8 @@
             <p><strong>Duración:</strong> 5 días / 4 noches</p>
             <p><strong>Incluye:</strong> Bus semicama, hotel frente al mar, desayuno incluido, city tour.</p>
             <p><strong>Precio aprox:</strong> AR$ 270.000</p>
-            <button>Añadir al carrito</button>
+            <button data-id_paquete="7" class="add-to-cart">Añadir al carrito</button>
+
         </div>
        </article>
 
@@ -147,5 +149,22 @@
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
     
+  <!-- Antes del cierre de </body> -->
+<script>
+  // Prueba de que el DOM está cargado
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM completamente cargado");
+    
+    // Prueba de selección de botones
+    const botones = document.querySelectorAll(".add-to-cart");
+    console.log(`Encontrados ${botones.length} botones de carrito`);
+  });
+  
+  // Prueba de que el script se ejecuta
+  console.log("Script de carrito inicializado");
+</script>
+
+<!-- Asegúrate de que esta ruta sea correcta -->
+<script src="../../BACK/JS LOGICA/carrito.js"></script>
 </body>
 </html>
