@@ -70,6 +70,15 @@
     <footer class="admin-footer">
       <p>&copy; 2025 - Panel de Administración</p>
     </footer>
+      <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+      <script>
+      const actions = new SessionActions();
+      actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5"); 
+      actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
+      </script>
+      <script src="../../BACK/JS LOGICA/user.js"></script>
+      <script src="../JS DISEÑO/menu.js"></script>
+      
   </main>
 </div>
 

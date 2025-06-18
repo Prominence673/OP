@@ -15,8 +15,6 @@ class FormHandler {
     e.preventDefault();
 
     const data = this.getFormData();
-    console.log("Datos enviados:", data);
-    console.log("Endpoint:", this.endpoint);
     try {
       const response = await fetch(this.endpoint, {
         method: "POST",
@@ -27,9 +25,14 @@ class FormHandler {
       });
 
       const result = await response.json();
+      
+    let mensaje = result.mensaje || result.error || "No hay mensaje para mostrar";
 
-      alert(result.mensaje || result.error);
+    if (typeof mensaje === "object") {
+      mensaje = JSON.stringify(mensaje, null, 2); 
+    }
 
+    alert(mensaje);
       if (result.mensaje) {
         this.form.reset();
       }

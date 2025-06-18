@@ -36,8 +36,10 @@
       </svg>
       </button>
       <ul class="dropdown">
-        <li><a href="login.html">Iniciar sesión</a></li>
-        <li><a href="register.html">Registrarse</a></li>
+       <li id="user"></li>
+        <li><a href="user_panel.html">Panel</a></li>
+        <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+        <li id="register_panel"><a href="register.html">Registrarse</a></li>
       </ul>
     </div>
   </div>
@@ -50,12 +52,19 @@
 
       <label for="password">Contraseña:</label>
       <input type="password" id="password" name="password" required />
-
+      <div>
+      <label for="rememberme">Recordarme</label>
+      <input type="checkbox" id="rememberme" name="rememberme">
+      </div>
       <button type="submit">Entrar</button>
     </form>
-    <script src="../../BACK/JS LOGICA/submitdata.js"></script>
-    <script src="../JS DISEÑO/menu.js"></script>
-       <script>
+   <script src="../../BACK/JS LOGICA/submitdata.js"></script>
+    
+         <div>
+      <p>¿No tenés cuenta? <a href="register.html">Registrate aquí</a></p>
+      <p><a href="sendEmail.html">¿Olvidaste la contraseña?</a></p>
+    </div>
+    <script>
     //submitdata
     document.addEventListener("DOMContentLoaded", () => {
   new FormHandler({
@@ -63,12 +72,15 @@
     endpoint: "../../BACK/PHP/login.php"  //PHP
   });
   });
-</script>
-    <div>
-      <p>¿No tenés cuenta? <a href="register.html">Registrate aquí</a></p>
-      <p><a href="sendEmail.html">¿Olvidaste la contraseña?</a></p>
-    </div>
-    
+  </script>
+    <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+    <script>
+    const actions = new SessionActions();
+    actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
+    actions.checkSessionAndRedirectIfLoggedIn("index.html");
+    </script>
+    <script src="../JS DISEÑO/menu.js"></script>
+    <script src="../../BACK/JS LOGICA/user.js"></script>
   </main>
   <footer class="site-footer center">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>

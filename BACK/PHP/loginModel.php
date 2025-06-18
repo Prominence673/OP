@@ -18,32 +18,34 @@ class LoginModel{
     return $hashGuardado = $usuario['contraseña']; 
     
     }
-    public function verifyPassword($password, $hashGuardado){
-        if ($hashGuardado === null) {
-        return ["success" => false, "mensaje" => "Usuario no encontrado"];
+    public function bringUser($mail){
+        $stmt = $this->conn->prepare("CALL SPbrinUser(?)");
+        $stmt->bind_param("s", $mail);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $user = $resultado->fetch_assoc(); 
+        $stmt->close();
+        if (!$user) {
+            return null;
+        }
+        return [
+        'id' => $user['id_usuario'],
+        'nombre' => $user['nombre']
+        ];
     }
+        public function bringInput() {
+        $raw = file_get_contents("php://input");
+        $datos = json_decode($raw, true);
 
-    if (!password_verify($password, $hashGuardado)) {
-        return ["success" => false, "mensaje" => "Contraseña incorrecta"];
-    }
+        if (!is_array($datos)) {
+            return [null, null, null];
+        }
 
-    return ["success" => true, "mensaje" => "Inicio de sesión exitoso"];
-    }
-     public function bringInput(){
-                $raw = file_get_contents("php://input");
-                $datos = json_decode($raw, true);
+        $email = trim($datos['email'] ?? '');
+        $password = trim($datos['password'] ?? '');
+        $rememberme = $datos['rememberme'] ?? false;
 
-                if (!$datos) {
-                    echo json_encode(["error" => "No se pudo decodificar JSON"]);
-                    exit;
-                }
-
-                
-                $email = trim($datos['email'] ?? '');
-                $password = trim($datos['password'] ?? '');
-                
-
-                return [$email, $password];
+        return [$email, $password, $rememberme];
     }
     public function closeConn(){
         $this->conn->close();
