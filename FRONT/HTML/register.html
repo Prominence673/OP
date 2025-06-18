@@ -43,18 +43,32 @@
     </div>
   </div>
 </header>
-  <main class="form-container">
+<main class="form-container">
   <h2>Crear Cuenta</h2>
   <form method="post" id="register">
-    <label for="name">Nombre completo:</label>
-    <input type="text" id="name" name="name" max=50 required />
+    
+    <div class="form-group">
+      <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" fill="#004aad" viewBox="0 0 24 24">
+        <path d="M12 12c2.67 0 8 1.34 8 4v2H4v-2c0-2.66 5.33-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+      </svg>
+      <input type="text" id="name" name="name" placeholder=" " required />
+      <label for="name">Nombre completo:</label>
+    </div>
 
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" max="320" required />
+    <div class="form-group">
+    <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#004aad">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v1.2L12 13 2 7.2V6c0-1.1.9-2 2-2zm0 4.8 8 5 8-5V18H4V8.8z"/>
+    </svg>  
+      <input type="email" id="email" name="email" placeholder=" " required />
+      <label for="email">Correo electrónico:</label>
+    </div>
 
-    <label for="password">Contraseña:</label>
-    <div class="password-wrapper" style="position: relative;">
-      <input type="password" id="password" name="password" max="16" required />
+    <div class="form-group password-wrapper">
+      <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" fill="#004aad" viewBox="0 0 24 24">
+    <path d="M12 17a2 2 0 1 0 .001-3.999A2 2 0 0 0 12 17zm6-7V7a6 6 0 1 0-12 0v3H4v10h16V10h-2zm-8-3a4 4 0 0 1 8 0v3H10V7z"/>
+      </svg>
+      <input type="password" id="password" name="password" max="16" required placeholder=" " />
+      <label for="password">Contraseña</label>
       <div id="password-rules">
         <p id="min-length">8 caracteres</p>
         <p id="lowercase">Una minúscula</p>
@@ -63,15 +77,20 @@
         <p id="special">Un carácter especial @ # $ ^ & + = . ! ? - _ *</p>
       </div>
     </div>
-    <label for="confirm">Confirmar contraseña:</label>
-    <input type="password" id="confirm" name="confirm" required />
+
+    <div class="form-group">
+      <input type="password" id="confirm" name="confirm" required placeholder=" " />
+      <label for="confirm">Confirmar contraseña</label>
+    </div>
+
     <div class="show-password-container">
-      <label for="showpassword">Mostrar Contraseña</label>
       <input type="checkbox" id="showpassword" name="showpass">
+      <label for="showpassword">Mostrar Contraseña</label>
     </div>
 
     <button type="submit">Registrarse</button>
   </form>
+
   <p>¿Ya tenés cuenta? <a href="login.html">Iniciar sesión</a></p>
   <script src="../../BACK/JS LOGICA/passParameters.js"></script>
   <script src="../../BACK/JS LOGICA/submitdata.js"></script>
