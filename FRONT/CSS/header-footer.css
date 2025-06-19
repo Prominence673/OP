@@ -54,12 +54,80 @@ body {
   color: #0077cc;
 }
 
+/* === DROPDOWN PAQUETES EN HEADER === */
+.nav-menu .dropdown-parent {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  color: #333;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+  color: #0077cc;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 180px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 0.5rem 0;
+  z-index: 1000;
+  list-style: none;
+  margin: 0;
+}
+
+.submenu li a {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 6px;
+}
+
+.submenu li a:hover {
+  background: #f0f4f8;
+  color: #0077cc;
+}
+
+/* Mostrar el submenu al hacer hover o foco */
+.dropdown-parent:hover .submenu,
+.dropdown-parent:focus-within .submenu {
+  display: block;
+}
+
+/* Flecha hacia abajo */
+.fa-chevron-down {
+  font-size: 0.8em;
+  margin-left: 0.2em;
+}
+
 /* === MENÚ DE USUARIO === */
 .user-menu {
   display: flex;
   align-items: center;
   gap: 1rem;
   position: relative;
+}
+.user-menu a {
+  text-decoration: none;
 }
 
 /* Íconos de usuario y carrito (Font Awesome) */
