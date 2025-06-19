@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2025 a las 21:19:41
+-- Tiempo de generación: 19-06-2025 a las 21:33:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -59,6 +59,10 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPBringPassword` (IN `p_email` VARCHAR(60))   BEGIN
  SELECT contraseña FROM usuarios WHERE email = p_email;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPbrinUser` (`P_Email` VARCHAR(64))   BEGIN 
+SELECT id_usuario , nombre FROM usuarios WHERE email = P_Email;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPChangePassword` (IN `p_email` VARCHAR(64), IN `p_hash_password` VARCHAR(255))   BEGIN
@@ -259,6 +263,16 @@ CREATE TABLE `password_resets` (
   `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `password_resets`
+--
+
+INSERT INTO `password_resets` (`id`, `id_usuario`, `token`, `expires_at`, `creado_en`) VALUES
+(1, 2, '426ae4aecedf0aef0204350d4673fac38eb7518670e29070e65007cd508e5f96', '2025-06-16 23:33:54', '2025-06-16 20:33:54'),
+(2, 2, '5b5299d1c58018b5bb58bb5590bc85498430a7e4c50e97f69a542eda573a3f56', '2025-06-16 23:43:54', '2025-06-16 20:43:54'),
+(4, 2, '0cda7b6bd5fad85295ece6c536fec43de78e241359fae49854071c5f316537b6', '2025-06-16 23:48:13', '2025-06-16 20:48:13'),
+(5, 2, 'e1ed8f21f2740aa88da36e764690146de722aac7436fa713e78bf48182f7a215', '2025-06-17 00:22:51', '2025-06-16 21:22:51');
+
 -- --------------------------------------------------------
 
 --
@@ -313,7 +327,10 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `contraseña`) VALUES
 (29, 'dasdsadasdad', 'safarakir2i@gmail.com', '$2y$10$3n4vJ/e.yjtymLYzMFgN8ONtFRsn1VIQ4csK4VPSdlCzChDIXms0G'),
 (30, 'dasdsadasdad', 'safarakiri2323232@gmail.com', '$2y$10$AGXQkwjxC/vH7Mxd3wSXM.Ha6gxm7ptYlexdOtOZwZ/R7Wkq5H1v2'),
 (31, 'dasdsadasdad', 'safarakir23232i@gmail.com', '$2y$10$WjzwqR.n11lI8nc.f8AzWu8sgN18zwdbGEv35EJ/y5BRO1Y/pIqFC'),
-(32, 'dasdsadasdad', 'safarak232323232iri@gmail.com', '$2y$10$6uKidD46WwyN8A5hBrQ50OLPPT81Pl7DmS1OurvrEKFEaucwtbkTu');
+(32, 'dasdsadasdad', 'safarak232323232iri@gmail.com', '$2y$10$6uKidD46WwyN8A5hBrQ50OLPPT81Pl7DmS1OurvrEKFEaucwtbkTu'),
+(34, 'dasdsadasdad', 'safarakiri23@gmail.com', '$2y$10$ZUffT.FLkeGzBVIOvExsJenKbhYEdaGOr4HANoNz1F0UTJbmX.P.y'),
+(35, 'dasdsadasdad', 'safarakir12i@gmail.com', '$2y$10$crzf.vrqD0kvLDFHpPG6y.hLHs7moY8PSh/C5OUhff1r.37PmXAwa'),
+(36, 'Nahuel', 'cuentag4x@gmail.com', '$2y$10$E8/1jRa3B3RE3GY6sMiIXuS090eQcYqVC2lYAlXh2fdWHYG2N/Gey');
 
 --
 -- Índices para tablas volcadas
@@ -466,7 +483,7 @@ ALTER TABLE `paquetes`
 -- AUTO_INCREMENT de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
@@ -484,7 +501,7 @@ ALTER TABLE `transportes`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas
