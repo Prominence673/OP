@@ -112,3 +112,10 @@ main {
 .hotel:hover .hotel-img-portada {
   opacity: 0;
 }
+
+.estadias-hero{
+  padding: 15px 30px;
+  border: 10px solid;
+  border-image: linear-gradient(to right, #0074D9, #7FDBFF) 1;
+  clip-path: inset(0 round 10px);
+}
