@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notificaciones - ViajesMundo</title>
+  <link rel="stylesheet" href="../CSS/panel_usuario.css"/>
+  <link rel="stylesheet" href="../CSS/header-footer.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-container">
+    <h1>TRAVEL</h1>
+    <nav class="main-nav">
+      <ul class="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="paquetes.html">Paquetes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="user-menu">
+      <a href="carrito.html" class="cart-icon" aria-label="Ir al carrito de compras"><i class="fas fa-shopping-cart"></i></a>
+      <button class="user-icon" aria-label="Menú de usuario"><i class="fas fa-user"></i></button>
+      <ul class="dropdown">
+        <li id="user"></li>
+        <li><a href="user_panel.html">Panel</a></li>
+        <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+        <li id="register_panel"><a href="register.html">Registrarse</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="panel-container">
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>🚀 Planeá tu nuevo viaje!</h3>
+      <p>Aprovechá ofertas en alojamientos, vuelos y más.</p>
+      <button class="btn-purple">Encontrá tu vuelo</button>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="panel_usuario.html">Datos personales</a></li>
+      <li><a href="tarjeta.html">Medios de pago</a></li>
+      <li><a href="notificaciones.html">Notificaciones sobre cambios</a></li>
+      <li><a href="pasajeros.html">Pasajeros</a></li>
+      <li><a href="opiniones.html">Opiniones</a></li>
+      <li><a href="sesiones.html">Sesiones activas</a></li>
+      <li><a href="elminar.html">Eliminar cuenta</a></li>
+    </ul>
+  </aside>
+
+  <section class="main-panel">
+    <section class="panel-section">
+      <h2><span style="color:#ccc;">Mi Perfil /</span> Configuración de Notificaciones</h2>
+
+      <div class="payment-box">
+        <!-- Tarjetas -->
+        <div class="payment-option">
+          <h3><i class="fas fa-credit-card"></i> Tarjetas de crédito</h3>
+          <p>Guardá de manera segura tus datos de la tarjeta y agilizá el pago de tu próxima compra.</p>
+          <a href="tarjeta.html" class="btn-outline">Agregar</a>
+        </div>
+
+        <!-- Facturación -->
+        <div class="payment-option">
+          <h3><i class="fas fa-file-invoice"></i> Facturación</h3>
+          <p>Completá tus datos de facturación y agilizá el pago de tu próximo viaje.</p>
+          <a href="tarjeta.html" class="btn-outline">Agregar</a>
+        </div>
+
+        <!-- Pasajeros -->
+        <div class="payment-option">
+          <h3><i class="fas fa-user-friends"></i> Pasajeros</h3>
+          <p>Completá tus datos y de quienes suelen acompañarte en tus viajes para agilizar tus próximas compras.</p>
+          <a href="pasajeros.html" class="btn-outline">Agregar</a>
+        </div>
+
+        <!-- Notificaciones -->
+        <div class="payment-option">
+          <h3><i class="fab fa-whatsapp"></i> Notificaciones sobre cambios</h3>
+          <p>Debés tener un teléfono verificado con WhatsApp para usar esta funcionalidad.</p>
+          <label style="display: flex; align-items: center; gap: 10px;">
+            <input type="checkbox" id="toggleNotif" />
+            Activar notificaciones por WhatsApp
+          </label>
+          <button class="btn-purple" style="margin-top: 1rem;" onclick="guardarPreferencias()">Guardar</button>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+<script>
+function guardarPreferencias() {
+  const activo = document.getElementById("toggleNotif").checked;
+  alert("Notificaciones por WhatsApp " + (activo ? "activadas" : "desactivadas") + ".");
+}
+</script>
+</body>
+</html>

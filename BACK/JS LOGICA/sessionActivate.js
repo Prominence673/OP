@@ -81,4 +81,46 @@ class SessionActions {
       opacity
     };
   }
+  InsertData(Elementonombre, dato) {
+  const elemento = document.getElementById(Elementonombre);
+  if (!elemento) {
+    console.warn(`Elemento con ID "${Elementonombre}" no encontrado.`);
+    return;
+  }
+
+  fetch("../../BACK/PHP/checkSession.php")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Respuesta del servidor no válida.");
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (!data || typeof data !== "object" || !data.usuario) {
+        throw new Error("La respuesta no contiene datos de usuario.");
+      }
+
+      if (!data.loggedIn) {
+        console.warn("Usuario no logueado.");
+        return;
+      }
+
+      const datosDisponibles = data.usuario;
+      
+      if (dato in datosDisponibles) {
+        if(elemento.nodeName == "INPUT"){
+          elemento.value = datosDisponibles[dato];
+        }
+        else{
+          elemento.textContent = datosDisponibles[dato];
+        }
+        
+      } else {
+        console.warn(`Dato "${dato}" no encontrado en usuario.`);
+      }
+    })
+    .catch(error => {
+      console.error("Error al obtener datos de sesión:", error);
+    });
+}
 }

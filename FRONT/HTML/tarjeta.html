@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel de Usuario - ViajesMundo</title>
+  <link rel="stylesheet" href="../CSS/panel_usuario.css"/>
+  <link rel="stylesheet" href="../CSS/header-footer.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-container">
+    <h1>TRAVEL</h1>
+    <nav class="main-nav">
+      <ul class="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="paquetes.html">Paquetes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="user-menu">
+      <a href="carrito.html" class="cart-icon" aria-label="Ir al carrito de compras"><i class="fas fa-shopping-cart"></i></a>
+      <button class="user-icon" aria-label="Menú de usuario"><i class="fas fa-user"></i></button>
+      <ul class="dropdown">
+        <li id="user"></li>
+        <li><a href="user_panel.html">Panel</a></li>
+        <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+        <li id="register_panel"><a href="register.html">Registrarse</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main class="panel-container">
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>🚀 Planeá tu nuevo viaje!</h3>
+      <p>Aprovechá ofertas en alojamientos, vuelos y más.</p>
+      <button class="btn-purple">Encontrá tu vuelo</button>
+    </div>
+     <ul class="sidebar-menu">
+      <li><a href="panel_usuario.html">Datos personales</a></li>
+      <li><a href="tarjeta.html">Medios de pago</a></li>
+      <li><a href="notificaciones.html">Notificaciones sobre cambios</a></li>
+      <li><a href="pasajeros.html">Pasajeros</a></li>
+      <li><a href="opiniones.html">Opiniones</a></li>
+      <li><a href="sesiones.html">Sesiones activas</a></li>
+      <li><a href="elminar.html">Eliminar cuenta</a></li>
+    </ul>
+  </aside>
+
+  <section class="main-panel">
+    <section id="pagos" class="panel-section">
+      <h2><span style="color:#ccc;">Mi Perfil /</span> Medios de pago</h2>
+      <div class="payment-box">
+        <div class="payment-option">
+          <h3><i class="fas fa-credit-card"></i> Tarjetas de crédito</h3>
+          <p>Ingresá los datos de tus tarjetas para agilizar el pago de tus viajes.</p>
+          <button class="btn-outline" onclick="toggleForm('form-tarjeta')">+ Agregar tarjeta</button>
+          <form id="form-tarjeta" class="hidden">
+            <label>Número:</label>
+            <input type="text" placeholder="XXXX XXXX XXXX XXXX">
+            <label>Nombre en la tarjeta:</label>
+            <input type="text" placeholder="Nombre completo">
+            <label>Vencimiento:</label>
+            <input type="month">
+            <label>Código de seguridad:</label>
+            <input type="text" placeholder="CVV">
+            <button class="btn-purple" type="submit">Guardar</button>
+          </form>
+        </div>
+
+        <div class="payment-option">
+          <h3><i class="fas fa-file-invoice"></i> Facturación</h3>
+          <p>Completá tus datos para agilizar el pago del próximo viaje.</p>
+          <button class="btn-outline" onclick="toggleForm('form-facturacion')">+ Agregar datos de facturación</button>
+          <form id="form-facturacion" class="hidden">
+            <label>CUIT / DNI:</label>
+            <input type="text" placeholder="Número de CUIT o DNI">
+            <label>Razón social / Nombre:</label>
+            <input type="text">
+            <label>Dirección fiscal:</label>
+            <input type="text">
+            <label>Condición frente al IVA:</label>
+            <select>
+              <option>Responsable Inscripto</option>
+              <option>Monotributista</option>
+              <option>Consumidor Final</option>
+            </select>
+            <button class="btn-purple" type="submit">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+<script>
+function toggleForm(formId) {
+  const form = document.getElementById(formId);
+  form.classList.toggle("hidden");
+}
+</script>
+</style>
+</body>
+</html>

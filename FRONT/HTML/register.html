@@ -30,7 +30,7 @@
       </button>
       <ul class="dropdown">
         <li id="user"></li>
-        <li><a href="user_panel.html">Panel</a></li>
+        <li><a href="panel_usuario.html">Panel</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
       </ul>
@@ -112,10 +112,9 @@
     <script>
     const actions = new SessionActions();
     actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5"); 
-   
-    actions.checkSessionAndRedirectIfLoggedIn("index.html");
+    actions.InsertData("user", "nombre");
     </script>
-    <script src="../../BACK/JS LOGICA/user.js"></script>
+
   <script src="../JS DISEÑO/menu.js"></script>
   </main>
   

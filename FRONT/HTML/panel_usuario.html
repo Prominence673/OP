@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Datos personales - ViajesMundo</title>
+  <link rel="stylesheet" href="../CSS/panel_usuario.css"/>
+  <link rel="stylesheet" href="../CSS/header-footer.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-container">
+    <h1>TRAVEL</h1>
+    <nav class="main-nav">
+      <ul class="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="paquetes.html">Paquetes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="user-menu">
+      <a href="carrito.html" class="cart-icon" aria-label="Ir al carrito de compras"><i class="fas fa-shopping-cart"></i></a>
+      <button class="user-icon" aria-label="Menú de usuario"><i class="fas fa-user"></i></button>
+      <ul class="dropdown">
+        <li id="user"></li>
+        <li><a href="user_panel.html">Panel</a></li>
+        <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+        <li id="register_panel"><a href="register.html">Registrarse</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main class="panel-container">
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>🚀 Planeá tu nuevo viaje!</h3>
+      <p>Aprovechá las ofertas en alojamientos, vuelos, actividades y mucho más.</p>
+      <button class="btn-purple">Encontrá tu vuelo</button>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="panel_usuario.html">Datos personales</a></li>
+      <li><a href="tarjeta.html">Medios de pago</a></li>
+      <li><a href="notificaciones.html">Notificaciones sobre cambios</a></li>
+      <li><a href="pasajeros.html">Pasajeros</a></li>
+      <li><a href="opiniones.html">Opiniones</a></li>
+      <li><a href="sesiones.html">Sesiones activas</a></li>
+      <li><a href="eliminar.html">Eliminar cuenta</a></li>
+    </ul>
+  </aside>
+
+  <section class="main-panel">
+    <section class="panel-section">
+      <h2><span style="color:#ccc;">Mi Perfil /</span> Datos personales</h2>
+
+      <div class="payment-option" style="border-top: 5px solid #8dc8f3; background-color: #0077cc; display: flex; align-items: center;">
+        <label for="fotoPerfil" style="cursor:pointer; margin-right: 1rem; height: 100px;">
+          <img id="preview" src="https://via.placeholder.com/100" style="width:100px;height:100px;border-radius:50%;border:2px solid white;object-fit:cover " onerror="this.src='/CARPETA/OP/SOURCE/PAQUETE-VIAJE.png'"    />
+          <input type="file" id="fotoPerfil" accept="image/*" style="display:none"/>
+        </label>
+        <p style="color:#fff; font-weight: bold;">
+          <i class="fas fa-user-circle"></i> safarakiri@gmail.com <i class="fas fa-check-circle" style="color:#a5ffaf"></i>
+        </p>
+      </div>
+
+      <div class="payment-option">
+        <h3><span style="color:#ccc;">Mi Perfil /</span>Datos personales</h3>
+        <form>
+          <input type="text" value="Lautaro" placeholder="Nombre" style="width: 48%;" />
+          <input type="text" value="Souza" placeholder="Apellido" style="width: 48%; float: right;" /><br>
+
+          <label style="display:block; margin-top: 1rem;">Fecha de nacimiento</label>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <select id="dia"></select>
+            <select id="mes"></select>
+            <select id="anio"></select>
+          </div>
+
+          <label style="display:block; margin-top: 1rem;">Género</label>
+          <div style="display:flex; flex-direction: column; gap: 5px;">
+            <label><input type="radio" name="genero"> Masculino</label>
+            <label><input type="radio" name="genero"> Femenino</label>
+            <label><input type="radio" name="genero"> Otro</label>
+          </div>
+
+          <br><button class="btn-purple" type="submit">Guardar</button>
+        </form>
+      </div>
+
+      <div class="payment-option" style="margin-top: 2rem;">
+        <h3>Teléfonos</h3>
+        <p>Agregá tus teléfonos para que podamos contactarte en caso que ocurra algún cambio.</p>
+        <button class="btn-outline" onclick="document.getElementById('telefonoForm').classList.toggle('hidden')">+ Agregar teléfono</button>
+        <form id="telefonoForm" class="hidden">
+          <input type="tel" placeholder="Ej: +54 9 11 1234-5678" required>
+          <button type="submit" class="btn-purple">Guardar teléfono</button>
+        </form>
+      </div>
+
+      <div class="payment-option" style="margin-top: 1.5rem;">
+        <h3>Emails</h3>
+        <p>Agregá los emails con los que compraste para ver todas tus reservas en Mis Viajes.</p>
+        <p><i class="fas fa-envelope"></i> safarakiri@gmail.com <span style="color:green;">&#10004; Verificado</span> - <strong>Principal</strong></p>
+        <form>
+          <input type="email" placeholder="Nuevo email">
+          <button type="submit" class="btn-outline">+ Agregar email</button>
+        </form>
+      </div>
+
+      <div class="payment-option" style="margin-top: 1.5rem;">
+        <h3>Contraseña</h3>
+        <p><i class="fas fa-lock"></i> ••••••••</p>
+        <button class="btn-outline" onclick="document.getElementById('formPass').classList.toggle('hidden')"><i class="fas fa-pen"></i> Cambiar contraseña</button>
+        <form id="formPass" class="hidden">
+          <input type="password" placeholder="Contraseña actual">
+          <input type="password" placeholder="Nueva contraseña">
+          <input type="password" placeholder="Repetir nueva contraseña">
+          <button class="btn-purple" type="submit">Actualizar</button>
+        </form>
+      </div>
+    </section>
+  </section>
+</main>
+<script>
+  const fotoInput = document.getElementById('fotoPerfil');
+  const preview = document.getElementById('preview');
+
+  fotoInput.addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        preview.src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+
+  const dia = document.getElementById("dia");
+  const mes = document.getElementById("mes");
+  const anio = document.getElementById("anio");
+
+  const meses = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+
+  meses.forEach((m, i) => {
+    const opt = document.createElement("option");
+    opt.value = i + 1;
+    opt.textContent = m;
+    mes.appendChild(opt);
+  });
+
+  function actualizarDias() {
+    dia.innerHTML = "";
+    const mesSeleccionado = parseInt(mes.value);
+    const anioSeleccionado = parseInt(anio.value);
+    const diasEnMes = new Date(anioSeleccionado, mesSeleccionado, 0).getDate();
+    for (let i = 1; i <= diasEnMes; i++) {
+      const opt = document.createElement("option");
+      opt.value = i;
+      opt.textContent = i;
+      dia.appendChild(opt);
+    }
+  }
+
+  // Generar años desde 1925 hasta 2007 (inclusive)
+  for (let y = 1925; y <= 2007; y++) {
+    const opt = document.createElement("option");
+    opt.value = y;
+    opt.textContent = y;
+    anio.appendChild(opt);
+  }
+
+  mes.addEventListener("change", actualizarDias);
+  anio.addEventListener("change", actualizarDias);
+  anio.value = "2001";
+  mes.value = "8";
+  actualizarDias();
+  dia.value = "17";
+</script>
+
+<style>
+.hidden { display: none; }
+</style>
+</body>
+</html>
