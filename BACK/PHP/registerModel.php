@@ -14,8 +14,8 @@ class registerModel{
             }
         return ["success" => true];
         }
-    public function verifyInput($name , $email, $password, $confirm){
-             if ($name === '' || $email === '' || $password === '' || $confirm === '') {
+    public function verifyInput($user , $email, $password, $confirm){
+             if ($user === '' || $email === '' || $password === '' || $confirm === '') {
                 return ["success" => false, "error" => "Completar todos los campos"];
             }
 
@@ -34,20 +34,20 @@ class registerModel{
                     exit;
                 }
 
-                $name = trim($datos['name'] ?? '');
+                $user = trim($datos['user'] ?? '');
                 $email = trim($datos['email'] ?? '');
                 $password = trim($datos['password'] ?? '');
                 $confirm = trim($datos['confirm'] ?? '');
 
-                return [$name, $email, $password, $confirm];
+                return [$user, $email, $password, $confirm];
             }
-    public function registerUser($name, $email, $hash_password){
+    public function registerUser($user, $email, $hash_password){
          try {
             $stmt = $this->conn->prepare("CALL SPRegistrarUsuario(?, ?, ?)");
             if (!$stmt) {
                 throw new Exception("Error al preparar la consulta: " . $this->conn->error);
             }
-            $stmt->bind_param("sss", $name, $email, $hash_password);
+            $stmt->bind_param("sss", $user, $email, $hash_password);
             $stmt->execute();
             if ($stmt->affected_rows > 0) {
                 return ["success" => true];

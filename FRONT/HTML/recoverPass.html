@@ -15,7 +15,17 @@
     <nav class="main-nav">
       <ul class="nav-menu">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="paquetes.html">Paquetes</a></li>
+        <li class="dropdown-parent">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Paquetes <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <ul class="submenu">
+            <li><a href="#">Alquiler coches</a></li>
+            <li><a href="paquetes.html">Paquetes turisticos</a></li>
+            <li><a href="#">Estadias</a></li>
+            <li><a href="#">Pasajes aéreos</a></li>
+          </ul>
+        </li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -28,12 +38,14 @@
       </button>
       <ul class="dropdown">
         <li id="user"></li>
-        <li><a href="user_panel.html">Panel</a></li>
+        <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
+        <li><a href="#" id="logout">Cerrar Sesion</a></li>
       </ul>
     </div>
 </header>
+
   <main class="form-container">
     <h2>Recuperar contraseña</h2>
     <form method="post" id="recoverPassword">
@@ -88,10 +100,15 @@
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script>
   const actions = new SessionActions();
-  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5"); 
-  actions.InsertData("user", "nombre");
+  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
+  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+  actions.InsertData("#user", "nombre");
+  const logout = document.getElementById("logout");
+
+  logout.addEventListener("click", () => {
+    actions.logoutSession();
+  });
   </script>
-  <script src="../../BACK/JS LOGICA/user.js"></script>
   <script src="../JS DISEÑO/menu.js"></script>
   </main>
   <footer class="site-footer center">
