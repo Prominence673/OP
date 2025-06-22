@@ -1,0 +1,113 @@
+/* ==== Alquiler-autos.css ==== */
+body {
+  background: linear-gradient(to bottom, #ffffff, #b5d8fd);
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.alquiler-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 2rem 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  padding: 15px 30px;
+  border: 10px solid;
+  border-image: linear-gradient(to right, #0074D9, #7FDBFF) 1;
+  clip-path: inset(0 round 10px);
+}
+
+.alquiler-hero h2 {
+  font-size: 2rem;
+  color: #0074D9;
+  margin-bottom: 0.5rem;
+}
+
+.alquiler-hero p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0;
+}
+
+.autos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.auto {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.521);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.auto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.4);
+}
+
+.auto-img-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.auto-img-portada,
+.auto-img-interior {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s;
+}
+
+.auto-img-interior {
+  opacity: 0;
+  z-index: 2;
+}
+
+.auto:hover .auto-img-interior {
+  opacity: 1;
+}
+
+.auto:hover .auto-img-portada {
+  opacity: 0;
+}
+
+.auto-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.auto-info h4 {
+  font-size: 1.2rem;
+  color: #001f3f;
+  margin: 0;
+}
+
+.auto-info p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.autos-argentina h3,
+.autos-internacionales h3 {
+  font-size: 1.4rem;
+  color: #0074D9;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
