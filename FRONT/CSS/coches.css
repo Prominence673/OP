@@ -1,4 +1,9 @@
-/* ==== Alquiler-autos.css ==== */
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../SOURCE/FONT/helvetica-neue-5/HelveticaNeueHeavy.otf') format('truetype');
+  font-style: normal;
+}
+
 body {
   background: linear-gradient(to bottom, #ffffff, #b5d8fd);
 }
@@ -95,6 +100,7 @@ main {
 
 .auto-info h4 {
   font-size: 1.2rem;
+  font-family: 'Helvetica', Arial, sans-serif;
   color: #001f3f;
   margin: 0;
 }
