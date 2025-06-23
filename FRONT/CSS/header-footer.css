@@ -201,11 +201,16 @@ body {
 /* === FOOTER === */
 .site-footer {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 1.2rem 1rem;
   background-color: #ffffff;
   border-top: 1px solid #e0e0e0;
   font-size: 0.9rem;
   color: #777;
+  position:static;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 5;
 }
 
 /* === ICONOS EN <i> (Font Awesome) === */
