@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2025 a las 21:33:32
+-- Tiempo de generación: 23-06-2025 a las 02:36:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -61,8 +61,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPBringPassword` (IN `p_email` VARC
  SELECT contraseña FROM usuarios WHERE email = p_email;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SPbrinUser` (`P_Email` VARCHAR(64))   BEGIN 
-SELECT id_usuario , nombre FROM usuarios WHERE email = P_Email;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPbrinUser` (IN `P_Email` VARCHAR(64))   BEGIN 
+SELECT id_usuario , usuario_nombre FROM usuarios WHERE email = P_Email;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPChangePassword` (IN `p_email` VARCHAR(64), IN `p_hash_password` VARCHAR(255))   BEGIN
@@ -78,14 +78,51 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPGetPasswordResetByToken` (IN `p_t
     WHERE token = p_token;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPInsertarDatosPersonales` (IN `p_id_usuario` INT, IN `p_nombre` VARCHAR(50), IN `p_apellido` VARCHAR(50), IN `p_fecha_nacimiento` DATE, IN `p_genero` VARCHAR(20), IN `p_id_pasajero` INT, IN `p_imagen_ruta` TEXT)   BEGIN
+  DECLARE existe INT;
+
+  SELECT COUNT(*) INTO existe FROM datos_personales WHERE id_usuario = p_id_usuario;
+
+  IF existe > 0 THEN
+    -- Actualiza si ya existe
+    UPDATE datos_personales
+    SET nombre = p_nombre,
+        apellido = p_apellido,
+        fecha_nacimiento = p_fecha_nacimiento,
+        genero = p_genero,
+        id_pasajero = p_id_pasajero,
+        imagen_ruta = p_imagen_ruta
+    WHERE id_usuario = p_id_usuario;
+  ELSE
+    -- Inserta si no existe
+    INSERT INTO datos_personales (id_usuario, nombre, apellido, fecha_nacimiento, genero, id_pasajero, imagen_ruta)
+    VALUES (p_id_usuario, p_nombre, p_apellido, p_fecha_nacimiento, p_genero, p_id_pasajero, p_imagen_ruta);
+  END IF;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPInsertarTelefono` (IN `p_id_usuario` INT, IN `p_telefono` VARCHAR(30))   BEGIN
+  DECLARE existe INT;
+
+  SELECT COUNT(*) INTO existe FROM datos_personales WHERE id_usuario = p_id_usuario;
+
+  IF existe > 0 THEN
+    UPDATE datos_personales
+    SET telefono = p_telefono
+    WHERE id_usuario = p_id_usuario;
+  ELSE
+    INSERT INTO datos_personales (id_usuario, telefono)
+    VALUES (p_id_usuario, p_telefono);
+  END IF;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPInsertPasswordReset` (IN `p_id_usuario` INT, IN `p_token` VARCHAR(64), IN `p_expires_at` DATETIME)   BEGIN
     INSERT INTO password_resets (id_usuario, token, expires_at)
     VALUES (p_id_usuario, p_token, p_expires_at);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SPRegistrarUsuario` (IN `p_nombre` VARCHAR(50), IN `p_email` VARCHAR(100), IN `p_password` VARCHAR(255))   BEGIN
-    INSERT INTO usuarios (nombre, email, contraseña)
-    VALUES (p_nombre, p_email, p_password);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPRegistrarUsuario` (IN `p_user` VARCHAR(50), IN `p_email` VARCHAR(100), IN `p_password` VARCHAR(255))   BEGIN
+    INSERT INTO usuarios (usuario_nombre, email, contraseña)
+    VALUES (p_user, p_email, p_password);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPResetPasswordAndDeleteToken` (IN `p_token` VARCHAR(64), IN `p_new_password` VARCHAR(255))   BEGIN
@@ -107,7 +144,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPResetPasswordAndDeleteToken` (IN 
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPUserExists` (IN `p_email` VARCHAR(64))   BEGIN
-SELECT nombre FROM usuarios WHERE email = p_email;
+SELECT usuario_nombre FROM usuarios WHERE email = p_email;
 END$$
 
 DELIMITER ;
@@ -183,6 +220,24 @@ CREATE TABLE `carrito_items` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datos_personales`
+--
+
+CREATE TABLE `datos_personales` (
+  `id_dato` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `sexo` enum('Masculino','Femenino','Otro') DEFAULT 'Otro',
+  `telefono` varchar(20) DEFAULT NULL,
+  `imagen_usuario` varchar(255) DEFAULT NULL,
+  `id_pasajero` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `destinos`
 --
 
@@ -192,6 +247,33 @@ CREATE TABLE `destinos` (
   `pais` varchar(100) DEFAULT NULL,
   `descripcion` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturacion`
+--
+
+CREATE TABLE `facturacion` (
+  `id_factura` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `dni_cuil` varchar(20) DEFAULT NULL,
+  `razon_social` varchar(100) DEFAULT NULL,
+  `direccion_fiscal` varchar(200) DEFAULT NULL,
+  `condicion_iva` enum('Responsable Inscripto','Monotributista','Consumidor Final') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `opiniones`
+--
+
+CREATE TABLE `opiniones` (
+  `id_opinion` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `opinion` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -252,6 +334,20 @@ CREATE TABLE `paquetes_transportes` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pasajeros`
+--
+
+CREATE TABLE `pasajeros` (
+  `id_pasajero` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `dni` varchar(20) NOT NULL,
+  `fecha_nacimiento` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `password_resets`
 --
 
@@ -262,16 +358,6 @@ CREATE TABLE `password_resets` (
   `expires_at` datetime NOT NULL,
   `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `password_resets`
---
-
-INSERT INTO `password_resets` (`id`, `id_usuario`, `token`, `expires_at`, `creado_en`) VALUES
-(1, 2, '426ae4aecedf0aef0204350d4673fac38eb7518670e29070e65007cd508e5f96', '2025-06-16 23:33:54', '2025-06-16 20:33:54'),
-(2, 2, '5b5299d1c58018b5bb58bb5590bc85498430a7e4c50e97f69a542eda573a3f56', '2025-06-16 23:43:54', '2025-06-16 20:43:54'),
-(4, 2, '0cda7b6bd5fad85295ece6c536fec43de78e241359fae49854071c5f316537b6', '2025-06-16 23:48:13', '2025-06-16 20:48:13'),
-(5, 2, 'e1ed8f21f2740aa88da36e764690146de722aac7436fa713e78bf48182f7a215', '2025-06-17 00:22:51', '2025-06-16 21:22:51');
 
 -- --------------------------------------------------------
 
@@ -287,6 +373,21 @@ CREATE TABLE `reservas` (
   `cantidad_personas` int(11) DEFAULT NULL,
   `estado` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tarjeta`
+--
+
+CREATE TABLE `tarjeta` (
+  `id_tarjeta` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `numero` varchar(20) NOT NULL,
+  `nombre_tarjeta` varchar(100) DEFAULT NULL,
+  `vencimiento` date DEFAULT NULL,
+  `codigo_seguridad` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -309,7 +410,7 @@ CREATE TABLE `transportes` (
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
+  `usuario_nombre` varchar(50) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `contraseña` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -318,19 +419,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `contraseña`) VALUES
-(1, 'Usuario Prueba', 'usuario@test.com', '123456'),
-(2, 'dasdsadasdad', 'safarakiri@gmail.com', '$2y$10$ynwiUFmU9IXlxay3fd2YJuNKoc/wfcS0IYgMQYobV4RyfugNJD9q6'),
-(6, 'dasdsadasdad', 'blabla@gmail.com', '$2y$10$hiDxNgTnMrIIoVGf6BZ3FOxJb6CcOfFtIFnuPLnXL9FUm198kpQmi'),
-(26, 'dasdsadasdad', 'elmeme@gmail.com', '$2y$10$KCyxXkJqvDJ8QFRtPRxzE.oIN2SQcU/2eobfXu3nZR.gW8J3PLt3.'),
-(27, 'dsadasd', 'dadasdas@gmail.com', '$2y$10$hrtTHyW/oPUQTKlzZHTpauNReeOpc2qSj2KMcHIwgljYkSuRSrwrC'),
-(29, 'dasdsadasdad', 'safarakir2i@gmail.com', '$2y$10$3n4vJ/e.yjtymLYzMFgN8ONtFRsn1VIQ4csK4VPSdlCzChDIXms0G'),
-(30, 'dasdsadasdad', 'safarakiri2323232@gmail.com', '$2y$10$AGXQkwjxC/vH7Mxd3wSXM.Ha6gxm7ptYlexdOtOZwZ/R7Wkq5H1v2'),
-(31, 'dasdsadasdad', 'safarakir23232i@gmail.com', '$2y$10$WjzwqR.n11lI8nc.f8AzWu8sgN18zwdbGEv35EJ/y5BRO1Y/pIqFC'),
-(32, 'dasdsadasdad', 'safarak232323232iri@gmail.com', '$2y$10$6uKidD46WwyN8A5hBrQ50OLPPT81Pl7DmS1OurvrEKFEaucwtbkTu'),
-(34, 'dasdsadasdad', 'safarakiri23@gmail.com', '$2y$10$ZUffT.FLkeGzBVIOvExsJenKbhYEdaGOr4HANoNz1F0UTJbmX.P.y'),
-(35, 'dasdsadasdad', 'safarakir12i@gmail.com', '$2y$10$crzf.vrqD0kvLDFHpPG6y.hLHs7moY8PSh/C5OUhff1r.37PmXAwa'),
-(36, 'Nahuel', 'cuentag4x@gmail.com', '$2y$10$E8/1jRa3B3RE3GY6sMiIXuS090eQcYqVC2lYAlXh2fdWHYG2N/Gey');
+INSERT INTO `usuarios` (`id_usuario`, `usuario_nombre`, `email`, `contraseña`) VALUES
+(39, 'Hooooooz', 'safarakiri@gmail.com', '$2y$10$SEniOT3UB6n.3saPrQFJEuoWeP/RvmmiZktxmi3vb8OXwb6mdWYQm');
 
 --
 -- Índices para tablas volcadas
@@ -372,10 +462,32 @@ ALTER TABLE `carrito_items`
   ADD KEY `id_paquete` (`id_paquete`);
 
 --
+-- Indices de la tabla `datos_personales`
+--
+ALTER TABLE `datos_personales`
+  ADD PRIMARY KEY (`id_dato`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_pasajero` (`id_pasajero`);
+
+--
 -- Indices de la tabla `destinos`
 --
 ALTER TABLE `destinos`
   ADD PRIMARY KEY (`id_destino`);
+
+--
+-- Indices de la tabla `facturacion`
+--
+ALTER TABLE `facturacion`
+  ADD PRIMARY KEY (`id_factura`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `opiniones`
+--
+ALTER TABLE `opiniones`
+  ADD PRIMARY KEY (`id_opinion`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `paquetes`
@@ -405,6 +517,13 @@ ALTER TABLE `paquetes_transportes`
   ADD KEY `id_transporte` (`id_transporte`);
 
 --
+-- Indices de la tabla `pasajeros`
+--
+ALTER TABLE `pasajeros`
+  ADD PRIMARY KEY (`id_pasajero`),
+  ADD UNIQUE KEY `dni` (`dni`);
+
+--
 -- Indices de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -419,6 +538,13 @@ ALTER TABLE `reservas`
   ADD PRIMARY KEY (`id_reserva`),
   ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_paquete` (`id_paquete`);
+
+--
+-- Indices de la tabla `tarjeta`
+--
+ALTER TABLE `tarjeta`
+  ADD PRIMARY KEY (`id_tarjeta`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `transportes`
@@ -468,16 +594,40 @@ ALTER TABLE `carrito_items`
   MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `datos_personales`
+--
+ALTER TABLE `datos_personales`
+  MODIFY `id_dato` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `destinos`
 --
 ALTER TABLE `destinos`
   MODIFY `id_destino` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `facturacion`
+--
+ALTER TABLE `facturacion`
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `opiniones`
+--
+ALTER TABLE `opiniones`
+  MODIFY `id_opinion` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
   MODIFY `id_paquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `pasajeros`
+--
+ALTER TABLE `pasajeros`
+  MODIFY `id_pasajero` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `password_resets`
@@ -492,6 +642,12 @@ ALTER TABLE `reservas`
   MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `tarjeta`
+--
+ALTER TABLE `tarjeta`
+  MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `transportes`
 --
 ALTER TABLE `transportes`
@@ -501,7 +657,7 @@ ALTER TABLE `transportes`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Restricciones para tablas volcadas
@@ -525,6 +681,25 @@ ALTER TABLE `carrito`
 ALTER TABLE `carrito_items`
   ADD CONSTRAINT `carrito_items_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `carrito` (`id_carrito`),
   ADD CONSTRAINT `carrito_items_ibfk_2` FOREIGN KEY (`id_paquete`) REFERENCES `paquetes` (`id_paquete`);
+
+--
+-- Filtros para la tabla `datos_personales`
+--
+ALTER TABLE `datos_personales`
+  ADD CONSTRAINT `datos_personales_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `datos_personales_ibfk_2` FOREIGN KEY (`id_pasajero`) REFERENCES `pasajeros` (`id_pasajero`) ON DELETE SET NULL;
+
+--
+-- Filtros para la tabla `facturacion`
+--
+ALTER TABLE `facturacion`
+  ADD CONSTRAINT `facturacion_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `opiniones`
+--
+ALTER TABLE `opiniones`
+  ADD CONSTRAINT `opiniones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `paquetes_alojamientos`
@@ -559,6 +734,12 @@ ALTER TABLE `password_resets`
 ALTER TABLE `reservas`
   ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
   ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`id_paquete`) REFERENCES `paquetes` (`id_paquete`);
+
+--
+-- Filtros para la tabla `tarjeta`
+--
+ALTER TABLE `tarjeta`
+  ADD CONSTRAINT `tarjeta_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
