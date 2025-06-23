@@ -18,7 +18,7 @@ $resultado = password_verify($password, $hashGuardado);
 
 if ($resultado !== true) {
     echo json_encode(["success" => false,
-        "error" => "Error"]);
+        "error" => "Contraseña o correo incorrectos."]);
     exit;
 }
 

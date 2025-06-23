@@ -4,9 +4,9 @@ require_once 'registerModel.php';
 
 $registro = new registerModel($conn);
 
-[$name, $email, $password, $confirm] = $registro->bringInput();
+[$user, $email, $password, $confirm] = $registro->bringInput();
 
-$validacionInput = $registro->verifyInput($name, $email, $password, $confirm);
+$validacionInput = $registro->verifyInput($user, $email, $password, $confirm);
 if (!$validacionInput["success"]) {
     echo json_encode(["error" => $validacionInput["error"]]);
     exit;
@@ -20,7 +20,7 @@ if (!$validacionEmail["success"]) {
 
 $hashPassword = $registro->hashPassword($password);
 
-$result = $registro->registerUser($name, $email, $hashPassword);
+$result = $registro->registerUser($user, $email, $hashPassword);
 
 if ($result["success"]) {
     echo json_encode(["mensaje" => "Usuario registrado correctamente"]);

@@ -15,28 +15,42 @@
     <nav class="main-nav">
       <ul class="nav-menu">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="paquetes.html">Paquetes</a></li>
+        <li class="dropdown-parent">
+          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Paquetes <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <ul class="submenu">
+            <li><a href="#">Alquiler coches</a></li>
+            <li><a href="paquetes.html">Paquetes turisticos</a></li>
+            <li><a href="#">Estadias</a></li>
+            <li><a href="#">Pasajes aéreos</a></li>
+          </ul>
+        </li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
     <div class="user-menu">
-      <a href="carrito.html" class="cart-icon" aria-label="Ir al carrito de compras"><i class="fas fa-shopping-cart"></i></a>
-      <button class="user-icon" aria-label="Menú de usuario"><i class="fas fa-user"></i></button>
+      <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
+        <i class="fa-solid fa-cart-shopping user-icon"></i>
+      </a>
+      <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
+        <i class="fa-solid fa-user user-icon"></i>
+      </button>
       <ul class="dropdown">
         <li id="user"></li>
-        <li><a href="user_panel.html">Panel</a></li>
+        <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
+        <li><a href="#" id="logout">Cerrar Sesion</a></li>
       </ul>
     </div>
-  </div>
 </header>
 <main class="panel-container">
   <aside class="sidebar">
     <div class="sidebar-card">
       <h3>🚀 Planeá tu nuevo viaje!</h3>
       <p>Aprovechá las ofertas en alojamientos, vuelos, actividades y mucho más.</p>
-      <button class="btn-purple">Encontrá tu vuelo</button>
+      <button class="btn-purple" onclick="redirigir()">Encontrá tu vuelo</button>
     </div>
     <ul class="sidebar-menu">
       <li><a href="panel_usuario.html">Datos personales</a></li>
@@ -54,56 +68,82 @@
       <h2><span style="color:#ccc;">Mi Perfil /</span> Datos personales</h2>
 
       <div class="payment-option" style="border-top: 5px solid #8dc8f3; background-color: #0077cc; display: flex; align-items: center;">
-        <label for="fotoPerfil" style="cursor:pointer; margin-right: 1rem; height: 100px;">
-          <img id="preview" src="https://via.placeholder.com/100" style="width:100px;height:100px;border-radius:50%;border:2px solid white;object-fit:cover " onerror="this.src='/CARPETA/OP/SOURCE/PAQUETE-VIAJE.png'"    />
-          <input type="file" id="fotoPerfil" accept="image/*" style="display:none"/>
-        </label>
+<form id="formFoto" method="POST" enctype="multipart/form-data" action="guardar_foto.php">
+  <label for="fotoPerfil" style="cursor:pointer;">
+    <img id="preview" src="..." />
+    <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display:none"/>
+  </label>
+  <button type="submit">Guardar Foto</button>
+</form>
         <p style="color:#fff; font-weight: bold;">
-          <i class="fas fa-user-circle"></i> safarakiri@gmail.com <i class="fas fa-check-circle" style="color:#a5ffaf"></i>
+          <i class="fas fa-user-circle"></i> <b class="email"></b> <i class="fas fa-check-circle" style="color:#a5ffaf"></i>
         </p>
       </div>
 
-      <div class="payment-option">
-        <h3><span style="color:#ccc;">Mi Perfil /</span>Datos personales</h3>
-        <form>
-          <input type="text" value="Lautaro" placeholder="Nombre" style="width: 48%;" />
-          <input type="text" value="Souza" placeholder="Apellido" style="width: 48%; float: right;" /><br>
+     <form style="display: flex; flex-direction: column; gap: 1rem;">
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+    <div style="flex: 1;">
+      <label for="name">Nombres</label>
+      <input type="text" id="name" placeholder="Como figura en el documento de viaje" style="width: 95%;" required max="50"/>
+    </div>
+    <div style="flex: 1;">
+      <label for="surname">Apellidos</label>
+      <input type="text" id="surname" placeholder="Como figura en el documento de viaje" style="width: 95%;" required max="50"/>
+    </div>
+  </div>
 
-          <label style="display:block; margin-top: 1rem;">Fecha de nacimiento</label>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <select id="dia"></select>
-            <select id="mes"></select>
-            <select id="anio"></select>
-          </div>
-
-          <label style="display:block; margin-top: 1rem;">Género</label>
-          <div style="display:flex; flex-direction: column; gap: 5px;">
-            <label><input type="radio" name="genero"> Masculino</label>
-            <label><input type="radio" name="genero"> Femenino</label>
-            <label><input type="radio" name="genero"> Otro</label>
-          </div>
-
-          <br><button class="btn-purple" type="submit">Guardar</button>
-        </form>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+    <div style="flex: 1;">
+      <label>Fecha de nacimiento</label>
+      <div style="display: flex; gap: 0.5rem;">
+        <select id="dia" style="flex: 1;"></select>
+        <select id="mes" style="flex: 1;"></select>
+        <select id="anio" style="flex: 1;"></select>
       </div>
+    </div>
+    <div style="flex: 1;">
+      <label>Género</label>
+      <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+        <label>Femenino</label>
+          <input type="radio" name="genero" id="genero" value="Femenino"> 
+          
+        <label>Masculino</label>
+          <input type="radio" name="genero" id="genero" value="Masculino" checked> 
+          
+      </div>
+    </div>
+  </div>
 
+  <button class="btn-purple" type="submit">Guardar</button>
+</form>
       <div class="payment-option" style="margin-top: 2rem;">
         <h3>Teléfonos</h3>
         <p>Agregá tus teléfonos para que podamos contactarte en caso que ocurra algún cambio.</p>
         <button class="btn-outline" onclick="document.getElementById('telefonoForm').classList.toggle('hidden')">+ Agregar teléfono</button>
         <form id="telefonoForm" class="hidden">
-          <input type="tel" placeholder="Ej: +54 9 11 1234-5678" required>
+          <input type="tel" id="telefono" placeholder="Ej: +54 9 11 1234-5678" required>
           <button type="submit" class="btn-purple">Guardar teléfono</button>
         </form>
       </div>
-
       <div class="payment-option" style="margin-top: 1.5rem;">
-        <h3>Emails</h3>
-        <p>Agregá los emails con los que compraste para ver todas tus reservas en Mis Viajes.</p>
-        <p><i class="fas fa-envelope"></i> safarakiri@gmail.com <span style="color:green;">&#10004; Verificado</span> - <strong>Principal</strong></p>
+      <h3>Verificación de Email</h3>
+      <p>
+        ¿No recibiste el correo de verificación o cambiaste tu email? Hacé clic en el botón para reenviar el enlace de verificación.
+      </p>
+      <form id="verificarEmailForm">
+        <button type="submit" class="btn-outline">
+          <i class="fas fa-paper-plane"></i> Enviar verificación
+        </button>
+      </form>
+      <div id="mensajeVerificacion" style="margin-top: 0.5rem; font-weight: bold;"></div>
+    </div>
+      <div class="payment-option" style="margin-top: 1.5rem;">
+        <h3>Email</h3>
+        <p>Cambia el email vinculado a esta cuenta, Recuerda que solo podras hacerlo una vez cada 30 dias.</p>
+        <p><i class="fas fa-envelope"></i> <b class="email"></b> <span style="color:green;">&#10004; Verificado</span> - <strong>Principal</strong></p>
         <form>
-          <input type="email" placeholder="Nuevo email">
-          <button type="submit" class="btn-outline">+ Agregar email</button>
+          <input type="email" id="email" placeholder="Nuevo email" required>
+          <button type="submit" class="btn-outline"><i class="fas fa-pen"></i> Cambiar Email</button>
         </form>
       </div>
 
@@ -112,9 +152,9 @@
         <p><i class="fas fa-lock"></i> ••••••••</p>
         <button class="btn-outline" onclick="document.getElementById('formPass').classList.toggle('hidden')"><i class="fas fa-pen"></i> Cambiar contraseña</button>
         <form id="formPass" class="hidden">
-          <input type="password" placeholder="Contraseña actual">
-          <input type="password" placeholder="Nueva contraseña">
-          <input type="password" placeholder="Repetir nueva contraseña">
+          <input type="password" id="currentpassword" placeholder="Contraseña actual" required>
+          <input type="password" id="password" placeholder="Nueva contraseña" required>
+          <input type="password" id="confirmpassword" placeholder="Repetir nueva contraseña" required>
           <button class="btn-purple" type="submit">Actualizar</button>
         </form>
       </div>
@@ -179,10 +219,58 @@
   mes.value = "8";
   actualizarDias();
   dia.value = "17";
+  function redirigir() {
+    setTimeout(function() {
+      window.location.href = "paquetes.html";
+    }); 
+  }
 </script>
+  <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+    <script>
+  const actions = new SessionActions();
+  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
+  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+  actions.InsertData("#user", "nombre");
+  actions.InsertData(".email", "email");
+  actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
+  const logout = document.getElementById("logout");
 
+  logout.addEventListener("click", () => {
+    actions.logoutSession();
+  });
+  </script>
+  <script src="../JS DISEÑO/menu.js"></script>
+  <script src="../../BACK/JS LOGICA/submitdata.js"></script>
+  <script>
+    //submitdata
+    document.addEventListener("DOMContentLoaded", () => {
+  new FormHandler({
+    formSelector: "#login", //id del form
+    endpoint: "../../BACK/PHP/user_panel.php",  //PHP
+    messageTarget: mensajeDiv, //mensaje
+    onSuccess: () => { //esto redirige al usuario si se cargo los datos al servidor exitosamente
+      window.location.href = "index.html";
+    }
+  });
+  });
+  </script>
+  <script src="../../BACK/JS LOGICA/submitfiles.js"></script>
+    <script>
+    //submitdata
+    document.addEventListener("DOMContentLoaded", () => {
+  new FileUploader({
+    form: "#login",
+    endpoint: "../../BACK/PHP/login.php",
+    messageTarget: mensajeDiv,
+    fileInputName: fileInputName,
+  });
+  });
+  </script>
 <style>
 .hidden { display: none; }
 </style>
+<footer class="site-footer center">
+    <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>

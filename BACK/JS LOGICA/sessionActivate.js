@@ -81,10 +81,18 @@ class SessionActions {
       opacity
     };
   }
-  InsertData(Elementonombre, dato) {
-  const elemento = document.getElementById(Elementonombre);
-  if (!elemento) {
-    console.warn(`Elemento con ID "${Elementonombre}" no encontrado.`);
+  setElementoValor(elemento, valor) {
+  if (elemento.nodeName === "INPUT") {
+    elemento.value = valor;
+  } else {
+    elemento.textContent = valor;
+  }
+  }
+  InsertData(selector, dato) {
+  const elementos = document.querySelectorAll(selector);
+  
+  if (elementos.length === 0) {
+    console.warn(`No se encontraron elementos con el selector "${selector}".`);
     return;
   }
 
@@ -96,31 +104,30 @@ class SessionActions {
       return response.json();
     })
     .then(data => {
-      if (!data || typeof data !== "object" || !data.usuario) {
-        throw new Error("La respuesta no contiene datos de usuario.");
+      if (!data || typeof data !== "object") {
+        throw new Error("La respuesta de sesión no es válida.");
       }
 
-      if (!data.loggedIn) {
-        console.warn("Usuario no logueado.");
+      const valorPorDefecto = "Invitado";
+
+      if (!data.loggedIn || !data.usuario) {
+        console.warn("Usuario no logueado o sin datos.");
+        elementos.forEach(el => this.setElementoValor(el, valorPorDefecto));
         return;
       }
 
       const datosDisponibles = data.usuario;
-      
-      if (dato in datosDisponibles) {
-        if(elemento.nodeName == "INPUT"){
-          elemento.value = datosDisponibles[dato];
-        }
-        else{
-          elemento.textContent = datosDisponibles[dato];
-        }
-        
-      } else {
-        console.warn(`Dato "${dato}" no encontrado en usuario.`);
-      }
+      const valor = dato in datosDisponibles ? datosDisponibles[dato] : valorPorDefecto;
+
+      elementos.forEach(el => this.setElementoValor(el, valor));
     })
     .catch(error => {
       console.error("Error al obtener datos de sesión:", error);
     });
-}
+  }
+  logoutSession(){
+      fetch("../../BACK/PHP/logoutSession.php")
+      .then(() => window.location.href = "../../FRONT/HTML/login.html");
+      };
+  
 }

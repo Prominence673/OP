@@ -30,7 +30,7 @@ class LoginModel{
         }
         return [
         'id' => $user['id_usuario'],
-        'nombre' => $user['nombre']
+        'nombre' => $user['usuario_nombre']
         ];
     }
         public function bringInput() {
