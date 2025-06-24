@@ -52,9 +52,54 @@
       </div>
 
       <div id="agregar-producto" class="contenido-seccion" hidden>
-        <h2>Agregar nuevo producto</h2>
-        <p>Formulario para crear un nuevo producto.</p>
+        <h2>Agregar nuevo paquete</h2>
+        <form id="form-paquete-admin" class="form-admin">
+          <label>Nombre del paquete
+            <input type="text" name="nombre" required>
+          </label>
+          <label>Descripción
+            <textarea name="descripcion" required></textarea>
+          </label>
+          <label>Precio
+            <input type="number" name="precio" min="0" step="0.01" required>
+          </label>
+          <label>Destino
+            <input type="text" name="destino" required>
+          </label>
+          <label>Fecha de salida
+            <input type="date" name="fecha_salida" required>
+          </label>
+          <label>Fecha de regreso
+            <input type="date" name="fecha_regreso" required>
+          </label>
+          <label>Tipo de paquete
+            <select name="tipo_paquete" required>
+              <option value="">Seleccionar tipo</option>
+              <option value="alojamiento">Estadía</option>
+              <option value="destino">Paquete de viaje</option>
+              <option value="transporte">Pasaje/Coche</option>
+            </select>
+          </label>
+          <label>ID relacionado (alojamiento, destino o transporte)
+            <input type="number" name="id_relacionado" min="1" required>
+          </label>
+          <button type="submit">Cargar paquete</button>
+        </form>
+        <div id="mensajePaquete"></div>
       </div>
+      <script src="../../BACK/JS LOGICA/submitdata.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          new FormHandler({
+            formSelector: "#form-paquete-admin",
+            endpoint: "../../BACK/PHP/paquete_admin.php",
+            messageTarget: document.getElementById("mensajePaquete"),
+            onSuccess: () => {
+              document.getElementById("form-paquete-admin").reset();
+            }
+          });
+        });
+      </script>
 
       <div id="usuarios" class="contenido-seccion" hidden>
         <h2>Gestión de usuarios</h2>
