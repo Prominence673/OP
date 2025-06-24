@@ -1,4 +1,8 @@
-/* ========== BASE ========== */
+font-face {
+  font-family: 'Crosever';
+  src: url('../../SOURCE/FONT/cholleo/Cholleo-9YJ1B.otf') format('truetype');
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -65,21 +69,29 @@ body {
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding: 7rem 0 0 7rem;
   pointer-events: auto;
 }
 
 .hero-overlay h2 {
+  font-family: 'Crosever';
   font-size: 2.8rem;
-  margin-bottom: 0.5rem;
+  font-weight: 300;
+  margin-bottom: 0.1rem;
+  margin-top:0;  
+}
+
+.hero-overlay h2+h2{
+  margin-top: 0;
 }
 
 .hero-overlay p {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
+  max-width: 500px;               /* Opcional: limita el ancho */
 }
 
 /* ========== SECTION GENERAL ========== */
