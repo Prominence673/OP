@@ -135,6 +135,35 @@
       </article>
     </div>
   </section>
+  <section class="autos-admin">
+  <h3>Autos cargados por el administrador</h3>
+  <div id="autos-admin-lista" class="autos-lista"></div>
+  </section>
+  <script>
+  fetch('../../BACK/PHP/obtener_paquetes.php?tipo=transporte')
+    .then(res => res.json())
+    .then(autos => {
+      const cont = document.getElementById('autos-admin-lista');
+      if (!autos.length) {
+        cont.innerHTML = "<p>No hay autos cargados aún.</p>";
+        return;
+      }
+      cont.innerHTML = autos.map(auto => `
+        <article class="auto">
+          <div class="auto-info">
+            <h4>${auto.nombre}</h4>
+            <p><strong>Descripción:</strong> ${auto.descripcion}</p>
+            <p><strong>Destino:</strong> ${auto.destino}</p>
+            <p><strong>Precio:</strong> $${auto.precio}</p>
+            <p><strong>Fechas:</strong> ${auto.fecha_salida} a ${auto.fecha_regreso}</p>
+          </div>
+        </article>
+      `).join('');
+    })
+    .catch(() => {
+      document.getElementById('autos-admin-lista').innerHTML = "<p>Error al cargar los autos.</p>";
+    });
+  </script>
   <script src="../JS DISEÑO/menu.js"></script>
 </main>
 
