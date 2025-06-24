@@ -40,11 +40,11 @@ class userPanel {
   }
 
   public function uploadFile() {
-    if (!isset($_FILES['imagen_usuario'])) {
+    if (!isset($_FILES['fotoPerfil'])) {
       return null;
     }
 
-    $archivo = $_FILES['imagen_usuario'];
+    $archivo = $_FILES['fotoPerfil'];
     if ($archivo['error'] !== UPLOAD_ERR_OK) {
       return null;
     }
@@ -80,6 +80,45 @@ public function uploadPhone($telefono){
     $stmt->bind_param("is", $id_usuario, $telefono);
     $stmt->execute();
 }
+    public function updateEmail($nuevoEmail) {
+        session_start();
+        $id_usuario = $_SESSION['usuario']['id'];
+        $stmt = $this->conn->prepare("CALL SPActualizarEmail(?, ?)");
+        $stmt->bind_param("is", $id_usuario, $nuevoEmail);
+        $stmt->execute();
+    }
 
+    public function updatePassword($nuevoHash) {
+        session_start();
+        $id_usuario = $_SESSION['usuario']['id'];
+        $stmt = $this->conn->prepare("CALL SPCambiarPassword(?, ?)");
+        $stmt->bind_param("is", $id_usuario, $nuevoHash);
+        $stmt->execute();
+    }
+    public function generateToken($length = 32) {
+        return bin2hex(random_bytes($length));
+    }
+
+    public function insertToken($email, $token, $expires) {
+        $stmt = $this->conn->prepare("CALL SPInsertarTokenVerificacion(?, ?, ?)");
+        $stmt->bind_param("sss", $email, $token, $expires);
+        $stmt->execute();
+    }
+
+    public function sendVerifyEmail($email, $token) {
+        $verificationLink = "https://tusitio.com/verificar.php?token=" . urlencode($token);
+        $subject = "Verifica tu correo electrónico";
+        $message = "Haz clic en el siguiente enlace para verificar tu correo: $verificationLink";
+        $headers = "From: no-reply@tusitio.com\r\nContent-Type: text/plain; charset=UTF-8";
+
+        if (mail($email, $subject, $message, $headers)) {
+            return ["success" => true, "mensaje" => "Correo de verificación enviado"];
+        } else {
+            return ["success" => false, "error" => "No se pudo enviar el correo de verificación"];
+        }
+    }
+    public function closeConn() {
+        $this->conn->close();
+    }
 }
 ?>
