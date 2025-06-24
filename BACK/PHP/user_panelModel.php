@@ -15,7 +15,10 @@ class userPanel {
     $genero = $_POST['genero'] ?? '';
     $telefono = trim($_POST['telefono'] ?? '');
     $email = trim($_POST['email'] ?? '');
-    $id_pasajero = $_POST['id_pasajero'] ?? null;
+    $currentpassword = trim($_POST['currentpassword'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+    $confirmpassword = trim($_POST['confirmpassword'] ?? '');
+    $action = trim($_POST['actions'] ?? '');
 
     $fecha_nacimiento = '';
     if ($dia && $mes && $anio) {
@@ -29,7 +32,10 @@ class userPanel {
       'genero' => $genero,
       'telefono' => $telefono,
       'email' => $email,
-      'id_pasajero' => $id_pasajero
+      'currentpassword' => $currentpassword,
+      'password' => $password,
+      'confirmpassword' => $confirmpassword,
+      'action' => $action
     ];
   }
 
@@ -53,19 +59,17 @@ class userPanel {
     }
   }
 
- public function uploadData($nombre, $apellido, $fecha_nacimiento, $genero, $id_pasajero, $imagen_ruta = null) {
+ public function uploadData($nombre, $apellido, $fecha_nacimiento, $genero) {
     session_start();
     $id_usuario = $_SESSION['usuario']['id'];
 
-    $stmt = $this->conn->prepare("CALL SPInsertarDatosPersonales(?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("issssis", 
+    $stmt = $this->conn->prepare("CALL SPInsertarDatosPersonales(?, ?, ?, ?, ?)");
+    $stmt->bind_param("issss", 
       $id_usuario, 
       $nombre, 
       $apellido, 
       $fecha_nacimiento, 
-      $genero, 
-      $id_pasajero, 
-      $imagen_ruta
+      $genero
     );
     $stmt->execute();
 }

@@ -69,6 +69,7 @@
 
       <div class="payment-option" style="border-top: 5px solid #8dc8f3; background-color: #0077cc; display: flex; align-items: center;">
 <form id="formFoto" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="action" value="aFoto">
   <label for="fotoPerfil" style="cursor:pointer;">
     <img id="preview" src="..." />
     <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display:none"/>
@@ -83,12 +84,13 @@
      <form id="formDatos" method="post" style="display: flex; flex-direction: column; gap: 1rem;">
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <div style="flex: 1;">
+      <input type="hidden" name="action" value="aDatos">
       <label for="name">Nombres</label>
-      <input type="text" id="name" placeholder="Como figura en el documento de viaje" style="width: 95%;" required max="50"/>
+      <input type="text" id="name" name="name" placeholder="Como figura en el documento de viaje" style="width: 95%;" required max="50"/>
     </div>
     <div style="flex: 1;">
       <label for="surname">Apellidos</label>
-      <input type="text" id="surname" placeholder="Como figura en el documento de viaje" style="width: 95%;" required max="50"/>
+      <input type="text" id="surname" name="surname" placeholder="Como figura en el documento de viaje" style="width: 95%;" required max="50"/>
     </div>
   </div>
 
@@ -96,9 +98,9 @@
     <div style="flex: 1;">
       <label>Fecha de nacimiento</label>
       <div style="display: flex; gap: 0.5rem;">
-        <select id="dia" style="flex: 1;"></select>
-        <select id="mes" style="flex: 1;"></select>
-        <select id="anio" style="flex: 1;"></select>
+        <select id="dia" name="dia" style="flex: 1;"></select>
+        <select id="mes" name="mes" style="flex: 1;"></select>
+        <select id="anio" name="anio" style="flex: 1;"></select>
       </div>
     </div>
     <div style="flex: 1;">
@@ -121,7 +123,8 @@
         <p>Agregá tus teléfonos para que podamos contactarte en caso que ocurra algún cambio.</p>
         <button class="btn-outline" onclick="document.getElementById('telefonoForm').classList.toggle('hidden')">+ Agregar teléfono</button>
         <form id="telefonoForm" method="post" class="hidden">
-          <input type="tel" id="telefono" placeholder="Ej: +54 9 11 1234-5678" required>
+          <input type="hidden" name="action" value="aTelefono">
+          <input type="tel" name="telefono" id="telefono" placeholder="Ej: +54 9 11 1234-5678" required>
           <button type="submit" class="btn-purple">Guardar teléfono</button>
         </form>
       </div>
@@ -131,6 +134,7 @@
         ¿No recibiste el correo de verificación o cambiaste tu email? Hacé clic en el botón para reenviar el enlace de verificación.
       </p>
       <form id="verificarEmailForm" method="post">
+        <input type="hiddens" name="action" value="aEmail">
         <button type="submit" class="btn-outline">
           <i class="fas fa-paper-plane"></i> Enviar verificación
         </button>
@@ -142,7 +146,7 @@
         <p>Cambia el email vinculado a esta cuenta, Recuerda que solo podras hacerlo una vez cada 30 dias.</p>
         <p><i class="fas fa-envelope"></i> <b class="email"></b> <span style="color:green;">&#10004; Verificado</span> - <strong>Principal</strong></p>
         <form id="formEmail" method="post">
-          <input type="email" id="email" placeholder="Nuevo email" required>
+          <input type="email" name="email" id="email" placeholder="Nuevo email" required>
           <button type="submit" class="btn-outline"><i class="fas fa-pen"></i> Cambiar Email</button>
         </form>
       </div>
@@ -152,9 +156,10 @@
         <p><i class="fas fa-lock"></i> ••••••••</p>
         <button class="btn-outline" onclick="document.getElementById('formPass').classList.toggle('hidden')"><i class="fas fa-pen"></i> Cambiar contraseña</button>
         <form id="formPass" method="post" class="hidden">
-          <input type="password" id="currentpassword" placeholder="Contraseña actual" required>
-          <input type="password" id="password" placeholder="Nueva contraseña" required>
-          <input type="password" id="confirmpassword" placeholder="Repetir nueva contraseña" required>
+          <input type="hidden" name="action" value="aPassword">
+          <input type="password" name="currentpassword" id="currentpassword" placeholder="Contraseña actual" required>
+          <input type="password" name="password" id="password" placeholder="Nueva contraseña" required>
+          <input type="password" name="confirmpassword id="confirmpassword" placeholder="Repetir nueva contraseña" required>
           <button class="btn-purple" type="submit">Actualizar</button>
         </form>
       </div>
