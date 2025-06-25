@@ -216,7 +216,7 @@ public function sendVerifyEmail($email, $token) {
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = 'Email Verifycation - TravelAir';
+            $mail->Subject = 'Email Verification - TravelAir';
 
             $recoveryLink = "http://localhost/OP/BACK/PHP/verifyEmail.php?token=" . urlencode($token);
 

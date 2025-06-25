@@ -7,12 +7,11 @@ require_once 'connection.php';
 require_once 'user_panelModel.php';
 require_once 'loginModel.php';
 require_once 'registerModel.php';
-$userPanel = new userPanel($conn);  
-$datos = $userPanel->bringInputFromForm();
-$action = $datos['action'] ?? '';
 $userPanel = new userPanel($conn);
 $login = new LoginModel($conn);
 $register = new registerModel($conn);
+$datos = $userPanel->bringInputFromForm();
+$action = $datos['action'] ?? '';
 try {
     switch ($action) {
         case 'guardar_foto':
@@ -72,11 +71,11 @@ try {
                 break;
             }
             $validacionPassword = $registro->validarPasswordFuerte($datos['password']);
+            $validacionPassword = $register->validarPasswordFuerte($datos['password']);
             if (!$validacionPassword["valido"]) {
                 echo json_encode(["error" => "Contraseña débil: " . implode(", ", $validacionPassword["errores"])]);
                 break;
             }
-            $nuevo_hash = password_hash($datos['password'], PASSWORD_DEFAULT);
             $userPanel->updatePassword($nuevo_hash);
             echo json_encode(["success" => true, "mensaje" => "Contraseña actualizada"]);
             break;

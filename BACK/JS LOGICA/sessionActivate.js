@@ -52,7 +52,7 @@ class SessionActions {
         document.querySelectorAll(selector).forEach(el => {
           el.disabled = true;
           el.style.pointerEvents = this.disableConfig.pointer || "none";
-          el.style.disabled = this.disableConfig.opacity || "0.5";
+          el.style.opacity = this.disableConfig.opacity || "0.5";
         });
       });
     } else if (!this.sessionData.loggedIn && this.activateConfig) {
