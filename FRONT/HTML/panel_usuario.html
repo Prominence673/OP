@@ -85,6 +85,7 @@
       <input type="hidden" name="action" value="guardar_datos" />
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
     <div style="flex: 1;">
+      <input type="hidden" name="action" value="aDatos">
       <label for="name">Nombres</label>
       <input type="text" id="name" name="name" placeholder="Como figura en el documento de viaje" style="width: 50%;" required max="50"/>
     </div>
@@ -98,6 +99,9 @@
     <div style="flex: 1;">
       <label>Fecha de nacimiento</label>
       <div style="display: flex; gap: 0.5rem;">
+        <select id="dia" name="dia" style="flex: 1;"></select>
+        <select id="mes" name="mes" style="flex: 1;"></select>
+        <select id="anio" name="anio" style="flex: 1;"></select>
         <select id="dia" name="dia" style="flex: 1;"></select>
         <select id="mes" name="mes" style="flex: 1;"></select>
         <select id="anio" name="anio" style="flex: 1;"></select>

@@ -1,4 +1,5 @@
-/* ==== Estadias.css ==== */
+@import url('../CSS/fonts.css');
+
 body {
   background: linear-gradient(to bottom, #ffffff, #b5d8fd);
 }
@@ -19,6 +20,7 @@ main {
 }
 
 .estadias-hero h2 {
+  font-family: 'Helvetica';
   font-size: 2rem;
   color: #0074D9;
   margin-bottom: 0.5rem;
@@ -66,6 +68,8 @@ main {
 }
 
 .hotel-info h4 {
+  font-family: 'Quicksand';
+  font-weight: 900;
   font-size: 1.2rem;
   color: #001f3f;
   margin: 0;
@@ -78,11 +82,28 @@ main {
 
 .hoteles-argentina h3,
 .hoteles-internacionales h3 {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  font-family: 'Helvetica';
   color: #0074D9;
-  margin-bottom: 1.5rem;
+  margin-bottom: 5.5rem;
   text-align: center;
-}   
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hoteles-argentina h3::after,
+.hoteles-internacionales h3::after {
+  content: "";
+  display: block;
+  margin: 0.6rem auto 0 auto;
+  width: 150px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ff914d 0%, #ffe066 100%);
+}
+
 .hotel-img-container {
   position: relative;
   width: 100%;

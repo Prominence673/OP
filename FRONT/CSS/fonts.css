@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../SOURCE/FONT/helvetica-neue-5/HelveticaNeueHeavy.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vardena';
+  src: url('../../SOURCE/FONT/vardena/VardenaPersonalUsed-z8vnw.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../../SOURCE/FONT/Quicksand/Quicksand-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../../SOURCE/FONT/Quicksand/Quicksand-Bold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,128 +10,118 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-container">
-    <h1>TRAVEL</h1>
-    <nav class="main-nav">
-      <ul class="nav-menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown-parent">
-          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-            Paquetes <i class="fa-solid fa-chevron-down"></i>
-          </button>
-          <ul class="submenu">
-            <li><a href="coches.html">Alquiler coches</a></li>
-            <li><a href="paquetes.html">Paquetes turisticos</a></li>
-            <li><a href="estadias.html">Estadias</a></li>
-            <li><a href="pasajes.html">Pasajes aéreos</a></li>
-          </ul>
-        </li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="user-menu">
-      <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
-        <i class="fa-solid fa-cart-shopping user-icon"></i>
-      </a>
-      <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
-        <i class="fa-solid fa-user user-icon"></i>
-      </button>
-      <ul class="dropdown">
-        <li id="user"></li>
-        <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
-        <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
-        <li id="register_panel"><a href="register.html">Registrarse</a></li>
-        <li><a href="#" id="logout">Cerrar Sesion</a></li>
-      </ul>
+  <header class="site-header">
+    <div class="container header-container">
+      <h1>TRAVEL</h1>
+      <nav class="main-nav">
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="dropdown-parent">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Paquetes <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="submenu">
+              <li><a href="coches.html">Alquiler de autos</a></li>
+              <li><a href="paquetes.html">Paquetes turisticos</a></li>
+              <li><a href="estadias.html">Estadias</a></li>
+              <li><a href="pasajes.html">Pasajes aéreos</a></li>
+            </ul>
+          </li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
+          <i class="fa-solid fa-cart-shopping user-icon"></i>
+        </a>
+        <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
+          <i class="fa-solid fa-user user-icon"></i>
+        </button>
+        <ul class="dropdown">
+          <li id="user"></li>
+          <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
+          <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+          <li id="register_panel"><a href="register.html">Registrarse</a></li>
+          <li><a href="#" id="logout">Cerrar Sesion</a></li>
+        </ul>
+      </div>
     </div>
-</header>
+  </header>
 
-
-  <section class="hero">
+  <!-- HERO CON VIDEO DE FONDO -->
+  <div class="hero">
     <video autoplay muted loop playsinline class="background-video">
-      <source src="../../SOURCE/RESOURCES/paisaje.mp4.mp4" type="video/mp4" />
+      <source src="../../SOURCE/RESOURCES/4750419_Cloud_Sky_1280x720.mp4" type="video/mp4" />
       Tu navegador no soporta la etiqueta de video.
     </video>
     <div class="hero-overlay">
-      <h2>Descubrí el mundo con nosotros</h2>
+      <h2>DESCUBRÍ EL <span style="color: #398efc;">MUNDO</span></h2>
+      <h2>CON NOSOTROS</h2>
       <p>Paquetes, pasajes, estadías y más a un solo clic.</p>
       <a href="paquetes.html" class="btn">Explorar Paquetes</a>
     </div>
-  </section>
+  </div>
 
   <main class="main-content">
-    
-<div class="background-content">
-  <div class="separator-title">
-    <h3>Lo que dicen nuestros viajeros</h3>
-  </div>
-  <!-- Sección: Testimonios de Clientes -->
-  <div id="section-testimonios">
-    <section class="section with-image">
-      <img src="../../SOURCE/RESOURCES/testimonio1.webp" loading="lazy" alt="Cliente feliz viajando" />
-      <div class="text-content">
-        <h2>Lo que dicen nuestros viajeros</h2>
-        <p>“Una experiencia inolvidable. Todo salió perfecto, desde el vuelo hasta el hotel.” – Carla M., Mendoza</p>
+
+    <!-- NUEVA SECCIÓN: OPCIONES DE COMPRA -->
+    <section class="opciones-compra">
+      <div class="container opciones-grid">
+        <div class="opcion-card">
+          <div class="opcion-icon">
+            <!-- Aquí puedes poner un icono, por ejemplo: -->
+            <i class="fa-solid fa-car"></i>
+          </div>
+          <h3>Alquiler de Autos</h3>
+          <p>Elige entre una amplia variedad de autos para tu viaje, con los mejores precios y cobertura nacional.</p>
+          <a href="coches.html" class="btn">Ver más</a>
+        </div>
+        <div class="opcion-card">
+          <div class="opcion-icon">
+            <i class="fa-solid fa-bed"></i>
+          </div>
+          <h3>Estadías</h3>
+          <p>Reserva hoteles y alojamientos en los destinos más populares y disfruta de tu estadía al máximo.</p>
+          <a href="estadias.html" class="btn">Ver más</a>
+        </div>
+        <div class="opcion-card">
+          <div class="opcion-icon">
+            <i class="fa-solid fa-suitcase-rolling"></i>
+          </div>
+          <h3>Combos de Viaje</h3>
+          <p>Arma tu paquete ideal combinando vuelos, hoteles y traslados, todo en un solo lugar y al mejor precio.</p>
+          <a href="paquetes.html" class="btn">Ver más</a>
+        </div>
+        <div class="opcion-card">
+          <div class="opcion-icon">
+            <i class="fa-solid fa-plane-departure"></i>
+          </div>
+          <h3>Pasajes Aéreos</h3>
+          <p>Encuentra las mejores ofertas en vuelos nacionales e internacionales y viaja donde quieras.</p>
+          <a href="pasajes.html" class="btn">Ver más</a>
+        </div>
       </div>
     </section>
 
-    <section class="section with-image">
-      <img src="../../SOURCE/RESOURCES/testimonio2.webp" loading="lazy" alt="Pareja de viaje" />
-      <div class="text-content">
-        <h2>Viajes a medida</h2>
-        <p>“Viajamos a Europa con un paquete personalizado y fue un sueño hecho realidad.” – Jorge y Laura, Rosario</p>
+    <section class="section-info">
+      <div class="info-content">
+        <div class="info-image">
+          <img src="../../SOURCE/RESOURCES/indexIMG.png" alt="ViajesMundo - Viaja seguro y fácil">
+        </div>
+        <div class="info-text">
+          <h2>Viaja fácil, seguro y al mejor precio</h2>
+          <p>
+            En <strong>ViajesMundo</strong> te acompañamos en cada paso de tu aventura. 
+            Nuestro equipo de expertos te asesora para que encuentres el destino ideal, 
+            con las mejores ofertas en pasajes, estadías y alquiler de autos.<br><br>
+            <span class="info-destacado">¡Tu viaje comienza aquí!</span>
+          </p>
+          <a href="contacto.html" class="btn">Contactanos</a>
+        </div>
       </div>
     </section>
 
-    <section class="section with-image">
-      <img src="../../SOURCE/RESOURCES/testimonio3.webp" loading="lazy" alt="Grupo de amigos viajando" />
-      <div class="text-content">
-        <h2>Ideal para grupos</h2>
-        <p>“Organizamos nuestro viaje de egresados con ViajesMundo y fue espectacular.” – Tomás, Córdoba</p>
-      </div>
-    </section>
-  </div>
-</div>
-
-<div class="separator-title">
-  <h3>¿Por qué elegir ViajesMundo?</h3>
-</div>
-
-<!-- Sección: Ventajas de Usar ViajesMundo -->
-<div id="section-ventajas">
-  <section class="section with-image">
-    <div class="ico-ventaja">
-      <i class="fa fa-users" aria-hidden="true"></i>
-    </div>
-    <div class="text-content">
-      <h2>Soporte 24/7</h2>
-      <p>Te acompañamos antes, durante y después de tu viaje. Siempre disponibles.</p>
-    </div>
-  </section>
-
-  <section class="section with-image">
-    <div class="ico-ventaja">
-      <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-    </div>
-    <div class="text-content">
-      <h2>Pagos Flexibles</h2>
-      <p>Reservá hoy y pagá en cuotas sin interés. Viajá sin preocuparte.</p>
-    </div>
-  </section>
-
-  <section class="section with-image">
-    <div class="ico-ventaja">
-      <i class="fa fa-globe" aria-hidden="true"></i>
-    </div>
-    <div class="text-content">
-      <h2>Mejores Destinos</h2>
-      <p>Accedé a los destinos más populares y escondidos con beneficios exclusivos.</p>
-    </div>
-  </section>
-</div>
-
-
+    <!-- SECCIÓN NOSOTROS -->
     <section class="section-nosotros">
       <div class="nosotros-overlay">
         <div class="contenido-nosotros">
@@ -141,25 +130,19 @@
         </div>
       </div>
     </section>
-  <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
-  <script>
-  const actions = new SessionActions();
-  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
-  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
-  actions.InsertData("#user", "nombre");
-  const logout = document.getElementById("logout");
 
-  logout.addEventListener("click", () => {
-    actions.logoutSession();
-  });
-  </script>
-  <script src="../JS DISEÑO/menu.js"></script>
-  <script src="../JS DISEÑO/section-nosotros.js"></script>
-  </main>
-
-  <footer class="site-footer center">
-    <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
-  </footer>
-    
-</body>
-</html>
+    <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+    <script src="../JS DISEÑO/menu.js"></script>
+    <script src="../../FRONT/JS DISEÑO/animation.js"></script> 
+    <script src="../JS DISEÑO/menu.js"></script>
+    <script>
+      const actions = new SessionActions();
+      actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
+      actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+      actions.InsertData("#user", "nombre");
+      const logout = document.getElementById("logout");
+      logout.addEventListener("click", () => {
+        actions.logoutSession();
+      });
+    </script>
+    <script

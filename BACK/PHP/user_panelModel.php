@@ -146,6 +146,7 @@ class userPanel {
       $apellido, 
       $fecha_nacimiento, 
       $genero
+      $genero
     );
     if (!$stmt->execute()) {
     throw new Exception("Error al ejecutar: " . $stmt->error);

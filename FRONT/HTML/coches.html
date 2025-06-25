@@ -61,7 +61,7 @@
         <img src="../../SOURCE/RESOURCES/COCHES/onix-interior.jpg" alt="Interior Chevrolet Onix" class="auto-img-interior">
       </div>
       <div class="auto-info">
-        <h4>Chevrolet Onix</h4>
+        <h4>CHEVROLET ONIX</h4>
         <p><strong>Tipo:</strong> Económico</p>
         <p><strong>Capacidad:</strong> 5 pasajeros</p>
         <p><strong>Precio desde:</strong> AR$ 18.000 por día</p>
@@ -73,7 +73,7 @@
         <img src="../../SOURCE/RESOURCES/COCHES/corolla-interior.jpeg" alt="Interior Toyota Corolla" class="auto-img-interior">
       </div>
       <div class="auto-info">
-        <h4>Toyota Corolla</h4>
+        <h4>TOYOTA COROLLA</h4>
         <p><strong>Tipo:</strong> Sedán</p>
         <p><strong>Capacidad:</strong> 5 pasajeros</p>
         <p><strong>Precio desde:</strong> AR$ 25.000 por día</p>
@@ -85,7 +85,7 @@
         <img src="../../SOURCE/RESOURCES/COCHES/duster-interior.jpg" alt="Interior Renault Duster" class="auto-img-interior">
       </div>
       <div class="auto-info">
-        <h4>Renault Duster</h4>
+        <h4>RENAULT DUSTER</h4>
         <p><strong>Tipo:</strong> SUV</p>
         <p><strong>Capacidad:</strong> 5 pasajeros</p>
         <p><strong>Precio desde:</strong> AR$ 28.000 por día</p>
@@ -103,7 +103,7 @@
         <img src="../../SOURCE/RESOURCES/COCHES/mustang-interior.jpg" alt="Interior Ford Mustang" class="auto-img-interior">
       </div>
       <div class="auto-info">
-        <h4>Ford Mustang</h4>
+        <h4>FORD MUSTANG</h4>
         <p><strong>Tipo:</strong> Deportivo</p>
         <p><strong>Capacidad:</strong> 4 pasajeros</p>
         <p><strong>Precio desde:</strong> USD 120 por día</p>
@@ -115,7 +115,7 @@
         <img src="../../SOURCE/RESOURCES/COCHES/wrangler-interior.jpg" alt="Interior Jeep Wrangler" class="auto-img-interior">
       </div>
       <div class="auto-info">
-        <h4>Jeep Wrangler</h4>
+        <h4>JEEP WRANGLER</h4>
         <p><strong>Tipo:</strong> SUV 4x4</p>
         <p><strong>Capacidad:</strong> 5 pasajeros</p>
         <p><strong>Precio desde:</strong> USD 150 por día</p>
@@ -127,7 +127,7 @@
         <img src="../../SOURCE/RESOURCES/COCHES/mercedes-c-interior.jpg" alt="Interior Mercedes Benz Clase C" class="auto-img-interior">
       </div>
       <div class="auto-info">
-        <h4>Mercedes Benz Clase C</h4>
+        <h4>MERCEDES BENZ CLASE C</h4>
         <p><strong>Tipo:</strong> Premium</p>
         <p><strong>Capacidad:</strong> 5 pasajeros</p>
         <p><strong>Precio desde:</strong> USD 180 por día</p>
@@ -135,9 +135,38 @@
       </article>
     </div>
   </section>
+  <section class="autos-admin">
+  <h3>Autos cargados por el administrador</h3>
+  <div id="autos-admin-lista" class="autos-lista"></div>
+  </section>
+  <script>
+  fetch('../../BACK/PHP/obtener_paquetes.php?tipo=transporte')
+    .then(res => res.json())
+    .then(autos => {
+      const cont = document.getElementById('autos-admin-lista');
+      if (!autos.length) {
+        cont.innerHTML = "<p>No hay autos cargados aún.</p>";
+        return;
+      }
+      cont.innerHTML = autos.map(auto => `
+        <article class="auto">
+          <div class="auto-info">
+            <h4>${auto.nombre}</h4>
+            <p><strong>Descripción:</strong> ${auto.descripcion}</p>
+            <p><strong>Destino:</strong> ${auto.destino}</p>
+            <p><strong>Precio:</strong> $${auto.precio}</p>
+            <p><strong>Fechas:</strong> ${auto.fecha_salida} a ${auto.fecha_regreso}</p>
+          </div>
+        </article>
+      `).join('');
+    })
+    .catch(() => {
+      document.getElementById('autos-admin-lista').innerHTML = "<p>Error al cargar los autos.</p>";
+    });
+  </script>
+  <script src="../JS DISEÑO/menu.js"></script>
 </main>
-
+<script src="../JS DISEÑO/menu.js"></script>
 <footer class="site-footer center">
   <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
 </footer>
-<script src=

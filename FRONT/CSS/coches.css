@@ -1,4 +1,5 @@
-/* ==== Alquiler-autos.css ==== */
+@import url(../CSS/fonts.css);
+
 body {
   background: linear-gradient(to bottom, #ffffff, #b5d8fd);
 }
@@ -23,6 +24,7 @@ main {
 }
 
 .alquiler-hero h2 {
+  font-family: 'Helvetica';
   font-size: 2rem;
   color: #0074D9;
   margin-bottom: 0.5rem;
@@ -94,6 +96,8 @@ main {
 }
 
 .auto-info h4 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 900;
   font-size: 1.2rem;
   color: #001f3f;
   margin: 0;
@@ -106,8 +110,20 @@ main {
 
 .autos-argentina h3,
 .autos-internacionales h3 {
+  font-family: 'Helvetica';
   font-size: 1.4rem;
   color: #0074D9;
-  margin-bottom: 1.5rem;
+  margin: 5.5rem 0;
   text-align: center;
+}
+
+.autos-argentina h3::after,
+.autos-internacionales h3::after {
+  content: "";
+  display: block;
+  margin: 0.6rem auto 0 auto;
+  width: 150px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ff914d 0%, #ffe066 100%);
 }
