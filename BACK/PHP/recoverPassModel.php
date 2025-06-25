@@ -103,7 +103,7 @@ class recoverPassModel {
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = 'Password recovery';
+            $mail->Subject = 'Password recovery - TravelAir';
 
             $recoveryLink = "http://localhost/OP/BACK/PHP/recoveryPass.php?token=" . urlencode($token);
 

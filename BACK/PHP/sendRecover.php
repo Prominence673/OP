@@ -33,3 +33,4 @@ echo json_encode($resultadoEnvio);
 
 $recover->closeConn();
 exit;
+?>

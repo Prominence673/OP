@@ -1,0 +1,13 @@
+[23-Jun-2025 17:45:33 Europe/Berlin] PHP Warning:  Undefined variable $userPanel in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 9
+[23-Jun-2025 17:45:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function bringInputFromForm() on null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php:9
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 9
+[23-Jun-2025 17:50:50 Europe/Berlin] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 43
+[23-Jun-2025 17:51:25 Europe/Berlin] PHP Warning:  Undefined array key "email" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 43
+[23-Jun-2025 17:59:49 Europe/Berlin] PHP Warning:  Undefined array key "name" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 28
+[23-Jun-2025 17:59:49 Europe/Berlin] PHP Warning:  Undefined array key "surname" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 28
+[23-Jun-2025 17:59:53 Europe/Berlin] PHP Warning:  Undefined array key "name" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 28
+[23-Jun-2025 17:59:53 Europe/Berlin] PHP Warning:  Undefined array key "surname" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 28
+[23-Jun-2025 18:04:05 Europe/Berlin] PHP Warning:  Undefined array key "name" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 28
+[23-Jun-2025 18:04:05 Europe/Berlin] PHP Warning:  Undefined array key "surname" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 28

@@ -19,7 +19,12 @@ if (!$validacionEmail["success"]) {
 }
 
 $hashPassword = $registro->hashPassword($password);
+$validacionPassword = $registro->validarPasswordFuerte($password);
 
+if (!$validacionPassword["valido"]) {
+    echo json_encode(["error" => "Contraseña débil: " . implode(", ", $validacionPassword["errores"])]);
+    exit;
+}
 $result = $registro->registerUser($user, $email, $hashPassword);
 
 if ($result["success"]) {

@@ -25,6 +25,31 @@ class registerModel{
 
             return ["success" => true];
     }
+    function validarPasswordFuerte(string $password): array {
+            $errores = [];
+
+            if (strlen($password) < 8) {
+                $errores[] = "La contraseña debe tener al menos 8 caracteres.";
+            }
+            if (!preg_match('/[a-z]/', $password)) {
+                $errores[] = "Debe contener al menos una letra minúscula.";
+            }
+            if (!preg_match('/[A-Z]/', $password)) {
+                $errores[] = "Debe contener al menos una letra mayúscula.";
+            }
+            if (!preg_match('/\d/', $password)) {
+                $errores[] = "Debe contener al menos un número.";
+            }
+            if (!preg_match('/[@#$^&+=.!?\-_*]/', $password)) {
+                $errores[] = "Debe contener al menos un carácter especial (@ # $ ^ & + = . ! ? - _ *).";
+            }
+
+            if (!empty($errores)) {
+                return ["valido" => false, "errores" => $errores];
+            }
+
+            return ["valido" => true];
+        }
     public function bringInput(){
                 $raw = file_get_contents("php://input");
                 $datos = json_decode($raw, true);
