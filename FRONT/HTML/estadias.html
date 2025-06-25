@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <p><strong>Precio desde:</strong> AR$ ${parseInt(e.precio).toLocaleString('es-AR')} por noche</p>
           <div class="formulario-compra" style="display: none; margin-top: 10px;">
             <form class="add-cart-form">
-              <input type="hidden" name="id_paquete" value="${e.id_paquetes}">
+              <input type="hidden" name="id_estadia" value="${e.id_estadias}">
               <label>
                 Cantidad:
                 <input type="number" name="cantidad" value="1" min="1" style="width: 60px;">
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         const formData = new FormData(this);
-        formData.append('tipo', 'paquete'); // si el backend espera "estadias", cambiar acá
+        formData.append('tipo', 'estadia');
         const res = await fetch('../../BACK/PHP/carrito_api.php', {
           method: 'POST',
           body: formData

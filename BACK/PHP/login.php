@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 0); // Evita mostrar errores como HTML
+ini_set('log_errors', 1); // Habilita logueo
+ini_set('error_log', __DIR__ . '/error_log.txt'); // Log en este archivo
+header('Content-Type: application/json'); // Asegura que devuelva JSON
 require_once 'connection.php';
 require_once 'loginModel.php';
 

@@ -108,10 +108,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           <p><strong>Precio desde:</strong> AR$ ${parseInt(p.precio_desde).toLocaleString('es-AR')}</p>
           <div class="formulario-compra" style="display: none; margin-top: 10px;">
             <form class="add-cart-form">
-              <input type="hidden" name="id_paquete" value="${p.id_paquetes}">
-              <label for="cantidad-${p.id_paquetes}">
+              <input type="hidden" name="id_pasaje" value="${p.id_pasajes}">
+              <label for="cantidad-${p.id_pasajes}">
                 Cantidad:
-                <input id="cantidad-${p.id_paquetes}" type="number" name="cantidad" value="1" min="1" style="width:60px; margin-left: 5px;">
+                <input id="cantidad-${p.id_pasajes}" type="number" name="cantidad" value="1" min="1" style="width:60px; margin-left: 5px;">
               </label>
               <button type="submit" class="add-to-cart">Añadir al carrito</button>
             </form>
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         const formData = new FormData(this);
-        formData.append('tipo', 'paquete');
+        formData.append('tipo', 'pasaje');
         const res = await fetch('../../BACK/PHP/carrito_api.php', {
           method: 'POST',
           body: formData

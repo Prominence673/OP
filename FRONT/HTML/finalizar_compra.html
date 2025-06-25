@@ -32,23 +32,40 @@
     <button type="submit">Confirmar compra</button>
     <div id="msg-finalizar"></div>
   </form>
+
+  <h2>Insertar Paquete</h2>
+  <form id="form-insert-paquete">
+    <input type="hidden" name="tabla" value="paquetes">
+    <input type="hidden" name="accion" value="insertar">
+    <label>Nombre del viaje: <input name="nombre_viaje" required></label>
+    <label>Imagen (URL o nombre): <input name="imagen" required></label>
+    <label>Duración: <input name="duracion" required></label>
+    <label>Incluye: <input name="incluye" required></label>
+    <label>Precio aprox: <input name="precio_aprox" type="number" required></label>
+    <button type="submit">Insertar Paquete</button>
+    <div class="msg" id="msg-insert-paquete"></div>
+  </form>
 </main>
+<script src="../../BACK/JS LOGICA/submitdata.js"></script>
 <script>
+new FormHandler({
+  formSelector: "#form-finalizar-compra",
+  endpoint: "../../BACK/PHP/finalizar_compra.php",
+  messageTarget: document.getElementById('msg-finalizar'),
+  onSuccess: () => {
+    // Redirigir a confirmación si querés
+    // window.location.href = "confirmacion.html";
+  }
+});
+
 document.getElementById('metodo_pago').addEventListener('change', function() {
   document.getElementById('tarjeta-fields').style.display = this.value === 'tarjeta' ? 'block' : 'none';
 });
-document.getElementById('form-finalizar-compra').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  // Enviar datos al backend para registrar la compra
-  const data = Object.fromEntries(new FormData(this));
-  const res = await fetch('../../BACK/PHP/finalizar_compra.php', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data)
-  });
-  const result = await res.json();
-  document.getElementById('msg-finalizar').textContent = result.mensaje || result.error || "Listo";
-  if(result.mensaje) this.reset();
+
+new FormHandler({
+  formSelector: "#form-insert-paquete",
+  endpoint: "../../BACK/PHP/admin_abm_productos.php",
+  messageTarget: document.getElementById("msg-insert-paquete")
 });
 </script>
 <footer class="site-footer center">
