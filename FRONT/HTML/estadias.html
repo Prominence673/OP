@@ -46,6 +46,7 @@
     </div>
 </header>
 <main>
+  <!--
   <section class="estadias-hero">
     <h2>Estadías en Hoteles</h2>
     <p>Descubrí los mejores hoteles en Argentina y el mundo. Reservá tu estadía con Travel Rock Argentina y viví una experiencia única.</p>
@@ -168,7 +169,7 @@
         <p><strong>Precio desde:</strong> USD 600 por noche</p>
       </div>
     </article>
-    <!-- Hoteles internacionales adicionales -->
+    
     <article class="hotel">
       <div class="hotel-img-container">
         <img src="../../SOURCE/RESOURCES/ESTADIAS/luxury-hotel.webp" alt="The Plaza Hotel, Nueva York" class="hotel-img-portada">
@@ -209,6 +210,11 @@
 </section>
   </div>
 </section>
+-->
+<section class="estadias-admin">
+  <h3>Estadías cargadas por el administrador</h3>
+  <div id="estadias-admin-lista" class="hoteles-lista"></div>
+</section>
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script>
   const actions = new SessionActions();
@@ -223,6 +229,38 @@
   });
   </script>
   <script src="../JS DISEÑO/menu.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const cont = document.getElementById('estadias-admin-lista');
+  try {
+    const res = await fetch('../../BACK/PHP/productos_api.php?tipo=estadias');
+    const estadias = await res.json();
+    if (!estadias.length) {
+      cont.innerHTML = "<p>No hay estadías cargadas aún.</p>";
+      return;
+    }
+    estadias.forEach(e => {
+      const article = document.createElement("article");
+      article.className = "hotel";
+      article.innerHTML = `
+        <div class="hotel-img-container">
+        <img src=${e.imagen} alt="${e.nombre}" class="hotel-img-portada">
+        <img src=${e.imagen_interior} alt="${e.nombre}" class="hotel-img-interior">
+        </div>
+        <div class="hotel-info">
+          <h4>${e.nombre}</h4>
+          <p><strong>Ubicación:</strong> ${e.ubicacion}</p>
+          <p>${e.descripcion}</p>
+          <p><strong>Precio desde:</strong> AR$ ${parseInt(e.precio).toLocaleString('es-AR')} por noche</p>
+        </div>
+      `;
+      cont.appendChild(article);
+    });
+  } catch (e) {
+    cont.innerHTML = "<p>Error al cargar las estadías.</p>";
+  }
+});
+</script>
 </main>
 <footer class="site-footer center">
   <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>

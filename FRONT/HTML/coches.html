@@ -41,132 +41,64 @@
         <li><a href="panel_usuario.html">Panel</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
+        <li><a href="#" id="logout">Cerrar Sesion</a></li>
       </ul>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="alquiler-hero">
-    <h2>Alquiler de Autos</h2>
-    <p>Encontrá los mejores autos para tu viaje, tanto en Argentina como en el exterior. ¡Viaja a tu ritmo con Travel Rock Argentina!</p>
-  </section>
-
-  <section class="autos-argentina">
-    <h3>Autos disponibles en Argentina</h3>
-    <div class="autos-lista">
-      <article class="auto">
-      <div class="auto-img-container">
-        <img src="../../SOURCE/RESOURCES/COCHES/onix.avif" alt="Chevrolet Onix" class="auto-img-portada">
-        <img src="../../SOURCE/RESOURCES/COCHES/onix-interior.jpg" alt="Interior Chevrolet Onix" class="auto-img-interior">
-      </div>
-      <div class="auto-info">
-        <h4>CHEVROLET ONIX</h4>
-        <p><strong>Tipo:</strong> Económico</p>
-        <p><strong>Capacidad:</strong> 5 pasajeros</p>
-        <p><strong>Precio desde:</strong> AR$ 18.000 por día</p>
-      </div>
-    </article>
-    <article class="auto">
-      <div class="auto-img-container">
-        <img src="../../SOURCE/RESOURCES/COCHES/corolla.jpeg" alt="Toyota Corolla" class="auto-img-portada">
-        <img src="../../SOURCE/RESOURCES/COCHES/corolla-interior.jpeg" alt="Interior Toyota Corolla" class="auto-img-interior">
-      </div>
-      <div class="auto-info">
-        <h4>TOYOTA COROLLA</h4>
-        <p><strong>Tipo:</strong> Sedán</p>
-        <p><strong>Capacidad:</strong> 5 pasajeros</p>
-        <p><strong>Precio desde:</strong> AR$ 25.000 por día</p>
-      </div>
-    </article>
-    <article class="auto">
-      <div class="auto-img-container">
-        <img src="../../SOURCE/RESOURCES/COCHES/duster.webp" alt="Renault Duster" class="auto-img-portada">
-        <img src="../../SOURCE/RESOURCES/COCHES/duster-interior.jpg" alt="Interior Renault Duster" class="auto-img-interior">
-      </div>
-      <div class="auto-info">
-        <h4>RENAULT DUSTER</h4>
-        <p><strong>Tipo:</strong> SUV</p>
-        <p><strong>Capacidad:</strong> 5 pasajeros</p>
-        <p><strong>Precio desde:</strong> AR$ 28.000 por día</p>
-      </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="autos-internacionales">
-    <h3>Autos internacionales recomendados</h3>
-    <div class="autos-lista">
-      <article class="auto">
-      <div class="auto-img-container">
-        <img src="../../SOURCE/RESOURCES/COCHES/mustang.avif" alt="Ford Mustang" class="auto-img-portada">
-        <img src="../../SOURCE/RESOURCES/COCHES/mustang-interior.jpg" alt="Interior Ford Mustang" class="auto-img-interior">
-      </div>
-      <div class="auto-info">
-        <h4>FORD MUSTANG</h4>
-        <p><strong>Tipo:</strong> Deportivo</p>
-        <p><strong>Capacidad:</strong> 4 pasajeros</p>
-        <p><strong>Precio desde:</strong> USD 120 por día</p>
-      </div>
-    </article>
-    <article class="auto">
-      <div class="auto-img-container">
-        <img src="../../SOURCE/RESOURCES/COCHES/wrangler.png" alt="Jeep Wrangler" class="auto-img-portada">
-        <img src="../../SOURCE/RESOURCES/COCHES/wrangler-interior.jpg" alt="Interior Jeep Wrangler" class="auto-img-interior">
-      </div>
-      <div class="auto-info">
-        <h4>JEEP WRANGLER</h4>
-        <p><strong>Tipo:</strong> SUV 4x4</p>
-        <p><strong>Capacidad:</strong> 5 pasajeros</p>
-        <p><strong>Precio desde:</strong> USD 150 por día</p>
-      </div>
-    </article>
-    <article class="auto">
-      <div class="auto-img-container">
-        <img src="../../SOURCE/RESOURCES/COCHES/mercedes-c.png" alt="Mercedes Benz Clase C" class="auto-img-portada">
-        <img src="../../SOURCE/RESOURCES/COCHES/mercedes-c-interior.jpg" alt="Interior Mercedes Benz Clase C" class="auto-img-interior">
-      </div>
-      <div class="auto-info">
-        <h4>MERCEDES BENZ CLASE C</h4>
-        <p><strong>Tipo:</strong> Premium</p>
-        <p><strong>Capacidad:</strong> 5 pasajeros</p>
-        <p><strong>Precio desde:</strong> USD 180 por día</p>
-      </div>
-      </article>
-    </div>
-  </section>
-  <section class="autos-admin">
-  <h3>Autos cargados por el administrador</h3>
+ <section class="autos-admin">
+  <h1>Alquiler de Autos</h1>
   <div id="autos-admin-lista" class="autos-lista"></div>
-  </section>
+</section>
+  <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script>
-  fetch('../../BACK/PHP/obtener_paquetes.php?tipo=transporte')
-    .then(res => res.json())
-    .then(autos => {
-      const cont = document.getElementById('autos-admin-lista');
-      if (!autos.length) {
-        cont.innerHTML = "<p>No hay autos cargados aún.</p>";
-        return;
-      }
-      cont.innerHTML = autos.map(auto => `
-        <article class="auto">
-          <div class="auto-info">
-            <h4>${auto.nombre}</h4>
-            <p><strong>Descripción:</strong> ${auto.descripcion}</p>
-            <p><strong>Destino:</strong> ${auto.destino}</p>
-            <p><strong>Precio:</strong> $${auto.precio}</p>
-            <p><strong>Fechas:</strong> ${auto.fecha_salida} a ${auto.fecha_regreso}</p>
-          </div>
-        </article>
-      `).join('');
-    })
-    .catch(() => {
-      document.getElementById('autos-admin-lista').innerHTML = "<p>Error al cargar los autos.</p>";
-    });
+  const actions = new SessionActions();
+  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
+  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+  actions.InsertData("#user", "nombre");
+  actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
+  const logout = document.getElementById("logout");
+
+  logout.addEventListener("click", () => {
+    actions.logoutSession();
+  });
   </script>
+ <script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const cont = document.getElementById('autos-admin-lista');
+  try {
+    const res = await fetch('../../BACK/PHP/productos_api.php?tipo=coches');
+    const autos = await res.json();
+    if (!autos.length) {
+      cont.innerHTML = "<p>No hay autos cargados aún.</p>";
+      return;
+    }
+    autos.forEach(auto => {
+      const article = document.createElement("article");
+      article.className = "auto";
+      article.innerHTML = `
+        <div class="auto-img-container">
+          <img src="${auto.imagen}" alt="${auto.nombre}" class="auto-img-portada">
+          <img src="${auto.imagen_interior}" alt="${auto.nombre}" class="auto-img-interior"/>
+        </div>
+        <div class="auto-info">
+          <h4>${auto.nombre}</h4>
+          <p><strong>Tipo:</strong> ${auto.tipo}</p>
+          <p><strong>Capacidad:</strong> ${auto.capacidad} pasajeros</p>
+          <p><strong>Precio desde:</strong> AR$ ${parseInt(auto.precio).toLocaleString('es-AR')} por día</p>
+        </div>
+      `;
+      cont.appendChild(article);
+    });
+  } catch (e) {
+    cont.innerHTML = "<p>Error al cargar los autos.</p>";
+  }
+});
+</script>
   <script src="../JS DISEÑO/menu.js"></script>
 </main>
-<script src="../JS DISEÑO/menu.js"></script>
 <footer class="site-footer center">
   <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
 </footer>

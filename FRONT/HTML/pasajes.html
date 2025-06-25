@@ -41,102 +41,68 @@
         <li><a href="panel_usuario.html">Panel</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
+        <li><a href="#" id="logout">Cerrar Sesion</a></li>
       </ul>
     </div>
   </div>
 </header>
 
 <main>
-  <div class="pasajes-hero">
-    <h2>Pasajes Aéreos</h2>
-    <p>Encontrá los mejores vuelos nacionales e internacionales al mejor precio. ¡Viajá por el mundo con Travel Rock Argentina!</p>
-  </div>
+  <section class="pasajes-admin">
+  <h3>Pasajes cargados por el administrador</h3>
+  <div id="pasajes-admin-lista" class="vuelos-lista-horizontal"></div>
+</section>
+  <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+  <script>
+  const actions = new SessionActions();
+  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
+  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+  actions.InsertData("#user", "nombre");
+  actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
+  const logout = document.getElementById("logout");
 
-  <section class="vuelos-nacionales section-full">
-    <h3>Vuelos Nacionales Destacados</h3>
-    <div class="vuelos-lista-horizontal">
-      <article class="vuelo horizontal-vuelo">
-        <div class="vuelo-info slide-in">
-          <h4>BUENOS AIRES &rarr; BARILOCHE</h4>
-          <p><strong>Aerolínea:</strong> Aerolíneas Argentinas</p>
-          <p><strong>Duración:</strong> 2h 20m</p>
-          <p><strong>Precio desde:</strong> AR$ 65.000</p>
-          <p><strong>Clase:</strong> Económica / Ejecutiva</p>
-        </div>
-        <div class="vuelo-img-container">
-          <img src="../../SOURCE/RESOURCES/PASAJES/bariloche.png" alt="Aerolineas Argentinas" class="vuelo-img-portada">
-        </div>
-      </article>
-      <article class="vuelo horizontal-vuelo">
-        <div class="vuelo-info slide-in">
-          <h4>CÓRDOBA &rarr; MENDOZA</h4>
-          <p><strong>Aerolínea:</strong> Flybondi</p>
-          <p><strong>Duración:</strong> 1h 30m</p>
-          <p><strong>Precio desde:</strong> AR$ 48.000</p>
-          <p><strong>Clase:</strong> Económica</p>
-        </div>
-        <div class="vuelo-img-container">
-          <img src="../../SOURCE/RESOURCES/PASAJES/cordoba.jpg" alt="Flybondi" class="vuelo-img-portada">
-        </div>
-      </article>
-      <article class="vuelo horizontal-vuelo">
-        <div class="vuelo-info slide-in">
-          <h4>BUENOS AIRES &rarr; USHUAIA</h4>
-          <p><strong>Aerolínea:</strong> JetSMART</p>
-          <p><strong>Duración:</strong> 3h 30m</p>
-          <p><strong>Precio desde:</strong> AR$ 80.000</p>
-          <p><strong>Clase:</strong> Económica</p>
-        </div>
-        <div class="vuelo-img-container">
-          <img src="../../SOURCE/RESOURCES/PASAJES/ushuaia.webp" alt="JetSMART" class="vuelo-img-portada">
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="vuelos-internacionales section-full">
-    <h3>Vuelos Internacionales Recomendados</h3>
-    <div class="vuelos-lista-horizontal">
-      <article class="vuelo horizontal-vuelo">
-        <div class="vuelo-info slide-in">
-          <h4>BUENOS AIRES &rarr; MADRID</h4>
-          <p><strong>Aerolínea:</strong> Iberia</p>
-          <p><strong>Duración:</strong> 12h 30m</p>
-          <p><strong>Precio desde:</strong> USD 950</p>
-          <p><strong>Clase:</strong> Económica / Ejecutiva</p>
-        </div>
-        <div class="vuelo-img-container">
-          <img src="../../SOURCE/RESOURCES/PASAJES/madrid.jpg" alt="Iberia" class="vuelo-img-portada">
-        </div>
-      </article>
-      <article class="vuelo horizontal-vuelo">
-        <div class="vuelo-info slide-in">
-          <h4>BUENOS AIRES &rarr; MIAMI</h4>
-          <p><strong>Aerolínea:</strong> American Airlines</p>
-          <p><strong>Duración:</strong> 9h 0m</p>
-          <p><strong>Precio desde:</strong> USD 800</p>
-          <p><strong>Clase:</strong> Económica / Ejecutiva</p>
-        </div>
-        <div class="vuelo-img-container">
-          <img src="../../SOURCE/RESOURCES/PASAJES/miami.webp" alt="American Airlines" class="vuelo-img-portada">
-        </div>
-      </article>
-      <article class="vuelo horizontal-vuelo">
-        <div class="vuelo-info slide-in">
-          <h4>BUENOS AIRES &rarr; PARÍS</h4>
-          <p><strong>Aerolínea:</strong> Air France</p>
-          <p><strong>Duración:</strong> 13h 0m</p>
-          <p><strong>Precio desde:</strong> USD 1.050</p>
-          <p><strong>Clase:</strong> Económica / Ejecutiva</p>
-        </div>
-        <div class="vuelo-img-container">
-          <img src="../../SOURCE/RESOURCES/PASAJES/paris.webp" alt="Air France" class="vuelo-img-portada">
-        </div>
-      </article>
-    </div>
-  </section>
+  logout.addEventListener("click", () => {
+    actions.logoutSession();
+  });
+  </script>
   <script src="../JS DISEÑO/menu.js"></script>
   <script src="../JS DISEÑO/pasajes.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const cont = document.getElementById('pasajes-admin-lista');
+  try {
+    const res = await fetch('../../BACK/PHP/productos_api.php?tipo=pasajes');
+    const pasajes = await res.json();
+    if (!pasajes.length) {
+      cont.innerHTML = "<p>No hay pasajes cargados aún.</p>";
+      return;
+    }
+    pasajes.forEach(p => {
+      const article = document.createElement("article");
+      article.className = "vuelo horizontal-vuelo";
+      article.innerHTML = `
+        <div class="vuelo-info slide-in">
+          <h4>${p.nombre}</h4>
+          <p><strong>Aerolínea:</strong> ${p.aerolinea}</p>
+          <p><strong>Duración:</strong> ${p.duracion}</p>
+          <p><strong>Precio desde:</strong> AR$ ${parseInt(p.precio_desde).toLocaleString('es-AR')}</p>
+          <p><strong>Clase:</strong> ${p.clase}</p>
+        </div>
+        <div class="vuelo-img-container">
+          <img src="${p.imagen}" alt="${p.nombre}" class="vuelo-img-portada">
+        </div>
+      `;
+      cont.appendChild(article);
+      const infoDiv = article.querySelector('.slide-in');
+  requestAnimationFrame(() => {
+    infoDiv.classList.add('visible');
+  });
+    });
+  } catch (e) {
+    cont.innerHTML = "<p>Error al cargar los pasajes.</p>";
+  }
+});
+</script>
 </main>
 
 <footer class="site-footer center">
