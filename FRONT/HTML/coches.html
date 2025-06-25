@@ -46,59 +46,119 @@
     </div>
   </div>
 </header>
+<style>
+.autos-admin .add-to-cart {
+  
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap; 
 
+}
+</style>
 <main>
- <section class="autos-admin">
-  <h1>Alquiler de Autos</h1>
-  <div id="autos-admin-lista" class="autos-lista"></div>
-</section>
+  <section class="autos-admin">
+    <h1>Alquiler de Autos</h1>
+    <div id="autos-admin-lista" class="autos-lista"></div>
+  </section>
+
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script>
-  const actions = new SessionActions();
-  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
-  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
-  actions.InsertData("#user", "nombre");
-  actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
-  const logout = document.getElementById("logout");
+    const actions = new SessionActions();
+    actions.Disabled(["#login_panel", "#register_panel"], "none", "0.5");
+    actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+    actions.InsertData("#user", "nombre");
+    actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
 
-  logout.addEventListener("click", () => {
-    actions.logoutSession();
+    document.getElementById("logout").addEventListener("click", () => {
+      actions.logoutSession();
+    });
+  </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const cont = document.getElementById('autos-admin-lista');
+
+    try {
+      const res = await fetch('../../BACK/PHP/productos_api.php?tipo=coches');
+      const autos = await res.json();
+
+      if (!autos.length) {
+        cont.innerHTML = "<p>No hay autos cargados aún.</p>";
+        return;
+      }
+
+      autos.forEach(p => {
+        const article = document.createElement("article");
+        article.className = "auto extendible";
+
+        article.innerHTML = `
+          <div class="auto-img-container">
+            <img src="${p.imagen}" alt="${p.nombre}" class="auto-img-portada"/>
+            <img src="${p.imagen_interior}" alt="Interior ${p.nombre}" class="auto-img-interior"/>
+          </div>
+          <div class="auto-info">
+            <h2>${p.nombre}</h2>
+            <p><strong>Tipo:</strong> ${p.tipo}</p>
+            <p><strong>Capacidad:</strong> ${p.capacidad} pasajeros</p>
+            <p><strong>Precio aprox:</strong> AR$ ${parseInt(p.precio).toLocaleString('es-AR')} por día</p>
+            <div class="form-container" style="display: none; margin-top: 10px;">
+              <form class="add-cart-form">
+                <input type="hidden" name="id_paquete" value="${p.id_autos}">
+                <label for="cant-${p.id_autos}">Cantidad:</label>
+                <input id="cant-${p.id_autos}" type="number" name="cantidad" value="1" min="1" style="width:60px;">
+                <button type="submit" class="add-to-cart">Añadir al carrito</button>
+              </form>
+            </div>
+          </div>
+        `;
+
+        // Click para expandir/cerrar formulario
+        article.addEventListener("click", () => {
+          const formContainer = article.querySelector(".form-container");
+          formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
+        });
+
+        // Submit del form
+        article.querySelector(".add-cart-form").addEventListener("submit", async function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const session = await fetch("../../BACK/PHP/checkSession.php").then(r => r.json());
+          if (!session.loggedIn) {
+            window.location.href = "login.html";
+            return;
+          }
+
+          const formData = new FormData(this);
+          formData.append("tipo", "paquete"); // Si el backend espera "autos", cambia esto
+          const res = await fetch("../../BACK/PHP/carrito_api.php", {
+            method: "POST",
+            body: formData
+          });
+
+          const data = await res.json();
+          alert(data.mensaje || data.error || "Agregado al carrito");
+        });
+
+        cont.appendChild(article);
+      });
+
+    } catch (e) {
+      console.error("Error al cargar autos:", e);
+      cont.innerHTML = "<p>Error al cargar los autos.</p>";
+    }
   });
   </script>
- <script>
-document.addEventListener("DOMContentLoaded", async () => {
-  const cont = document.getElementById('autos-admin-lista');
-  try {
-    const res = await fetch('../../BACK/PHP/productos_api.php?tipo=coches');
-    const autos = await res.json();
-    if (!autos.length) {
-      cont.innerHTML = "<p>No hay autos cargados aún.</p>";
-      return;
-    }
-    autos.forEach(auto => {
-      const article = document.createElement("article");
-      article.className = "auto";
-      article.innerHTML = `
-        <div class="auto-img-container">
-          <img src="${auto.imagen}" alt="${auto.nombre}" class="auto-img-portada">
-          <img src="${auto.imagen_interior}" alt="${auto.nombre}" class="auto-img-interior"/>
-        </div>
-        <div class="auto-info">
-          <h4>${auto.nombre}</h4>
-          <p><strong>Tipo:</strong> ${auto.tipo}</p>
-          <p><strong>Capacidad:</strong> ${auto.capacidad} pasajeros</p>
-          <p><strong>Precio desde:</strong> AR$ ${parseInt(auto.precio).toLocaleString('es-AR')} por día</p>
-        </div>
-      `;
-      cont.appendChild(article);
-    });
-  } catch (e) {
-    cont.innerHTML = "<p>Error al cargar los autos.</p>";
-  }
-});
-</script>
+
   <script src="../JS DISEÑO/menu.js"></script>
 </main>
+
 <footer class="site-footer center">
   <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
 </footer>
+</body>
+</html>

@@ -10,6 +10,33 @@
 
 </head>
 <body>
+<style>
+.paquete.extendible {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.paquete.extendible:hover {
+  background-color: #f4f4f4;
+}
+
+.paquete .add-to-cart {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.paquete .add-to-cart:hover {
+  background-color: #219653;
+}
+</style>
 <header class="site-header">
   <div class="container header-container">
     <h1>TRAVEL</h1>
@@ -70,24 +97,60 @@
         const res = await fetch("../../BACK/PHP/productos_api.php?tipo=paquetes");
         const paquetes = await res.json();
 
-        paquetes.forEach(p => {
-          const article = document.createElement("article");
-          article.className = "paquete";
-          article.innerHTML = `
-            <div class="imagen">
-              <img src="${p.imagen}" alt="${p.nombre_viaje}" class="auto-img-portada"/>
-            </div>
-            <div class="info">
-              <h2>${p.nombre_viaje}</h2>
-              <p><strong>Duración:</strong> ${p.duracion}</p>
-              <p><strong>Incluye:</strong> ${p.incluye}</p>
-              <p><strong>Precio aprox:</strong> AR$ ${parseInt(p.precio_aprox).toLocaleString('es-AR')}</p>
-              <button data-id_paquete="${p.id_paquetes}" class="add-to-cart">Añadir al carrito</button>
-            </div>`;
-          contenedor.appendChild(article);
-        });
+       paquetes.forEach(p => {
+  const article = document.createElement("article");
+  article.className = "paquete extendible";
 
-        console.log(`Se cargaron ${paquetes.length} paquetes desde el servidor.`);
+  article.innerHTML = `
+    <div class="imagen">
+      <img src="${p.imagen}" alt="${p.nombre_viaje}" class="auto-img-portada"/>
+    </div>
+    <div class="info">
+      <h2>${p.nombre_viaje}</h2>
+      <p><strong>Duración:</strong> ${p.duracion}</p>
+      <p><strong>Incluye:</strong> ${p.incluye}</p>
+      <p><strong>Precio aprox:</strong> AR$ ${parseInt(p.precio_aprox).toLocaleString('es-AR')}</p>
+      <div class="form-container" style="display: none; margin-top: 10px;">
+        <form class="add-cart-form">
+          <input type="hidden" name="id_paquete" value="${p.id_paquetes}">
+          <label for="cant-${p.id_paquetes}">Cantidad:</label>
+          <input id="cant-${p.id_paquetes}" type="number" name="cantidad" value="1" min="1" style="width:60px;">
+          <button type="submit" class="add-to-cart">Añadir al carrito</button>
+        </form>
+      </div>
+    </div>
+  `;
+
+  // Al hacer clic, se expande el formulario
+  article.addEventListener("click", () => {
+    const formContainer = article.querySelector(".form-container");
+    formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
+  });
+
+  // Manejo del submit
+  article.querySelector('.add-cart-form').addEventListener('submit', async function(e) {
+    e.stopPropagation(); // Evita que el click cierre el form
+    e.preventDefault();
+
+    const session = await fetch('../../BACK/PHP/checkSession.php').then(r => r.json());
+    if (!session.loggedIn) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    const formData = new FormData(this);
+    formData.append('tipo', 'paquete');
+    const res = await fetch('../../BACK/PHP/carrito_api.php', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    alert(data.mensaje || data.error || "Agregado al carrito");
+  });
+
+  contenedor.appendChild(article);
+});
+
       } catch (error) {
         contenedor.innerHTML = `<p>Error al cargar paquetes.</p>`;
         console.error("Error al traer paquetes:", error);

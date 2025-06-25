@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Finalizar Compra</title>
+  <link rel="stylesheet" href="../CSS/header-footer.css"/>
+  <link rel="stylesheet" href="../CSS/carrito.css"/>
+</head>
+<body>
+<header class="site-header">
+  <!-- ...header igual que los otros archivos... -->
+</header>
+<main>
+  <h1>Finalizar Compra</h1>
+  <form id="form-finalizar-compra">
+    <label>Nombre: <input name="nombre" required></label><br>
+    <label>Apellido: <input name="apellido" required></label><br>
+    <label>DNI: <input name="dni" required></label><br>
+    <label>Método de pago:
+      <select name="metodo_pago" id="metodo_pago" required>
+        <option value="">Seleccionar</option>
+        <option value="tarjeta">Tarjeta</option>
+        <option value="efectivo">Efectivo (30% de descuento)</option>
+      </select>
+    </label><br>
+    <div id="tarjeta-fields" style="display:none;">
+      <label>Número de tarjeta: <input name="numero_tarjeta"></label><br>
+      <label>Nombre en tarjeta: <input name="nombre_tarjeta"></label><br>
+      <label>Vencimiento: <input name="vencimiento" type="month"></label><br>
+      <label>Código de seguridad: <input name="codigo_seguridad"></label><br>
+    </div>
+    <button type="submit">Confirmar compra</button>
+    <div id="msg-finalizar"></div>
+  </form>
+</main>
+<script>
+document.getElementById('metodo_pago').addEventListener('change', function() {
+  document.getElementById('tarjeta-fields').style.display = this.value === 'tarjeta' ? 'block' : 'none';
+});
+document.getElementById('form-finalizar-compra').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  // Enviar datos al backend para registrar la compra
+  const data = Object.fromEntries(new FormData(this));
+  const res = await fetch('../../BACK/PHP/finalizar_compra.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  });
+  const result = await res.json();
+  document.getElementById('msg-finalizar').textContent = result.mensaje || result.error || "Listo";
+  if(result.mensaje) this.reset();
+});
+</script>
+<footer class="site-footer center">
+  <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>
