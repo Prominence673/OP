@@ -5,8 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compra Exitosa | Travel Rock Argentina</title>
     <link rel="stylesheet" href="/op/FRONT/CSS/header-footer.css">
-    <link rel="stylesheet" href="/op/FRONT/CSS/confirmacion.css">
-       <script>
+    <link rel="stylesheet" href="/op/FRONT/CSS/checkout.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* Ajustes para la confirmación usando el layout de checkout.css */
+      .confirmation-icon {
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .confirmation-title {
+        font-size: 2.2rem;
+        color: #28a745;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      .confirmation-message {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .order-details {
+        background: #f6f8fa;
+        border-radius: 8px;
+        padding: 1.2rem 1rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        width: 100%;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .order-details h2 {
+        font-size: 1.2rem;
+        color: #004aad;
+        margin-bottom: 0.7rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      #order-details-content {
+        font-size: 1rem;
+        color: #222;
+      }
+      .confirmation-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+      .confirmation-actions .btn {
+        padding: 0.7rem 1.5rem;
+        border-radius: 6px;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background 0.2s;
+      }
+      .confirmation-actions .btn-primary {
+        background: #004aad;
+        color: #fff;
+      }
+      .confirmation-actions .btn-primary:hover {
+        background: #003377;
+      }
+      .confirmation-actions .btn-secondary {
+        background: #e9ecef;
+        color: #004aad;
+        border: 1px solid #b0c4de;
+      }
+      .confirmation-actions .btn-secondary:hover {
+        background: #d6e4f0;
+      }
+      @media (max-width: 600px) {
+        .order-details {
+          padding: 0.7rem 0.3rem;
+        }
+        .confirmation-actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+    <script>
         // Verificar que existe una transacción antes de mostrar la página
         if (!localStorage.getItem('ultimaTransaccion')) {
             window.location.href = '/op/FRONT/HTML/carrito.html';
@@ -18,23 +103,46 @@
         <!-- Tu header existente -->
     </header>
 
-    <main class="confirmation-container">
-        <div class="confirmation-card">
-            <div class="confirmation-icon">✓</div>
-            <h1>¡Pago realizado con éxito!</h1>
-            <p>Hemos recibido tu pago correctamente. En breve recibirás un correo con los detalles de tu compra.</p>
-            
-            <div class="order-details">
-                <h2>Detalles de tu orden</h2>
-                <div id="order-details-content">
-                    <!-- Los detalles se cargarán aquí -->
+    <main class="checkout-container">
+        <div class="checkout-steps">
+            <div class="step">1. Carrito</div>
+            <div class="step">2. Método de Pago</div>
+            <div class="step active">3. Confirmación</div>
+        </div>
+        <div class="checkout-grid">
+            <section class="payment-section" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="confirmation-icon">
+                    <i class="fa-solid fa-circle-check" style="color: #28a745; font-size: 3.5rem;"></i>
                 </div>
-            </div>
-            
-            <div class="confirmation-actions">
-                <a href="/op/FRONT/HTML/paquetes.html" class="btn btn-secondary">Ver más paquetes</a>
-                <a href="/op/FRONT/HTML/index.html" class="btn btn-primary">Volver al inicio</a>
-            </div>
+                <h1 class="confirmation-title">¡Pago realizado con éxito!</h1>
+                <p class="confirmation-message">
+                    <i class="fa-solid fa-envelope-circle-check" style="color: #0077cc;"></i>
+                    Hemos recibido tu pago correctamente. En breve recibirás un correo con los detalles de tu compra.
+                </p>
+                <div class="order-details">
+                    <h2>
+                        <i class="fa-solid fa-file-invoice-dollar" style="color: #004aad;"></i>
+                        Detalles de tu orden
+                    </h2>
+                    <div id="order-details-content">
+                        <!-- Los detalles se cargarán aquí -->
+                    </div>
+                </div>
+                <div class="confirmation-actions">
+                    <a href="/op/FRONT/HTML/paquetes.html" class="btn btn-secondary">
+                        <i class="fa-solid fa-suitcase-rolling"></i> Ver más paquetes
+                    </a>
+                    <a href="/op/FRONT/HTML/index.html" class="btn btn-primary">
+                        <i class="fa-solid fa-house"></i> Volver al inicio
+                    </a>
+                </div>
+            </section>
+            <aside class="summary-section" style="background: transparent; box-shadow: none; border: none;">
+                <div class="secure-payment" style="margin-top: 2rem;">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Pago seguro • Todos tus datos están protegidos</span>
+                </div>
+            </aside>
         </div>
     </main>
 
@@ -43,6 +151,5 @@
     </footer>
 
     <script src="/op/BACK/JS LOGICA/confirmacion.js"></script>
-    
 </body>
 </html>

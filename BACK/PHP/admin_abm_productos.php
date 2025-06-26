@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 require_once 'connection.php';
 
-// Detectar tipo de request
+
 $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
 $isJson = stripos($contentType, 'application/json') !== false;
 
@@ -18,18 +18,18 @@ if ($isJson) {
     $data = $_POST;
 }
 
-// Validar tabla
+
 $tablas_validas = ['autos', 'pasajes', 'paquetes', 'estadias'];
 if (!in_array($tabla, $tablas_validas)) {
     echo json_encode(['error' => 'Tabla no válida']);
     exit;
 }
 
-// --- INSERTAR ---
+
 if ($accion === 'insertar') {
     switch ($tabla) {
         case 'autos':
-            // Si viene archivo, procesar imagen
+        
             $imagen = $data['imagen'] ?? '';
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
                 $nombreArchivo = uniqid('auto_') . '_' . basename($_FILES['imagen']['name']);
@@ -61,7 +61,7 @@ if ($accion === 'insertar') {
     exit;
 }
 
-// --- MODIFICAR ---
+
 if ($accion === 'modificar' && $id) {
     switch ($tabla) {
         case 'autos':
@@ -96,7 +96,7 @@ if ($accion === 'modificar' && $id) {
     exit;
 }
 
-// --- BORRAR ---
+
 if ($accion === 'borrar' && $id) {
     switch ($tabla) {
         case 'autos':

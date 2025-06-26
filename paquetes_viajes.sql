@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2025 a las 17:44:43
+-- Tiempo de generación: 26-06-2025 a las 03:11:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -282,7 +282,13 @@ INSERT INTO `carrito` (`id_carrito`, `id_usuario`, `fecha_creacion`, `estado`) V
 (4, NULL, '2025-06-25 11:42:18', 'activo'),
 (5, NULL, '2025-06-25 11:42:20', 'activo'),
 (6, NULL, '2025-06-25 11:42:22', 'activo'),
-(7, NULL, '2025-06-25 11:42:23', 'activo');
+(7, NULL, '2025-06-25 11:42:23', 'activo'),
+(8, NULL, '2025-06-25 16:50:44', 'activo'),
+(9, NULL, '2025-06-25 16:50:49', 'activo'),
+(10, NULL, '2025-06-25 16:52:15', 'activo'),
+(11, NULL, '2025-06-25 16:52:55', 'activo'),
+(12, NULL, '2025-06-25 16:53:08', 'activo'),
+(13, 39, '2025-06-25 16:55:06', 'activo');
 
 --
 -- Disparadores `carrito`
@@ -309,6 +315,16 @@ CREATE TABLE `carrito_items` (
   `cantidad` int(11) DEFAULT 1,
   `id_producto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `carrito_items`
+--
+
+INSERT INTO `carrito_items` (`id_item`, `id_carrito`, `tipo`, `cantidad`, `id_producto`) VALUES
+(3, 13, 'paquete', 2, 3),
+(4, 13, 'paquete', 3, 5),
+(5, 13, 'paquete', 4, 4),
+(6, 13, 'auto', 1, 8);
 
 -- --------------------------------------------------------
 
@@ -347,9 +363,21 @@ CREATE TABLE `descuento` (
   `razon` varchar(255) DEFAULT NULL,
   `porcentaje` decimal(5,2) DEFAULT NULL,
   `inicio` date DEFAULT NULL,
-  `fin` date DEFAULT NULL,
-  `por_metodo_pago` tinyint(1) DEFAULT 0
+  `fin` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `descuento`
+--
+
+INSERT INTO `descuento` (`id_descuento`, `razon`, `porcentaje`, `inicio`, `fin`) VALUES
+(1, 'Descuento por pago en efectivo', 10.00, '2025-06-01', '2025-12-31'),
+(2, 'Descuento por tarjeta de débito', 5.00, '2025-06-01', '2025-12-31'),
+(3, 'Promoción de invierno', 15.00, '2025-07-01', '2025-08-31'),
+(4, 'Cyber Monday', 20.00, '2025-11-04', '2025-11-06'),
+(5, 'Descuento exclusivo para estudiantes', 12.50, '2025-06-01', '2025-09-30'),
+(6, 'Descuento por transferencia bancaria', 7.00, '2025-06-01', '2025-12-31'),
+(7, 'Sin descuento', 0.00, '2025-01-01', '2026-01-01');
 
 -- --------------------------------------------------------
 
@@ -496,8 +524,17 @@ CREATE TABLE `opiniones` (
 CREATE TABLE `pagometodo` (
   `id_pagometodo` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `aplica_descuento` tinyint(1) DEFAULT 0
+  `id_descuento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pagometodo`
+--
+
+INSERT INTO `pagometodo` (`id_pagometodo`, `nombre`, `id_descuento`) VALUES
+(1, 'credito', NULL),
+(2, 'debito', NULL),
+(3, 'efectivo', NULL);
 
 -- --------------------------------------------------------
 
@@ -623,12 +660,43 @@ CREATE TABLE `pedido` (
 CREATE TABLE `productos` (
   `id_producto` int(11) NOT NULL,
   `tipo` enum('auto','estadia','paquete','pasaje') NOT NULL,
-  `id_referencia` int(11) NOT NULL,
-  `id_autos` int(11) DEFAULT NULL,
-  `id_estadias` int(11) DEFAULT NULL,
-  `id_paquetes` int(11) DEFAULT NULL,
-  `id_pasajes` int(11) DEFAULT NULL
+  `id_referencia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id_producto`, `tipo`, `id_referencia`) VALUES
+(1, 'paquete', 1),
+(2, 'paquete', 3),
+(3, 'paquete', 4),
+(4, 'paquete', 5),
+(5, 'paquete', 6),
+(6, 'paquete', 7),
+(8, 'auto', 1),
+(9, 'auto', 3),
+(10, 'auto', 4),
+(11, 'auto', 5),
+(12, 'auto', 6),
+(15, 'estadia', 1),
+(16, 'estadia', 2),
+(17, 'estadia', 3),
+(18, 'estadia', 4),
+(19, 'estadia', 5),
+(20, 'estadia', 6),
+(21, 'estadia', 7),
+(22, 'estadia', 8),
+(23, 'estadia', 9),
+(24, 'estadia', 10),
+(25, 'estadia', 11),
+(26, 'estadia', 12),
+(30, 'pasaje', 1),
+(31, 'pasaje', 2),
+(32, 'pasaje', 3),
+(33, 'pasaje', 4),
+(34, 'pasaje', 5),
+(35, 'pasaje', 6);
 
 -- --------------------------------------------------------
 
@@ -840,7 +908,8 @@ ALTER TABLE `opiniones`
 -- Indices de la tabla `pagometodo`
 --
 ALTER TABLE `pagometodo`
-  ADD PRIMARY KEY (`id_pagometodo`);
+  ADD PRIMARY KEY (`id_pagometodo`),
+  ADD KEY `fk_orden_descuento` (`id_descuento`);
 
 --
 -- Indices de la tabla `paquetes`
@@ -889,11 +958,7 @@ ALTER TABLE `pedido`
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id_producto`),
-  ADD KEY `fk_autos` (`id_autos`),
-  ADD KEY `fk_estadias` (`id_estadias`),
-  ADD KEY `fk_paquetes` (`id_paquetes`),
-  ADD KEY `fk_pasajes` (`id_pasajes`);
+  ADD PRIMARY KEY (`id_producto`);
 
 --
 -- Indices de la tabla `provincia`
@@ -970,13 +1035,13 @@ ALTER TABLE `autos`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito_items`
 --
 ALTER TABLE `carrito_items`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_personales`
@@ -988,7 +1053,7 @@ ALTER TABLE `datos_personales`
 -- AUTO_INCREMENT de la tabla `descuento`
 --
 ALTER TABLE `descuento`
-  MODIFY `id_descuento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_descuento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `destinos`
@@ -1042,7 +1107,7 @@ ALTER TABLE `opiniones`
 -- AUTO_INCREMENT de la tabla `pagometodo`
 --
 ALTER TABLE `pagometodo`
-  MODIFY `id_pagometodo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pagometodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `paquetes`
@@ -1084,7 +1149,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `provincia`
@@ -1185,6 +1250,12 @@ ALTER TABLE `localidad`
 --
 ALTER TABLE `opiniones`
   ADD CONSTRAINT `opiniones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `pagometodo`
+--
+ALTER TABLE `pagometodo`
+  ADD CONSTRAINT `fk_orden_descuento` FOREIGN KEY (`id_descuento`) REFERENCES `descuento` (`id_descuento`);
 
 --
 -- Filtros para la tabla `partido`

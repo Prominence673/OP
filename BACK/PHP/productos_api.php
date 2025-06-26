@@ -50,10 +50,10 @@ class ProductosAPI {
     }
 }
 
-// --- Uso de la API ---
+
 $api = new ProductosAPI($conn);
 
-// Determinar qué datos devolver según parámetro GET 'tipo'
+
 $tipo = $_GET['tipo'] ?? '';
 
 switch ($tipo) {

@@ -11,7 +11,7 @@ if (!$itemId) {
 }
 
 try {
-    // Verificar que el item existe
+
     $stmt = $conn->prepare("SELECT id_item FROM carrito_items WHERE id_item = ?");
     $stmt->bind_param("i", $itemId);
     $stmt->execute();
@@ -22,7 +22,7 @@ try {
         exit;
     }
     
-    // Eliminar item
+
     $stmt = $conn->prepare("DELETE FROM carrito_items WHERE id_item = ?");
     $stmt->bind_param("i", $itemId);
     $stmt->execute();

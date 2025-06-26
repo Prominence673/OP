@@ -12,27 +12,36 @@ if (!$itemId || !$operacion) {
 }
 
 try {
-    // Obtener cantidad actual usando id_item
+
     $stmt = $conn->prepare("SELECT cantidad FROM carrito_items WHERE id_item = ?");
     $stmt->bind_param("i", $itemId);
     $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows === 0) {
+    $stmt->bind_result($cantidad_actual);
+    if (!$stmt->fetch()) {
         echo json_encode(["error" => "Item no encontrado"]);
+        $stmt->close();
         exit;
     }
-    
-    $item = $result->fetch_assoc();
-    $nuevaCantidad = $operacion === "sumar" ? $item['cantidad'] + 1 : max(1, $item['cantidad'] - 1);
-    
-    // Actualizar cantidad usando id_item
+    $stmt->close();
+
+
+    if ($operacion === "sumar") {
+        $nuevaCantidad = $cantidad_actual + 1;
+    } elseif ($operacion === "restar") {
+        $nuevaCantidad = max(1, $cantidad_actual - 1);
+    } else {
+        echo json_encode(["error" => "Operación inválida"]);
+        exit;
+    }
+
+
     $stmt = $conn->prepare("UPDATE carrito_items SET cantidad = ? WHERE id_item = ?");
     $stmt->bind_param("ii", $nuevaCantidad, $itemId);
     $stmt->execute();
-    
-    echo json_encode(["success" => true]);
-    
+    $stmt->close();
+
+    echo json_encode(["success" => true, "nuevaCantidad" => $nuevaCantidad]);
+
 } catch (Exception $e) {
     echo json_encode(["error" => $e->getMessage()]);
 } finally {

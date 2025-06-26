@@ -1,0 +1,1076 @@
+[26-Jun-2025 07:22:35 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:55 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:58 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:58 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:58 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:58 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:58 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:58 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:59 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:59 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:59 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:59 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:59 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:26:59 Europe/Berlin] Resumen carrito: Array
+(
+)
+
+[26-Jun-2025 07:31:30 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:31:30 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[26-Jun-2025 07:34:33 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:34:33 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[26-Jun-2025 07:34:38 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:34:38 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[26-Jun-2025 07:35:29 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:35:29 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[26-Jun-2025 07:44:16 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:44:16 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 120000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 07:44:23 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 2
+[26-Jun-2025 07:44:23 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 120000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 07:44:26 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 3
+[26-Jun-2025 07:44:26 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 120000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 07:44:28 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:44:28 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 120000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 07:44:36 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:44:36 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 120000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 07:56:12 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:56:12 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+
+[26-Jun-2025 07:56:16 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 2
+[26-Jun-2025 07:56:16 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+
+[26-Jun-2025 07:56:18 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 3
+[26-Jun-2025 07:56:18 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+
+[26-Jun-2025 07:56:18 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 2
+[26-Jun-2025 07:56:18 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+
+[26-Jun-2025 07:56:19 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:56:19 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+
+[26-Jun-2025 07:56:22 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 2
+[26-Jun-2025 07:56:22 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+
+[26-Jun-2025 07:56:22 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 3
+[26-Jun-2025 07:56:22 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+
+[26-Jun-2025 07:56:23 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 2
+[26-Jun-2025 07:56:23 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+
+[26-Jun-2025 07:56:23 Europe/Berlin] Query ejecutada para carrito 14, pagometodo 1
+[26-Jun-2025 07:56:23 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 37
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+            [total] => 350000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 38
+            [cantidad] => 3
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 360000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 39
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 40
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 41
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+    [5] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [6] => Array
+        (
+            [id_producto] => 10
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => RENAULT DUSTER
+            [precio] => 28000.00
+            [total] => 28000
+        )
+
+)
+

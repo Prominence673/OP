@@ -87,9 +87,36 @@
         window.location.href = "finalizar_compra.html";
       });
     </script>
+    <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
     <script>
+      const actions = new SessionActions();
       actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
       actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
+    </script>
+    <script>
+      fetch("../../BACK/PHP/obtener_carrito.php")
+        .then(res => res.json())
+        .then(data => {
+          const lista = document.getElementById("lista-carrito");
+          lista.innerHTML = "";
+          if (!data.items.length) {
+            lista.innerHTML = "<p>El carrito está vacío.</p>";
+            document.getElementById("total-carrito").textContent = "$0";
+            return;
+          }
+          let total = 0;
+          data.items.forEach(item => {
+            total += item.precio * item.cantidad;
+            const div = document.createElement("div");
+            div.className = "order-item";
+            div.innerHTML = `
+              <strong>${item.nombre}</strong> x${item.cantidad}<br>
+              <span>Precio: $${parseFloat(item.precio).toLocaleString()} | Total: $${parseFloat(item.precio * item.cantidad).toLocaleString()}</span>
+            `;
+            lista.appendChild(div);
+          });
+          document.getElementById("total-carrito").textContent = "$" + total.toLocaleString();
+        });
     </script>
 </body>
 </html>

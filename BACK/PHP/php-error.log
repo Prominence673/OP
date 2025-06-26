@@ -13635,3 +13635,3753 @@
 
 )
 
+[26-Jun-2025 02:11:54 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:11:54 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:11:54 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 7
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+    [4] => Array
+        (
+            [id_item] => 7
+            [tipo] => estadia
+            [id_producto] => 15
+            [cantidad] => 1
+            [nombre] => Alvear Palace Hotel
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 02:12:00 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:12:00 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:12:00 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 7
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:12:02 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:12:02 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:12:02 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 7
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:12:02 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:12:02 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:12:02 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 7
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:30 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:30 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:30 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 7
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:36 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:36 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:36 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 6
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:36 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:36 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:36 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 5
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:36 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:36 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:36 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 4
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 3
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 1
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 1
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 1
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:37 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 1
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:38 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:38 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:38 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 1
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:40 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:40 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:40 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:43 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:43 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:32:58 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:32:58 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:32:58 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:33:00 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:33:00 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:33:00 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:34:47 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:34:47 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:34:47 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:34:49 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:34:49 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:34:49 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:34:57 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:34:57 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:34:57 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:34:58 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:34:58 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:34:58 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:38:57 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:38:57 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:38:57 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 1
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:38:59 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:38:59 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:38:59 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 2
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:39:00 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:39:00 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:39:00 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:39:01 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:39:01 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:39:01 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:39:01 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:39:01 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:39:01 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 02:39:01 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 02:39:01 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 02:39:01 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 03:33:03 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 03:33:03 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 03:33:03 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 03:33:06 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 03:33:06 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 03:33:06 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 03:33:14 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 03:33:14 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 03:33:14 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+    [3] => Array
+        (
+            [id_item] => 6
+            [tipo] => auto
+            [id_producto] => 8
+            [cantidad] => 1
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+        )
+
+)
+
+[26-Jun-2025 03:33:18 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 03:33:18 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 03:33:18 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 03:33:21 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 03:33:21 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 03:33:21 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 03:33:21 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 03:33:21 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 03:33:21 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 03:40:45 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 03:40:45 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 03:40:45 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 03:42:12 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 03:42:12 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 03:42:12 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 04:02:29 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 04:02:29 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 04:02:29 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 04:03:24 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 04:03:24 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 04:03:24 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 04:03:26 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 04:03:26 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 04:03:26 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 05:32:45 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 05:32:45 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 05:32:45 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 05:32:49 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 05:32:49 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 05:32:49 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 05:34:01 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 05:34:01 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 05:34:01 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 05:34:03 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 05:34:03 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 05:34:03 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 05:38:34 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 05:38:34 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 05:38:34 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:20:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:20:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:20:37 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:20:57 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:20:57 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:20:57 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:20:58 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:20:58 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:20:58 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:36:08 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:36:08 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:36:08 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:36:11 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:36:11 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:36:11 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:36:13 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:36:13 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:36:13 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:52:11 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:52:11 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:52:11 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:52:18 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:52:18 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:52:18 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:52:19 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:52:19 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:52:19 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 06:58:24 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 06:58:24 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 06:58:24 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:01:08 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:01:08 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:01:08 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:01:13 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:01:13 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:01:13 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:01:14 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:01:14 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:01:14 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:01:15 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:01:15 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:01:15 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:11:46 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:11:46 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:11:46 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:11:48 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:11:48 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:11:48 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:11:55 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:11:55 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:11:55 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:12:07 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:12:07 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:12:07 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:18:04 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:18:04 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:18:04 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:18:38 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:18:38 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:18:38 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:34:34 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:34:34 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:34:34 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:34:36 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:34:36 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:34:36 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:34:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:34:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:34:37 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:35:31 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:35:31 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:35:31 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 3
+            [tipo] => paquete
+            [id_producto] => 3
+            [cantidad] => 2
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [2] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:35:33 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:35:33 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:35:33 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 4
+            [tipo] => paquete
+            [id_producto] => 5
+            [cantidad] => 3
+            [nombre] => El Calafate - Glaciar Perito Moreno
+            [precio] => 350000.00
+        )
+
+    [1] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:35:35 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:35:35 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:35:35 Europe/Berlin] Resultado carrito_items: Array
+(
+    [0] => Array
+        (
+            [id_item] => 5
+            [tipo] => paquete
+            [id_producto] => 4
+            [cantidad] => 4
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+        )
+
+)
+
+[26-Jun-2025 07:35:37 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:35:37 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:35:37 Europe/Berlin] Resultado carrito_items: Array
+(
+)
+
+[26-Jun-2025 07:35:41 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:35:41 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:35:41 Europe/Berlin] Resultado carrito_items: Array
+(
+)
+
+[26-Jun-2025 07:35:51 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:35:51 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:35:51 Europe/Berlin] Resultado carrito_items: Array
+(
+)
+
+[26-Jun-2025 07:38:42 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:38:42 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:38:42 Europe/Berlin] Resultado carrito_items: Array
+(
+)
+
+[26-Jun-2025 07:40:07 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:40:07 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:40:07 Europe/Berlin] Resultado carrito_items: Array
+(
+)
+
+[26-Jun-2025 07:40:22 Europe/Berlin] Test de error_log funcionando
+[26-Jun-2025 07:40:22 Europe/Berlin] Carrito obtenido: Array
+(
+    [id_carrito] => 13
+)
+
+[26-Jun-2025 07:40:22 Europe/Berlin] Resultado carrito_items: Array
+(
+)
+

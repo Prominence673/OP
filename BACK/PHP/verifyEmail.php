@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "La contraseña es demasiado corta";
     } else {
         $hash = password_hash($newPass, PASSWORD_BCRYPT);
-        $res = $model->updatePassword($hash); // Asigna el resultado a $res
+        $res = $model->updatePassword($hash); 
         if ($res['success']) {
             $model->deleteToken($token);
             echo "<h2>Contraseña actualizada correctamente</h2>";

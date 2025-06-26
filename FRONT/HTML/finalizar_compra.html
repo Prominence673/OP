@@ -38,61 +38,123 @@
                 </div>
 
                 <!-- Formulario para Tarjeta -->
-                <form id="payment-form" class="credit-card-form">
-                    <div class="form-group">
-                        <label for="card-number">Número de Tarjeta</label>
-                        <div class="input-with-icon">
-                            <i class="fa-solid fa-credit-card"></i>
-                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="card-name">Nombre en la Tarjeta</label>
-                        <input type="text" id="card-name" placeholder="JUAN PEREZ" required>
-                    </div>
-
-                    <div class="form-row">
+               <!-- FORMULARIO TARJETA DE CRÉDITO -->
+                    <form id="formCredit" class="credit-card-form" style="display: none;">
+                        <!-- mismos campos que ya tenías para crédito -->
                         <div class="form-group">
-                            <label for="card-expiry">Fecha de Expiración</label>
-                            <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" required>
+                            <label for="nombre_credito">Nombre</label>
+                            <input type="text" id="nombre_credito" name="nombre" required>
                         </div>
                         <div class="form-group">
-                            <label for="card-cvv">CVV</label>
+                            <label for="apellido_credito">Apellido</label>
+                            <input type="text" id="apellido_credito" name="apellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dni_credito">DNI</label>
+                            <input type="text" id="dni_credito" name="dni" maxlength="8" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Número de Tarjeta</label>
                             <div class="input-with-icon">
-                                <input type="text" id="card-cvv" placeholder="123" maxlength="3" required>
-                                <i class="fa-solid fa-circle-question" title="Los 3 dígitos en el reverso de tu tarjeta"></i>
+                                <i class="fa-solid fa-credit-card"></i>
+                                <input type="text" id="card-number" name="numero" placeholder="1234 5678 9012 3456" maxlength="19" required>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Cuotas solo para crédito -->
-                    <div class="form-group" id="installments-group">
-                        <label for="card-installments">Cuotas</label>
-                        <select id="card-installments" required>
-                            <option value="">Seleccione cuotas</option>
-                            <option value="1">1 cuota</option>
-                            <option value="3">3 cuotas</option>
-                            <option value="6">6 cuotas</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn-pay">
-                        <i class="fa-solid fa-lock"></i> PAGAR $<span id="total-amount">0.00</span>
-                    </button>
-                </form>
+                        <div class="form-group">
+                            <label for="card-name">Nombre en la Tarjeta</label>
+                            <input type="text" id="card-name" name="nombre_tarjeta" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry">Fecha de Expiración</label>
+                                <input type="text" id="card-expiry" name="vencimiento" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvv">CVV</label>
+                                <input type="text" id="card-cvv" name="cvv" maxlength="3" required>
+                            </div>
+                        </div>
+                        <div class="form-group" id="installments-group">
+                            <label for="card-installments">Cuotas</label>
+                            <select id="card-installments" name="cuotas" required>
+                                <option value="">Seleccione cuotas</option>
+                                <option value="1">1 cuota</option>
+                                <option value="3">3 cuotas</option>
+                                <option value="6">6 cuotas</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-pay">
+                            <i class="fa-solid fa-lock"></i> PAGAR $<span id="total-amount">0.00</span>
+                        </button>
+                    </form>
+                    <!-- FORMULARIO TARJETA DE DÉBITO -->
+                      <form id="formDebit" class="credit-card-form" style="display: none;">
+                          <div class="form-group">
+                              <label for="nombre_debito">Nombre</label>
+                              <input type="text" id="nombre_debito" name="nombre" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="apellido_debito">Apellido</label>
+                              <input type="text" id="apellido_debito" name="apellido" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="dni_debito">DNI</label>
+                              <input type="text" id="dni_debito" name="dni" maxlength="8" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="card-number-debit">Número de Tarjeta</label>
+                              <div class="input-with-icon">
+                                  <i class="fa-solid fa-credit-card"></i>
+                                  <input type="text" id="card-number-debit" name="numero" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="card-name-debit">Nombre en la Tarjeta</label>
+                              <input type="text" id="card-name-debit" name="nombre_tarjeta" required>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="card-expiry-debit">Fecha de Expiración</label>
+                                  <input type="text" id="card-expiry-debit" name="vencimiento" maxlength="5" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="card-cvv-debit">CVV</label>
+                                  <input type="text" id="card-cvv-debit" name="cvv" maxlength="3" required>
+                              </div>
+                          </div>
+                          <button type="submit" class="btn-pay">
+                              <i class="fa-solid fa-lock"></i> PAGAR $<span id="total-amount">0.00</span>
+                          </button>
+                      </form>
+                  
 
                 <!-- Mensaje para efectivo -->
-                <div id="cash-message" class="cash-message" style="display: none;">
+                
+                    <form id="formEfec" style="display: none;">
+                      <div id="cash-message" class="cash-message">
                     <h3><i class="fa-solid fa-money-bill-wave"></i> Pago en Efectivo</h3>
                     <p>Al confirmar, recibirás un código para pagar en cualquiera de nuestras sucursales.</p>
                     <p><strong>Dirección:</strong> Av. Principal 1234, Buenos Aires</p>
                     <p><strong>Horario:</strong> Lunes a Viernes de 9:00 a 18:00</p>
+                    </div>
+                    <div class="form-group">
+                      <label for="nombre_efectivo">Nombre</label>
+                      <input type="text" id="nombre_efectivo" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="apellido_efectivo">Apellido</label>
+                      <input type="text" id="apellido_efectivo" name="apellido" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="dni_efectivo">DNI</label>
+                      <input type="text" id="dni_efectivo" name="dni" maxlength="8" required>
+                    </div>
                     <button id="confirm-cash" class="btn-pay">
                         <i class="fa-solid fa-check"></i> CONFIRMAR PAGO EN EFECTIVO
                     </button>
+                  </form> 
                 </div>
-            </div>
+            
 
             <div class="summary-section">
                 <h2><i class="fa-solid fa-cart-shopping"></i> Resumen de Compra</h2>
@@ -111,6 +173,7 @@
                         <span id="summary-total">$0.00</span>
                     </div>
                 </div>
+                
 
                 <div class="secure-payment">
                     <i class="fa-solid fa-lock"></i>
@@ -123,7 +186,94 @@
     <footer class="site-footer center">
         <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
     </footer>
+    <script src="../../BACK/JS LOGICA/checkout_card.js">
+      document.addEventListener("DOMContentLoaded", () => {
+      // ...
+      mostrarFormularioPorMetodo("credit");
+    });
+    </script>
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const metodoDefault = 1; // Crédito por defecto
 
-    <script src="/op/BACK/JS LOGICA/checkout.js"></script>
+  function cargarResumen(idMetodoPago = 1) {
+  fetch("../../BACK/PHP/finalizar_compra.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id_pagometodo: idMetodoPago, soloResumen: true })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("Respuesta JSON completa:", data);
+    if (data.error) {
+      console.error("Error:", data.error);
+      return;
+    }
+
+    const resumen = data;
+    const contenedor = document.getElementById("order-summary");
+    const subtotal = document.getElementById("subtotal");
+    const total = document.getElementById("summary-total");
+
+    // Limpiar contenedor
+    contenedor.innerHTML = "";
+
+    resumen.items.forEach(item => {
+      const div = document.createElement("div");
+      div.classList.add("order-item");
+      div.innerHTML = `
+        <p><strong>${item.nombre}</strong> x${item.cantidad}</p>
+        <p>Precio: $${parseFloat(item.precio).toFixed(2)} | Total: $${parseFloat(item.total).toFixed(2)}</p>
+      `;
+      contenedor.appendChild(div);
+    });
+
+    subtotal.textContent = `$${resumen.subtotal}`;
+    total.textContent = `$${resumen.total}`;
+  })
+  .catch(err => {
+    console.error("Error de red:", err);
+  });
+}
+
+  // Llamada inicial
+  cargarResumen();
+
+  // Si usás botones para cambiar el método de pago, podés agregar:
+  document.querySelectorAll(".payment-method").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const metodo = btn.dataset.method;
+      const idMetodo = metodo === "credit" ? 1 : metodo === "debit" ? 2 : 3;
+      cargarResumen(idMetodo);
+    });
+  });
+});
+</script>
+    <script src="../../BACK/JS LOGICA/submitdata.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const messageTarget = document.createElement("div");
+  document.body.appendChild(messageTarget);
+
+  new FormHandler({
+    formSelector: "#formCredit",
+    endpoint: "../../BACK/PHP/finalizar_compra.php",
+    messageTarget
+  });
+
+  new FormHandler({
+    formSelector: "#formDebit",
+    endpoint: "../../BACK/PHP/finalizar_compra.php",
+    messageTarget
+  });
+
+  new FormHandler({
+    formSelector: "#formEfec",
+    endpoint: "../../BACK/PHP/finalizar_compra.php",
+    messageTarget
+  });
+});
+</script>
+     
 </body>
 </html>
