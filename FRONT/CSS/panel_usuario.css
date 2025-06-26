@@ -202,7 +202,7 @@ body {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  width: 100%;
+  width: 90%;
   padding: 0.8rem 1rem;
   border: 1px solid var(--medium-gray);
   border-radius: 8px;
@@ -243,6 +243,8 @@ body {
   background-color: transparent;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
 }
 
 .btn-outline:hover {
