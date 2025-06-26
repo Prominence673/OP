@@ -1,11 +1,16 @@
 <?php
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/php-error.log');
+ini_set('display_errors', 0);
+error_log("Test de error_log funcionando");
+error_reporting(E_ALL);
+error_reporting(E_ALL);
 header("Content-Type: application/json");
 require_once __DIR__ . '/connection.php';
-
 ini_set('display_errors', 0);
 error_reporting(0);
-
-$id_usuario = 2; // ID hardcodeado temporalmente
+session_start();
+$id_usuario = $_SESSION["usuario"]["id"];
 
 function sendJsonError($message) {
     echo json_encode(['error' => $message]);
@@ -17,7 +22,6 @@ try {
         sendJsonError("Error de conexión a la base de datos");
     }
 
-    // 1. Obtener el ID del carrito del usuario
     $stmt = $conn->prepare("SELECT id_carrito FROM carrito WHERE id_usuario = ?");
     if (!$stmt) {
         sendJsonError("Error al preparar la consulta: " . $conn->error);
@@ -29,26 +33,38 @@ try {
     }
     
     $result = $stmt->get_result();
-    
     if ($result->num_rows === 0) {
+        
         echo json_encode(["items" => []]);
         exit;
     }
     
     $carrito = $result->fetch_assoc();
+    error_log('Carrito obtenido: ' . print_r($carrito, true));
     $id_carrito = $carrito['id_carrito'];
-    
-    // 2. Obtener los items del carrito con información de los paquetes
-    // USANDO LOS NOMBRES EXACTOS DE COLUMNAS DE TU ESTRUCTURA
+
     $stmt = $conn->prepare("
-        SELECT 
-            ci.id_item as id_carrito_item,
-            ci.id_paquete,
-            ci.cantidad,
-            p.nombre_paquete as nombre,
-            p.precio as precio
+        SELECT ci.id_item, ci.tipo, ci.id_producto, ci.cantidad,
+        CASE ci.tipo
+            WHEN 'paquete' THEN p.nombre_viaje
+            WHEN 'auto' THEN a.nombre
+            WHEN 'estadia' THEN e.nombre
+            WHEN 'pasaje' THEN pa.nombre
+            ELSE 'Producto desconocido'
+        END AS nombre,
+        CASE ci.tipo
+            WHEN 'paquete' THEN p.precio_aprox
+            WHEN 'auto' THEN a.precio
+            WHEN 'estadia' THEN e.precio
+            WHEN 'pasaje' THEN pa.precio_desde
+            ELSE 0
+        END AS precio
         FROM carrito_items ci
-        JOIN paquetes p ON ci.id_paquete = p.id_paquete
+        LEFT JOIN productos prod ON ci.id_producto = prod.id_producto
+        LEFT JOIN paquetes p ON ci.tipo='paquete' AND prod.id_referencia = p.id_paquetes
+        LEFT JOIN autos a ON ci.tipo='auto' AND prod.id_referencia = a.id_autos
+        LEFT JOIN estadias e ON ci.tipo='estadia' AND prod.id_referencia = e.id_estadias
+        LEFT JOIN pasajes pa ON ci.tipo='pasaje' AND prod.id_referencia = pa.id_pasajes
         WHERE ci.id_carrito = ?
     ");
     
@@ -62,20 +78,19 @@ try {
     }
     
     $result = $stmt->get_result();
-    
-    $items = [];
-    while ($row = $result->fetch_assoc()) {
-        $items[] = [
-            'id' => $row['id_carrito_item'],
-            'paquete_id' => $row['id_paquete'],
-            'nombre' => $row['nombre'],
-            'precio' => $row['precio'],
-            'cantidad' => $row['cantidad'],
-            'subtotal' => $row['precio'] * $row['cantidad'],
-            'fecha_agregado' => $row['fecha_agregado'] // Agregado si lo necesitas
-        ];
-    }
-    
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+        error_log('Resultado carrito_items: ' . print_r($rows, true));
+
+        $items = [];
+        foreach ($rows as $row) {
+            $items[] = [
+                'id' => $row['id_item'],
+                'paquete_id' => $row['id_producto'],
+                'nombre' => $row['nombre'],
+                'precio' => $row['precio'],
+                'cantidad' => $row['cantidad'],
+            ];
+        }
     echo json_encode(["items" => $items]);
     
 } catch (Exception $e) {

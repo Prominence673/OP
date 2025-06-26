@@ -53,6 +53,7 @@ class SessionActions {
           el.disabled = true;
           el.style.pointerEvents = this.disableConfig.pointer || "none";
           el.style.opacity = this.disableConfig.opacity || "0.5";
+          el.style.display = this.disableConfig.display || "none";
         });
       });
     } else if (!this.sessionData.loggedIn && this.activateConfig) {
@@ -61,12 +62,13 @@ class SessionActions {
           el.disabled = false;
           el.style.pointerEvents = this.activateConfig.pointer || "auto";
           el.style.opacity = this.activateConfig.opacity || "1";
+          el.style.display = this.disableConfig.display || "none";
         });
       });
     }
   }
 
-  Disabled(selectors, pointer = "none", opacity = "0.5") {
+  Disabled(selectors, pointer = "none", opacity = "0.5", display = "none") {
     this.disableConfig = {
       selectors,
       pointer,
@@ -74,7 +76,7 @@ class SessionActions {
     };
   }
 
-  Activate(selectors, pointer = "auto", opacity = "1") {
+  Activate(selectors, pointer = "auto", opacity = "1", display = "") {
     this.activateConfig = {
       selectors,
       pointer,
@@ -108,7 +110,7 @@ class SessionActions {
         throw new Error("La respuesta de sesión no es válida.");
       }
 
-      const valorPorDefecto = "Invitado";
+      const valorPorDefecto = "Inicia Sesión";
 
       if (!data.loggedIn || !data.usuario) {
         console.warn("Usuario no logueado o sin datos.");

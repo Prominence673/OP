@@ -1,3 +1,4 @@
+<!-- /carrito.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras | Travel Rock Argentina</title>
     <link rel="stylesheet" href="../CSS/header-footer.css">
-    <link rel="stylesheet" href="../CSS/carrito.css">
+     <link rel="stylesheet" href="../CSS/checkout.css">
+    <link rel="stylesheet" href="../CSS/carrito.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header class="site-header">
@@ -46,35 +48,48 @@
       </ul>
     </div>
 </header>
-
-    <main class="carrito-container">
-        <h1>Tu Carrito de Compras</h1>
-        
-        <div class="carrito-items" id="lista-carrito">
-            <!-- Los items se cargarán aquí dinámicamente -->
-            <div class="cargando">Cargando tu carrito...</div>
+    <main class="checkout-container">
+  <div class="checkout-steps">
+    <div class="step active">1. Carrito</div>
+    <div class="step">2. Método de Pago</div>
+    <div class="step">3. Confirmación</div>
+  </div>
+  <div class="checkout-grid">
+    <section>
+      <h1>Tu Carrito de Compras</h1>
+      <div id="lista-carrito" class="order-summary">
+        <!-- Aquí se insertan los productos del carrito -->
+      </div>
+    </section>
+    <aside class="summary-section">
+      <h2><i class="fa-solid fa-receipt"></i> Resumen de Compra</h2>
+      <div class="summary-totals">
+        <div class="summary-row">
+          <span>Total:</span>
+          <span id="total-carrito">$0</span>
         </div>
-        
-        <div class="resumen-carrito">
-            <h2>Resumen de Compra</h2>
-            <div class="total-container">
-                <span>Total:</span>
-                <span id="total-carrito">$0</span>
-            </div>
-            <button id="finalizar-compra" class="btn-finalizar">Finalizar Compra</button>
-        </div>
-    </main>
+      </div>
+      <button id="finalizar-compra" class="btn-pay">
+        <i class="fa-solid fa-credit-card"></i> Finalizar Compra
+      </button>
+    </aside>
+  </div>
+</main>
 
     <footer class="site-footer center">
         <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
     </footer>
-
+    
     <script src="../../BACK/JS LOGICA/carrito-logica.js"></script>
     <script src="../JS DISEÑO/menu.js"></script>
     <script>
       document.getElementById("finalizar-compra").addEventListener("click", () => {
         window.location.href = "finalizar_compra.html";
       });
+    </script>
+    <script>
+      actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+      actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
     </script>
 </body>
 </html>

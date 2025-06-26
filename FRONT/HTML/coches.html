@@ -68,8 +68,8 @@
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script>
     const actions = new SessionActions();
-    actions.Disabled(["#login_panel", "#register_panel"], "none", "0.5");
-    actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+    actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+    actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
     actions.InsertData("#user", "nombre");
     actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
 
@@ -90,11 +90,7 @@
         cont.innerHTML = "<p>No hay autos cargados aún.</p>";
         return;
       }
-      const formData = new FormData(this);
-      formData.append("tipo", "auto"); // o el tipo correspondiente
-      for (let [k, v] of formData.entries()) {
-        console.log(k, v);
-      }
+      
       autos.forEach(p => {
         const article = document.createElement("article");
         article.className = "auto extendible";

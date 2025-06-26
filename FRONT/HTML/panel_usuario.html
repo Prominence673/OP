@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Datos personales - ViajesMundo</title>
-  <link rel="stylesheet" href="../CSS/panel_usuario.css"/>
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
+  <link rel="stylesheet" href="../CSS/panel_usuario.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
@@ -41,335 +41,268 @@
         <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
-        <li><a href="#" id="logout">Cerrar Sesion</a></li>
+        <li><a href="#" id="logout">Cerrar Sesión</a></li>
       </ul>
     </div>
+  </div>
 </header>
+
 <main class="panel-container">
   <aside class="sidebar">
     <div class="sidebar-card">
       <h3>🚀 Planeá tu nuevo viaje!</h3>
       <p>Aprovechá las ofertas en alojamientos, vuelos, actividades y mucho más.</p>
-      <button class="btn-purple" onclick="redirigir()">Encontrá tu vuelo</button>
+      <button class="btn-purple" onclick="window.location.href='paquetes.html'">Encontrá tu vuelo</button>
     </div>
     <ul class="sidebar-menu">
-      <li><a href="panel_usuario.html">Datos personales</a></li>
-      <li><a href="tarjeta.html">Medios de pago</a></li>
-      <li><a href="notificaciones.html">Notificaciones sobre cambios</a></li>
-      <li><a href="pasajeros.html">Pasajeros</a></li>
-      <li><a href="opiniones.html">Opiniones</a></li>
-      <li><a href="sesiones.html">Sesiones activas</a></li>
-      <li><a href="eliminar.html">Eliminar cuenta</a></li>
+      <li class="active"><a href="panel_usuario.html"><i class="fas fa-user"></i> Datos personales</a></li>
+      <li><a href="tarjeta.html"><i class="fas fa-credit-card"></i> Medios de pago</a></li>
+      <li><a href="pasajeros.html"><i class="fas fa-users"></i> Pasajeros</a></li>
+      <li><a href="opiniones.html"><i class="fas fa-star"></i> Opiniones</a></li>
+      <li><a href="eliminar.html"><i class="fas fa-trash-alt"></i> Eliminar cuenta</a></li>
     </ul>
   </aside>
 
   <section class="main-panel">
     <section class="panel-section">
-      <h2><span style="color:#ccc;">Mi Perfil /</span> Datos personales</h2>
-
-      <div class="payment-option" style="border-top: 5px solid #8dc8f3; background-color: #0077cc; display: flex; align-items: center;">
-<form id="formFoto" method="post" enctype="multipart/form-data">
-  <input type="hidden" name="action" value="guardar_foto" />
-  <label for="fotoPerfil" style="cursor:pointer;">
-    <img id="preview" src="..." />
-    <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display:none"/>
-  </label>
-  <button type="submit">Guardar Foto</button>
-</form>
-        <p style="color:#fff; font-weight: bold;">
-          <i class="fas fa-user-circle"></i> <b class="email"></b> <i class="fas fa-check-circle" style="color:#a5ffaf"></i>
-        </p>
+      <h2><span>Mi Perfil</span> / Datos personales</h2>
+      
+      <div class="user-profile-header">
+        <div class="user-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="user-info">
+          <h3 id="user-name">Nombre Apellido</h3>
+          <p class="email"><i class="fas fa-envelope"></i> usuario@email.com <i class="fas fa-check-circle verified"></i></p>
+        </div>
       </div>
 
-     <form id="formDatos" method="post" style="display: flex; flex-direction: column; gap: 1rem;">
-      <input type="hidden" name="action" value="guardar_datos" />
-  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <div style="flex: 1;">
-      <input type="hidden" name="action" value="aDatos">
-      <label for="name">Nombres</label>
-      <input type="text" id="name" name="name" placeholder="Como figura en el documento de viaje" style="width: 50%;" required max="50"/>
-    </div>
-    <div style="flex: 1;">
-      <label for="surname">Apellidos</label>
-      <input type="text" id="surname" name="surname" placeholder="Como figura en el documento de viaje" style="width: 50%;" required max="50"/>
-    </div>
-  </div>
-
-  <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <div style="flex: 1;">
-      <label>Fecha de nacimiento</label>
-      <div style="display: flex; gap: 0.5rem;">
-        <select id="dia" name="dia" style="flex: 1;"></select>
-        <select id="mes" name="mes" style="flex: 1;"></select>
-        <select id="anio" name="anio" style="flex: 1;"></select>
-        <select id="dia" name="dia" style="flex: 1;"></select>
-        <select id="mes" name="mes" style="flex: 1;"></select>
-        <select id="anio" name="anio" style="flex: 1;"></select>
-      </div>
-    </div>
-    <div style="flex: 1;">
-      <label>Género</label>
-      <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
-        <label for="Femenino">Femenino</label>
-          <input type="radio" name="genero" id="Femenino" value="Femenino"> 
+      <form id="formDatos" method="post">
+        <input type="hidden" name="action" value="guardar_datos" />
+        
+        <div class="form-section">
+          <h3><i class="fas fa-id-card"></i> Información básica</h3>
+          <p>Actualizá tus datos personales para una mejor experiencia.</p>
           
-        <label for="Masculino">Masculino</label>
-          <input type="radio" name="genero" id="Masculino" value="Masculino" checked> 
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Nombres</label>
+              <input type="text" id="name" name="name" placeholder="Como figura en el documento" required maxlength="50"/>
+            </div>
+            <div class="form-group">
+              <label for="surname">Apellidos</label>
+              <input type="text" id="surname" name="surname" placeholder="Como figura en el documento" required maxlength="50"/>
+            </div>
+          </div>
           
-      </div>
-    </div>
-  </div>
-  <div id="mensajeDiv" style="color: green;"></div>
-  <div id="mensajeDatos" style="color: green;"></div>
-  <button class="btn-purple" type="submit">Guardar</button>
-</form>
-      <div class="payment-option" style="margin-top: 2rem;">
-        <h3>Teléfonos</h3>
-        <p>Agregá tus teléfonos para que podamos contactarte en caso que ocurra algún cambio.</p>
-        <button class="btn-outline" onclick="document.getElementById('telefonoForm').classList.toggle('hidden')">+ Agregar teléfono</button>
-        <form id="telefonoForm" method="post" class="hidden">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Fecha de nacimiento</label>
+              <div style="display: flex; gap: 0.5rem;">
+                <select id="dia" name="dia" style="flex: 1;"></select>
+                <select id="mes" name="mes" style="flex: 1;"></select>
+                <select id="anio" name="anio" style="flex: 1;"></select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Género</label>
+              <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                <label><input type="radio" name="genero" value="Femenino"> Femenino</label>
+                <label><input type="radio" name="genero" value="Masculino" checked> Masculino</label>
+              </div>
+            </div>
+          </div>
+          
+          <button class="btn-outline" type="submit">Guardar cambios</button>
+        </div>
+      </form>
+
+      <div class="form-section">
+        <h3><i class="fas fa-phone"></i> Teléfonos</h3>
+        <p>Agregá tus teléfonos para que podamos contactarte.</p>
+        
+        <button class="btn-outline" onclick="document.getElementById('telefonoForm').classList.toggle('hidden')">
+          <i class="fas fa-plus"></i> Agregar teléfono
+        </button>
+        
+        <form id="telefonoForm" method="post" class="hidden" style="margin-top: 1.5rem;">
           <input type="hidden" name="action" value="guardar_telefono" />
-          <input type="tel" name="telefono" id="telefono" placeholder="Ej: +54 9 11 1234-5678" style="width: 12.5%;" required>
-          <div id="mensajeTelefono" style="color: green;"></div>
-          <button type="submit" class="btn-purple">Guardar teléfono</button>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="telefono">Número de teléfono</label>
+              <input type="tel" name="telefono" id="telefono" placeholder="Ej: +54 9 11 1234-5678" required>
+            </div>
+          </div>
+          <button class="btn-primary" type="submit">Guardar teléfono</button>
         </form>
       </div>
-      <div class="payment-option" style="margin-top: 1.5rem;">
-      <h3>Verificación de Email</h3>
-      <p>
-        ¿No recibiste el correo de verificación o cambiaste tu email? Hacé clic en el botón para reenviar el enlace de verificación.
-      </p>
-      <form id="verificarEmailForm" method="post">
-        <input type="hidden" name="action" value="verificar_email" />
-        <div id="mensajeVerificarEmail" style="color: green;"></div>
-        <button type="submit" class="btn-outline">
-          <i class="fas fa-paper-plane"></i> Enviar verificación
-        </button>
-      </form>
-      <div id="mensajeVerificacion" style="margin-top: 0.5rem; font-weight: bold;"></div>
-    </div>
-      <div class="payment-option" style="margin-top: 1.5rem;">
-        <h3>Email</h3>
-        <p>Cambia el email vinculado a esta cuenta, Recuerda que solo podras hacerlo una vez cada 30 dias.</p>
-        <p><i class="fas fa-envelope"></i> <b class="email"></b> <span style="color:green;">&#10004; Verificado</span> - <strong>Principal</strong></p>
+
+      <div class="form-section">
+        <h3><i class="fas fa-envelope"></i> Email</h3>
+        <p>Cambiá el email vinculado a esta cuenta.</p>
+        
         <form id="formEmail" method="post">
           <input type="hidden" name="action" value="guardar_email" />
-          <input type="email" name="email" id="email" placeholder="Nuevo email" style="width: 12.5%;" required>
-          <div id="mensajeCambiarEmail" style="color: green;"></div>
-          <button type="submit" class="btn-outline"><i class="fas fa-pen"></i> Cambiar Email</button>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="email">Nuevo email</label>
+              <input type="email" name="email" id="email" placeholder="nuevo@email.com" required>
+            </div>
+          </div>
+          <button class="btn-outline" type="submit">
+            <i class="fas fa-paper-plane"></i> Cambiar Email
+          </button>
         </form>
       </div>
 
-      <div class="payment-option" style="margin-top: 1.5rem;">
-        <h3>Contraseña</h3>
-        <p><i class="fas fa-lock"></i> ••••••••</p>
-        <button class="btn-outline" onclick="document.getElementById('formPass').classList.toggle('hidden')"><i class="fas fa-pen"></i> Cambiar contraseña</button>
-        <form id="formPass" method="post" class="hidden">
+      <div class="form-section">
+        <h3><i class="fas fa-lock"></i> Contraseña</h3>
+        <p>Cambiá tu contraseña periódicamente para mayor seguridad.</p>
+        
+        <button class="btn-outline" onclick="document.getElementById('formPass').classList.toggle('hidden')">
+          <i class="fas fa-pen"></i> Cambiar contraseña
+        </button>
+        
+        <form id="formPass" method="post" class="hidden" style="margin-top: 1.5rem;">
           <input type="hidden" name="action" value="cambiar_contraseña" />
-          <input type="password" name="currentpassword" id="currentpassword" placeholder="Contraseña actual" style="width: 12.5%; display: block;" maxlength="16" required>
-          <div class="form-group password-wrapper">
-          <input type="password" name="password" id="password" placeholder="Nueva contraseña" style="width: 12.5%; display: block;" maxlength="16" required>
-          <div id="password-rules">
-            <p id="min-length">8 caracteres</p>
-            <p id="lowercase">Una minúscula</p>
-            <p id="uppercase">Una mayúscula</p>
-            <p id="number">Un número</p>
-            <p id="special">Un carácter especial @ # $ ^ & + = . ! ? - _ *</p>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="currentpassword">Contraseña actual</label>
+              <input type="password" name="currentpassword" id="currentpassword" placeholder="Contraseña actual" required>
+            </div>
           </div>
-          <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Repetir nueva contraseña" style="width: 12.5%; display: block;" maxlength="16" required>
-          <div class="custom-checkbox-group">
-            <input type="checkbox" id="show-password" name="show-password" style="display: block;"/>
-            <label for="show-password">Mostrar contraseña</label>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="password">Nueva contraseña</label>
+              <input type="password" name="password" id="password" placeholder="Nueva contraseña" required>
+            </div>
+            <div class="form-group">
+              <label for="confirmpassword">Confirmar nueva contraseña</label>
+              <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Repetir nueva contraseña" required>
+            </div>
           </div>
-          <div id="mensajeCambiarContraseña" style="color: green;"></div>
-          <button class="btn-purple" type="submit">Actualizar</button>
-        </div>
-        </div>
-        </div>
+          <div class="form-group">
+            <label><input type="checkbox" id="show-password"> Mostrar contraseñas</label>
+          </div>
+          <button class="btn-primary" type="submit">Actualizar contraseña</button>
         </form>
       </div>
     </section>
   </section>
 </main>
-<script src="../../BACK/JS LOGICA/passParameters.js"></script>
+
 <script>
-  const fotoInput = document.getElementById('fotoPerfil');
-  const preview = document.getElementById('preview');
+// Configuración de fecha de nacimiento
+const dia = document.getElementById("dia");
+const mes = document.getElementById("mes");
+const anio = document.getElementById("anio");
 
-  fotoInput.addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        preview.src = e.target.result;
-      }
-      reader.readAsDataURL(file);
-    }
-  });
+const meses = [
+  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];
 
-  const dia = document.getElementById("dia");
-  const mes = document.getElementById("mes");
-  const anio = document.getElementById("anio");
+meses.forEach((m, i) => {
+  const opt = document.createElement("option");
+  opt.value = i + 1;
+  opt.textContent = m;
+  mes.appendChild(opt);
+});
 
-  const meses = [
-    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-  ];
-
-  meses.forEach((m, i) => {
+function actualizarDias() {
+  dia.innerHTML = "";
+  const mesSeleccionado = parseInt(mes.value);
+  const anioSeleccionado = parseInt(anio.value);
+  const diasEnMes = new Date(anioSeleccionado, mesSeleccionado, 0).getDate();
+  for (let i = 1; i <= diasEnMes; i++) {
     const opt = document.createElement("option");
-    opt.value = i + 1;
-    opt.textContent = m;
-    mes.appendChild(opt);
-  });
-
-  function actualizarDias() {
-    dia.innerHTML = "";
-    const mesSeleccionado = parseInt(mes.value);
-    const anioSeleccionado = parseInt(anio.value);
-    const diasEnMes = new Date(anioSeleccionado, mesSeleccionado, 0).getDate();
-    for (let i = 1; i <= diasEnMes; i++) {
-      const opt = document.createElement("option");
-      opt.value = i;
-      opt.textContent = i;
-      dia.appendChild(opt);
-    }
+    opt.value = i;
+    opt.textContent = i;
+    dia.appendChild(opt);
   }
+}
 
-  for (let y = 1925; y <= 2007; y++) {
-    const opt = document.createElement("option");
-    opt.value = y;
-    opt.textContent = y;
-    anio.appendChild(opt);
-  }
+for (let y = 1925; y <= 2007; y++) {
+  const opt = document.createElement("option");
+  opt.value = y;
+  opt.textContent = y;
+  anio.appendChild(opt);
+}
 
-  mes.addEventListener("change", actualizarDias);
-  anio.addEventListener("change", actualizarDias);
-  anio.value = "2001";
-  mes.value = "8";
-  actualizarDias();
-  dia.value = "17";
-  function redirigir() {
-    setTimeout(function() {
-      window.location.href = "paquetes.html";
-    }); 
-  }
+mes.addEventListener("change", actualizarDias);
+anio.addEventListener("change", actualizarDias);
+anio.value = "2001";
+mes.value = "8";
+actualizarDias();
+dia.value = "17";
+
+// Mostrar/ocultar contraseñas
+document.getElementById('show-password').addEventListener('change', function() {
+  const current = document.getElementById('currentpassword');
+  const newPass = document.getElementById('password');
+  const confirm = document.getElementById('confirmpassword');
+  const type = this.checked ? 'text' : 'password';
+  
+  current.type = type;
+  newPass.type = type;
+  confirm.type = type;
+});
 </script>
-  <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
-    <script>
-  const actions = new SessionActions();
-  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
-  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
-  actions.InsertData("#user", "nombre");
-  actions.InsertData(".email", "email");
-  actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
-  const logout = document.getElementById("logout");
 
-  logout.addEventListener("click", () => {
-    actions.logoutSession();
-  });
-  </script>
-  <script src="../JS DISEÑO/menu.js"></script>
-  <script src="../../BACK/JS LOGICA/submitdata.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
+<script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+<script>
+const actions = new SessionActions();
+actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
+actions.InsertData("#user", "nombre");
+actions.InsertData("#user-name", "nombre");
+actions.InsertData(".email", "email");
+actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
+
+const logout = document.getElementById("logout");
+logout.addEventListener("click", () => {
+  actions.logoutSession();
+});
+</script>
+
+<script src="../JS DISEÑO/menu.js"></script>
+<script src="../../BACK/JS LOGICA/submitdata.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
   new FormHandler({
     formSelector: "#formDatos", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: mensajeDatos
+    messageTarget: document.createElement('div') // Ajustar según necesidad
   });
-  });
-  //passParameters
-  document.addEventListener("DOMContentLoaded", () => {
-    new PasswordValidator({
-      passwordSelector: "#password",
-      confirmSelector: "#currentpassword",
-      toggleSelector: "#show-password",
-      rulesContainerSelector: "#password-rules",
-      formSelector: "#register",
-      ruleSelectors: {
-        minLength: "#min-length",
-        lowercase: "#lowercase",
-        uppercase: "#uppercase",
-        number: "#number",
-        special: "#special"
-      }
-    });
-  });
-    document.addEventListener("DOMContentLoaded", () => {
-    new PasswordValidator({
-      passwordSelector: "#password",
-      confirmSelector: "#confirmpassword",
-      toggleSelector: "#show-password",
-      rulesContainerSelector: "#password-rules",
-      formSelector: "#register",
-      ruleSelectors: {
-        minLength: "#min-length",
-        lowercase: "#lowercase",
-        uppercase: "#uppercase",
-        number: "#number",
-        special: "#special"
-      }
-    });
-  });
-  </script>
-  <script>
-       
-    document.addEventListener("DOMContentLoaded", () => {
+  
   new FormHandler({
     formSelector: "#telefonoForm", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: mensajeTelefono
+    messageTarget: document.createElement('div')
   });
-  });
-  </script>
-   <script>
-
-    document.addEventListener("DOMContentLoaded", () => {
-  new FormHandler({
-    formSelector: "#verificarEmailForm",  
-    endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: mensajeVerificarEmail
-  });
-  });
-  </script>
-   <script>
   
-    document.addEventListener("DOMContentLoaded", () => {
-  new FormHandler({
-    formSelector: "#formPass",  
-    endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: mensajeCambiarContraseña 
-  });
-  });
-  </script>
-   <script>
-       
-    document.addEventListener("DOMContentLoaded", () => {
   new FormHandler({
     formSelector: "#formEmail", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: mensajeCambiarEmail
+    messageTarget: document.createElement('div')
   });
+  
+  new FormHandler({
+    formSelector: "#formPass", 
+    endpoint: "../../BACK/PHP/user_panel.php",  
+    messageTarget: document.createElement('div')
   });
-  </script>
-  <script src="../../BACK/JS LOGICA/submitfiles.js"></script>
-    <script>
+});
+</script>
 
-    document.addEventListener("DOMContentLoaded", () => {
-  new FileUploader({
-    formSelector: "#formFoto",
-    endpoint: "../../BACK/PHP/user_panel.php",
-    messageTarget: mensajeDiv,
-    fileInputName: "fotoPerfil"
-  });
-  });
-  </script>
 <style>
 .hidden { display: none; }
 </style>
-<footer class="site-footer center">
+
+<footer class="site-footer">
+  <div class="container">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
-  </footer>
+  </div>
+</footer>
 </body>
 </html>

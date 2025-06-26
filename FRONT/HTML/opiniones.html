@@ -53,14 +53,13 @@
       <button class="btn-purple">Encontrá tu vuelo</button>
     </div>
     <ul class="sidebar-menu">
-      <li><a href="panel_usuario.html">Datos personales</a></li>
-      <li><a href="tarjeta.html">Medios de pago</a></li>
-      <li><a href="notificaciones.html">Notificaciones sobre cambios</a></li>
-      <li><a href="pasajeros.html">Pasajeros</a></li>
-      <li><a href="opiniones.html">Opiniones</a></li>
-      <li><a href="sesiones.html">Sesiones activas</a></li>
-      <li><a href="elminar.html">Eliminar cuenta</a></li>
+      <li class="active"><a href="panel_usuario.html"><i class="fas fa-user"></i> Datos personales</a></li>
+      <li><a href="tarjeta.html"><i class="fas fa-credit-card"></i> Medios de pago</a></li>
+      <li><a href="pasajeros.html"><i class="fas fa-users"></i> Pasajeros</a></li>
+      <li><a href="opiniones.html"><i class="fas fa-star"></i> Opiniones</a></li>
+      <li><a href="eliminar.html"><i class="fas fa-trash-alt"></i> Eliminar cuenta</a></li>
     </ul>
+  </aside>
   </aside>
 
   <section class="main-panel">
@@ -122,8 +121,8 @@ function mostrarTab(tab) {
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script>
   const actions = new SessionActions();
-  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
-  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
   actions.InsertData("#user", "nombre");
   actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
   const logout = document.getElementById("logout");

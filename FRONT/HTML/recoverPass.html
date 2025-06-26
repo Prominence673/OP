@@ -100,8 +100,8 @@
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script>
   const actions = new SessionActions();
-  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5");
-  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
   actions.InsertData("#user", "nombre");
   const logout = document.getElementById("logout");
 

@@ -1,75 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Finalizar Compra</title>
-  <link rel="stylesheet" href="../CSS/header-footer.css"/>
-  <link rel="stylesheet" href="../CSS/carrito.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra | Travel Rock Argentina</title>
+    <link rel="stylesheet" href="../CSS/header-footer.css">
+    <link rel="stylesheet" href="../CSS/checkout.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header class="site-header">
-  <!-- ...header igual que los otros archivos... -->
-</header>
-<main>
-  <h1>Finalizar Compra</h1>
-  <form id="form-finalizar-compra">
-    <label>Nombre: <input name="nombre" required></label><br>
-    <label>Apellido: <input name="apellido" required></label><br>
-    <label>DNI: <input name="dni" required></label><br>
-    <label>Método de pago:
-      <select name="metodo_pago" id="metodo_pago" required>
-        <option value="">Seleccionar</option>
-        <option value="tarjeta">Tarjeta</option>
-        <option value="efectivo">Efectivo (30% de descuento)</option>
-      </select>
-    </label><br>
-    <div id="tarjeta-fields" style="display:none;">
-      <label>Número de tarjeta: <input name="numero_tarjeta"></label><br>
-      <label>Nombre en tarjeta: <input name="nombre_tarjeta"></label><br>
-      <label>Vencimiento: <input name="vencimiento" type="month"></label><br>
-      <label>Código de seguridad: <input name="codigo_seguridad"></label><br>
-    </div>
-    <button type="submit">Confirmar compra</button>
-    <div id="msg-finalizar"></div>
-  </form>
+    <header class="site-header">
+        <!-- Tu header existente -->
+    </header>
 
-  <h2>Insertar Paquete</h2>
-  <form id="form-insert-paquete">
-    <input type="hidden" name="tabla" value="paquetes">
-    <input type="hidden" name="accion" value="insertar">
-    <label>Nombre del viaje: <input name="nombre_viaje" required></label>
-    <label>Imagen (URL o nombre): <input name="imagen" required></label>
-    <label>Duración: <input name="duracion" required></label>
-    <label>Incluye: <input name="incluye" required></label>
-    <label>Precio aprox: <input name="precio_aprox" type="number" required></label>
-    <button type="submit">Insertar Paquete</button>
-    <div class="msg" id="msg-insert-paquete"></div>
-  </form>
-</main>
-<script src="../../BACK/JS LOGICA/submitdata.js"></script>
-<script>
-new FormHandler({
-  formSelector: "#form-finalizar-compra",
-  endpoint: "../../BACK/PHP/finalizar_compra.php",
-  messageTarget: document.getElementById('msg-finalizar'),
-  onSuccess: () => {
-    // Redirigir a confirmación si querés
-    // window.location.href = "confirmacion.html";
-  }
-});
+    <main class="checkout-container">
+        <div class="checkout-steps">
+            <div class="step active">1. Carrito</div>
+            <div class="step active">2. Método de Pago</div>
+            <div class="step">3. Confirmación</div>
+        </div>
 
-document.getElementById('metodo_pago').addEventListener('change', function() {
-  document.getElementById('tarjeta-fields').style.display = this.value === 'tarjeta' ? 'block' : 'none';
-});
+        <div class="checkout-grid">
+            <div class="payment-section">
+                <h2><i class="fa-solid fa-credit-card"></i> Método de Pago</h2>
+                
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="credit">
+                        <i class="fa-solid fa-credit-card"></i> Tarjeta de Crédito
+                    </div>
+                    <div class="payment-method" data-method="debit">
+                        <i class="fa-regular fa-credit-card"></i> Tarjeta de Débito
+                    </div>
+                    <div class="payment-method" data-method="cash">
+                        <i class="fa-solid fa-money-bill-wave"></i> Efectivo en Sucursal
+                    </div>
+                </div>
 
-new FormHandler({
-  formSelector: "#form-insert-paquete",
-  endpoint: "../../BACK/PHP/admin_abm_productos.php",
-  messageTarget: document.getElementById("msg-insert-paquete")
-});
-</script>
-<footer class="site-footer center">
-  <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
-</footer>
+                <!-- Formulario para Tarjeta -->
+                <form id="payment-form" class="credit-card-form">
+                    <div class="form-group">
+                        <label for="card-number">Número de Tarjeta</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card-name">Nombre en la Tarjeta</label>
+                        <input type="text" id="card-name" placeholder="JUAN PEREZ" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="card-expiry">Fecha de Expiración</label>
+                            <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-cvv">CVV</label>
+                            <div class="input-with-icon">
+                                <input type="text" id="card-cvv" placeholder="123" maxlength="3" required>
+                                <i class="fa-solid fa-circle-question" title="Los 3 dígitos en el reverso de tu tarjeta"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cuotas solo para crédito -->
+                    <div class="form-group" id="installments-group">
+                        <label for="card-installments">Cuotas</label>
+                        <select id="card-installments" required>
+                            <option value="">Seleccione cuotas</option>
+                            <option value="1">1 cuota</option>
+                            <option value="3">3 cuotas</option>
+                            <option value="6">6 cuotas</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-pay">
+                        <i class="fa-solid fa-lock"></i> PAGAR $<span id="total-amount">0.00</span>
+                    </button>
+                </form>
+
+                <!-- Mensaje para efectivo -->
+                <div id="cash-message" class="cash-message" style="display: none;">
+                    <h3><i class="fa-solid fa-money-bill-wave"></i> Pago en Efectivo</h3>
+                    <p>Al confirmar, recibirás un código para pagar en cualquiera de nuestras sucursales.</p>
+                    <p><strong>Dirección:</strong> Av. Principal 1234, Buenos Aires</p>
+                    <p><strong>Horario:</strong> Lunes a Viernes de 9:00 a 18:00</p>
+                    <button id="confirm-cash" class="btn-pay">
+                        <i class="fa-solid fa-check"></i> CONFIRMAR PAGO EN EFECTIVO
+                    </button>
+                </div>
+            </div>
+
+            <div class="summary-section">
+                <h2><i class="fa-solid fa-cart-shopping"></i> Resumen de Compra</h2>
+                
+                <div class="order-summary" id="order-summary">
+                    <!-- Los productos se cargarán aquí dinámicamente -->
+                </div>
+
+                <div class="summary-totals">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="summary-total">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="secure-payment">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Pago seguro • Todos tus datos están protegidos</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer center">
+        <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/op/BACK/JS LOGICA/checkout.js"></script>
 </body>
 </html>

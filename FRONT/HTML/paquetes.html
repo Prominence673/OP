@@ -82,8 +82,8 @@
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script>
     const actions = new SessionActions();
-    actions.Disabled(["#login_panel", "#register_panel"], "none", "0.5");
-    actions.Activate(["#panel_usuario", "#logout"], "none", "0.5");
+    actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+    actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
     actions.InsertData("#user", "nombre");
     document.getElementById("logout").addEventListener("click", () => actions.logoutSession());
   </script>
@@ -140,6 +140,10 @@
 
     const formData = new FormData(this);
     formData.append('tipo', 'paquete');
+    for (const pair of formData.entries()) {
+      console.log(pair[0]+ ': ' + pair[1]);
+    }
+
     const res = await fetch('../../BACK/PHP/carrito_api.php', {
       method: 'POST',
       body: formData

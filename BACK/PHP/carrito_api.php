@@ -8,29 +8,22 @@ if (!isset($_SESSION['usuario'])) {
   echo json_encode(['error' => 'No logueado']);
   exit;
 }
-$id_usuario = $_SESSION['usuario']['id_usuario'];
+$id_usuario = $_SESSION['usuario']['id'];
 $tipo = $_POST['tipo'] ?? '';
 $cantidad = max(1, intval($_POST['cantidad'] ?? 1));
 
-// Determinar el campo de producto según tipo
 switch ($tipo) {
   case 'paquete':
     $id_producto = $_POST['id_paquete'] ?? null;
     break;
-  case 'coches':
   case 'auto':
     $id_producto = $_POST['id_auto'] ?? $_POST['id_autos'] ?? null;
-    $tipo = 'auto';
     break;
   case 'estadia':
-  case 'estadias':
     $id_producto = $_POST['id_estadia'] ?? $_POST['id_estadias'] ?? null;
-    $tipo = 'estadia';
     break;
   case 'pasaje':
-  case 'pasajes':
     $id_producto = $_POST['id_pasaje'] ?? $_POST['id_pasajes'] ?? null;
-    $tipo = 'pasaje';
     break;
   default:
     $id_producto = null;

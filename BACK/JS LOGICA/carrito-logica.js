@@ -5,14 +5,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Función para cargar los items del carrito
     async function cargarCarrito() {
         try {
-            const response = await fetch("/op/BACK/PHP/obtener_carrito.php");
+            const response = await fetch("../../BACK/PHP/obtener_carrito.php");
             
             if (!response.ok) {
                 throw new Error("Error al cargar el carrito");
             }
-            
             const data = await response.json();
-            
+            console.log('Items recibidos:', data.items);
             if (data.error) {
                 mostrarError(data.error);
                 return;
@@ -89,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 setTimeout(() => { this.style.transform = "scale(1)"; }, 100);
                 
                 try {
-                    const response = await fetch("/op/BACK/PHP/actualizar_cantidad.php", {
+                    const response = await fetch("../../BACK/PHP/actualizar_cantidad.php", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
@@ -134,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 await new Promise(resolve => setTimeout(resolve, 300));
                 
                 try {
-                    const response = await fetch("/op/BACK/PHP/eliminar_item.php", {
+                    const response = await fetch("../../BACK/PHP/eliminar_item.php", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ item_id: itemId })
@@ -163,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 await cargarCarrito();
                 
                 // Redirigir a la página de checkout
-                window.location.href = "/op/FRONT/HTML/checkout.html";
+                window.location.href = "../../FRONT/HTML/checkout.html";
                 
             } catch (error) {
                 console.error("Error al finalizar compra:", error);

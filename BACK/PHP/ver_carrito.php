@@ -7,7 +7,7 @@ if (!isset($_SESSION['usuario'])) {
   echo json_encode(['items' => []]);
   exit;
 }
-$id_usuario = $_SESSION['usuario']['id_usuario'];
+$id_usuario = $_SESSION['usuario']['id'];
 
 // Buscar carrito activo
 $stmt = $conn->prepare("SELECT id_carrito FROM carrito WHERE id_usuario=? AND estado='activo' ORDER BY fecha_creacion DESC LIMIT 1");
@@ -51,4 +51,5 @@ $items = [];
 while ($row = $res->fetch_assoc()) {
   $items[] = $row;
 }
+$stmt->close();
 echo json_encode(['items' => $items]);
