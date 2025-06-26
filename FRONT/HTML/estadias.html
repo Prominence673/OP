@@ -100,18 +100,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
       `;
 
-      // Mostrar/ocultar el formulario al hacer clic en el bloque completo
+     
       article.addEventListener("click", () => {
         const formContainer = article.querySelector(".formulario-compra");
         formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
       });
 
-      // Evitar que el click dentro del form propague y lo cierre
+   
       article.querySelector(".add-cart-form").addEventListener("click", e => {
         e.stopPropagation();
       });
 
-      // Evento del formulario
+
       article.querySelector(".add-cart-form").addEventListener("submit", async function (e) {
         e.preventDefault();
         e.stopPropagation();

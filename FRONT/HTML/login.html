@@ -66,6 +66,8 @@
       <div class="checkbox-group">
         <input type="checkbox" id="rememberme" name="rememberme" />
         <label for="rememberme">Recordarme</label>
+        <input type="checkbox" id="show-password" name="show-password" />
+        <label for="show-password">Mostrar Contraseña</label>
       </div>
       <div id="mensajeDiv"></div>
       <button type="submit">Entrar</button>
@@ -76,6 +78,26 @@
       <p>¿No tenés cuenta? <a href="register.html">Registrate aquí</a></p>
       <p><a href="sendEmail.html">¿Olvidaste la contraseña?</a></p>
     </div>
+    <script src="../../BACK/JS LOGICA/passParameters.js"></script>
+    <script>
+       //passParameters
+        document.addEventListener("DOMContentLoaded", () => {
+          new PasswordValidator({
+            passwordSelector: "#password",
+            confirmSelector: "#confirm",
+            toggleSelector: "#show-password",
+            rulesContainerSelector: "#password-rules",
+            formSelector: "#login",
+            ruleSelectors: {
+              minLength: "#min-length",
+              lowercase: "#lowercase",
+              uppercase: "#uppercase",
+              number: "#number",
+              special: "#special"
+            }
+          });
+        });
+    </script>
     <script>
     //submitdata
     document.addEventListener("DOMContentLoaded", () => {

@@ -56,10 +56,6 @@
     </div>
     <ul class="sidebar-menu">
       <li><a href="panel_usuario.html"><i class="fas fa-user"></i> Datos personales</a></li>
-      <li><a href="tarjeta.html"><i class="fas fa-credit-card"></i> Medios de pago</a></li>
-      <li><a href="pasajeros.html"><i class="fas fa-users"></i> Pasajeros</a></li>
-      <li><a href="opiniones.html"><i class="fas fa-star"></i> Opiniones</a></li>
-      <li><a href="eliminar.html"><i class="fas fa-trash-alt"></i> Eliminar cuenta</a></li>
     </ul>
   </aside>
 
@@ -137,58 +133,8 @@
         </form>
       </div>
 
-      <div class="form-section">
-        <h3><i class="fas fa-envelope"></i> Email</h3>
-        <p>Cambiá el email vinculado a esta cuenta.</p>
-        
-        <form id="formEmail" method="post">
-          <input type="hidden" name="action" value="guardar_email" />
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="email">Nuevo email</label>
-              <input type="email" name="email" id="email" placeholder="nuevo@email.com" required>
-            </div>
-          </div>
-          <button class="btn-outline" type="submit">
-            <i class="fas fa-paper-plane"></i> Cambiar Email
-          </button>
-        </form>
-      </div>
-
-      <div class="form-section">
-        <h3><i class="fas fa-lock"></i> Contraseña</h3>
-        <p>Cambiá tu contraseña periódicamente para mayor seguridad.</p>
-        
-        <button class="btn-outline" onclick="document.getElementById('formPass').classList.toggle('hidden')">
-          <i class="fas fa-pen"></i> Cambiar contraseña
-        </button>
-        
-        <form id="formPass" method="post" class="hidden" style="margin-top: 1.5rem;">
-          <input type="hidden" name="action" value="cambiar_contraseña" />
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="currentpassword">Contraseña actual</label>
-              <input type="password" name="currentpassword" id="currentpassword" placeholder="Contraseña actual" required>
-            </div>
-          </div>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="password">Nueva contraseña</label>
-              <input type="password" name="password" id="password" placeholder="Nueva contraseña" required>
-            </div>
-            <div class="form-group">
-              <label for="confirmpassword">Confirmar nueva contraseña</label>
-              <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Repetir nueva contraseña" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label><input type="checkbox" id="show-password"> Mostrar contraseñas</label>
-          </div>
-          <button class="btn-primary" type="submit">Actualizar contraseña</button>
-        </form>
-      </div>
-    </section>
-  </section>
+      
+    
 </main>
 
 <script>

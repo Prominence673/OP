@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 $id_usuario = $_SESSION['usuario']['id'];
 
-// Buscar carrito activo
+
 $stmt = $conn->prepare("SELECT id_carrito FROM carrito WHERE id_usuario=? AND estado='activo' ORDER BY fecha_creacion DESC LIMIT 1");
 $stmt->bind_param("i", $id_usuario);
 $stmt->execute();
@@ -20,7 +20,7 @@ if (!$stmt->fetch()) {
 }
 $stmt->close();
 
-// Traer items del carrito
+
 $sql = "SELECT ci.id_item, ci.tipo, ci.id_producto, ci.cantidad,
     COALESCE(p.nombre_viaje, a.nombre, e.nombre, pa.nombre, 'Producto') AS nombre,
     COALESCE(p.precio_aprox, a.precio, e.precio, pa.precio_desde, 0) AS precio

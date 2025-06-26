@@ -1,0 +1,19 @@
+[2025-06-26 18:16:39] Token recibido: 5302e9cbb81bf25ff423bb102799987aa527bc8f02e779271639a2f45fd0e990
+[2025-06-26 18:16:39] Datos del token: {"id_usuario":39,"expires_at":"2025-06-26 19:04:58"}
+[2025-06-26 18:16:51] Token recibido: 
+[2025-06-26 18:16:51] Datos del token: null
+[2025-06-26 18:16:51] Token inválido o expirado
+[2025-06-26 18:19:52] Token recibido: 973d2e709be596f42e7f5c3b2c11dcbdcc063344b4a729af7fcf139c906b85e4
+[2025-06-26 18:19:52] Datos del token: {"id_usuario":39,"expires_at":"2025-06-26 19:19:36"}
+[2025-06-26 18:20:18] Token recibido: 
+[2025-06-26 18:20:18] Datos del token: null
+[2025-06-26 18:20:18] Token inválido o expirado
+[2025-06-26 18:26:05] Token recibido: 973d2e709be596f42e7f5c3b2c11dcbdcc063344b4a729af7fcf139c906b85e4
+[2025-06-26 18:26:05] Datos del token: {"id_usuario":39,"expires_at":"2025-06-26 19:19:36"}
+[2025-06-26 18:26:05] No se encontró email asociado al token
+[2025-06-26 18:26:14] Token recibido: 973d2e709be596f42e7f5c3b2c11dcbdcc063344b4a729af7fcf139c906b85e4
+[2025-06-26 18:26:14] Datos del token: {"id_usuario":39,"expires_at":"2025-06-26 19:19:36"}
+[2025-06-26 18:26:14] No se encontró email asociado al token
+[2025-06-26 18:26:41] Token recibido: b10640db31c5152967475dffff44d4eac946913d45367a169ed2980b34f069b2
+[2025-06-26 18:26:41] Datos del token: {"id_usuario":39,"expires_at":"2025-06-26 19:26:22"}
+[2025-06-26 18:26:41] No se encontró email asociado al token
