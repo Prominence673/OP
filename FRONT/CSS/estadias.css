@@ -140,3 +140,25 @@ main {
   border-image: linear-gradient(to right, #0074D9, #7FDBFF) 1;
   clip-path: inset(0 round 10px);
 }
+
+.estadias-admin h3 {
+  text-align: center;
+  font-size: 2.3rem;
+  font-family: 'Quicksand', Arial, sans-serif;
+  color: #0077cc;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.estadias-admin h3::after {
+  content: "";
+  display: block;
+  margin: 0.7rem auto 0 auto;
+  width: 180px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #0077cc 0%, #ff914d 100%);
+}

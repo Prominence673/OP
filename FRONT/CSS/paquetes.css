@@ -15,6 +15,27 @@ main {
   gap: 2rem;
 }
 
+.paquetes-titulo {
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #0077cc;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  font-family: 'Quicksand', 'Vardena', Arial, sans-serif;
+}
+
+.paquetes-titulo::after {
+  content: "";
+  display: block;
+  margin: 0.7rem auto 0 auto;
+  width: 180px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #0077cc 0%, #ff914d 100%);
+}
+
 .paquete {
   background-color: white;
   border-radius: 10px;

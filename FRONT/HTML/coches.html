@@ -6,6 +6,7 @@
   <title>Alquiler de Autos | Travel Rock Argentina</title>
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
   <link rel="stylesheet" href="../CSS/coches.css"/>
+  <link rel="stylesheet" href="../CSS/toast.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -26,7 +27,7 @@
             <li><a href="pasajes.html">Pasajes aéreos</a></li>
           </ul>
         </li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
     <div class="user-menu">
@@ -108,14 +109,12 @@
             <div class="form-container" style="display: none; margin-top: 10px;">
               <form class="add-cart-form">
                 <input type="hidden" name="id_auto" value="${p.id_autos}">
-                <label for="cant-${p.id_autos}">Cantidad:</label>
-                <input id="cant-${p.id_autos}" type="number" name="cantidad" value="1" min="1" style="width:60px;">
                 <button type="submit" class="add-to-cart">Añadir al carrito</button>
               </form>
             </div>
           </div>
         `;
-          
+                  
         // Click para expandir/cerrar formulario
         article.addEventListener("click", () => {
           const formContainer = article.querySelector(".form-container");
@@ -135,13 +134,18 @@
 
           const formData = new FormData(this);
           formData.append("tipo", "auto");
+          formData.append("cantidad", 1); // Siempre 1 unidad
           const res = await fetch("../../BACK/PHP/carrito_api.php", {
             method: "POST",
             body: formData
           });
 
           const data = await res.json();
-          alert(data.mensaje || data.error || "Agregado al carrito");
+          if (data.error) {
+            showToast(data.error, "#dc3545");
+          } else {
+            showToast(data.mensaje || "Agregado al carrito", "#28a745");
+          }
         });
 
         cont.appendChild(article);
@@ -160,5 +164,7 @@
 <footer class="site-footer center">
   <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
 </footer>
+<div id="toast-msg"></div>
+<script src="../JS DISEÑO/toast.js"></script>
 </body>
 </html>

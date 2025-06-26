@@ -1,5 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    // Toast personalizado
+function showToast(msg, color = "#004aad") {
+    const toast = document.getElementById("toast-msg");
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.style.background = color;
+    toast.classList.add("show");
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+
     cargarCarrito();
 
 
@@ -81,11 +93,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 const itemElement = this.closest(".item-carrito");
                 const itemId = itemElement.dataset.id;
                 const esSumar = this.classList.contains("sumar");
-                
-          
+
                 this.style.transform = "scale(0.9)";
                 setTimeout(() => { this.style.transform = "scale(1)"; }, 100);
-                
+
                 try {
                     const response = await fetch("../../BACK/PHP/actualizar_cantidad.php", {
                         method: "POST",
@@ -95,35 +106,33 @@ document.addEventListener("DOMContentLoaded", function() {
                             operacion: esSumar ? "sumar" : "restar"
                         })
                     });
-                    
+
                     if (!response.ok) throw new Error("Error en la actualización");
-                    
+
                     const result = await response.json();
                     if (result.error) throw new Error(result.error);
-                    
-  
+
                     const cantidadElement = itemElement.querySelector(".cantidad-valor");
                     const cantidadActual = parseInt(cantidadElement.textContent);
                     cantidadElement.textContent = esSumar ? cantidadActual + 1 : Math.max(1, cantidadActual - 1);
-                    
 
                     const precio = parseFloat(itemElement.querySelector(".info-item p").textContent.replace(/[^0-9.-]+/g,""));
                     const nuevaCantidad = parseInt(cantidadElement.textContent);
                     itemElement.querySelector(".subtotal-item").textContent = `$${(precio * nuevaCantidad).toLocaleString()}`;
-                    cargarCarrito(); 
-                    
+                    cargarCarrito();
+
+                    showToast("Cantidad actualizada", "#28a745");
+
                 } catch (error) {
                     console.error("Error:", error);
-                    alert("Error al actualizar: " + error.message);
+                    showToast("Error al actualizar: " + error.message, "#dc3545");
                 }
             });
         });
         
 
         document.querySelectorAll(".eliminar-item").forEach(btn => {
-            btn.addEventListener("click", async function() {
-                if (!confirm("¿Seguro quieres eliminar este artículo?")) return;
-                
+            btn.addEventListener("click", async function() {                
                 const itemElement = this.closest(".item-carrito");
                 const itemId = itemElement.dataset.id;
 
@@ -140,11 +149,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (!response.ok) throw new Error("Error al eliminar");
                     
                     cargarCarrito();
-                    
+                    showToast("Producto eliminado del carrito", "#dc3545");
+
                 } catch (error) {
                     console.error("Error:", error);
                     itemElement.classList.remove("eliminando");
-                    alert("Error al eliminar: " + error.message);
+                    showToast("Error al eliminar: " + error.message, "#dc3545");
                 }
             });
         });
@@ -156,17 +166,13 @@ document.addEventListener("DOMContentLoaded", function() {
             btn.disabled = true;
             
             try {
-     
                 await cargarCarrito();
-                
-            
                 window.location.href = "../../FRONT/HTML/finalizar_compra.html";
-                
             } catch (error) {
                 console.error("Error al finalizar compra:", error);
                 btn.innerHTML = 'Finalizar Compra';
                 btn.disabled = false;
-                alert('Ocurrió un error: ' + error.message);
+                showToast('Ocurrió un error: ' + error.message, "#dc3545");
             }
         });
     }

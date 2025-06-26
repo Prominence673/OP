@@ -2,14 +2,25 @@ console.log("Script carrito.js cargado correctamente");
 
 document.addEventListener("DOMContentLoaded", function() {
   const botones = document.querySelectorAll(".add-to-cart");
-  
+
+  // Toast personalizado
+  function showToast(msg, color = "#004aad") {
+    const toast = document.getElementById("toast-msg");
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.style.background = color;
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2500);
+  }
+
   botones.forEach((boton) => {
-    boton.addEventListener("click", async () => {
+    boton.addEventListener("click", async (e) => {
+      e.preventDefault(); // Evita el submit o navegación
       const id_paquete = boton.getAttribute("data-id_paquete");
-      console.log(`Agregando paquete ID: ${id_paquete}`);
-      
+
       try {
-        // IMPORTANTE: Ajusta esta ruta según tu estructura real
         const response = await fetch("/op/BACK/PHP/agregar_item_carrito.php", {
           method: "POST",
           headers: {
@@ -22,21 +33,15 @@ document.addEventListener("DOMContentLoaded", function() {
           })
         });
 
-        if (!response.ok) {
-          throw new Error(`Error HTTP! estado: ${response.status}`);
-        }
-
         const data = await response.json();
-        console.log("Respuesta del servidor:", data);
-        
+
         if (data.error) {
-          alert(`Error: ${data.error}`);
+          showToast(`Error: ${data.error}`, "#dc3545");
         } else {
-          alert(data.mensaje || "¡Producto agregado al carrito!");
+          showToast("¡Producto agregado al carrito!", "#28a745");
         }
       } catch (error) {
-        console.error("Error en la petición:", error);
-        alert("Error al comunicarse con el servidor. Por favor, inténtalo de nuevo.");
+        showToast("Error al comunicarse con el servidor.", "#dc3545");
       }
     });
   });

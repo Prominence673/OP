@@ -6,6 +6,7 @@
   <title>Paquetes de Viajes | Travel Rock Argentina</title>
   <link rel="stylesheet" href="../CSS/paquetes.css"/>
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
+  <link rel="stylesheet" href="../CSS/toast.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -54,7 +55,7 @@
             <li><a href="pasajes.html">Pasajes aéreos</a></li>
           </ul>
         </li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
     <div class="user-menu">
@@ -74,9 +75,9 @@
     </div>
 </header>
   <main>
-  <section class="paquetes" id="paquetes-container">
-    <!-- Los paquetes se cargarán aquí con JS -->
-  </section>
+    <h2 class="paquetes-titulo">Paquetes de viajes</h2>
+    <section class="paquetes" id="paquetes-container">
+    </section>
 
   <!-- Scripts -->
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
@@ -113,8 +114,6 @@
       <div class="form-container" style="display: none; margin-top: 10px;">
         <form class="add-cart-form">
           <input type="hidden" name="id_paquete" value="${p.id_paquetes}">
-          <label for="cant-${p.id_paquetes}">Cantidad:</label>
-          <input id="cant-${p.id_paquetes}" type="number" name="cantidad" value="1" min="1" style="width:60px;">
           <button type="submit" class="add-to-cart">Añadir al carrito</button>
         </form>
       </div>
@@ -140,16 +139,18 @@
 
     const formData = new FormData(this);
     formData.append('tipo', 'paquete');
-    for (const pair of formData.entries()) {
-      console.log(pair[0]+ ': ' + pair[1]);
-    }
+    formData.append('cantidad', 1); // Siempre 1 unidad
 
     const res = await fetch('../../BACK/PHP/carrito_api.php', {
       method: 'POST',
       body: formData
     });
     const data = await res.json();
-    alert(data.mensaje || data.error || "Agregado al carrito");
+    if (data.error) {
+      showToast(data.error, "#dc3545");
+    } else {
+      showToast(data.mensaje || "Agregado al carrito", "#28a745");
+    }
   });
 
   contenedor.appendChild(article);
@@ -165,6 +166,8 @@
  <footer class="site-footer center">
     <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
   </footer>
+  
+<div id="toast-msg"></div>
+<script src="../JS DISEÑO/toast.js"></script>
 </body>
-
 </html>

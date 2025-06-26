@@ -13034,3 +13034,443 @@ Stack trace:
 
 )
 
+[26-Jun-2025 17:36:26 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 1
+[26-Jun-2025 17:36:26 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 30
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+)
+
+[26-Jun-2025 17:36:28 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 3
+[26-Jun-2025 17:36:28 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 30
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+)
+
+[26-Jun-2025 17:36:36 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 1
+[26-Jun-2025 17:36:36 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 30
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+)
+
+[26-Jun-2025 17:50:18 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[26-Jun-2025 17:50:18 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 18000
+        )
+
+)
+
+[26-Jun-2025 17:52:00 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[26-Jun-2025 17:52:00 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 18000
+        )
+
+)
+
+[26-Jun-2025 17:52:34 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[26-Jun-2025 17:52:34 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 18000
+        )
+
+)
+
+[26-Jun-2025 17:53:19 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[26-Jun-2025 17:53:19 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 18000
+        )
+
+)
+
+[26-Jun-2025 17:57:01 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[26-Jun-2025 17:57:01 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 18000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 6
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Mar del Plata
+            [precio] => 270000.00
+            [total] => 270000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 22
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Burj Al Arab
+            [precio] => 1200000.00
+            [total] => 1200000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 31
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+)
+
+[26-Jun-2025 17:57:03 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 3
+[26-Jun-2025 17:57:03 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 18000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 6
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Mar del Plata
+            [precio] => 270000.00
+            [total] => 270000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 22
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Burj Al Arab
+            [precio] => 1200000.00
+            [total] => 1200000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 31
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+)
+
+[26-Jun-2025 17:57:31 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[26-Jun-2025 17:57:31 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 18000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 6
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Mar del Plata
+            [precio] => 270000.00
+            [total] => 270000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+    [3] => Array
+        (
+            [id_producto] => 22
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Burj Al Arab
+            [precio] => 1200000.00
+            [total] => 1200000
+        )
+
+    [4] => Array
+        (
+            [id_producto] => 31
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => CÓRDOBA → MENDOZA
+            [precio] => 48000.00
+            [total] => 48000
+        )
+
+)
+
+[26-Jun-2025 18:07:15 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[26-Jun-2025 18:07:15 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 2
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 532000
+        )
+
+)
+
+[26-Jun-2025 18:12:13 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[26-Jun-2025 18:12:13 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 2
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 532000
+        )
+
+)
+
+[26-Jun-2025 18:35:44 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[26-Jun-2025 18:35:44 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 2
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 532000
+        )
+
+)
+
+[26-Jun-2025 18:52:22 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[26-Jun-2025 18:52:22 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 2
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 532000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 18:52:29 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 2
+[26-Jun-2025 18:52:29 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 2
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 532000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 18:52:29 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 3
+[26-Jun-2025 18:52:29 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 2
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 532000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 18:52:30 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[26-Jun-2025 18:52:30 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 2
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 532000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[26-Jun-2025 18:52:30 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 3
+[26-Jun-2025 18:52:30 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 2
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 532000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+

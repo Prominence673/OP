@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const elements = document.querySelectorAll('.slide-in');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+  function revealOnScroll() {
+    document.querySelectorAll('.vuelo-info-textos').forEach(function(el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 80 && rect.bottom > 80) {
+        el.classList.add('visible');
       } else {
-        entry.target.classList.remove('visible');
+        el.classList.remove('visible');
       }
     });
-  }, { threshold: 0.2 });
-
-  elements.forEach(el => observer.observe(el));
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('resize', revealOnScroll);
+  revealOnScroll();
 });
