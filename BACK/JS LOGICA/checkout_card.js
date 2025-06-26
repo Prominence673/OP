@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         subtotalSpan.textContent = `$${total.toFixed(2)}`;
         summaryTotalSpan.textContent = `$${total.toFixed(2)}`;
-        totalAmountSpan.textContent = total.toFixed(2);
     }
 
     function mostrarFormularioPorMetodo(metodo) {

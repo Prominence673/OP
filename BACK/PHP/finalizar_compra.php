@@ -3,6 +3,12 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/error_log.txt');
 header('Content-Type: application/json');
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 require_once 'connection.php';
 
 function responder($mensaje, $ok = true, $extra = []) {
@@ -114,7 +120,8 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
     $stmt->close();
 
 
-    $stmt = $conn->prepare("INSERT INTO detalle_pedido (id_pedido, id_producto, cantidad, precio_unitario, total) VALUES (?, ?, ?, ?, ?)");
+
+    $stmt = $conn->prepare("INSERT INTO detalle_pedido (id_pedido, id_producto, cantidad, precio_unitario, total, id_estado) VALUES (?, ?, ?, ?, ?, 1)");
     foreach ($resumen['items'] as $item) {
         $subtotal = $item['precio'] * $item['cantidad'];
         $stmt->bind_param("iiidd", $id_pedido, $item['id_producto'], $item['cantidad'], $item['precio'], $subtotal);
@@ -124,7 +131,80 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
     $conn->query("UPDATE carrito SET estado='comprado' WHERE id_carrito=" . intval($resumen['id_carrito']));
     $conn->query("DELETE FROM carrito_items WHERE id_carrito=" . intval($resumen['id_carrito']));
 
+    // Obtener el email del usuario
+    $email_usuario = '';
+    $stmt = $conn->prepare("SELECT email FROM usuarios WHERE id_usuario = ?");
+    $stmt->bind_param("i", $id_usuario);
+    $stmt->execute();
+    $stmt->bind_result($email_usuario);
+    $stmt->fetch();
+    $stmt->close();
+
+    // Enviar email de agradecimiento
+    
+
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        $mail->setFrom($_ENV['EMAIL_USER'], 'TravelAir');
+        $mail->addAddress($email_usuario);
+
+        $mail->isHTML(true);
+        $mail->Subject = '¡Gracias por tu compra en TravelAir!';
+
+        // Armar la lista de productos
+        $productosHtml = '';
+        foreach ($resumen['items'] as $item) {
+            $productosHtml .= "<tr>
+                <td style='padding:8px;border-bottom:1px solid #eee;'>{$item['nombre']}</td>
+                <td style='padding:8px;border-bottom:1px solid #eee;'>{$item['cantidad']}</td>
+                <td style='padding:8px;border-bottom:1px solid #eee;'>$" . number_format($item['precio'], 2) . "</td>
+                <td style='padding:8px;border-bottom:1px solid #eee;'>$" . number_format($item['total'], 2) . "</td>
+            </tr>";
+        }
+
+        $mail->Body = "
+        <div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; overflow: hidden;'>
+            <div style='background-color: #0077cc; height: 50px;'></div>
+            <div style='background-color: #ffffff; padding: 40px; text-align: center;'>
+                <h2 style='color: #333;'>¡Gracias por tu compra en TravelAir!</h2>
+                <p style='color: #555;'>Hola <strong>{$nombre} {$apellido}</strong>,</p>
+                <p style='color: #555;'>Tu pedido <strong>#{$id_pedido}</strong> ha sido recibido correctamente.</p>
+                <p style='color: #555;'>Estos son los productos que compraste:</p>
+                <table style='width:100%;border-collapse:collapse;margin:20px 0;'>
+                    <thead>
+                        <tr style='background:#f5f5f5;'>
+                            <th style='padding:8px;'>Producto</th>
+                            <th style='padding:8px;'>Cantidad</th>
+                            <th style='padding:8px;'>Precio unitario</th>
+                            <th style='padding:8px;'>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {$productosHtml}
+                    </tbody>
+                </table>
+                <p style='color: #333; font-size: 1.1em;'><strong>Total pagado: $" . number_format($total, 2) . "</strong></p>
+                <p style='color: #555;'>¡Gracias por confiar en nosotros!<br>El equipo de TravelAir</p>
+            </div>
+            <div style='background-color: #0077cc; height: 50px;'></div>
+        </div>";
+
+        $mail->send();
+        // No es necesario mostrar mensaje de éxito aquí, solo loguear si quieres
+    } catch (Exception $e) {
+        error_log("No se pudo enviar el correo de agradecimiento: {$mail->ErrorInfo}");
+    }
+
     responder("Compra realizada con éxito", true, [
+        "success" => true,
         "id_pedido" => $id_pedido,
         "total" => $total
     ]);

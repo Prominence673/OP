@@ -83,8 +83,9 @@
                                 <option value="6">6 cuotas</option>
                             </select>
                         </div>
+                        <div class="message-target"></div>
                         <button type="submit" class="btn-pay">
-                            <i class="fa-solid fa-lock"></i> PAGAR $<span id="total-amount">0.00</span>
+                            <i class="fa-solid fa-lock"></i> CONFIRMAR PAGO<span class="total-amount"></span>
                         </button>
                     </form>
                     <!-- FORMULARIO TARJETA DE DÉBITO -->
@@ -122,8 +123,9 @@
                                   <input type="text" id="card-cvv-debit" name="cvv" maxlength="3" required>
                               </div>
                           </div>
+                          <div class="message-target"></div>
                           <button type="submit" class="btn-pay">
-                              <i class="fa-solid fa-lock"></i> PAGAR $<span id="total-amount">0.00</span>
+                              <i class="fa-solid fa-lock"></i> CONFIRMAR PAGO<span class="total-amount"></span>
                           </button>
                       </form>
                   
@@ -149,8 +151,9 @@
                       <label for="dni_efectivo">DNI</label>
                       <input type="text" id="dni_efectivo" name="dni" maxlength="8" required>
                     </div>
+                    <div class="message-target"></div>
                     <button id="confirm-cash" class="btn-pay">
-                        <i class="fa-solid fa-check"></i> CONFIRMAR PAGO EN EFECTIVO
+                        <i class="fa-solid fa-check"></i> CONFIRMAR PAGO<span class="total-amount"></span>
                     </button>
                   </form> 
                 </div>
@@ -167,6 +170,10 @@
                     <div class="summary-row">
                         <span>Subtotal</span>
                         <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row" id="descuento-row" style="display:none;">
+                        <span>Descuento</span>
+                        <span id="descuento">- $0.00</span>
                     </div>
                     <div class="summary-row total">
                         <span>Total</span>
@@ -186,6 +193,7 @@
     <footer class="site-footer center">
         <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
     </footer>
+    <script src="../../BACK/JS LOGICA/submitdata.js"></script>
     <script src="../../BACK/JS LOGICA/checkout_card.js">
       document.addEventListener("DOMContentLoaded", () => {
       // ...
@@ -194,86 +202,115 @@
     </script>
  <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const metodoDefault = 1; // Crédito por defecto
+  function mostrarFormularioPorMetodo(metodo) {
+    const formCredit = document.getElementById("formCredit");
+    const formDebit = document.getElementById("formDebit");
+    const formEfec = document.getElementById("formEfec");
+    if (formCredit) formCredit.style.display = metodo === "credit" ? "" : "none";
+    if (formDebit) formDebit.style.display = metodo === "debit" ? "" : "none";
+    if (formEfec) formEfec.style.display = metodo === "cash" ? "" : "none";
+  }
 
   function cargarResumen(idMetodoPago = 1) {
-  fetch("../../BACK/PHP/finalizar_compra.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id_pagometodo: idMetodoPago, soloResumen: true })
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log("Respuesta JSON completa:", data);
-    if (data.error) {
-      console.error("Error:", data.error);
-      return;
-    }
+    fetch("../../BACK/PHP/finalizar_compra.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_pagometodo: idMetodoPago, soloResumen: true })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.error) {
+        console.error("Error:", data.error);
+        return;
+      }
+      const resumen = data;
+      const contenedor = document.getElementById("order-summary");
+      const subtotal = document.getElementById("subtotal");
+      const total = document.getElementById("summary-total");
+      const descuentoRow = document.getElementById("descuento-row");
+      const descuentoSpan = document.getElementById("descuento");
 
-    const resumen = data;
-    const contenedor = document.getElementById("order-summary");
-    const subtotal = document.getElementById("subtotal");
-    const total = document.getElementById("summary-total");
+      if (contenedor) contenedor.innerHTML = "";
 
-    // Limpiar contenedor
-    contenedor.innerHTML = "";
+      if (resumen.items && resumen.items.length) {
+        resumen.items.forEach(item => {
+          const div = document.createElement("div");
+          div.classList.add("order-item");
+          div.innerHTML = `
+            <p><strong>${item.nombre}</strong> x${item.cantidad}</p>
+            <p>Precio: $${parseFloat(item.precio).toFixed(2)} | Total: $${parseFloat(item.total).toFixed(2)}</p>
+          `;
+          contenedor.appendChild(div);
+        });
+      }
 
-    resumen.items.forEach(item => {
-      const div = document.createElement("div");
-      div.classList.add("order-item");
-      div.innerHTML = `
-        <p><strong>${item.nombre}</strong> x${item.cantidad}</p>
-        <p>Precio: $${parseFloat(item.precio).toFixed(2)} | Total: $${parseFloat(item.total).toFixed(2)}</p>
-      `;
-      contenedor.appendChild(div);
+      let montoDescuento = 0;
+      if (resumen.descuento && parseFloat(resumen.descuento) > 0) {
+        montoDescuento = (parseFloat(resumen.subtotal) * parseFloat(resumen.descuento) / 100);
+        if (descuentoSpan) descuentoSpan.textContent = `- $${montoDescuento.toFixed(2)} (${resumen.descuento}% OFF)`;
+        if (descuentoRow) descuentoRow.style.display = "";
+      } else if (descuentoRow) {
+        descuentoRow.style.display = "none";
+      }
+
+      if (subtotal) subtotal.textContent = `$${parseFloat(resumen.subtotal).toFixed(2)}`;
+      if (total) total.textContent = `$${(parseFloat(resumen.subtotal) - montoDescuento).toFixed(2)}`;
+      const elementos = document.getElementsByClassName("total-amount");
+      Array.from(elementos).forEach(el => {
+        el.textContent = ` - Total: $${(parseFloat(resumen.subtotal) - montoDescuento).toFixed(2)}`;
+      });
+    })
+    .catch(err => {
+      console.error("Error de red:", err);
     });
+  }
 
-    subtotal.textContent = `$${resumen.subtotal}`;
-    total.textContent = `$${resumen.total}`;
-  })
-  .catch(err => {
-    console.error("Error de red:", err);
-  });
-}
-
-  // Llamada inicial
-  cargarResumen();
-
-  // Si usás botones para cambiar el método de pago, podés agregar:
   document.querySelectorAll(".payment-method").forEach(btn => {
     btn.addEventListener("click", () => {
+      document.querySelectorAll(".payment-method").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      mostrarFormularioPorMetodo(btn.dataset.method);
       const metodo = btn.dataset.method;
       const idMetodo = metodo === "credit" ? 1 : metodo === "debit" ? 2 : 3;
       cargarResumen(idMetodo);
     });
   });
+
+  const btnActivo = document.querySelector(".payment-method.active");
+  let idMetodo = 1;
+  if (btnActivo) {
+    const metodo = btnActivo.dataset.method;
+    idMetodo = metodo === "credit" ? 1 : metodo === "debit" ? 2 : 3;
+    mostrarFormularioPorMetodo(metodo);
+  } else {
+    mostrarFormularioPorMetodo("credit");
+  }
+  cargarResumen(idMetodo);
 });
 </script>
-    <script src="../../BACK/JS LOGICA/submitdata.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const messageTarget = document.createElement("div");
-  document.body.appendChild(messageTarget);
 
-  new FormHandler({
-    formSelector: "#formCredit",
-    endpoint: "../../BACK/PHP/finalizar_compra.php",
-    messageTarget
-  });
+    new FormHandler({
+      formSelector: "#formCredit",
+      endpoint: "../../BACK/PHP/finalizar_compra.php",
+      messageTarget: document.querySelector("#formCredit .message-target")
+      });
+ 
 
-  new FormHandler({
-    formSelector: "#formDebit",
-    endpoint: "../../BACK/PHP/finalizar_compra.php",
-    messageTarget
-  });
+    new FormHandler({
+      formSelector: "#formDebit",
+      endpoint: "../../BACK/PHP/finalizar_compra.php",
+      messageTarget: document.querySelector("#formDebit .message-target")
+      });
 
-  new FormHandler({
-    formSelector: "#formEfec",
-    endpoint: "../../BACK/PHP/finalizar_compra.php",
-    messageTarget
-  });
-});
+    new FormHandler({
+      formSelector: "#formEfec",
+      endpoint: "../../BACK/PHP/finalizar_compra.php",
+      messageTarget: document.querySelector("#formEfec .message-target")
+      });
+  }
+);
 </script>
-     
 </body>
 </html>

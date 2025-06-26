@@ -5,11 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FLY - Panel de Administración</title>
   <link rel="stylesheet" href="../CSS/admin.css" />
+  <style>
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tabla-productos th, .tabla-productos td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: left;
+}
+.tabla-productos th {
+  background: #f5f5f5;
+}
+.tabla-productos img {
+  display: block;
+  max-width: 80px;
+  max-height: 50px;
+}
+.btn-accion {
+  border: none;
+  background: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: color 0.2s;
+}
+.btn-accion:hover {
+  color: #c00;
+}
+.btn-modificar:hover { color: #0077cc; }
+.btn-agregar:hover { color: #090; }
+</style>
 </head>
 <body>
 
 <div class="admin-container">
-  <!-- Sidebar -->
+
   <aside class="admin-sidebar">
     <h2 class="logo">Admin</h2>
     <nav class="admin-nav">
@@ -31,7 +63,6 @@
     </nav>
   </aside>
 
-  <!-- Contenido principal -->
   <main class="admin-main">
     <header class="admin-header">
       <h1>Panel de Administración</h1>
@@ -48,67 +79,35 @@
   </section>
       <div id="ver-productos" class="contenido-seccion" hidden>
         <h2>Listado de productos</h2>
-        <p>Aquí se muestran los productos registrados.</p>
+        <label for="tipo-producto">Ver:</label>
+        <select id="tipo-producto">
+          <option value="coches">Autos</option>
+          <option value="paquetes">Paquetes</option>
+          <option value="estadias">Estadías</option>
+          <option value="pasajes">Pasajes</option>
+        </select>
+        <div id="tabla-productos-container" style="margin-top:1em;"></div>
       </div>
 
-      <!-- AGREGAR PRODUCTO -->
+
       <div id="agregar-producto" class="contenido-seccion" hidden>
         <h2>Agregar nuevo producto</h2>
-        <!-- Insertar Auto (con imagen) -->
-        <form id="form-insert-auto" enctype="multipart/form-data" class="form-admin">
-          <input type="hidden" name="tabla" value="autos">
-          <input type="hidden" name="accion" value="insertar">
-          <label>Nombre: <input name="nombre" required></label>
-          <label>Tipo: <input name="tipo" required></label>
-          <label>Capacidad: <input name="capacidad" type="number" required></label>
-          <label>Precio: <input name="precio" type="number" required></label>
-          <label>Imagen (URL o nombre): <input name="imagen" required></label>
-          <button type="submit">Insertar Auto</button>
-          <div class="msg" id="msg-insert-auto"></div>
-        </form>
-
-        <!-- Insertar Pasaje -->
-        <form id="form-insert-pasaje" class="form-admin">
-          <input type="hidden" name="tabla" value="pasajes">
-          <input type="hidden" name="accion" value="insertar">
-          <label>Nombre: <input name="nombre" required></label>
-          <label>Imagen (URL o nombre): <input name="imagen" required></label>
-          <label>Aerolínea: <input name="aerolinea" required></label>
-          <label>Duración: <input name="duracion" required></label>
-          <label>Precio desde: <input name="precio_desde" type="number" required></label>
-          <label>Clase: <input name="clase" required></label>
-          <button type="submit">Insertar Pasaje</button>
-          <div class="msg" id="msg-insert-pasaje"></div>
-        </form>
-
-        <!-- Insertar Paquete -->
-        <form id="form-insert-paquete" class="form-admin">
-          <input type="hidden" name="tabla" value="paquetes">
-          <input type="hidden" name="accion" value="insertar">
-          <label>Nombre del viaje: <input name="nombre_viaje" required></label>
-          <label>Imagen (URL o nombre): <input name="imagen" required></label>
-          <label>Duración: <input name="duracion" required></label>
-          <label>Incluye: <input name="incluye" required></label>
-          <label>Precio aprox: <input name="precio_aprox" type="number" required></label>
-          <button type="submit">Insertar Paquete</button>
-          <div class="msg" id="msg-insert-paquete"></div>
-        </form>
-
-        <!-- Insertar Estadía -->
-        <form id="form-insert-estadia" class="form-admin">
-          <input type="hidden" name="tabla" value="estadias">
-          <input type="hidden" name="accion" value="insertar">
-          <label>Nombre: <input name="nombre" required></label>
-          <label>Imagen (URL o nombre): <input name="imagen" required></label>
-          <label>Ubicación: <input name="ubicacion" required></label>
-          <label>Descripción: <input name="descripcion" required></label>
-          <label>Precio: <input name="precio" type="number" required></label>
-          <button type="submit">Insertar Estadía</button>
-          <div class="msg" id="msg-insert-estadia"></div>
+        <form id="form-insert-producto" enctype="multipart/form-data" class="form-admin">
+          <label>Tabla:
+            <select name="tabla" id="tabla-insertar" required>
+              <option value="autos">Autos</option>
+              <option value="pasajes">Pasajes</option>
+              <option value="paquetes">Paquetes</option>
+              <option value="estadias">Estadías</option>
+            </select>
+          </label>
+          <div id="campos-insertar"></div>
+          <button type="submit">Insertar Producto</button>
+          <div class="msg" id="msg-insert-producto"></div>
         </form>
       </div>
 
-      <!-- MODIFICAR PRODUCTO -->
+
       <div id="modificar-producto" class="contenido-seccion" hidden>
         <h2>Modificar Producto</h2>
         <form id="form-modificar-producto" class="form-admin">
@@ -132,7 +131,7 @@
         </form>
       </div>
 
-      <!-- ELIMINAR PRODUCTO -->
+
       <div id="eliminar-producto" class="contenido-seccion" hidden>
         <h2>Eliminar Producto</h2>
         <form id="form-borrar-producto" class="form-admin">
@@ -144,7 +143,16 @@
               <option value="estadias">Estadías</option>
             </select>
           </label>
-          <label>ID: <input name="id" type="number" required></label>
+          <label>
+            Eliminar por:
+            <select id="eliminar-por" name="eliminar_por">
+              <option value="id">ID</option>
+              <option value="nombre">Nombre</option>
+            </select>
+          </label>
+          <div id="campo-eliminar">
+            <label>ID: <input name="id" type="number" required></label>
+          </div>
           <input type="hidden" name="accion" value="borrar">
           <button type="submit">Borrar</button>
           <div class="msg" id="msg-borrar"></div>
@@ -153,7 +161,7 @@
        <script src="../../BACK/JS LOGICA/submitdata.js"></script>
       <script src="../../BACK/JS LOGICA/submitfiles.js"></script>
       <script>
-        // Insertar auto con imagen (usa FileUploader)
+
         new FileUploader({
           formSelector: "#form-insert-auto",
           fileInputName: "imagen",
@@ -161,63 +169,63 @@
           messageTarget: document.getElementById("msg-insert-auto")
         });
 
-        // Insertar pasaje
+
         new FormHandler({
           formSelector: "#form-insert-pasaje",
           endpoint: "../../BACK/PHP/admin_abm_productos.php",
           messageTarget: document.getElementById("msg-insert-pasaje")
         });
 
-        // Insertar paquete
+  
         new FormHandler({
           formSelector: "#form-insert-paquete",
           endpoint: "../../BACK/PHP/admin_abm_productos.php",
           messageTarget: document.getElementById("msg-insert-paquete")
         });
 
-        // Insertar estadía
+
         new FormHandler({
           formSelector: "#form-insert-estadia",
           endpoint: "../../BACK/PHP/admin_abm_productos.php",
           messageTarget: document.getElementById("msg-insert-estadia")
         });
 
-        // Modificar producto
+      
         new FormHandler({
           formSelector: "#form-modificar-producto",
           endpoint: "../../BACK/PHP/admin_abm_productos.php",
           messageTarget: document.getElementById("msg-modificar")
         });
 
-        // Borrar producto
+
         new FormHandler({
           formSelector: "#form-borrar-producto",
           endpoint: "../../BACK/PHP/admin_abm_productos.php",
           messageTarget: document.getElementById("msg-borrar")
         });
 
-        // Mostrar/ocultar secciones según menú
+       
         document.querySelectorAll('.admin-nav a[data-section], .admin-nav a[data-subsection]').forEach(link => {
           link.addEventListener('click', function(e) {
             e.preventDefault();
-            // Oculta todas las secciones
+         
             document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
 
-            // Muestra la sección correspondiente
+    
             if (this.dataset.section) {
               document.getElementById(this.dataset.section).hidden = false;
             }
             if (this.dataset.subsection) {
               document.getElementById(this.dataset.subsection).hidden = false;
             }
-            // Mostrar modificar/eliminar según el submenu
+  
             document.querySelectorAll('.admin-nav a[data-section], .admin-nav a[data-subsection]').forEach(link => {
             link.addEventListener('click', function(e) {
               e.preventDefault();
-              // Oculta todas las secciones
+        
               document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
 
-              // Muestra la sección correspondiente
+             
               if (this.dataset.section) {
                 document.getElementById(this.dataset.section).hidden = false;
               }
@@ -231,8 +239,16 @@
       </script>
 
       <div id="usuarios" class="contenido-seccion" hidden>
-        <h2>Gestión de usuarios</h2>
-        <p>Administrar cuentas y permisos.</p>
+        <h2>Gestión de usuarios y datos relacionados</h2>
+        <label for="tipo-usuario">Ver tabla:</label>
+        <select id="tipo-usuario">
+          <option value="usuarios">Usuarios</option>
+          <option value="opiniones">Opiniones</option>
+          <option value="detalle_pedido">Detalle pedido</option>
+          <option value="pedido">Pedido</option>
+          <option value="estado_pedido">Estado pedido</option>
+        </select>
+        <div id="tabla-usuarios-container" style="margin-top:1em;"></div>
       </div>
 
       <div id="config" class="contenido-seccion" hidden>
@@ -250,12 +266,262 @@
       actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5"); 
       actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
       </script>
-      <script src="../../BACK/JS LOGICA/user.js"></script>
+    
       <script src="../JS DISEÑO/menu.js"></script>
       
   </main>
 </div>
 
 <script src="../JS DISEÑO/admin.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const select = document.getElementById("tipo-producto");
+  const tablaContainer = document.getElementById("tabla-productos-container");
+
+  function renderTable(tipo, data) {
+    if (!Array.isArray(data) || data.length === 0) {
+      tablaContainer.innerHTML = "<p>No hay datos para mostrar.</p>";
+      return;
+    }
+    let headers = [];
+    switch (tipo) {
+      case "coches":
+        headers = ["ID", "Nombre", "Imagen", "Tipo", "Capacidad", "Precio", "Imagen Interior", "Acciones"];
+        break;
+      case "paquetes":
+        headers = ["ID", "Nombre del viaje", "Imagen", "Duración", "Incluye", "Precio aprox", "Acciones"];
+        break;
+      case "estadias":
+        headers = ["ID", "Nombre", "Imagen", "Ubicación", "Descripción", "Precio", "Acciones"];
+        break;
+      case "pasajes":
+        headers = ["ID", "Nombre", "Imagen", "Aerolínea", "Duración", "Precio desde", "Clase", "Acciones"];
+        break;
+    }
+    let html = "<table class='tabla-productos'><thead><tr>";
+    headers.forEach(h => html += `<th>${h}</th>`);
+    html += "</tr></thead><tbody>";
+    data.forEach(row => {
+      html += "<tr>";
+      switch (tipo) {
+        case "coches":
+          html += `<td>${row.id_autos}</td>
+                   <td>${row.nombre}</td>
+                   <td><img src="${row.imagen}" alt="" style="max-width:80px;max-height:50px;"></td>
+                   <td>${row.tipo}</td>
+                   <td>${row.capacidad}</td>
+                   <td>$${row.precio}</td>
+                   <td><img src="${row.imagen_interior}" alt="" style="max-width:80px;max-height:50px;"></td>`;
+          break;
+        case "paquetes":
+          html += `<td>${row.id_paquetes}</td>
+                   <td>${row.nombre_viaje}</td>
+                   <td><img src="${row.imagen}" alt="" style="max-width:80px;max-height:50px;"></td>
+                   <td>${row.duracion}</td>
+                   <td>${row.incluye}</td>
+                   <td>$${row.precio_aprox}</td>`;
+          break;
+        case "estadias":
+          html += `<td>${row.id_estadias}</td>
+                   <td>${row.nombre}</td>
+                   <td><img src="${row.imagen}" alt="" style="max-width:80px;max-height:50px;"></td>
+                   <td>${row.ubicacion}</td>
+                   <td>${row.descripcion}</td>
+                   <td>$${row.precio}</td>`;
+          break;
+        case "pasajes":
+          html += `<td>${row.id_pasajes}</td>
+                   <td>${row.nombre}</td>
+                   <td><img src="${row.imagen}" alt="" style="max-width:80px;max-height:50px;"></td>
+                   <td>${row.aerolinea}</td>
+                   <td>${row.duracion}</td>
+                   <td>$${row.precio_desde}</td>
+                   <td>${row.clase}</td>`;
+          break;
+      }
+    
+      html += `<td>
+        <button class="btn-accion btn-eliminar" title="Eliminar" data-id="${row.id_autos || row.id_paquetes || row.id_estadias || row.id_pasajes}" data-tipo="${tipo}">🗑️</button>
+        <button class="btn-accion btn-modificar" title="Modificar" data-id="${row.id_autos || row.id_paquetes || row.id_estadias || row.id_pasajes}" data-tipo="${tipo}">✏️</button>
+        <button class="btn-accion btn-agregar" title="Añadir" data-tipo="${tipo}">＋</button>
+      </td>`;
+      html += "</tr>";
+    });
+    html += "</tbody></table>";
+    tablaContainer.innerHTML = html;
+
+   
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+      btn.onclick = function() {
+        abrirEliminarProducto(this.dataset.tipo, this.dataset.id);
+      };
+    });
+    document.querySelectorAll('.btn-modificar').forEach(btn => {
+      btn.onclick = function() {
+        abrirModificarProducto(this.dataset.tipo, this.dataset.id);
+      };
+    });
+    document.querySelectorAll('.btn-agregar').forEach(btn => {
+      btn.onclick = function() {
+        abrirAgregarProducto(this.dataset.tipo);
+      };
+    });
+  }
+
+  function cargarProductos(tipo) {
+    fetch("../../BACK/PHP/productos_api.php?tipo=" + tipo)
+      .then(res => res.json())
+      .then(data => renderTable(tipo, data))
+      .catch(() => {
+        tablaContainer.innerHTML = "<p>Error al cargar los productos.</p>";
+      });
+  }
+
+  select.addEventListener("change", () => {
+    cargarProductos(select.value);
+  });
+
+
+  cargarProductos(select.value);
+});
+</script>
+<script>
+const camposPorTabla = {
+  autos: `
+    <label>Nombre: <input name="nombre" required></label>
+    <label>Tipo: <input name="tipo" required></label>
+    <label>Capacidad: <input name="capacidad" type="number" required></label>
+    <label>Precio: <input name="precio" type="number" required></label>
+    <label>Imagen (URL o nombre): <input name="imagen" required></label>
+    <label>Imagen Interior (URL o nombre): <input name="imagen_interior"></label>
+  `,
+  pasajes: `
+    <label>Nombre: <input name="nombre" required></label>
+    <label>Imagen (URL o nombre): <input name="imagen" required></label>
+    <label>Aerolínea: <input name="aerolinea" required></label>
+    <label>Duración: <input name="duracion" required></label>
+    <label>Precio desde: <input name="precio_desde" type="number" required></label>
+    <label>Clase: <input name="clase" required></label>
+  `,
+  paquetes: `
+    <label>Nombre del viaje: <input name="nombre_viaje" required></label>
+    <label>Imagen (URL o nombre): <input name="imagen" required></label>
+    <label>Duración: <input name="duracion" required></label>
+    <label>Incluye: <input name="incluye" required></label>
+    <label>Precio aprox: <input name="precio_aprox" type="number" required></label>
+  `,
+  estadias: `
+    <label>Nombre: <input name="nombre" required></label>
+    <label>Imagen (URL o nombre): <input name="imagen" required></label>
+    <label>Ubicación: <input name="ubicacion" required></label>
+    <label>Descripción: <input name="descripcion" required></label>
+    <label>Precio: <input name="precio" type="number" required></label>
+  `
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const selectTabla = document.getElementById("tabla-insertar");
+  const camposDiv = document.getElementById("campos-insertar");
+  function mostrarCampos() {
+    camposDiv.innerHTML = camposPorTabla[selectTabla.value];
+  }
+  selectTabla.addEventListener("change", mostrarCampos);
+  mostrarCampos();
+
+ 
+  new FormHandler({
+    formSelector: "#form-insert-producto",
+    endpoint: "../../BACK/PHP/admin_abm_productos.php",
+    messageTarget: document.getElementById("msg-insert-producto")
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const eliminarPor = document.getElementById("eliminar-por");
+  const campoEliminar = document.getElementById("campo-eliminar");
+  function mostrarCampoEliminar() {
+    if (eliminarPor.value === "id") {
+      campoEliminar.innerHTML = '<label>ID: <input name="id" type="number" required></label>';
+    } else {
+      campoEliminar.innerHTML = '<label>Nombre: <input name="nombre" required></label>';
+    }
+  }
+  eliminarPor.addEventListener("change", mostrarCampoEliminar);
+  mostrarCampoEliminar();
+
+ 
+});
+</script>
+<script>
+function abrirEliminarProducto(tabla, id) {
+  document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
+  document.getElementById('eliminar-producto').hidden = false;
+  document.querySelector('#eliminar-producto select[name="tabla"]').value = tabla === "coches" ? "autos" : tabla;
+  document.getElementById('eliminar-por').value = "id";
+  document.getElementById('campo-eliminar').innerHTML = `<label>ID: <input name="id" type="number" value="${id}" required></label>`;
+}
+
+function abrirModificarProducto(tabla, id) {
+  document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
+  document.getElementById('modificar-producto').hidden = false;
+  document.querySelector('#modificar-producto select[name="tabla"]').value = tabla === "coches" ? "autos" : tabla;
+  document.querySelector('#modificar-producto input[name="id"]').value = id;
+}
+
+function abrirAgregarProducto(tabla) {
+  document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
+  document.getElementById('agregar-producto').hidden = false;
+  document.getElementById('tabla-insertar').value = tabla === "coches" ? "autos" : tabla;
+
+  document.getElementById('tabla-insertar').dispatchEvent(new Event('change'));
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const selectUsuario = document.getElementById("tipo-usuario");
+  const tablaUsuariosContainer = document.getElementById("tabla-usuarios-container");
+
+  function renderUsuariosTable(tipo, data) {
+    if (!Array.isArray(data) || data.length === 0) {
+      tablaUsuariosContainer.innerHTML = "<p>No hay datos para mostrar.</p>";
+      return;
+    }
+    let headers = Object.keys(data[0]);
+    let html = "<table class='tabla-productos'><thead><tr>";
+    headers.forEach(h => html += `<th>${h}</th>`);
+    html += "<th>Acciones</th></tr></thead><tbody>";
+    data.forEach(row => {
+      html += "<tr>";
+      headers.forEach(h => html += `<td>${row[h]}</td>`);
+      html += `<td>
+        <button class="btn-accion btn-eliminar" title="Eliminar" data-id="${row.id_usuario || row.id_dato || row.id_tarjeta || row.id_pedido || row.id_provincia || row.id_partido || row.id_localidad || row.id_detallepedido || row.id_opinion || row.id_rol}" data-tipo="${tipo}">🗑️</button>
+        <button class="btn-accion btn-modificar" title="Modificar" data-id="${row.id_usuario || row.id_dato || row.id_tarjeta || row.id_pedido || row.id_provincia || row.id_partido || row.id_localidad || row.id_detallepedido || row.id_opinion || row.id_rol}" data-tipo="${tipo}">✏️</button>
+        <button class="btn-accion btn-agregar" title="Añadir" data-tipo="${tipo}">＋</button>
+      </td>`;
+      html += "</tr>";
+    });
+    html += "</tbody></table>";
+    tablaUsuariosContainer.innerHTML = html;
+
+
+    asignarEventosAccion(tipo);
+  }
+
+  function cargarUsuarios(tipo) {
+    fetch("../../BACK/PHP/admin_tablas_api.php?tabla=" + tipo)
+      .then(res => res.json())
+      .then(data => renderUsuariosTable(tipo, data))
+      .catch(() => {
+        tablaUsuariosContainer.innerHTML = "<p>Error al cargar los datos.</p>";
+      });
+  }
+
+  selectUsuario.addEventListener("change", () => {
+    cargarUsuarios(selectUsuario.value);
+  });
+  cargarUsuarios(selectUsuario.value);
+});
+</script>
 </body>
 </html>

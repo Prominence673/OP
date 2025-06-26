@@ -20,7 +20,7 @@ class ProductosAPI {
     }
 
     public function getCoches() {
-        $sql = "SELECT id_autos, nombre, imagen, imagen_interior, tipo, capacidad, precio FROM autos";
+        $sql = "SELECT id_autos, nombre, imagen, tipo, capacidad, precio, imagen_interior FROM autos";
         $result = $this->conn->query($sql);
         $coches = [];
         while ($row = $result->fetch_assoc()) {

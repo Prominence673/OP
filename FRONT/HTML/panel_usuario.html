@@ -272,25 +272,29 @@ document.addEventListener("DOMContentLoaded", () => {
   new FormHandler({
     formSelector: "#formDatos", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: document.createElement('div') // Ajustar según necesidad
+    messageTarget: document.createElement('div'),
+    
   });
   
   new FormHandler({
     formSelector: "#telefonoForm", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: document.createElement('div')
+    messageTarget: document.createElement('div'),
+   
   });
   
   new FormHandler({
     formSelector: "#formEmail", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: document.createElement('div')
+    messageTarget: document.createElement('div'),
+   
   });
   
   new FormHandler({
     formSelector: "#formPass", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: document.createElement('div')
+    messageTarget: document.createElement('div'),
+    
   });
 });
 </script>

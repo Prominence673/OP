@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto - Opinión</title>
+  <link rel="stylesheet" href="../CSS/header-footer.css">
+  <link rel="stylesheet" href="../CSS/form.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-container">
+      <h1>Contacto</h1>
+    </div>
+  </header>
+  <main>
+    <div class="form-container">
+      <h2>Dejanos tu opinión</h2>
+      <form id="form-opinion">
+        <div class="form-group">
+          <input type="text" id="opinion" name="opinion" required placeholder=" " maxlength="100">
+          <label for="opinion">Tu opinión</label>
+        </div>
+        <button type="submit">Enviar</button>
+        <div class="msg" id="msg-opinion"></div>
+      </form>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 ViajesMundo. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script src="../../BACK/JS LOGICA/submitdata.js"></script>
+  <script>
+    new FormHandler({
+      formSelector: "#form-opinion",
+      endpoint: "../../BACK/PHP/insertar_opinion.php",
+      messageTarget: document.getElementById("msg-opinion"),
+      onSuccess: function() {
+        document.getElementById("msg-opinion").textContent = "¡Gracias por tu opinión!";
+      }
+    });
+  </script>
+</body>
+</html>
