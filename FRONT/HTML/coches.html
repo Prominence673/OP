@@ -116,13 +116,13 @@
           </div>
         `;
           
-        // Click para expandir/cerrar formulario
+
         article.addEventListener("click", () => {
           const formContainer = article.querySelector(".form-container");
           formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
         });
 
-        // Submit del form
+
         article.querySelector(".add-cart-form").addEventListener("submit", async function (e) {
           e.preventDefault();
           e.stopPropagation();

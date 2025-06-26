@@ -238,5 +238,14 @@ public function sendVerifyEmail($email, $token) {
             return ["success" => false, "error" => "No se pudo enviar el correo: {$mail->ErrorInfo}"];
         }
     }
+public function insertEmailResetToken($nuevo_email, $token, $expires) {
+    $this->ensureSessionStarted();
+    $id_usuario = $_SESSION['usuario']['id'];
+    $this->conn->query("DELETE FROM email_resets WHERE id_usuario = $id_usuario");
+    $stmt = $this->conn->prepare("INSERT INTO email_resets (id_usuario, nuevo_email, token, expires_at, creado_en) VALUES (?, ?, ?, ?, NOW())");
+    $stmt->bind_param("isss", $id_usuario, $nuevo_email, $token, $expires);
+    $stmt->execute();
+    $stmt->close();
+}
 }
 ?>

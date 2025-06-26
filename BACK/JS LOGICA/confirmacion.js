@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     orderDetails.innerHTML = html;
     
-    // Limpiar datos si ya se mostraron
+
     if (transaccion.metodo !== "cash") {
         localStorage.removeItem("ultimaTransaccion");
     }

@@ -81,6 +81,16 @@ class recoverPassModel {
         }
     }
 
+    public function changePasswordById($id_usuario, $hash) {
+        $stmt = $this->conn->prepare("UPDATE usuarios SET contraseña = ? WHERE id_usuario = ?");
+        $stmt->bind_param("si", $hash, $id_usuario);
+        if ($stmt->execute()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'error' => $stmt->error];
+        }
+    }
+
     public function deleteToken($token) {
         $stmt = $this->conn->prepare("DELETE FROM password_resets WHERE token = ?");
         $stmt->bind_param("s", $token);
@@ -124,6 +134,16 @@ class recoverPassModel {
         } catch (Exception $e) {
             return ["success" => false, "error" => "No se pudo enviar el correo: {$mail->ErrorInfo}"];
         }
+    }
+
+    public function getUserEmailById($id_usuario) {
+        $stmt = $this->conn->prepare("SELECT email FROM usuarios WHERE id_usuario = ?");
+        $stmt->bind_param("i", $id_usuario);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $row = $res->fetch_assoc();
+        $stmt->close();
+        return $row ? $row['email'] : null;
     }
 
     public function closeConn() {

@@ -1,8 +1,8 @@
 <?php
-ini_set('display_errors', 0); // Evita mostrar errores como HTML
-ini_set('log_errors', 1); // Habilita logueo
-ini_set('error_log', __DIR__ . '/error_log.txt'); // Log en este archivo
-header('Content-Type: application/json'); // Asegura que devuelva JSON
+ini_set('display_errors', 0); 
+ini_set('log_errors', 1); 
+ini_set('error_log', __DIR__ . '/error_log.txt'); 
+header('Content-Type: application/json'); 
 require_once 'connection.php';
 require_once 'user_panelModel.php';
 require_once 'loginModel.php';
@@ -47,13 +47,21 @@ try {
 
         case 'guardar_email':
             $datos = $userPanel->bringInputFromForm();
-            $register->verifyMail($datos['email']);
-            $userPanel->updateEmail($datos['email']);
-            echo json_encode(["success" => true, "mensaje" => "Email actualizado"]);
+            $nuevo_email = $datos['email'];
+
+
+            if ($register->verifyMail($nuevo_email)) {
+                echo json_encode(["success" => false, "error" => "El email ya está en uso"]);
+                break;
+            }
+
+
             $token = $userPanel->generateToken();
             $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
-            $userPanel->insertToken($datos['email'], $token, $expires);
-            $resultadoEnvio = $userPanel->sendVerifyEmail($datos['email'], $token);
+            $userPanel->insertEmailResetToken($nuevo_email, $token, $expires);
+
+
+            $resultadoEnvio = $userPanel->sendVerifyEmail($nuevo_email, $token);
             echo json_encode($resultadoEnvio);
             break;
 

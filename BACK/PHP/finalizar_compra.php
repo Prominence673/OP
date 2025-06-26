@@ -131,7 +131,7 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
     $conn->query("UPDATE carrito SET estado='comprado' WHERE id_carrito=" . intval($resumen['id_carrito']));
     $conn->query("DELETE FROM carrito_items WHERE id_carrito=" . intval($resumen['id_carrito']));
 
-    // Obtener el email del usuario
+
     $email_usuario = '';
     $stmt = $conn->prepare("SELECT email FROM usuarios WHERE id_usuario = ?");
     $stmt->bind_param("i", $id_usuario);
@@ -139,8 +139,7 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
     $stmt->bind_result($email_usuario);
     $stmt->fetch();
     $stmt->close();
-
-    // Enviar email de agradecimiento
+ 
     
 
     $mail = new PHPMailer(true);
@@ -159,7 +158,7 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
         $mail->isHTML(true);
         $mail->Subject = '¡Gracias por tu compra en TravelAir!';
 
-        // Armar la lista de productos
+
         $productosHtml = '';
         foreach ($resumen['items'] as $item) {
             $productosHtml .= "<tr>
@@ -198,7 +197,7 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
         </div>";
 
         $mail->send();
-        // No es necesario mostrar mensaje de éxito aquí, solo loguear si quieres
+ 
     } catch (Exception $e) {
         error_log("No se pudo enviar el correo de agradecimiento: {$mail->ErrorInfo}");
     }

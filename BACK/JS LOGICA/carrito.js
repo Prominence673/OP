@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(`Agregando paquete ID: ${id_paquete}`);
       
       try {
-        // IMPORTANTE: Ajusta esta ruta según tu estructura real
         const response = await fetch("/op/BACK/PHP/agregar_item_carrito.php", {
           method: "POST",
           headers: {

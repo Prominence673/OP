@@ -6,19 +6,51 @@
     <title>Finalizar Compra | Travel Rock Argentina</title>
     <link rel="stylesheet" href="../CSS/header-footer.css">
     <link rel="stylesheet" href="../CSS/checkout.css">
-    <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="site-header">
-        <!-- Tu header existente -->
-    </header>
+    <div class="container header-container">
+      <h1>TRAVEL</h1>
+      <nav class="main-nav">
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="dropdown-parent">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Paquetes <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="submenu">
+              <li><a href="coches.html">Alquiler de autos</a></li>
+              <li><a href="paquetes.html">Paquetes turisticos</a></li>
+              <li><a href="estadias.html">Estadias</a></li>
+              <li><a href="pasajes.html">Pasajes aéreos</a></li>
+            </ul>
+          </li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
+          <i class="fa-solid fa-cart-shopping user-icon"></i>
+        </a>
+        <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
+          <i class="fa-solid fa-user user-icon"></i>
+        </button>
+        <ul class="dropdown">
+          <li id="user"></li>
+          <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
+          <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+          <li id="register_panel"><a href="register.html">Registrarse</a></li>
+          <li><a href="#" id="logout">Cerrar Sesion</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
     <main class="checkout-container">
         <div class="checkout-steps">
             <div class="step active">1. Carrito</div>
             <div class="step active">2. Método de Pago</div>
-            <div class="step">3. Confirmación</div>
         </div>
 
         <div class="checkout-grid">
@@ -37,10 +69,8 @@
                     </div>
                 </div>
 
-                <!-- Formulario para Tarjeta -->
-               <!-- FORMULARIO TARJETA DE CRÉDITO -->
-                    <form id="formCredit" class="credit-card-form" style="display: none;">
-                        <!-- mismos campos que ya tenías para crédito -->
+
+                  <form id="formCredit" class="credit-card-form" style="display: none;">
                         <div class="form-group">
                             <label for="nombre_credito">Nombre</label>
                             <input type="text" id="nombre_credito" name="nombre" required>
@@ -88,7 +118,7 @@
                             <i class="fa-solid fa-lock"></i> CONFIRMAR PAGO<span class="total-amount"></span>
                         </button>
                     </form>
-                    <!-- FORMULARIO TARJETA DE DÉBITO -->
+
                       <form id="formDebit" class="credit-card-form" style="display: none;">
                           <div class="form-group">
                               <label for="nombre_debito">Nombre</label>
@@ -130,7 +160,7 @@
                       </form>
                   
 
-                <!-- Mensaje para efectivo -->
+
                 
                     <form id="formEfec" style="display: none;">
                       <div id="cash-message" class="cash-message">
@@ -163,7 +193,7 @@
                 <h2><i class="fa-solid fa-cart-shopping"></i> Resumen de Compra</h2>
                 
                 <div class="order-summary" id="order-summary">
-                    <!-- Los productos se cargarán aquí dinámicamente -->
+
                 </div>
 
                 <div class="summary-totals">
