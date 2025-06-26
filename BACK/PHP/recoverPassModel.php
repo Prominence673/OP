@@ -35,6 +35,7 @@ class recoverPassModel {
         try {
             $stmt = $this->conn->prepare("CALL SPUserExists(?)");
             $stmt->bind_param("s", $email);
+        
             $stmt->execute();
             $resultado = $stmt->get_result();
             $usuario = $resultado->fetch_assoc();
