@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2025 a las 16:01:14
+-- Tiempo de generación: 26-06-2025 a las 22:45:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -58,17 +58,17 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPAgregarAlCarrito` (IN `p_id_usuar
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPBringPassword` (IN `p_email` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci)   BEGIN
-  SELECT contraseña FROM usuarios WHERE email = p_email;
+  SELECT contraseña FROM usuarios WHERE email COLLATE utf8mb4_unicode_ci = p_email COLLATE utf8mb4_unicode_ci;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPbrinUser` (IN `correo` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci)   BEGIN
-    SELECT * FROM usuarios WHERE email = correo;
+    SELECT * FROM usuarios WHERE email COLLATE utf8mb4_unicode_ci = correo COLLATE utf8mb4_unicode_ci;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SPChangePassword` (IN `p_email` VARCHAR(64), IN `p_hash_password` VARCHAR(255))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPChangePassword` (IN `p_email` VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci, IN `p_hash_password` VARCHAR(255))   BEGIN
     UPDATE usuarios
     SET contraseña = p_hash_password
-    WHERE email = p_email
+    WHERE email COLLATE utf8mb4_unicode_ci = p_email COLLATE utf8mb4_unicode_ci
     LIMIT 1;
 END$$
 
@@ -162,17 +162,17 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPFinalizarCompra` (IN `p_id_usuari
     WHERE id_carrito = v_id_carrito;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SPGetEmailResetByToken` (IN `p_token` VARCHAR(64))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPGetEmailResetByToken` (IN `p_token` VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci)   BEGIN
     SELECT *
     FROM email_resets
-    WHERE token = p_token
+    WHERE token COLLATE utf8mb4_unicode_ci = p_token COLLATE utf8mb4_unicode_ci
     LIMIT 1;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SPGetPasswordResetByToken` (IN `p_token` VARCHAR(64))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPGetPasswordResetByToken` (IN `p_token` VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci)   BEGIN
     SELECT id_usuario, expires_at
     FROM password_resets
-    WHERE token = p_token;
+    WHERE token COLLATE utf8mb4_unicode_ci = p_token COLLATE utf8mb4_unicode_ci;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPGuardarTarjeta` (IN `p_id_usuario` INT, IN `p_numero` VARCHAR(20), IN `p_nombre_tarjeta` VARCHAR(100), IN `p_vencimiento` DATE, IN `p_codigo_seguridad` VARCHAR(10))   BEGIN
@@ -195,13 +195,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPRegistrarUsuario` (IN `p_user` VA
     VALUES (p_user, p_email, p_password);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SPResetPasswordAndDeleteToken` (IN `p_token` VARCHAR(64), IN `p_new_password` VARCHAR(255))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPResetPasswordAndDeleteToken` (IN `p_token` VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci, IN `p_new_password` VARCHAR(255))   BEGIN
     DECLARE v_id_usuario INT;
 
     -- Obtener el ID del usuario con ese token
     SELECT id_usuario INTO v_id_usuario
     FROM password_resets
-    WHERE token = p_token;
+    WHERE token COLLATE utf8mb4_unicode_ci = p_token COLLATE utf8mb4_unicode_ci;
 
     -- Actualizar contraseña
     UPDATE usuarios
@@ -210,7 +210,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SPResetPasswordAndDeleteToken` (IN 
 
     -- Eliminar token
     DELETE FROM password_resets
-    WHERE token = p_token;
+    WHERE token COLLATE utf8mb4_unicode_ci = p_token COLLATE utf8mb4_unicode_ci;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPUpdateEmail` (IN `p_email` VARCHAR(100), IN `p_id_usuario` INT)   BEGIN
@@ -276,8 +276,8 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPUpdatePassword` (IN `p_password` VARCHAR(255), IN `p_id_usuario` INT)   BEGIN UPDATE usuarios SET contraseña = p_password WHERE id_usuario = p_id_usuario; 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SPUserExists` (IN `p_email` VARCHAR(64))   BEGIN
-SELECT usuario_nombre FROM usuarios WHERE email = p_email;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SPUserExists` (IN `p_email` VARCHAR(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci)   BEGIN
+SELECT usuario_nombre FROM usuarios WHERE email COLLATE utf8mb4_unicode_ci = p_email COLLATE utf8mb4_unicode_ci;
 END$$
 
 DELIMITER ;
@@ -442,13 +442,6 @@ CREATE TABLE `datos_personales` (
   `id_localidad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `datos_personales`
---
-
-INSERT INTO `datos_personales` (`id_dato`, `id_usuario`, `nombre`, `apellido`, `fecha_nacimiento`, `sexo`, `telefono`, `id_pasajero`, `dni`, `id_localidad`) VALUES
-(1, 39, 'LAUTARO', 'SOUZA', '2001-08-17', 'Masculino', '541161623274', NULL, '', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -537,18 +530,11 @@ INSERT INTO `detalle_pedido` (`id_detallepedido`, `id_pedido`, `id_producto`, `c
 CREATE TABLE `email_resets` (
   `id` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
+  `nuevo_email` varchar(255) NOT NULL,
   `token` varchar(64) NOT NULL,
   `expires_at` datetime NOT NULL,
-  `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
+  `creado_en` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `email_resets`
---
-
-INSERT INTO `email_resets` (`id`, `id_usuario`, `token`, `expires_at`, `creado_en`) VALUES
-(1, 39, '21faf17b6cdfda4c99dddfdab532c224b7e0789eb3d298ad94df583ab20993b0', '2025-06-23 18:54:10', '2025-06-23 15:54:10'),
-(2, 39, '0b8618a48d644809ed20fe2d38717eefbd3ed5a32364c76848d9fbeab2996b8a', '2025-06-23 20:02:58', '2025-06-23 17:02:58');
 
 -- --------------------------------------------------------
 
@@ -763,10 +749,18 @@ INSERT INTO `pasajes` (`id_pasajes`, `nombre`, `imagen`, `aerolinea`, `duracion`
 CREATE TABLE `password_resets` (
   `id` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `token` varchar(64) NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `expires_at` datetime NOT NULL,
   `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `password_resets`
+--
+
+INSERT INTO `password_resets` (`id`, `id_usuario`, `token`, `expires_at`, `creado_en`) VALUES
+(6, 39, '115ce7ff51012a1a8f518a0104258a6a467b1f96235a2d40394bf77c8cd39b76', '2025-06-26 21:21:24', '2025-06-26 18:21:24'),
+(8, 39, '48eb7c7fdbc3c03e5ff2eb05a6942e8d2b61a6d7030f4d8481f88f9e18789fd5', '2025-06-26 22:18:32', '2025-06-26 19:18:32');
 
 -- --------------------------------------------------------
 
@@ -937,9 +931,9 @@ CREATE TABLE `transportes` (
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
-  `usuario_nombre` varchar(50) DEFAULT NULL,
+  `usuario_nombre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `contraseña` varchar(255) DEFAULT NULL,
+  `contraseña` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_rol` int(11) DEFAULT NULL,
   `id_dato` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -949,7 +943,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `usuario_nombre`, `email`, `contraseña`, `id_rol`, `id_dato`) VALUES
-(39, 'Hooooooz', 'safarakiri@gmail.com', '$2y$10$SEniOT3UB6n.3saPrQFJEuoWeP/RvmmiZktxmi3vb8OXwb6mdWYQm', NULL, NULL),
+(39, 'Hooooooz', 'cuentag4x@gmail.com', '$2y$10$0wBks12fU4fyLhs7Xc.8NuDZ/Uxa9cM9OzWCRVB6ZMLH3VT6WTqGW', NULL, NULL),
 (40, 'Hola', 'lautarobenjaminsouza@gmail.com', '$2y$10$icZPr7PAXihKx2Y7cd.4deTY.QG0lZT1o055Q4wfR46VZQBpBYt.C', NULL, NULL),
 (41, 'dsadsadsad', 'lautarobenjaminsouz23232a@gmail.com', '$2y$10$x0fzivN4VhblfFRfwFzgWexfD89gmpW0Vyp7EU6K17.Xa7XB.QJye', NULL, NULL),
 (42, 'Hoooooozhgyt', 'cuentag54r5644x@gmail.com', '$2y$10$QwuM8xYRsC/YYmBU9k7HFuQdLPXXZznpnO79abz2n1sCbM1/TMW5q', NULL, NULL),
@@ -1035,7 +1029,7 @@ ALTER TABLE `detalle_pedido`
 --
 ALTER TABLE `email_resets`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD UNIQUE KEY `token` (`token`);
 
 --
 -- Indices de la tabla `estadias`
@@ -1237,7 +1231,7 @@ ALTER TABLE `detalle_pedido`
 -- AUTO_INCREMENT de la tabla `email_resets`
 --
 ALTER TABLE `email_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `estadias`
@@ -1303,7 +1297,7 @@ ALTER TABLE `pasajes`
 -- AUTO_INCREMENT de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
@@ -1392,12 +1386,6 @@ ALTER TABLE `detalle_pedido`
   ADD CONSTRAINT `fk_detalle_pedido_estado` FOREIGN KEY (`id_estado`) REFERENCES `estado_pedido` (`id_estado`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_detalle_pedido_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_detalle_pedido_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `email_resets`
---
-ALTER TABLE `email_resets`
-  ADD CONSTRAINT `email_resets_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `facturacion`
