@@ -3,7 +3,7 @@
         'name' => 'lautaro/back',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0f3eab3366c847dfdc41089714de54e4ade4b019',
+        'reference' => 'f96015e5e4f7a03a4019a5db4e59f64873b2f593',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'lautaro/back' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0f3eab3366c847dfdc41089714de54e4ade4b019',
+            'reference' => 'f96015e5e4f7a03a4019a5db4e59f64873b2f593',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

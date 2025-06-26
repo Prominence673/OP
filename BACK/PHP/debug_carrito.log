@@ -190,3 +190,21 @@ Array
     [cantidad] => 1
     [tipo] => paquete
 )
+Array
+(
+    [id_paquete] => 3
+    [cantidad] => 1
+    [tipo] => paquete
+)
+Array
+(
+    [id_paquete] => 1
+    [cantidad] => 1
+    [tipo] => paquete
+)
+Array
+(
+    [id_paquete] => 3
+    [cantidad] => 1
+    [tipo] => paquete
+)
