@@ -13034,3 +13034,208 @@ Stack trace:
 
 )
 
+[26-Jun-2025 17:36:31 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[26-Jun-2025 17:36:31 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 266000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 16
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Llao Llao Hotel & Resort
+            [precio] => 95000.00
+            [total] => 95000
+        )
+
+)
+
+[26-Jun-2025 17:36:33 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 3
+[26-Jun-2025 17:36:33 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 266000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 16
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Llao Llao Hotel & Resort
+            [precio] => 95000.00
+            [total] => 95000
+        )
+
+)
+
+[26-Jun-2025 17:36:35 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[26-Jun-2025 17:36:35 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 266000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 16
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Llao Llao Hotel & Resort
+            [precio] => 95000.00
+            [total] => 95000
+        )
+
+)
+
+[26-Jun-2025 17:37:14 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[26-Jun-2025 17:37:14 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 266000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 16
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Llao Llao Hotel & Resort
+            [precio] => 95000.00
+            [total] => 95000
+        )
+
+)
+
+[26-Jun-2025 17:45:54 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
+[26-Jun-2025 17:45:54 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 1
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Bariloche - Villa La Angostura
+            [precio] => 250000.00
+            [total] => 250000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 11
+            [cantidad] => 2
+            [tipo] => auto
+            [nombre] => FORD MUSTANG
+            [precio] => 120000.00
+            [total] => 240000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 15
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Alvear Palace Hotel
+            [precio] => 120000.00
+            [total] => 120000
+        )
+
+)
+
+[26-Jun-2025 17:45:58 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 3
+[26-Jun-2025 17:45:58 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 1
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Bariloche - Villa La Angostura
+            [precio] => 250000.00
+            [total] => 250000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 11
+            [cantidad] => 2
+            [tipo] => auto
+            [nombre] => FORD MUSTANG
+            [precio] => 120000.00
+            [total] => 240000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 15
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Alvear Palace Hotel
+            [precio] => 120000.00
+            [total] => 120000
+        )
+
+)
+
+[26-Jun-2025 17:46:17 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
+[26-Jun-2025 17:46:17 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 1
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Bariloche - Villa La Angostura
+            [precio] => 250000.00
+            [total] => 250000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 11
+            [cantidad] => 2
+            [tipo] => auto
+            [nombre] => FORD MUSTANG
+            [precio] => 120000.00
+            [total] => 240000
+        )
+
+    [2] => Array
+        (
+            [id_producto] => 15
+            [cantidad] => 1
+            [tipo] => estadia
+            [nombre] => Alvear Palace Hotel
+            [precio] => 120000.00
+            [total] => 120000
+        )
+
+)
+

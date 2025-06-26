@@ -208,3 +208,33 @@ Array
     [cantidad] => 1
     [tipo] => paquete
 )
+Array
+(
+    [id_paquete] => 3
+    [cantidad] => 1
+    [tipo] => paquete
+)
+Array
+(
+    [id_estadia] => 2
+    [cantidad] => 1
+    [tipo] => estadia
+)
+Array
+(
+    [id_paquete] => 1
+    [cantidad] => 1
+    [tipo] => paquete
+)
+Array
+(
+    [id_auto] => 5
+    [cantidad] => 2
+    [tipo] => auto
+)
+Array
+(
+    [id_estadia] => 1
+    [cantidad] => 1
+    [tipo] => estadia
+)
