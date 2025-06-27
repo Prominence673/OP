@@ -68,11 +68,12 @@ class registerModel{
             }
     public function registerUser($user, $email, $hash_password){
          try {
-            $stmt = $this->conn->prepare("CALL SPRegistrarUsuario(?, ?, ?)");
+            $stmt = $this->conn->prepare("CALL SPRegistrarUsuario(?, ?, ?, ?)");
             if (!$stmt) {
                 throw new Exception("Error al preparar la consulta: " . $this->conn->error);
             }
-            $stmt->bind_param("sss", $user, $email, $hash_password);
+            $id_rol = 2;
+            $stmt->bind_param("sssi", $user, $email, $hash_password, $id_rol);
             $stmt->execute();
             if ($stmt->affected_rows > 0) {
                 return ["success" => true];

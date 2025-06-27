@@ -44,9 +44,9 @@ $id_user = $login->bringUser($mail);
 $_SESSION['usuario'] = [
     "id" => $id_user['id'],
     "nombre" => $id_user['nombre'],
-    "email" => $mail
+    "email" => $mail,
+    "id_rol" => $id_user['rol']
 ];
-
 $login->closeConn();
 
 echo json_encode(["success" => true,

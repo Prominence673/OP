@@ -18,6 +18,8 @@ class LoginModel{
     return $hashGuardado = $usuario['contraseña']; 
     
     }
+
+    
     public function bringUser($mail){
         $stmt = $this->conn->prepare("CALL SPbrinUser(?)");
         $stmt->bind_param("s", $mail);
@@ -30,7 +32,8 @@ class LoginModel{
         }
         return [
         'id' => $user['id_usuario'],
-        'nombre' => $user['usuario_nombre']
+        'nombre' => $user['usuario_nombre'],
+        'rol' => $user['id_rol']
         ];
     }
         public function bringInput() {

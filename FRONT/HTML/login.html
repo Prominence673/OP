@@ -44,6 +44,7 @@
       <ul class="dropdown">
         <li id="user"></li>
         <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
+        <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
         <li><a href="#" id="logout">Cerrar Sesion</a></li>
@@ -120,6 +121,7 @@
     actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
 actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
     actions.InsertData("#user", "nombre");
+    actions.AdminOnlyToggle(["#panel_admin"], []);
     </script>
     <script src="../JS DISEÑO/menu.js"></script>
   </div>

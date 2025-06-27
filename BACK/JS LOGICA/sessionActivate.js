@@ -131,5 +131,63 @@ class SessionActions {
       fetch("../../BACK/PHP/logoutSession.php")
       .then(() => window.location.href = "../../FRONT/HTML/login.html");
       };
+      AdminOnlyToggle(adminSelectors = [], nonAdminSelectors = []) {
+  fetch("../../BACK/PHP/checkSession.php")
+    .then(response => response.json())
+    .then(data => {
+      if (!data.loggedIn || !data.usuario) {
+        console.warn("Usuario no logueado o datos no disponibles");
+        return;
+      }
+
+      const isAdmin = data.usuario.id_rol === 1;
+      console.log("¿Es admin?:", data.usuario.id_rol); // DEBUG
+      if (isAdmin) {
+        // Mostrar elementos solo para admin
+        adminSelectors.forEach(selector => {
+          document.querySelectorAll(selector).forEach(el => {
+            el.disabled = false;
+            el.style.display = "";
+            el.style.pointerEvents = "auto";
+            el.style.opacity = "1";
+          });
+        });
+
+        // Ocultar elementos solo para usuarios comunes
+        nonAdminSelectors.forEach(selector => {
+          document.querySelectorAll(selector).forEach(el => {
+            el.disabled = true;
+            el.style.display = "none";
+            el.style.pointerEvents = "none";
+            el.style.opacity = "0.5";
+          });
+        });
+
+      } else {
+        // Mostrar elementos solo para usuarios comunes
+        nonAdminSelectors.forEach(selector => {
+          document.querySelectorAll(selector).forEach(el => {
+            el.disabled = false;
+            el.style.display = "";
+            el.style.pointerEvents = "auto";
+            el.style.opacity = "1";
+          });
+        });
+
+        // Ocultar elementos de admin
+        adminSelectors.forEach(selector => {
+          document.querySelectorAll(selector).forEach(el => {
+            el.disabled = true;
+            el.style.display = "none";
+            el.style.pointerEvents = "none";
+            el.style.opacity = "0.5";
+          });
+        });
+      }
+    })
+    .catch(error => {
+      console.error("Error al verificar rol de usuario:", error);
+    });
+}
   
 }
