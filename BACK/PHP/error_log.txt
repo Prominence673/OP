@@ -1,0 +1,15 @@
+[27-Jun-2025 04:59:41 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[27-Jun-2025 04:59:41 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[27-Jun-2025 05:01:26 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[27-Jun-2025 05:01:26 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[27-Jun-2025 05:01:34 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[27-Jun-2025 05:01:34 Europe/Berlin] Items encontrados: Array
+(
+)
+

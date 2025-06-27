@@ -25,3 +25,8 @@
   font-weight: 900;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Bohme';
+  src: url(../../SOURCE/FONT/andimante-personal-use/AndimantePersonalUse-Regular.otf) format('truetype');
+}
