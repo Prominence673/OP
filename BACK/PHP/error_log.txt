@@ -19,3 +19,13 @@
 [27-Jun-2025 09:45:11 Europe/Berlin] PHP Warning:  Undefined array key "id_rol" in C:\xampp\htdocs\OP\BACK\PHP\login.php on line 48
 [27-Jun-2025 09:46:51 Europe/Berlin] PHP Warning:  Undefined array key "id_rol" in C:\xampp\htdocs\OP\BACK\PHP\login.php on line 48
 [27-Jun-2025 09:48:10 Europe/Berlin] PHP Warning:  Undefined array key "id_rol" in C:\xampp\htdocs\OP\BACK\PHP\login.php on line 48
+[27-Jun-2025 17:32:20 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[27-Jun-2025 17:32:20 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[27-Jun-2025 17:32:30 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[27-Jun-2025 17:32:30 Europe/Berlin] Items encontrados: Array
+(
+)
+
