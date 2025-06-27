@@ -29,3 +29,213 @@
 (
 )
 
+[27-Jun-2025 18:00:09 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[27-Jun-2025 18:00:09 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[27-Jun-2025 18:00:12 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 2
+[27-Jun-2025 18:00:12 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[27-Jun-2025 18:00:17 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 3
+[27-Jun-2025 18:00:17 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[27-Jun-2025 18:00:28 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[27-Jun-2025 18:00:28 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[27-Jun-2025 19:15:10 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
+[27-Jun-2025 19:15:10 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 266000
+        )
+
+)
+
+[27-Jun-2025 19:15:14 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 3
+[27-Jun-2025 19:15:14 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 266000
+        )
+
+)
+
+[27-Jun-2025 19:16:39 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
+[27-Jun-2025 19:16:39 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 2
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Cataratas del Iguazú - Puerto Iguazú
+            [precio] => 266000.00
+            [total] => 266000
+        )
+
+)
+
+[27-Jun-2025 19:18:07 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
+[27-Jun-2025 19:18:07 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 12
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => JEEP WRANGLER
+            [precio] => 160000.00
+            [total] => 160000
+        )
+
+)
+
+[27-Jun-2025 19:18:59 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
+[27-Jun-2025 19:18:59 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 12
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => JEEP WRANGLER
+            [precio] => 160000.00
+            [total] => 160000
+        )
+
+)
+
+[27-Jun-2025 19:36:32 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 1
+[27-Jun-2025 19:36:32 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 3
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+            [total] => 220000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 30
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+)
+
+[27-Jun-2025 19:36:34 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 3
+[27-Jun-2025 19:36:34 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 3
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+            [total] => 220000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 30
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+)
+
+[27-Jun-2025 19:36:43 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 1
+[27-Jun-2025 19:36:43 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 3
+            [cantidad] => 1
+            [tipo] => paquete
+            [nombre] => Mendoza - Valle de Uco
+            [precio] => 220000.00
+            [total] => 220000
+        )
+
+    [1] => Array
+        (
+            [id_producto] => 30
+            [cantidad] => 1
+            [tipo] => pasaje
+            [nombre] => BUENOS AIRES → BARILOCHE
+            [precio] => 65000.00
+            [total] => 65000
+        )
+
+)
+

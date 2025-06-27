@@ -26,6 +26,7 @@ class userPanel {
       
     }
   }
+
   public function bringInputFromForm() {
     $raw = file_get_contents("php://input");
     $datos = json_decode($raw, true);

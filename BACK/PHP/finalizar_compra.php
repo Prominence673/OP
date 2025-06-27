@@ -152,11 +152,11 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom($_ENV['EMAIL_USER'], 'TravelAir');
+        $mail->setFrom($_ENV['EMAIL_USER'], 'KAPIFLY');
         $mail->addAddress($email_usuario);
 
         $mail->isHTML(true);
-        $mail->Subject = '¡Gracias por tu compra en TravelAir!';
+        $mail->Subject = '¡Gracias por tu compra en KAPIFLY!';
 
 
         $productosHtml = '';
@@ -173,7 +173,7 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
         <div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; overflow: hidden;'>
             <div style='background-color: #0077cc; height: 50px;'></div>
             <div style='background-color: #ffffff; padding: 40px; text-align: center;'>
-                <h2 style='color: #333;'>¡Gracias por tu compra en TravelAir!</h2>
+                <h2 style='color: #333;'>¡Gracias por tu compra en KAPIFLY!</h2>
                 <p style='color: #555;'>Hola <strong>{$nombre} {$apellido}</strong>,</p>
                 <p style='color: #555;'>Tu pedido <strong>#{$id_pedido}</strong> ha sido recibido correctamente.</p>
                 <p style='color: #555;'>Estos son los productos que compraste:</p>
@@ -191,7 +191,7 @@ function finalizarCompra($conn, $id_usuario, $id_pagometodo, $nombre, $apellido,
                     </tbody>
                 </table>
                 <p style='color: #333; font-size: 1.1em;'><strong>Total pagado: $" . number_format($total, 2) . "</strong></p>
-                <p style='color: #555;'>¡Gracias por confiar en nosotros!<br>El equipo de TravelAir</p>
+                <p style='color: #555;'>¡Gracias por confiar en nosotros!<br>El equipo de KAPIFLY</p>
             </div>
             <div style='background-color: #0077cc; height: 50px;'></div>
         </div>";
