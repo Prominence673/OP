@@ -9,21 +9,44 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 $id_usuario = $_SESSION['usuario']['id'] ?? null;
-$input = json_decode(file_get_contents('php://input'), true);
-$opinion = trim($input['opinion'] ?? '');
 
-if ($opinion === '') {
-    echo json_encode(['error' => 'La opinión no puede estar vacía']);
+// Recibir los datos del formulario
+$nombre   = trim($_POST['nombre'] ?? '');
+$email    = trim($_POST['email'] ?? '');
+$telefono = trim($_POST['telefono'] ?? '');
+$motivo   = trim($_POST['motivo'] ?? '');
+$opinion  = trim($_POST['mensaje'] ?? '');
+
+// Validar campos obligatorios
+if ($nombre === '' || $email === '' || $motivo === '' || $opinion === '') {
+    echo json_encode(['error' => 'Faltan campos obligatorios']);
     exit;
 }
 
-$stmt = $conn->prepare("INSERT INTO opiniones (id_usuario, opinion) VALUES (?, ?)");
-$stmt->bind_param("is", $id_usuario, $opinion);
+// Mapeo del motivo textual a ID en tipo_opinion
+$mapa_tipos = [
+    "consulta"   => 1,
+    "reclamo"    => 2,
+    "sugerencia" => 3,
+    "otro"       => 4
+];
+
+$id_tipo = $mapa_tipos[$motivo] ?? null;
+
+if (!$id_tipo) {
+    echo json_encode(['error' => 'Motivo no válido']);
+    exit;
+}
+
+// Insertar en la tabla opiniones
+$stmt = $conn->prepare("INSERT INTO opiniones (id_usuario, opinion, nombre, email, telefono, id_tipo) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("issssi", $id_usuario, $opinion, $nombre, $email, $telefono, $id_tipo);
 
 if ($stmt->execute()) {
-    echo json_encode(['mensaje' => 'Opinión enviada correctamente']);
+    echo json_encode(['mensaje' => 'Gracias por tu mensaje']);
 } else {
-    echo json_encode(['error' => 'Error al guardar la opinión']);
+    echo json_encode(['error' => 'Error al guardar en la base de datos']);
 }
+
 $stmt->close();
 $conn->close();

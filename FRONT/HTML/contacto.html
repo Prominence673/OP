@@ -63,7 +63,7 @@
     <section class="contacto-section">
       <div class="contacto-card">
         <h2>Contactanos</h2>
-        <form id="form-contacto">
+        <form id="form-contacto" action="../../BACK/PHP/insertar_opinion.php" method="POST">
           <div class="contacto-form-grid">
             <div class="form-group">
               <label for="nombre">Nombre</label>
@@ -137,58 +137,24 @@
             <span class="faq-icon"><i class="fa-solid fa-chevron-right"></i></span>
           </button>
           <div class="faq-answer">
-            Puedes dejar tu opinión utilizando el formulario de la pagina. Valoramos mucho tus comentarios para mejorar nuestros servicios. 
+            Puedes dejar tu opinión utilizando el formulario de la página. Valoramos mucho tus comentarios para mejorar nuestros servicios.
           </div>
         </li>
       </ul>
     </section>
   </main>
-<footer class="site-footer">
-  <div class="footer-container">
-    <div class="footer-brand">
-      <img src="../../SOURCE/KAPIFLY.png" alt="KAPIFLY Logo" class="footer-logo-img" style="height:48px;">      
-      <span class="footer-desc">Viajes y experiencias únicas</span>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="../../SOURCE/KAPIFLY.png" alt="KAPIFLY Logo" class="footer-logo-img" style="height:48px;">      
+        <span class="footer-desc">Viajes y experiencias únicas</span>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
-      <a href="#" class="footer-link">Términos</a>
-      <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
-    </div>
-    <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2025 KAPIFLY. Todos los derechos reservados.</p>
-  </div>
-</footer>
+  </footer>
+
   <script src="../../BACK/JS LOGICA/submitdata.js"></script>
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
   <script src="../JS DISEÑO/menu.js"></script>
-  <script>
-    new FormHandler({
-      formSelector: "#form-opinion",
-      endpoint: "../../BACK/PHP/insertar_opinion.php",
-      messageTarget: document.getElementById("msg-opinion"),
-      onSuccess: function() {
-        document.getElementById("msg-opinion").textContent = "¡Gracias por tu opinión!";
-      }
-    });
-
-    // FAQ desplegable
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const item = this.closest('.faq-item');
-        item.classList.toggle('active');
-        // Cierra otros abiertos
-        document.querySelectorAll('.faq-item').forEach(other => {
-          if (other !== item) other.classList.remove('active');
-        });
-      });
-    });
-  </script>
 </body>
 </html>
