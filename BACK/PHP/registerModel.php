@@ -9,10 +9,20 @@ class registerModel{
         return password_hash($password, PASSWORD_DEFAULT);
     }
     public function verifyMail($email){
-         try {
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return ["success" => false, "error" => "Email inválido"];
-            }
+        try {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return ["success" => false, "error" => "Email inválido"];
+        }
+        $stmt = $this->conn->prepare("CALL SPBringEmail(?)");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if (!($result && $row = $result->fetch_assoc())) {
+            return ["success" => false, "error" => "Error en la consulta"];
+        }
+        if ($row["count_email"] > 0) {
+            return ["success" => false, "error" => "El email ya está en uso"];
+        }
         return ["success" => true];
          } catch (mysqli_sql_exception $e) {
             if ($e->getCode() === 1062) {

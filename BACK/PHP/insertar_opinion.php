@@ -1,29 +1,45 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-require_once 'connection.php';
 
-if (!isset($_SESSION['usuario'])) {
-    echo json_encode(['error' => 'No hay sesión activa']);
+// Conexión a la base de datos
+$mysqli = new mysqli("localhost", "root", "", "paquetes_viajes");
+if ($mysqli->connect_errno) {
+    http_response_code(500);
+    echo json_encode(["error" => "Error de conexión a la base de datos"]);
     exit;
 }
 
-$id_usuario = $_SESSION['usuario']['id'] ?? null;
+// Obtener datos JSON
 $input = json_decode(file_get_contents('php://input'), true);
-$opinion = trim($input['opinion'] ?? '');
 
-if ($opinion === '') {
-    echo json_encode(['error' => 'La opinión no puede estar vacía']);
+$nombre = trim($input["nombre"] ?? "");
+$email = trim($input["email"] ?? "");
+$motivo = trim($input["motivo"] ?? "");
+$telefono = trim($input["telefono"] ?? "");
+$mensaje = trim($input["opinion"] ?? "");
+
+// Validación básica
+if (!$nombre || !$email || !$motivo || !$mensaje) {
+    http_response_code(400);
+    echo json_encode(["error" => "Faltan campos obligatorios"]);
     exit;
 }
 
-$stmt = $conn->prepare("INSERT INTO opiniones (id_usuario, opinion) VALUES (?, ?)");
-$stmt->bind_param("is", $id_usuario, $opinion);
+// Insertar en la tabla opiniones
+$stmt = $mysqli->prepare("INSERT INTO opiniones (nombre, email, motivo, telefono, mensaje, fecha) VALUES (?, ?, ?, ?, ?, NOW())");
+if (!$stmt) {
+    http_response_code(500);
+    echo json_encode(["error" => "Error en la preparación de la consulta"]);
+    exit;
+}
+$stmt->bind_param("sssss", $nombre, $email, $motivo, $telefono, $mensaje);
 
 if ($stmt->execute()) {
-    echo json_encode(['mensaje' => 'Opinión enviada correctamente']);
+    echo json_encode(["mensaje" => "¡Gracias por tu opinión!"]);
 } else {
-    echo json_encode(['error' => 'Error al guardar la opinión']);
+    http_response_code(500);
+    echo json_encode(["error" => "No se pudo guardar la opinión"]);
 }
 $stmt->close();
-$conn->close();
+$mysqli->close();

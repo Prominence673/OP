@@ -46,3 +46,9 @@ Array
     [tipo] => paquete
     [cantidad] => 1
 )
+Array
+(
+    [id_auto] => 3
+    [tipo] => auto
+    [cantidad] => 1
+)

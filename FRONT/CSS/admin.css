@@ -258,3 +258,272 @@ body {
   color: #666;
   font-size: 0.9rem;
 }
+/* --- Tablas --- */
+.tabla-productos {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin-bottom: 1.5em;
+}
+.tabla-productos th, .tabla-productos td {
+  padding: 10px 14px;
+  text-align: left;
+}
+.tabla-productos th {
+  background: #3498db;
+  color: #fff;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.tabla-productos tr:nth-child(even) td {
+  background: #f6fafd;
+}
+.tabla-productos tr:hover td {
+  background: #eaf4fb;
+  transition: background 0.2s;
+}
+.tabla-productos img {
+  display: block;
+  max-width: 80px;
+  max-height: 50px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.tabla-productos td {
+  border-bottom: 1px solid #e0e6ed;
+  vertical-align: middle;
+}
+.tabla-productos th:last-child, .tabla-productos td:last-child {
+  text-align: center;
+}
+
+/* --- Botones de acción --- */
+.btn-accion {
+  border: none;
+  background: none;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: color 0.2s, transform 0.1s;
+  outline: none;
+}
+.btn-accion:active {
+  transform: scale(1.15);
+}
+.btn-eliminar { color: #e74c3c; }
+.btn-eliminar:hover { color: #c0392b; }
+.btn-modificar { color: #2980b9; }
+.btn-modificar:hover { color: #1a5276; }
+.btn-agregar { color: #27ae60; }
+.btn-agregar:hover { color: #1e8449; }
+
+/* --- Paginación --- */
+.paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1em;
+  margin: 1em 0 0.5em 0;
+}
+.paginacion button {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.paginacion button:disabled {
+  background: #b3cbe6;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* --- Filtros (igual que filter.css) --- */
+.filtros-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em 2em;
+  align-items: center;
+  background: #f7f7f7;
+  padding: 1em 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 1em;
+}
+.filtros-panel label {
+  font-weight: 500;
+  color: #333;
+}
+.filtros-panel input, .filtros-panel select {
+  padding: 5px 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 1em;
+}
+.filtros-panel button {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 16px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.filtros-panel button:hover {
+  background: #c0392b;
+}
+#btn-filtros-productos,
+#btn-filtros-usuarios {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 500;
+  margin-left: 1em;
+}
+#btn-filtros-productos:hover,
+#btn-filtros-usuarios:hover {
+  background: #217dbb;
+}
+
+/* --- Panel y layout --- */
+.admin-main {
+  background: #f4f8fb;
+  min-height: 100vh;
+  padding-bottom: 2em;
+}
+.admin-header {
+  background: #3498db;
+  color: #fff;
+  padding: 1.2em 2em 1em 2em;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+}
+.admin-header h1 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.admin-sidebar {
+  background: #217dbb;
+  color: #fff;
+  min-width: 210px;
+  padding: 2em 1em 2em 1.5em;
+  border-radius: 0 18px 18px 0;
+  box-shadow: 2px 0 12px rgba(52,152,219,0.07);
+}
+.admin-sidebar .logo {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 2em;
+  letter-spacing: 2px;
+}
+.admin-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-nav li {
+  margin-bottom: 1.2em;
+}
+.admin-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 0.3em 0.7em;
+  border-radius: 5px;
+  display: block;
+}
+.admin-nav a:hover,
+.admin-nav a.active {
+  background: #2980b9;
+  color: #fff;
+}
+.admin-footer {
+  background: #3498db;
+  color: #fff;
+  text-align: center;
+  padding: 1em 0 0.7em 0;
+  border-radius: 12px 12px 0 0;
+  margin-top: 2em;
+  font-size: 1em;
+  box-shadow: 0 -2px 8px rgba(52,152,219,0.08);
+}
+@media (max-width: 900px) {
+  .admin-container {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    min-width: 100%;
+    border-radius: 0 0 18px 18px;
+    margin-bottom: 1.5em;
+  }
+}
+
+/* --- Botones de paginación y filtro --- */
+.paginacion button,
+#btn-filtros-productos,
+#btn-filtros-usuarios {
+  background: #0077cc;
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.paginacion button:disabled {
+  background: #b3cbe6;
+  color: #fff;
+  cursor: not-allowed;
+}
+.paginacion button:hover:not(:disabled),
+#btn-filtros-productos:hover,
+#btn-filtros-usuarios:hover {
+  background: #005fa3;
+}
+
+/* --- Iconos formales para flechas y filtro (usa Material Icons o FontAwesome) --- */
+.paginacion .icon-chevron {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.filtro-icon {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-size: 1.2em;
+  vertical-align: middle;
+  margin-right: 0.3em;
+}
+
+/* --- Tabla usuarios más angosta y centrada --- */
+#usuarios .tabla-productos {
+  max-width: 900px;
+  margin: 0 auto 1.5em auto;
+  font-size: 0.97em;
+}

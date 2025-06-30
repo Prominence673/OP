@@ -304,3 +304,42 @@
 [28-Jun-2025 19:52:26 Europe/Berlin] PHP Warning:  Undefined array key "usuario_nombre" in C:\xampp\htdocs\OPs\BACK\PHP\loginModel.php on line 35
 [28-Jun-2025 19:52:26 Europe/Berlin] PHP Warning:  Undefined array key "id_rol" in C:\xampp\htdocs\OPs\BACK\PHP\loginModel.php on line 36
 >>>>>>> e6b6ec6f28a4721fbd464a904bc3f058de7c112e
+[30-Jun-2025 04:58:19 Europe/Berlin] PHP Warning:  Undefined variable $verificacion in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 44
+[30-Jun-2025 04:58:19 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 44
+[30-Jun-2025 04:58:19 Europe/Berlin] PHP Warning:  Undefined variable $verificacion in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 45
+[30-Jun-2025 04:58:19 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 45
+[30-Jun-2025 04:58:35 Europe/Berlin] PHP Warning:  Undefined variable $verificacion in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 44
+[30-Jun-2025 04:58:35 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 44
+[30-Jun-2025 04:58:35 Europe/Berlin] PHP Warning:  Undefined variable $verificacion in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 45
+[30-Jun-2025 04:58:35 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 45
+[30-Jun-2025 04:58:53 Europe/Berlin] PHP Warning:  Undefined variable $verificacion in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 44
+[30-Jun-2025 04:58:53 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 44
+[30-Jun-2025 04:58:53 Europe/Berlin] PHP Warning:  Undefined variable $verificacion in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 45
+[30-Jun-2025 04:58:53 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 45
+[30-Jun-2025 07:23:14 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,IMPLICIT) for operation '=' in C:\xampp\htdocs\OP\BACK\PHP\loginModel.php:25
+Stack trace:
+#0 C:\xampp\htdocs\OP\BACK\PHP\loginModel.php(25): mysqli_stmt->execute()
+#1 C:\xampp\htdocs\OP\BACK\PHP\login.php(43): LoginModel->bringVerificationStatus('lautarosouza58@...')
+#2 {main}
+  thrown in C:\xampp\htdocs\OP\BACK\PHP\loginModel.php on line 25
+[30-Jun-2025 07:23:15 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,IMPLICIT) for operation '=' in C:\xampp\htdocs\OP\BACK\PHP\loginModel.php:25
+Stack trace:
+#0 C:\xampp\htdocs\OP\BACK\PHP\loginModel.php(25): mysqli_stmt->execute()
+#1 C:\xampp\htdocs\OP\BACK\PHP\login.php(43): LoginModel->bringVerificationStatus('lautarosouza58@...')
+#2 {main}
+  thrown in C:\xampp\htdocs\OP\BACK\PHP\loginModel.php on line 25
+[30-Jun-2025 07:23:16 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,IMPLICIT) for operation '=' in C:\xampp\htdocs\OP\BACK\PHP\loginModel.php:25
+Stack trace:
+#0 C:\xampp\htdocs\OP\BACK\PHP\loginModel.php(25): mysqli_stmt->execute()
+#1 C:\xampp\htdocs\OP\BACK\PHP\login.php(43): LoginModel->bringVerificationStatus('lautarosouza58@...')
+#2 {main}
+  thrown in C:\xampp\htdocs\OP\BACK\PHP\loginModel.php on line 25
+[30-Jun-2025 07:25:26 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,IMPLICIT) for operation '=' in C:\xampp\htdocs\OP\BACK\PHP\loginModel.php:25
+Stack trace:
+#0 C:\xampp\htdocs\OP\BACK\PHP\loginModel.php(25): mysqli_stmt->execute()
+#1 C:\xampp\htdocs\OP\BACK\PHP\login.php(43): LoginModel->bringVerificationStatus('lautarosouza58@...')
+#2 {main}
+  thrown in C:\xampp\htdocs\OP\BACK\PHP\loginModel.php on line 25
+[30-Jun-2025 09:40:30 Europe/Berlin] PHP Warning:  Undefined array key "codigo_postal" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 33
+[30-Jun-2025 10:16:36 Europe/Berlin] PHP Warning:  Undefined array key "usuario" in C:\xampp\htdocs\OP\BACK\PHP\user_panelModel.php on line 243
+[30-Jun-2025 10:16:36 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panelModel.php on line 243

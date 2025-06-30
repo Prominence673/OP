@@ -1,10 +1,8 @@
-function showToast(msg, color = "#004aad") {
+function showToast(message, type = "success") {
   const toast = document.getElementById("toast-msg");
-  if (!toast) return;
-  toast.textContent = msg;
-  toast.style.background = color;
-  toast.classList.add("show");
+  toast.textContent = message;
+  toast.className = "show " + type;
   setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2500);
+    toast.className = toast.className.replace("show", "");
+  }, 3000);
 }

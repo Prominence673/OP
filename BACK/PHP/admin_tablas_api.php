@@ -8,7 +8,11 @@ $permitidas = [
     "opiniones",
     "detalle_pedido",
     "pedido",
-    "estado_pedido"
+    "estado_pedido",
+    "datos_personales",
+    "localidad",
+    "provincia",
+    "partido"
 ];
 
 if (!in_array($tabla, $permitidas)) {
