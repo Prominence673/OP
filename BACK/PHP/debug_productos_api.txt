@@ -1,0 +1,23 @@
+---- NUEVA PETICIÓN ----
+GET: Array
+(
+)
+
+POST: Array
+(
+)
+
+RESPUESTA: {"error":"Tipo no v\u00e1lido. Usar ?tipo=paquetes|coches|estadias|pasajes"}
+
+---- NUEVA PETICIÓN ----
+GET: Array
+(
+    [paquetes] => 
+)
+
+POST: Array
+(
+)
+
+RESPUESTA: {"error":"Tipo no v\u00e1lido. Usar ?tipo=paquetes|coches|estadias|pasajes"}
+
