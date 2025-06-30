@@ -239,3 +239,63 @@
 
 )
 
+[30-Jun-2025 03:34:47 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[30-Jun-2025 03:34:47 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 12
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 216000
+        )
+
+)
+
+[30-Jun-2025 03:34:47 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 2
+[30-Jun-2025 03:34:47 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 12
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 216000
+        )
+
+)
+
+[30-Jun-2025 03:34:49 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 3
+[30-Jun-2025 03:34:49 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 12
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 216000
+        )
+
+)
+
+[30-Jun-2025 03:35:05 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[30-Jun-2025 03:35:05 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 12
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 216000
+        )
+
+)
+

@@ -14,15 +14,6 @@ $datos = $userPanel->bringInputFromForm();
 $action = $datos['action'] ?? '';
 try {
     switch ($action) {
-        case 'guardar_foto':
-            $ruta = $userPanel->uploadFile();
-            if ($ruta) {
-                echo json_encode(["success" => true, "mensaje" => "Imagen subida correctamente", "ruta" => $ruta]);
-            } else {
-                echo json_encode(["success" => false, "error" => "Error al subir imagen"]);
-            }
-            break;
-
         case 'guardar_datos':
             $datos = $userPanel->bringInputFromForm();
             $userPanel->uploadData($datos['nombre'], $datos['apellido'], $datos['fecha_nacimiento'], $datos['genero']);
@@ -50,7 +41,7 @@ try {
             $nuevo_email = $datos['email'];
 
 
-            if ($register->verifyMail($nuevo_email)) {
+            if (!$register->verifyMail($nuevo_email)) {
                 echo json_encode(["success" => false, "error" => "El email ya está en uso"]);
                 break;
             }

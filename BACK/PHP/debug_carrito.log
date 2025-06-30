@@ -28,3 +28,21 @@ Array
     [tipo] => pasaje
     [cantidad] => 1
 )
+Array
+(
+    [id_auto] => 1
+    [tipo] => auto
+    [cantidad] => 1
+)
+Array
+(
+    [id_auto] => 1
+    [tipo] => auto
+    [cantidad] => 1
+)
+Array
+(
+    [id_paquete] => 3
+    [tipo] => paquete
+    [cantidad] => 1
+)
