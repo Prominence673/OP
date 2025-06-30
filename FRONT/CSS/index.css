@@ -1,3 +1,4 @@
+/* =================== FUENTES =================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Quicksand:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Quicksand:wght@700&family=Poppins:wght@300;400;700;900&display=swap');
 
@@ -6,6 +7,7 @@
   src: url('../../SOURCE/FONT/cholleo/Cholleo-9YJ1B.otf') format('truetype');
 }
 
+/* =================== BASE =================== */
 body {
   margin: 0;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,19 +16,19 @@ body {
   background: transparent;
 }
 
+/* =================== TITULOS =================== */
 h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   font-family: 'Quicksand', 'Inter', Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
 
+/* =================== HERO =================== */
 .hero-overlay h2 {
   font-family: 'Poppins';
   font-size: 5rem;
-  line-height: 1;
-
+  line-height: 0.9;
   font-weight: 900;
-  
   margin-bottom: 0.1rem;
   margin-top:0;  
 }
@@ -41,12 +43,13 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   display: none;
 }
 
+/* =================== BOTONES =================== */
 .btn {
   background-color: #0077cc;
   color: white;
   padding: 0.8rem 1.6rem;
   border: none;
-  border-radius: 30px; /* Más redondeado */
+  border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
@@ -78,13 +81,16 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   z-index: 1;
 }
 
+/* CORRECCIÓN: Asegura que el overlay cubra el 100% del video */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
   width: 100vw;
-  height: 100%;
+  height: 100vh; /* Cambiado de 100% a 100vh para cubrir todo el video */
+  min-height: 500px;
+  max-height: 900px;
   background-color: rgba(0, 0, 0, 0.45);
   color: #fff;
   display: flex;
@@ -96,7 +102,6 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   pointer-events: auto;
 }
 
-
 .hero-overlay h2+h2{
   margin-top: 0;
 }
@@ -104,7 +109,7 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
 .hero-overlay p {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
-  max-width: 500px;               /* Opcional: limita el ancho */
+  max-width: 500px;
 }
 
 /* ========== SECTION GENERAL ========== */
@@ -121,27 +126,37 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   margin-bottom: 2rem;
 }
 
-/* Opciones de compra - grid y cards */
+/* ========== OPCIONES DE COMPRA ========== */
 .opciones-compra {
-  padding: 4rem 0 2rem 0;
-  margin-bottom: 4rem;
+  padding: 4rem 0 4rem 0;
+  margin-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden; /* Evita scroll horizontal en móviles */
 }
 
 .opciones-grid {
   display: flex;
+  justify-content: flex-start; /* Alinea todas en fila */
+  align-items: stretch;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;      /* Más angosto para que el grupo de tarjetas no ocupe tanto ancho */
+  min-width: 0;
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 2.5rem;
-  flex-wrap: nowrap; /* Cambia wrap por nowrap */ /* Permite scroll horizontal en pantallas pequeñas */
-  padding-bottom: 1rem;
 }
 
 .opcion-card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-  padding: 2.5rem 1.5rem 2rem 1.5rem;
-  width: 260px;
-  min-height: 340px;
+  background: #003366;
+  border-radius: 32px; /* Más redondeado */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.692);
+  padding: 2rem 1rem 1.5rem 1rem;
+  width: 180px;          /* Menos ancho, pero mantiene el tamaño de los textos */
+  min-width: 140px;
+  max-width: 200px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,21 +172,23 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
 }
 
 .opcion-icon {
-  font-size: 2.8rem;
-  color: #0077cc;
+  font-size: 2.2rem;
+  color: #fff;
   margin-bottom: 1.2rem;
 }
 
 .opcion-card h3 {
-  font-size: 1.25rem;
-  color: #004aad;
+  font-size: 1.05rem;     /* Más chico */
+  font-family: 'Poppins';
+  font-weight: 700;
+  color: #FF6600;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .opcion-card p {
-  font-size: 1rem;
-  color: #333;
+  font-size: 0.95rem;     /* Más chico */
+  color: #75c6ff;
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -186,8 +203,10 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   font-weight: 600;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  font-size: 0.95rem;     /* Más chico */
 }
 
+/* ========== INFO SECTION ========== */
 .section-info {
   background: #fff;
   padding: 6rem 0 4rem 0;
@@ -195,6 +214,8 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   justify-content: center;
   align-items: center;
   margin-bottom: 4rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .info-content {
@@ -203,26 +224,32 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   gap: 3rem;
   max-width: 1100px;
   margin: 0 auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-width: 0;
 }
 
 .info-image img {
-  width: 420px;      /* Más grande */
-  height: 420px;     /* Más grande */
+  width: 420px;
+  height: 420px;
   object-fit: cover;
-  border-radius: 32px; /* Más redondeado */
-  box-shadow: 0 12px 40px rgba(0,0,0,0.18); /* Sombra más notoria */
+  border-radius: 32px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
   background: #eaf3ff;
-  border: 6px solid #fff; /* Borde blanco para destacar */
-  transition: transform 0.3s cubic-bezier(.77,0,.18,1);
+  border: 6px solid #fff;
+  transition: transform 0.5s cubic-bezier(.77,0,.18,1);
+  flex-shrink: 0;
 }
 
 .info-image img:hover {
-  transform: scale(1.04) rotate(-2deg);
+  transform: rotate(7deg) scale(1.04); /* Rotación sutil y suave */
 }
 
 .info-text {
   max-width: 500px;
+  min-width: 0;
+  flex: 1 1 0;
+  word-break: break-word;
 }
 
 .info-text h2 {
@@ -244,24 +271,67 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   font-size: 1.1rem;
 }
 
-@media (max-width: 900px) {
-  .info-content {
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
+/* ========== RESPONSIVE MEDIANO ========== */
+@media (max-width: 1200px) {
+  .opciones-grid {
+    max-width: 900px;
+    gap: 1.2rem;
   }
-  .section-info {
-    padding: 3rem 0 2rem 0;
+  .opcion-card {
+    width: 180px;
+    min-width: 140px;
+    max-width: 200px;
+    min-height: 220px;
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
   }
-  .info-image img {
-    width: 260px;
-    height: 260px;
+  .opcion-card h3,
+  .opcion-card p,
+  .opcion-card .btn {
+    font-size: 0.85rem;
   }
-  .info-text {
-    max-width: 100%;
+  .opcion-icon {
+    font-size: 1.5rem;
   }
 }
 
+@media (max-width: 900px) {
+  .opciones-grid {
+    max-width: 100vw;
+    gap: 0.7rem;
+  }
+  .opcion-card {
+    width: 120px;
+    min-width: 100px;
+    max-width: 150px;
+    min-height: 120px;
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+  }
+  .opcion-card h3,
+  .opcion-card p,
+  .opcion-card .btn {
+    font-size: 0.7rem;
+  }
+  .opcion-icon {
+    font-size: 1.1rem;
+  }
+}
+
+/* Corrige el grid para pantallas normales (zoom 100%) */
+@media (max-width: 1400px) {
+  .opciones-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: visible;
+  }
+  .opcion-card {
+    width: 300px;
+    margin-bottom: 2rem;
+  }
+}
 
 /* ========== CON IMAGEN ========== */
 .with-image {
@@ -281,11 +351,6 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   width: 300px;
   height: auto;
   border-radius: 8px;
-}
-
-.with-image .text-content {
-  flex: 1;
-  text-align: left;
 }
 
 /* ========== NOSOTROS ========== */
@@ -327,3 +392,212 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   margin: 0 auto;
 }
 
+/* =================== RESPONSIVE PARA TELEVISIONES GRANDES =================== */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 4rem;
+  }
+  .hero-overlay {
+    padding: 12rem 0 0 14rem;
+    min-height: 700px;
+    width: 100vw;    /* Asegura que el overlay cubra todo el ancho */
+    height: 100vh;   /* Asegura que el overlay cubra todo el alto */
+    font-size: 1.5em;
+  }
+  .hero-overlay h2 {
+    font-size: 7rem;
+  }
+  .hero-overlay p {
+    font-size: 2.2rem;
+    max-width: 900px;
+  }
+  .opciones-grid {
+    gap: 4rem;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    max-width: none;
+    width: auto;
+    min-width: max-content;
+  }
+  .opcion-card {
+    width: 420px;
+    max-width: 320px; /* Limita el ancho máximo */
+    min-width: 220px;
+    min-height: 320px;
+    padding: 3.5rem 2rem 2.5rem 2rem;
+  }
+  .section-info {
+    padding: 8rem 0 6rem 0;
+  }
+  .info-content {
+    gap: 5rem;
+    max-width: 1500px;
+    flex-wrap: nowrap;
+  }
+  .info-image img {
+    width: 600px;
+    height: 600px;
+    border-radius: 40px;
+    border-width: 8px;
+  }
+  .info-text {
+    max-width: 700px;
+  }
+  .info-text h2 {
+    font-size: 3rem;
+  }
+  .info-text p {
+    font-size: 1.7rem;
+  }
+  .info-destacado {
+    font-size: 1.5rem;
+  }
+  .section-nosotros h2 {
+    font-size: 3.5rem;
+  }
+  .section-nosotros p {
+    font-size: 2rem;
+  }
+  .contenido-nosotros {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 2400px) {
+  .container {
+    max-width: 2000px;
+    padding: 0 8rem;
+  }
+  .hero-overlay {
+    padding: 16rem 0 0 20rem;
+    min-height: 900px;
+    width: 100vw;
+    height: 100vh;
+    font-size: 2em;
+  }
+  .hero-overlay h2 {
+    font-size: 10rem;
+  }
+  .hero-overlay p {
+    font-size: 3rem;
+    max-width: 1400px;
+  }
+  .opciones-grid {
+    gap: 6rem;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    max-width: none;
+    width: auto;
+    min-width: max-content;
+  }
+  .opcion-card {
+    width: 540px;
+    max-width: 340px; /* Limita el ancho máximo */
+    min-width: 220px;
+    min-height: 320px;
+    padding: 5rem 3rem 3rem 3rem;
+  }
+  .opcion-icon {
+    font-size: 6rem;
+  }
+  .opcion-card h3 {
+    font-size: 3rem;
+  }
+  .opcion-card p {
+    font-size: 2rem;
+  }
+  .opcion-card .btn {
+    font-size: 1.7rem;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 1.5rem 0;
+  }
+  .info-image img {
+    width: 900px;
+    height: 900px;
+    border-radius: 60px;
+    border-width: 14px;
+  }
+  .info-content {
+    gap: 8rem;
+    max-width: 2000px;
+  }
+  .info-text {
+    max-width: 1100px;
+  }
+  .info-text h2 {
+    font-size: 4.5rem;
+  }
+  .info_text p {
+    font-size: 2.5rem;
+  }
+  .info-destacado {
+    font-size: 2.5rem;
+  }
+  .section-nosotros h2 {
+    font-size: 5rem;
+  }
+  .section-nosotros p {
+    font-size: 3rem;
+  }
+  .contenido-nosotros {
+    max-width: 1800px;
+  }
+  .contenido-nosotros {
+    max-width: 1800px;
+  }
+}
+
+/* Ajuste para zoom bajo (pantallas muy anchas o zoom < 100%) */
+@media (max-width: 1000px) {
+  .opciones-grid {
+    max-width: 900px;
+    gap: 1rem;
+  }
+  .opcion-card {
+    width: 180px;
+    min-width: 120px;
+    max-width: 220px;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+  .opcion-card h3,
+  .opcion-card p,
+  .opcion-card .btn {
+    font-size: 0.8rem;
+  }
+  .opcion-icon {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tamaño intermedio entre 1200px y 1000px */
+@media (max-width: 1100px) {
+  .opciones-grid {
+    max-width: 750px;
+    gap: 0.8rem;
+  }
+  .opcion-card {
+    width: 140px;
+    min-width: 100px;
+    max-width: 180px;
+    padding: 0.9rem 0.4rem 0.9rem 0.4rem;
+  }
+  .opcion-card h3,
+  .opcion-card p,
+  .opcion-card .btn {
+    font-size: 0.75rem;
+  }
+  .opcion-icon {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1800px) and (max-width: 2399px) {
+  .opcion-card {
+    width: 260px;
+    max-width: 220px;
+    min-width: 160px;
+    padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+  }
+}

@@ -15,6 +15,7 @@ main.checkout-container {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Softer, more professional shadow */
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     gap: 2.5rem; /* Space between sections */

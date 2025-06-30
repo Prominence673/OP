@@ -5,6 +5,7 @@
     max-width: 1200px;
     margin: 3rem auto; /* Más margen superior */
     padding: 0 1.5rem; /* Más padding lateral */
+    margin-top: 5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 2.5rem; /* Mayor espacio entre secciones */
