@@ -34,7 +34,7 @@ input:-webkit-autofill {
 /* Contenedor general para todos los formularios */
 .form-container {
   max-width: 800px;
-  margin: 2rem auto 0 auto;
+  margin: 9rem auto 0 auto;
   padding: 2rem 2rem 2.5rem 2rem;
   border-radius: 22px;
   background: #ffffff;

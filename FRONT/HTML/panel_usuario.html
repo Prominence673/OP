@@ -6,6 +6,7 @@
   <title>Datos personales - ViajesMundo</title>
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
   <link rel="stylesheet" href="../CSS/panel_usuario.css"/>
+  <link rel="stylesheet" href="../CSS/toast.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
@@ -57,7 +58,7 @@
     <div class="sidebar-card">
       <h3>🚀 Planeá tu nuevo viaje!</h3>
       <p>Aprovechá las ofertas en alojamientos, vuelos, actividades y mucho más.</p>
-      <button class="btn-purple" onclick="window.location.href='paquetes.html'">Encontrá tu vuelo</button>
+      <button class="btn-primary" onclick="window.location.href='paquetes.html'">Encontrá tu vuelo</button>
     </div>
     <ul class="sidebar-menu">
       <li><a href="panel_usuario.html"><i class="fas fa-user"></i> Datos personales</a></li>
@@ -108,8 +109,12 @@
             <div class="form-group">
               <label>Género</label>
               <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
-                <label><input type="radio" name="genero" value="Femenino"> Femenino</label>
-                <label><input type="radio" name="genero" value="Masculino" checked> Masculino</label>
+                <label style="display:flex;align-items:center;gap:0.4em;">
+                  <input type="radio" name="genero" value="Femenino"> Femenino
+                </label>
+                <label style="display:flex;align-items:center;gap:0.4em;">
+                  <input type="radio" name="genero" value="Masculino" checked> Masculino
+                </label>
               </div>
             </div>
           </div>
@@ -182,8 +187,9 @@
               <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Repetir nueva contraseña" required>
             </div>
           </div>
-          <div class="form-group">
-            <label><input type="checkbox" id="show-password"> Mostrar contraseñas</label>
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="show-password">
+            <label for="show-password">Mostrar contraseñas</label>
           </div>
           <button class="btn-primary" type="submit">Actualizar contraseña</button>
         </form>
@@ -300,15 +306,72 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+<script>
+function showToast(message, type = "success") {
+  const toast = document.getElementById("toast-msg");
+  toast.textContent = message;
+  toast.className = "show " + type;
+  setTimeout(() => {
+    toast.className = toast.className.replace("show", "");
+  }, 3000);
+}
+
+// Ejemplo para cada formulario:
+document.getElementById("formDatos").addEventListener("submit", function(e) {
+  e.preventDefault();
+  // ...tu lógica AJAX o fetch...
+  showToast("Datos personales actualizados correctamente", "success");
+  // Si hay error: showToast("Hubo un error al actualizar los datos", "error");
+});
+
+document.getElementById("telefonoForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  // ...tu lógica AJAX o fetch...
+  showToast("Teléfono guardado correctamente", "success");
+  // Si hay error: showToast("No se pudo guardar el teléfono", "error");
+});
+
+document.getElementById("formEmail").addEventListener("submit", function(e) {
+  e.preventDefault();
+  // ...tu lógica AJAX o fetch...
+  showToast("Email actualizado correctamente", "success");
+  // Si hay error: showToast("No se pudo actualizar el email", "error");
+});
+
+document.getElementById("formPass").addEventListener("submit", function(e) {
+  e.preventDefault();
+  // ...tu lógica AJAX o fetch...
+  showToast("Contraseña actualizada correctamente", "success");
+  // Si hay error: showToast("No se pudo actualizar la contraseña", "error");
+});
+</script>
 
 <style>
 .hidden { display: none; }
 </style>
 
 <footer class="site-footer">
-  <div class="container">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="../../SOURCE/KAPIFLY.png" alt="KAPIFLY Logo" class="footer-logo-img" style="height:48px;">      
+      <span class="footer-desc">Viajes y experiencias únicas</span>
+    </div>
+    <div class="footer-links">
+      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="#" class="footer-link">Términos</a>
+      <a href="#" class="footer-link">Privacidad</a>
+      <a href="#" class="footer-link">Preguntas frecuentes</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
     <p>&copy; 2025 KAPIFLY. Todos los derechos reservados.</p>
   </div>
 </footer>
+<div id="toast-msg"></div>
 </body>
 </html>
