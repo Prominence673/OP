@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pasajes Aéreos | Travel Rock Argentina</title>
+  <title>Pasajes Aéreos | KAPIFLY</title>
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
   <link rel="stylesheet" href="../CSS/pasajes.css"/>
   <link rel="stylesheet" href="../CSS/toast.css"/>
@@ -11,46 +11,51 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-container">
+  <header class="site-header">
+    <div class="container header-container">
       <div class="logo-titulo">
         <a href="index.html">
           <img src="../../SOURCE/KAPIFLY.png" alt="Logo Kapifly" class="logo-img-real">
         </a>
       </div>
-    <nav class="main-nav">
-      <ul class="nav-menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown-parent">
-          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-            Paquetes <i class="fa-solid fa-chevron-down"></i>
-          </button>
-          <ul class="submenu">
-            <li><a href="coches.html">Alquiler coches</a></li>
-            <li><a href="paquetes.html">Paquetes turisticos</a></li>
-            <li><a href="estadias.html">Estadias</a></li>
-            <li><a href="pasajes.html">Pasajes aéreos</a></li>
-          </ul>
-        </li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="user-menu">
-      <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
-        <i class="fa-solid fa-cart-shopping user-icon"></i>
-      </a>
-      <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
-        <i class="fa-solid fa-user user-icon"></i>
-      </button>
-      <ul class="dropdown">
-        <li id="user"></li>
-        <li><a href="panel_usuario.html">Panel</a></li>
-        <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
-        <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
-        <li id="register_panel"><a href="register.html">Registrarse</a></li>
-        <li><a href="#" id="logout">Cerrar Sesion</a></li>
-      </ul>
+      <nav class="main-nav">
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="dropdown-parent">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Paquetes <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="submenu">
+              <li><a href="coches.html">Alquiler coches</a></li>
+              <li><a href="paquetes.html">Paquetes turisticos</a></li>
+              <li><a href="estadias.html">Estadias</a></li>
+              <li><a href="pasajes.html">Pasajes aéreos</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
+          <i class="fa-solid fa-cart-shopping user-icon"></i>
+        </a>
+        <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
+          <i class="fa-solid fa-user user-icon"></i>
+        </button>
+        <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+          <i class="fa-solid fa-moon" id="darkmode-icon"></i>
+        </button>
+        <ul class="dropdown">
+          <li id="user"></li>
+          <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
+          <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
+          <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+          <li id="register_panel"><a href="register.html">Registrarse</a></li>
+          <li><a href="#" id="logout">Cerrar Sesion</a></li>
+        </ul>
+      </div>
     </div>
+<<<<<<< HEAD
   </div>
 </header>
 <main>
@@ -187,6 +192,98 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 </script>
 </main>
+=======
+  </header>
+
+  <main>
+    <section class="pasajes-admin">
+      <h3>Pasajes de avión</h3>
+      <div id="pasajes-admin-lista" class="vuelos-lista-horizontal"></div>
+    </section>
+    <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+    <script>
+      const actions = new SessionActions();
+      actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+      actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
+      actions.InsertData("#user", "nombre");
+      actions.AdminOnlyToggle(["#panel_admin"], []);
+      actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
+      const logout = document.getElementById("logout");
+      logout.addEventListener("click", () => {
+        actions.logoutSession();
+      });
+    </script>
+    <script src="../JS DISEÑO/menu.js"></script>
+    <script src="../JS DISEÑO/pasajes.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const cont = document.getElementById('pasajes-admin-lista');
+      try {
+        const res = await fetch('../../BACK/PHP/productos_api.php?tipo=pasajes');
+        const pasajes = await res.json();
+        if (!pasajes.length) {
+          cont.innerHTML = "<p>No hay pasajes cargados aún.</p>";
+          return;
+        }
+
+        pasajes.forEach(p => {
+          const article = document.createElement("article");
+          article.className = "vuelo horizontal-vuelo vuelo-expandido extendible";
+
+          article.innerHTML = `
+            <div class="vuelo-img-container">
+              <img src="${p.imagen}" alt="${p.nombre}" class="vuelo-img-portada">
+            </div>
+            <div class="vuelo-info">
+              <h4>${p.nombre}</h4>
+              <p class="vuelo-aerolinea"><strong>Aerolínea:</strong> ${p.aerolinea}</p>
+              <p class="vuelo-duracion"><strong>Duración:</strong> ${p.duracion}</p>
+              <p class="vuelo-clase"><strong>Clase:</strong> ${p.clase}</p>
+              <p class="vuelo-precio"><strong>Precio desde:</strong> AR$ ${parseInt(p.precio_desde).toLocaleString('es-AR')}</p>
+              <form class="add-cart-form">
+                <input type="hidden" name="id_pasaje" value="${p.id_pasajes}">
+                <button type="submit" class="add-to-cart">Añadir al carrito</button>
+              </form>
+            </div>
+          `;
+
+          // Manejo del submit del form
+          article.querySelector(".add-cart-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const session = await fetch('../../BACK/PHP/checkSession.php').then(r => r.json());
+            if (!session.loggedIn) {
+              window.location.href = "login.html";
+              return;
+            }
+
+            const formData = new FormData(this);
+            formData.append('tipo', 'pasaje');
+            formData.append('cantidad', 1); // Siempre 1 unidad
+            const res = await fetch('../../BACK/PHP/carrito_api.php', {
+              method: 'POST',
+              body: formData
+            });
+            const data = await res.json();
+            if (data.error) {
+              showToast(data.error, "#dc3545");
+            } else {
+              showToast(data.mensaje || "Agregado al carrito", "#28a745");
+            }
+          });
+
+          cont.appendChild(article);
+        });
+
+      } catch (e) {
+        cont.innerHTML = "<p>Error al cargar los pasajes.</p>";
+        console.error("Error al cargar pasajes:", e);
+      }
+    });
+    </script>
+  </main>
+>>>>>>> 9e1f2edc53047f57a512d83735c423ade7e7cd85
 
 <footer class="site-footer">
   <div class="footer-container">
@@ -195,22 +292,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
     <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
       <a href="#" class="footer-link">Términos</a>
       <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
     </div>
     <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
     <p>&copy; 2025 KAPIFLY. Todos los derechos reservados.</p>
   </div>
 </footer>
-<div id="toast-msg"></div>
-<script src="../JS DISEÑO/toast.js"></script>
+  <div id="toast-msg"></div>
+  <script src="../JS DISEÑO/toast.js"></script>
+  <script src="../JS DISEÑO/darkmode.js"></script>
 </body>
 </html>

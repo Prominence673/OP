@@ -39,6 +39,9 @@
         <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
           <i class="fa-solid fa-user user-icon"></i>
         </button>
+        <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+          <i class="fa-solid fa-moon" id="darkmode-icon"></i>
+        </button>
         <ul class="dropdown">
           <li id="user"></li>
           <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
@@ -55,7 +58,9 @@
       <img src="../../SOURCE/RESOURCES/contactoIMG.jpeg" alt="Foto de la empresa" class="contacto-img-hero">
       <div class="contacto-img-hero-overlay"></div>
       <div class="contacto-img-hero-text">
-        <h1>CONTACTANOS</h1>
+        <h1>
+          <span class="wave-text">CONTACTANOS</span>
+        </h1>        
         <p>Conocé nuestra empresa y escribinos para vivir tu próxima aventura.</p>
       </div>
     </div>
@@ -63,20 +68,35 @@
     <section class="contacto-section">
       <div class="contacto-card">
         <h2>Contactanos</h2>
+<<<<<<< HEAD
         <form method="post" id="form-opinion">
           <div class="contacto-form-grid">
             <div class="form-group">
               <label for="nombre">Nombre</label>
+=======
+      <form id="form-contacto">
+        <div class="contacto-form-grid">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <div class="input-icon-group">
+              <span class="input-icon"><i class="fa-solid fa-user"></i></span>
+>>>>>>> 9e1f2edc53047f57a512d83735c423ade7e7cd85
               <input type="text" id="nombre" name="nombre" required maxlength="50" placeholder="Tu nombre">
             </div>
-            <div class="form-group">
-              <label for="email">Correo electrónico</label>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <div class="input-icon-group">
+              <span class="input-icon"><i class="fa-solid fa-envelope"></i></span>
               <input type="email" id="email" name="email" required maxlength="60" placeholder="tu@email.com">
             </div>
           </div>
-          <div class="contacto-form-grid">
-            <div class="form-group">
-              <label for="motivo">Motivo</label>
+        </div>
+        <div class="contacto-form-grid">
+          <div class="form-group">
+            <label for="motivo">Motivo</label>
+            <div class="input-icon-group">
+              <span class="input-icon"><i class="fa-solid fa-question-circle"></i></span>
               <select id="motivo" name="motivo" required>
                 <option value="">Selecciona una opción</option>
                 <option value="1">Consulta</option>
@@ -85,18 +105,30 @@
                 <option value="4">Otro</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="telefono">Teléfono (opcional)</label>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono (opcional)</label>
+            <div class="input-icon-group">
+              <span class="input-icon"><i class="fa-solid fa-phone"></i></span>
               <input type="tel" id="telefono" name="telefono" maxlength="25" placeholder="Ej: +54 9 11 1234-5678">
             </div>
           </div>
+<<<<<<< HEAD
           <div class="form-group">
             <label for="opinion">Mensaje</label>
             <textarea id="mensaje" name="opinion" rows="4" required maxlength="500" placeholder="Escribe tu mensaje aquí"></textarea>
+=======
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <div class="input-icon-group">
+            <textarea id="mensaje" name="mensaje" rows="4" required maxlength="500" placeholder="Escribe tu mensaje aquí"></textarea>
+>>>>>>> 9e1f2edc53047f57a512d83735c423ade7e7cd85
           </div>
-          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-          <div class="msg" id="msg-contacto"></div>
-        </form>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+        <div class="msg" id="msg-contacto"></div>
+      </form>
       </div>
     </section>
 
@@ -150,15 +182,15 @@
       <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
     <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
       <a href="#" class="footer-link">Términos</a>
       <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
     </div>
     <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -190,5 +222,21 @@
       });
     });
   </script>
+  <script>
+  // Animación de aparición del formulario al hacer scroll
+  document.addEventListener("DOMContentLoaded", function() {
+    const card = document.querySelector('.contacto-card');
+    function showOnScroll() {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 80) {
+        card.classList.add('visible');
+        window.removeEventListener('scroll', showOnScroll);
+      }
+    }
+    showOnScroll();
+    window.addEventListener('scroll', showOnScroll);
+  });
+</script>
+<script src="../JS DISEÑO/darkmode.js"></script>
 </body>
 </html>

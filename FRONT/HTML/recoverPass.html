@@ -9,38 +9,41 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-container">
+  <header class="site-header">
+    <div class="container header-container">
       <div class="logo-titulo">
         <a href="index.html">
           <img src="../../SOURCE/KAPIFLY.png" alt="Logo Kapifly" class="logo-img-real">
         </a>
       </div>
       <nav class="main-nav">
-      <ul class="nav-menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown-parent">
-          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-            Paquetes <i class="fa-solid fa-chevron-down"></i>
-          </button>
-          <ul class="submenu">
-            <li><a href="coches.html">Alquiler coches</a></li>
-            <li><a href="paquetes.html">Paquetes turisticos</a></li>
-            <li><a href="estadias.html">Estadias</a></li>
-            <li><a href="pasajes.html">Pasajes aéreos</a></li>
-          </ul>
-        </li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="user-menu">
-      <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
-        <i class="fa-solid fa-cart-shopping user-icon"></i>
-      </a>
-      <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
-        <i class="fa-solid fa-user user-icon"></i>
-      </button>
-      <ul class="dropdown">
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="dropdown-parent">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Paquetes <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="submenu">
+              <li><a href="coches.html">Alquiler coches</a></li>
+              <li><a href="paquetes.html">Paquetes turisticos</a></li>
+              <li><a href="estadias.html">Estadias</a></li>
+              <li><a href="pasajes.html">Pasajes aéreos</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
+          <i class="fa-solid fa-cart-shopping user-icon"></i>
+        </a>
+        <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
+          <i class="fa-solid fa-user user-icon"></i>
+        </button>
+        <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+          <i class="fa-solid fa-moon" id="darkmode-icon"></i>
+        </button>
+        <ul class="dropdown">
           <li id="user"></li>
           <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
           <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
@@ -48,8 +51,8 @@
           <li id="register_panel"><a href="register.html">Registrarse</a></li>
           <li><a href="#" id="logout">Cerrar Sesion</a></li>
         </ul>
-    </div>
-</header>
+      </div>
+  </header>
 
   <main class="form-container">
     <h2>Recuperar contraseña</h2>
@@ -57,6 +60,9 @@
       <div class="form-group">
         <i class="fa-solid fa-lock input-icon"></i>
         <input type="password" id="password" name="password" max="16" required placeholder=" " />
+        <span class="toggle-password" onclick="togglePasswordVisibility('password', this)">
+          <i class="fa-solid fa-eye"></i>
+        </span>
         <label for="password">Contraseña:</label>
         <div id="password-rules">
           <p id="min-length">8 caracteres</p>
@@ -69,11 +75,10 @@
       <div class="form-group">
         <i class="fa-solid fa-lock input-icon"></i>
         <input type="password" id="confirm" name="confirm" required placeholder=" " />
+        <span class="toggle-password" onclick="togglePasswordVisibility('confirm', this)">
+          <i class="fa-solid fa-eye"></i>
+        </span>
         <label for="confirm">Confirmar contraseña:</label>
-      </div>
-      <div class="show-password-container">
-        <label for="showpassword">Mostrar Contraseña</label>
-        <input type="checkbox" id="showpassword" name="showpass">
       </div>
       <button type="submit">Entrar</button>
     </form>
@@ -126,20 +131,36 @@
       <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
     <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
       <a href="#" class="footer-link">Términos</a>
       <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
     </div>
     <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
     <p>&copy; 2025 KAPIFLY. Todos los derechos reservados.</p>
   </div>
 </footer>
+<script src="../JS DISEÑO/darkmode.js"></script>
+<script>
+function togglePasswordVisibility(inputId, iconSpan) {
+  const input = document.getElementById(inputId);
+  const icon = iconSpan.querySelector('i');
+  if (input.type === "password") {
+    input.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    input.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+</script>
 </body>
 </html>

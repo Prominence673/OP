@@ -1,7 +1,28 @@
 @import url(../CSS/fonts.css);
 
+:root {
+  --main-bg: #ffffff;
+  --card-bg: #fff;
+  --card-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  --card-border: 10px solid;
+  --card-border-gradient: linear-gradient(to right, #0074D9, #7FDBFF) 1;
+  --card-radius: 12px;
+  --title-color: #0074D9;
+  --subtitle-color: #001f3f;
+  --text-color: #333;
+  --section-title-color: #0074D9;
+  --section-title-gradient: linear-gradient(90deg, #ff914d 0%, #ffe066 100%);
+  --add-btn-bg: #27ae60;
+  --add-btn-bg-hover: #219150;
+  --add-btn-text: #fff;
+  --input-border: #ccc;
+  --input-bg: #fff;
+  --input-radius: 6px;
+}
+
 body {
-  background: linear-gradient(to bottom, #ffffff, #b5d8fd);
+  background: var(--main-bg);
+  color: var(--text-color);
 }
 
 main {
@@ -14,48 +35,49 @@ main {
   text-align: center;
   margin-bottom: 2.5rem;
   padding: 2rem 1rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
   padding: 15px 30px;
-  border: 10px solid;
-  border-image: linear-gradient(to right, #0074D9, #7FDBFF) 1;
+  border: var(--card-border);
+  border-image: var(--card-border-gradient);
   clip-path: inset(0 round 10px);
 }
 
 .alquiler-hero h2 {
   font-family: 'Helvetica';
   font-size: 2rem;
-  color: #0074D9;
+  color: var(--title-color);
   margin-bottom: 0.5rem;
 }
 
 .alquiler-hero p {
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-color);
   margin: 0;
 }
 
 .autos-lista {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
 
 .auto {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.521);
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .auto:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
 }
 
 .auto-img-container {
@@ -63,6 +85,12 @@ main {
   width: 100%;
   height: 200px;
   overflow: hidden;
+  background: #f4f8fb;
+}
+
+/* Modo oscuro: mismo fondo que el body */
+body.dark-mode .auto-img-container {
+  background: #2E382E;
 }
 
 .auto-img-portada,
@@ -89,32 +117,69 @@ main {
 }
 
 .auto-info {
-  padding: 1rem;
+  padding: 1.2rem 1rem 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
+.auto-info h2,
 .auto-info h4 {
   font-family: 'Quicksand', sans-serif;
   font-weight: 900;
-  font-size: 1.2rem;
-  color: #001f3f;
-  margin: 0;
+  font-size: 1.3rem;
+  color: var(--subtitle-color);
+  margin: 0 0 0.5rem 0;
 }
 
 .auto-info p {
   margin: 0;
   line-height: 1.5;
+  color: var(--text-color);
+}
+
+.auto-info label {
+  font-size: 1rem;
+  color: #555;
+  margin-right: 0.5rem;
+}
+
+.auto-info input[type="number"] {
+  width: 60px;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  background: var(--input-bg);
+}
+
+.auto-info .add-to-cart {
+  background-color: var(--add-btn-bg);
+  color: var(--add-btn-text);
+  border: none;
+  padding: 0.4rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 0.7rem;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.auto-info .add-to-cart:hover {
+  background-color: var(--add-btn-bg-hover);
 }
 
 .autos-argentina h3,
 .autos-internacionales h3 {
   font-family: 'Helvetica';
   font-size: 1.4rem;
-  color: #0074D9;
+  color: var(--section-title-color);
   margin: 5.5rem 0;
   text-align: center;
+  position: relative;
 }
 
 .autos-argentina h3::after,
@@ -125,13 +190,13 @@ main {
   width: 150px;
   height: 4px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #ff914d 0%, #ffe066 100%);
+  background: var(--section-title-gradient);
 }
 
 .autos-admin {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  box-shadow: var(--card-shadow);
   padding: 2rem 2rem 1.5rem 2rem;
   margin-bottom: 2.5rem;
   max-width: 900px;
@@ -166,114 +231,6 @@ main {
   background: linear-gradient(90deg, #0077cc 0%, #ff914d 100%);
 }
 
-.autos-lista {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.auto {
-  background-color: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.auto:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
-}
-
-.auto-img-container {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: #f4f8fb;
-}
-
-.auto-img-portada,
-.auto-img-interior {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.4s;
-}
-
-.auto-img-interior {
-  opacity: 0;
-  z-index: 2;
-}
-
-.auto:hover .auto-img-interior {
-  opacity: 1;
-}
-
-.auto:hover .auto-img-portada {
-  opacity: 0;
-}
-
-.auto-info {
-  padding: 1.2rem 1rem 1.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.auto-info h2 {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 900;
-  font-size: 1.3rem;
-  color: #001f3f;
-  margin: 0 0 0.5rem 0;
-}
-
-.auto-info p {
-  margin: 0;
-  line-height: 1.5;
-  color: #333;
-}
-
-.auto-info label {
-  font-size: 1rem;
-  color: #555;
-  margin-right: 0.5rem;
-}
-
-.auto-info input[type="number"] {
-  width: 60px;
-  padding: 0.3rem 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.auto-info .add-to-cart {
-  background-color: #27ae60;
-  color: white;
-  border: none;
-  padding: 0.4rem 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 0.7rem;
-  transition: background 0.2s;
-  white-space: nowrap;
-}
-
-.auto-info .add-to-cart:hover {
-  background-color: #219150;
-}
-
 .form-container {
   box-shadow: none;
   border: none;
@@ -294,4 +251,75 @@ main {
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
+}
+
+/* =================== MODO OSCURO =================== */
+body.dark-mode {
+  --main-bg: #2E382E;
+  --card-bg: #263026;
+  --card-shadow: 0 8px 16px rgba(80,201,206,0.08);
+  --card-border: 10px solid;
+  --card-border-gradient: linear-gradient(to right, #50C9CE, #FFB347) 1;
+  --card-radius: 12px;
+  --title-color: #50C9CE;
+  --subtitle-color: #50C9CE;
+  --text-color: #50C9CE;
+  --section-title-color: #50C9CE;
+  --section-title-gradient: linear-gradient(90deg, #FFB347 0%, #50C9CE 100%);
+  --add-btn-bg: #50C9CE;
+  --add-btn-bg-hover: #2E382E;
+  --add-btn-text: #2E382E;
+  --input-border: #50C9CE;
+  --input-bg: #223122;
+  --input-radius: 6px;
+}
+
+body.dark-mode {
+  background: var(--main-bg);
+  color: var(--text-color);
+}
+
+body.dark-mode .alquiler-hero,
+body.dark-mode .auto,
+body.dark-mode .autos-admin {
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--card-shadow);
+  border-image: var(--card-border-gradient);
+}
+
+body.dark-mode .alquiler-hero h2,
+body.dark-mode .auto-info h2,
+body.dark-mode .auto-info h4,
+body.dark-mode .autos-argentina h3,
+body.dark-mode .autos-internacionales h3 {
+  color: var(--title-color);
+}
+
+body.dark-mode .autos-argentina h3::after,
+body.dark-mode .autos-internacionales h3::after {
+  background: var(--section-title-gradient);
+}
+
+body.dark-mode .auto-info p {
+  color: var(--text-color);
+}
+
+body.dark-mode .auto-info label {
+  color: var(--text-color);
+}
+
+body.dark-mode .auto-info input[type="number"] {
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-color);
+}
+
+body.dark-mode .auto-info .add-to-cart {
+  background-color: var(--add-btn-bg);
+  color: var(--add-btn-text);
+}
+
+body.dark-mode .auto-info .add-to-cart:hover {
+  background-color: var(--add-btn-bg-hover);
 }

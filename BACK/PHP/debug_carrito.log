@@ -28,6 +28,7 @@ Array
     [tipo] => pasaje
     [cantidad] => 1
 )
+<<<<<<< HEAD
 Array
 (
     [id_auto] => 1
@@ -52,3 +53,5 @@ Array
     [tipo] => auto
     [cantidad] => 1
 )
+=======
+>>>>>>> 9e1f2edc53047f57a512d83735c423ade7e7cd85

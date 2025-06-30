@@ -303,6 +303,7 @@
 =======
 [28-Jun-2025 19:52:26 Europe/Berlin] PHP Warning:  Undefined array key "usuario_nombre" in C:\xampp\htdocs\OPs\BACK\PHP\loginModel.php on line 35
 [28-Jun-2025 19:52:26 Europe/Berlin] PHP Warning:  Undefined array key "id_rol" in C:\xampp\htdocs\OPs\BACK\PHP\loginModel.php on line 36
+<<<<<<< HEAD
 >>>>>>> e6b6ec6f28a4721fbd464a904bc3f058de7c112e
 [30-Jun-2025 04:58:19 Europe/Berlin] PHP Warning:  Undefined variable $verificacion in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 44
 [30-Jun-2025 04:58:19 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 44
@@ -343,3 +344,10 @@ Stack trace:
 [30-Jun-2025 09:40:30 Europe/Berlin] PHP Warning:  Undefined array key "codigo_postal" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 33
 [30-Jun-2025 10:16:36 Europe/Berlin] PHP Warning:  Undefined array key "usuario" in C:\xampp\htdocs\OP\BACK\PHP\user_panelModel.php on line 243
 [30-Jun-2025 10:16:36 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panelModel.php on line 243
+=======
+[30-Jun-2025 08:29:55 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[30-Jun-2025 08:29:55 Europe/Berlin] Items encontrados: Array
+(
+)
+
+>>>>>>> 9e1f2edc53047f57a512d83735c423ade7e7cd85

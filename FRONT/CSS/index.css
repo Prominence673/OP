@@ -7,13 +7,58 @@
   src: url('../../SOURCE/FONT/cholleo/Cholleo-9YJ1B.otf') format('truetype');
 }
 
+/* =================== VARIABLES =================== */
+:root {
+  --bg-color: #fafdff;
+  --text-color: #fff;
+  --primary-color: #0077cc;
+  --secondary-color: #2E382E;
+  --accent-color: #FF6600;
+  --card-bg: #fff;
+  --input-bg: #fff;
+  --border-color: #d0d7e6;
+  --opcion-card-bg: #003366;
+  --opcion-card-title: #FF6600;
+  --opcion-card-text: #75c6ff;
+  --info-title: #0077cc;
+  --info-text: #333;
+  --info-highlight: #004aad;
+  --section-bg: #fff;
+  --btn-bg: #0077cc;
+  --btn-bg-hover: #005fa3;
+  --btn-text: #fff;
+}
+
+/* =================== MODO OSCURO =================== */
+body.dark-mode {
+  --bg-color: #2E382E;
+  --text-color: #50C9CE;
+  --primary-color: #50C9CE;
+  --secondary-color: #1B2221;
+  --accent-color: #FFB347; /* Un color cálido que combina bien */
+  --card-bg: #2E382E;
+  --input-bg: #263026;
+  --border-color: #50C9CE;
+  --opcion-card-bg: #263026;
+  --opcion-card-title: #FFB347;
+  --opcion-card-text: #50C9CE;
+  --info-title: #50C9CE;
+  --info-text: #50C9CE;
+  --info-highlight: #FFB347;
+  --section-bg: #2E382E;
+  --btn-bg: #50C9CE;
+  --btn-bg-hover: #2E382E;
+  --btn-text: #2E382E;
+}
+
 /* =================== BASE =================== */
 body {
   margin: 0;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background: transparent;
+  color: var(--text-color);
+  background: var(--bg-color);
+  transition: background 0.5s, color 0.5s;
 }
 
 /* =================== TITULOS =================== */
@@ -21,6 +66,8 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   font-family: 'Quicksand', 'Inter', Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 0.01em;
+  color: var(--info-title);
+  transition: color 0.5s;
 }
 
 /* =================== HERO =================== */
@@ -31,6 +78,8 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   font-weight: 900;
   margin-bottom: 0.1rem;
   margin-top:0;  
+  color: var(--text-color);
+  transition: color 0.5s;
 }
 
 .container {
@@ -45,19 +94,20 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
 
 /* =================== BOTONES =================== */
 .btn {
-  background-color: #0077cc;
-  color: white;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
   padding: 0.8rem 1.6rem;
   border: none;
   border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: background 0.3s, color 0.3s;
 }
 
 .btn:hover {
-  background-color: #005fa3;
+  background-color: var(--btn-bg-hover);
+  color: var(--accent-color);
 }
 
 /* ========== HERO ========== */
@@ -71,14 +121,33 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   z-index: 1;
 }
 
-.background-video {
+.typewrite::after {
+  content: '|';
+  display: inline-block;
+  animation: blink 1s steps(1) infinite;
+  font-weight: 900;
+  font-size: 1em;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.background-video,
+.hero-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
+  min-height: 500px;
+  max-height: 900px;
   object-fit: cover;
   z-index: 1;
+  display: block;
+  background: #000;
 }
 
 /* CORRECCIÓN: Asegura que el overlay cubra el 100% del video */
@@ -88,11 +157,11 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   left: 0;
   z-index: 2;
   width: 100vw;
-  height: 100vh; /* Cambiado de 100% a 100vh para cubrir todo el video */
+  height: 100vh;
   min-height: 500px;
   max-height: 900px;
-  background-color: rgba(0, 0, 0, 0.45);
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0.45); /* NO CAMBIAR OPACIDAD */
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -100,6 +169,7 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   text-align: left;
   padding: 7rem 0 0 7rem;
   pointer-events: auto;
+  transition: color 0.5s;
 }
 
 .hero-overlay h2+h2{
@@ -110,20 +180,24 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   max-width: 500px;
+  color: var(--text-color);
+  transition: color 0.5s;
 }
 
 /* ========== SECTION GENERAL ========== */
 .section {
   padding: 4rem 1.5rem;
   margin-bottom: 2rem;
-  background-color: transparent;
+  background-color: var(--section-bg);
+  transition: background 0.5s;
 }
 
 .section h2 {
   text-align: center;
   font-size: 2rem;
-  color: #0077cc;
+  color: var(--primary-color);
   margin-bottom: 2rem;
+  transition: color 0.5s;
 }
 
 /* ========== OPCIONES DE COMPRA ========== */
@@ -133,27 +207,27 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   width: 100%;
   display: flex;
   justify-content: center;
-  overflow-x: hidden; /* Evita scroll horizontal en móviles */
+  overflow-x: hidden;
 }
 
 .opciones-grid {
   display: flex;
-  justify-content: flex-start; /* Alinea todas en fila */
+  justify-content: flex-start;
   align-items: stretch;
   gap: 2rem;
   width: 100%;
-  max-width: 900px;      /* Más angosto para que el grupo de tarjetas no ocupe tanto ancho */
+  max-width: 900px;
   min-width: 0;
   flex-wrap: nowrap;
   justify-content: center;
 }
 
 .opcion-card {
-  background: #003366;
-  border-radius: 32px; /* Más redondeado */
+  background: var(--opcion-card-bg);
+  border-radius: 32px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.692);
   padding: 2rem 1rem 1.5rem 1rem;
-  width: 180px;          /* Menos ancho, pero mantiene el tamaño de los textos */
+  width: 180px;
   min-width: 140px;
   max-width: 200px;
   min-height: 280px;
@@ -162,8 +236,16 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   align-items: center;
   opacity: 0;
   transform: translateY(60px);
-  transition: opacity 0.7s cubic-bezier(.77,0,.18,1), transform 0.7s cubic-bezier(.77,0,.18,1);
+  transition: 
+    opacity 0.7s cubic-bezier(.77,0,.18,1), 
+    transform 0.7s cubic-bezier(.77,0,.18,1),
+    background 0.5s;
   will-change: opacity, transform;
+}
+
+.opcion-card:hover .opcion-icon {
+  color: var(--accent-color);
+  transition: color 0.1s;
 }
 
 .opcion-card.visible {
@@ -173,24 +255,27 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
 
 .opcion-icon {
   font-size: 2.2rem;
-  color: #fff;
+  color: #f8f7f4c9;
   margin-bottom: 1.2rem;
+  transition: color 0.5s;
 }
 
 .opcion-card h3 {
-  font-size: 1.05rem;     /* Más chico */
+  font-size: 1.05rem;
   font-family: 'Poppins';
   font-weight: 700;
-  color: #FF6600;
+  color: var(--opcion-card-title);
   margin-bottom: 1rem;
   text-align: center;
+  transition: color 0.5s;
 }
 
 .opcion-card p {
-  font-size: 0.95rem;     /* Más chico */
-  color: #75c6ff;
+  font-size: 0.95rem;
+  color: var(--opcion-card-text);
   margin-bottom: 1.5rem;
   text-align: center;
+  transition: color 0.5s;
 }
 
 .opcion-card .btn {
@@ -203,12 +288,13 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   font-weight: 600;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  font-size: 0.95rem;     /* Más chico */
+  font-size: 0.95rem;
+  transition: background 0.5s, color 0.5s;
 }
 
 /* ========== INFO SECTION ========== */
 .section-info {
-  background: #fff;
+  background: var(--card-bg);
   padding: 6rem 0 4rem 0;
   display: flex;
   justify-content: center;
@@ -216,6 +302,7 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   margin-bottom: 4rem;
   width: 100%;
   min-width: 0;
+  transition: background 0.5s;
 }
 
 .info-content {
@@ -236,13 +323,15 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   border-radius: 32px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.18);
   background: #eaf3ff;
-  border: 6px solid #fff;
-  transition: transform 0.5s cubic-bezier(.77,0,.18,1);
+  border: 6px solid var(--card-bg);
+  transition: 
+    transform 0.5s cubic-bezier(.77,0,.18,1),
+    border 0.5s;
   flex-shrink: 0;
 }
 
 .info-image img:hover {
-  transform: rotate(7deg) scale(1.04); /* Rotación sutil y suave */
+  transform: rotate(7deg) scale(1.04);
 }
 
 .info-text {
@@ -254,21 +343,26 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
 
 .info-text h2 {
   font-size: 2.1rem;
-  color: #0077cc;
+  font-family: 'Poppins';
+  font-weight: 900;
+  color: var(--info-title);
   margin-bottom: 1.2rem;
+  transition: color 0.5s;
 }
 
 .info-text p {
   font-size: 1.15rem;
-  color: #333;
+  color: var(--info-text);
   margin-bottom: 1.5rem;
   line-height: 1.7;
+  transition: color 0.5s;
 }
 
 .info-destacado {
-  color: #004aad;
+  color: var(--info-highlight);
   font-weight: 700;
   font-size: 1.1rem;
+  transition: color 0.5s;
 }
 
 /* ========== RESPONSIVE MEDIANO ========== */
@@ -357,8 +451,10 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
 .section-nosotros {
   position: relative;
   min-height: 100vh;
-  background: url('../../SOURCE/RESOURCES/cerrar-personas-sosteniendo-mapa.jpg') center -10px / cover no-repeat fixed;
+  background: url('../../SOURCE/RESOURCES/pharallaxINDEX.png') center -10px / cover no-repeat fixed;
   overflow: hidden;
+  background-color: var(--section-bg);
+  transition: background 0.5s;
 }
 
 .nosotros-overlay {
@@ -377,19 +473,26 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
 
 .contenido-nosotros {
   max-width: 800px;
-  color: white;
+  color: var(--text-color);
   z-index: 2;
+  transition: color 0.5s;
 }
 
 .section-nosotros h2 {
+  font-family: 'Poppins';
+  font-weight: 900;
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: var(--info-title);
+  transition: color 0.5s;
 }
 
 .section-nosotros p {
   font-size: 1.2rem;
   line-height: 1.6;
   margin: 0 auto;
+  color: var(--text-color);
+  transition: color 0.5s;
 }
 
 /* =================== RESPONSIVE PARA TELEVISIONES GRANDES =================== */
@@ -401,8 +504,8 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   .hero-overlay {
     padding: 12rem 0 0 14rem;
     min-height: 700px;
-    width: 100vw;    /* Asegura que el overlay cubra todo el ancho */
-    height: 100vh;   /* Asegura que el overlay cubra todo el alto */
+    width: 100vw;
+    height: 100vh;
     font-size: 1.5em;
   }
   .hero-overlay h2 {
@@ -422,7 +525,7 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   }
   .opcion-card {
     width: 420px;
-    max-width: 320px; /* Limita el ancho máximo */
+    max-width: 320px;
     min-width: 220px;
     min-height: 320px;
     padding: 3.5rem 2rem 2.5rem 2rem;
@@ -493,7 +596,7 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
   }
   .opcion-card {
     width: 540px;
-    max-width: 340px; /* Limita el ancho máximo */
+    max-width: 340px;
     min-width: 220px;
     min-height: 320px;
     padding: 5rem 3rem 3rem 3rem;
@@ -600,4 +703,29 @@ h1, h2, h3, .section h2, .info-text h2, .section-nosotros h2, .opcion-card h3 {
     min-width: 160px;
     padding: 2.2rem 1.2rem 1.5rem 1.2rem;
   }
+}
+
+@media (min-width: 1800px) and (max-width: 2399px) {
+  .hero-overlay h2 {
+    font-size: 4rem;
+  }
+  .hero-overlay p {
+    font-size: 1.3rem;
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 2400px) {
+  .hero-overlay h2 {
+    font-size: 5rem;
+  }
+  .hero-overlay p {
+    font-size: 1.7rem;
+    max-width: 900px;
+  }
+}
+
+body.dark-mode .info-image img {
+  background: #223122; /* Un tono oscuro suave, similar al modo claro pero adaptado */
+  border-color: #263026; /* Combina con el card-bg del modo oscuro */
 }

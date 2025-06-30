@@ -11,13 +11,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-container">
+  <header class="site-header">
+    <div class="container header-container">
       <div class="logo-titulo">
         <a href="index.html">
           <img src="../../SOURCE/KAPIFLY.png" alt="Logo Kapifly" class="logo-img-real">
         </a>
       </div>
+<<<<<<< HEAD
     <nav class="main-nav">
       <ul class="nav-menu">
         <li><a href="index.html">Inicio</a></li>
@@ -52,6 +53,45 @@
       </ul>
     </div>
 </header>
+=======
+      <nav class="main-nav">
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="dropdown-parent">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Paquetes <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="submenu">
+              <li><a href="coches.html">Alquiler coches</a></li>
+              <li><a href="paquetes.html">Paquetes turisticos</a></li>
+              <li><a href="estadias.html">Estadias</a></li>
+              <li><a href="pasajes.html">Pasajes aéreos</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
+          <i class="fa-solid fa-cart-shopping user-icon"></i>
+        </a>
+        <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
+          <i class="fa-solid fa-user user-icon"></i>
+        </button>
+        <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+          <i class="fa-solid fa-moon" id="darkmode-icon"></i>
+        </button>
+        <ul class="dropdown">
+          <li id="user"></li>
+          <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
+          <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
+          <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+          <li id="register_panel"><a href="register.html">Registrarse</a></li>
+          <li><a href="#" id="logout">Cerrar Sesion</a></li>
+        </ul>
+      </div>
+  </header>
+>>>>>>> 9e1f2edc53047f57a512d83735c423ade7e7cd85
 <main>
 <style>
 .estadias-admin .add-to-cart {
@@ -208,15 +248,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
     <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
       <a href="#" class="footer-link">Términos</a>
       <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
     </div>
     <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -226,5 +266,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 <div id="toast-msg"></div>
 <script src="../JS DISEÑO/menu.js"></script>
 <script src="../JS DISEÑO/toast.js"></script>
+<script src="../JS DISEÑO/darkmode.js"></script>
 </body>
 </html>
