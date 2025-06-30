@@ -31,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strlen($newPass) < 8) {
         $msg = "La contraseña es demasiado corta";
     } else {
-    
-        $hashActual = $login->bringPassword($model->getUserEmailById($id_usuario));
+        $mail = $model->getUserEmailById($id_usuario);
+        $hashActual = $login->bringPassword($mail);
         if ($hashActual && password_verify($newPass, $hashActual)) {
             $msg = "La nueva contraseña no puede ser igual a la anterior";
         } else {
             $hash = password_hash($newPass, PASSWORD_BCRYPT);
-            $res = $model->changePasswordById($id_usuario, $hash);
+            $res = $model->changePassword($mail, $hash);
             if ($res['success']) {
                 $model->deleteToken($token);
                 $msg = "Contraseña actualizada correctamente. <a href='../../FRONT/HTML/login.html'>Iniciar sesión</a>";

@@ -9,31 +9,99 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #ffffff, #b5d8fd);
+  background: #fff;
 }
 
-main {
-  flex: 1 0 auto;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+/* =================== MODO OSCURO =================== */
+body.dark-mode {
+  background: #2E382E;
+  color: #50C9CE;
 }
 
-input:focus, input:-webkit-autofill {
-  outline: none;
-  box-shadow: none;
+body.dark-mode .form-container {
+  background: #263026;
+  border-color: #50C9CE;
+  box-shadow: 0 8px 16px rgba(80,201,206,0.18);
 }
 
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
-  -webkit-text-fill-color: #000 !important;
-  transition: background-color 5000s ease-in-out 0s;
+body.dark-mode .form-container h2 {
+  color: #50C9CE;
+}
+
+body.dark-mode .form-container label,
+body.dark-mode .form-group label {
+  color: #50C9CE;
+  background: #263026;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-container input[type="email"],
+body.dark-mode .form-container input[type="password"],
+body.dark-mode .form-container input[type="text"] {
+  background: #223122;
+  color: #50C9CE;
+  border-bottom: 2px solid #50C9CE;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-container input[type="email"]:focus,
+body.dark-mode .form-container input[type="password"]:focus,
+body.dark-mode .form-container input[type="text"]:focus {
+  border-color: #50C9CE;
+  box-shadow: 0 0 3px #50C9CE;
+  background: #263026;
+}
+
+body.dark-mode .input-icon,
+body.dark-mode .toggle-password {
+  color: #50C9CE;
+}
+
+body.dark-mode .form-container button,
+body.dark-mode .form-container button[type="submit"] {
+  background: #50C9CE;
+  color: #2E382E;
+}
+
+body.dark-mode .form-container button:hover,
+body.dark-mode .form-container button[type="submit"]:hover {
+  background: #2E382E;
+  color: #FFB347;
+}
+
+body.dark-mode .form-container p {
+  color: #50C9CE;
+}
+
+body.dark-mode .form-container a {
+  color: #FFB347;
+}
+
+body.dark-mode .form-container a:hover {
+  color: #50C9CE;
+}
+
+body.dark-mode #password-rules {
+  background-color: #263026;
+  border-color: #50C9CE;
+  color: #50C9CE;
+  box-shadow: 0 4px 8px rgba(80,201,206,0.13);
+}
+
+body.dark-mode .checkbox-group label,
+body.dark-mode .show-password-container label {
+  color: #50C9CE;
+}
+
+body.dark-mode .checkbox-group input[type="checkbox"],
+body.dark-mode .show-password-container input[type="checkbox"] {
+  accent-color: #3a4a3a; /* Un verde/gris oscuro, más suave en modo oscuro */
+  background: #223122;
 }
 
 /* Contenedor general para todos los formularios */
 .form-container {
-  max-width: 800px;
+  max-width: 400px;
   margin: 9rem auto 0 auto;
   padding: 2rem 2rem 2.5rem 2rem;
   border-radius: 22px;
@@ -94,6 +162,10 @@ input:-webkit-autofill {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.form-group input[type="password"] {
+  padding-right: 2.5rem; /* Espacio para el icono del ojo */
+}
+
 .form-group input:focus {
   border-color: #0077cc;
   box-shadow: 0 0 3px #0077cc;
@@ -102,26 +174,77 @@ input:-webkit-autofill {
 
 .form-group label {
   position: absolute;
-  top: 1rem;
-  left: 2.6rem;
-  color: #555;
-  background: transparent;
-  transition: 0.2s ease all;
-  pointer-events: none;
-  font-size: 1rem;
-}
-
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label {
   top: -0.6rem;
-  left: 2.4rem;
+  left: 2.6rem; /* o más si es necesario */
   font-size: 0.8rem;
   color: #004aad;
   background: #ffffff;
   padding: 0 0.4rem;
   border-radius: 6px;
   z-index: 1;
+  pointer-events: none;
+}
+
+/* Ajuste para el label en focus y autocompletado */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group input.has-value + label {
+  top: -0.6rem;
+  left: 2.4rem;
+  font-size: 0.8rem;
+  color: #004aad;
+  background: #fff;
+  padding: 0 0.4rem;
+  border-radius: 6px;
+  z-index: 1;
   transition: all 0.3s ease;
+}
+
+/* Ajuste para el label en focus y autocompletado en modo claro */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group input.has-value + label {
+  top: -0.6rem;
+  left: 2.4rem;
+  font-size: 0.8rem;
+  color: #004aad;
+  background: #fff;
+  padding: 0 0.4rem;
+  border-radius: 6px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Ajuste para el label en focus y autocompletado en modo oscuro */
+body.dark-mode .form-group input:focus + label,
+body.dark-mode .form-group input:not(:placeholder-shown) + label,
+body.dark-mode .form-group input.has-value + label {
+  background: #263026;
+  color: #50C9CE;
+}
+
+/* Elimina el fondo celeste de autocompletado en Chrome/Safari */
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #f9f9f9 inset !important;
+  box-shadow: 0 0 0 1000px #f9f9f9 inset !important;
+  -webkit-text-fill-color: #222 !important;
+  caret-color: #222 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* En modo oscuro, fondo acorde */
+body.dark-mode input:-webkit-autofill,
+body.dark-mode input:-webkit-autofill:focus,
+body.dark-mode input:-webkit-autofill:hover,
+body.dark-mode input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #223122 inset !important;
+  box-shadow: 0 0 0 1000px #223122 inset !important;
+  -webkit-text-fill-color: #50C9CE !important;
+  caret-color: #50C9CE !important;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
 /* Íconos dentro del input */
@@ -263,7 +386,9 @@ input:-webkit-autofill {
 }
 
 .checkbox-group input[type="checkbox"] {
-  accent-color: #004aad;
+  accent-color: #b3c6d6; /* Un azul/gris suave, menos llamativo */
+  background: #f3f3f3;
+  border-radius: 4px;
   width: 18px;
   height: 18px;
   margin: 0;
@@ -277,4 +402,28 @@ input:-webkit-autofill {
   user-select: none;
   margin: 0;
   line-height: 1;
+}
+
+/* Toggle password visibility */
+.toggle-password {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #004aad;
+  font-size: 1.2em;
+  z-index: 3;
+  opacity: 0.8;
+  transition: color 0.2s;
+}
+
+.toggle-password:hover {
+  color: #0077cc;
+  opacity: 1;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  display: none;
 }

@@ -18,8 +18,25 @@ class LoginModel{
     return $hashGuardado = $usuario['contraseña']; 
     
     }
+   public function bringVerificationStatus($mail) {
+    $stmt = $this->conn->prepare("CALL SPBringVerificationStatus(?)");
+    $stmt->bind_param("s", $mail);
 
-    
+    if (!$stmt->execute()) {
+        $stmt->close();
+        return null;
+    }
+
+    $result = $stmt->get_result();
+    $usuario = $result ? $result->fetch_assoc() : null;
+    $stmt->close();
+
+    if (!$usuario || !isset($usuario['verificado'])) {
+        return null; 
+    }
+
+    return (bool)$usuario['verificado'];
+    }
     public function bringUser($mail){
         $stmt = $this->conn->prepare("CALL SPbrinUser(?)");
         $stmt->bind_param("s", $mail);

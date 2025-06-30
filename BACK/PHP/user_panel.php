@@ -7,6 +7,11 @@ require_once 'connection.php';
 require_once 'user_panelModel.php';
 require_once 'loginModel.php';
 require_once 'registerModel.php';
+require_once 'recoverPassModel.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$recover = new recoverPassModel($conn);
 $userPanel = new userPanel($conn);
 $login = new LoginModel($conn);
 $register = new registerModel($conn);
@@ -16,7 +21,17 @@ try {
     switch ($action) {
         case 'guardar_datos':
             $datos = $userPanel->bringInputFromForm();
-            $userPanel->uploadData($datos['nombre'], $datos['apellido'], $datos['fecha_nacimiento'], $datos['genero']);
+            $userPanel->uploadData(
+                $datos['nombre'],
+                $datos['apellido'],
+                $datos['fecha_nacimiento'],
+                $datos['genero'],
+                $datos['dni'],
+                $datos['provincia'],
+                $datos['localidad'],
+                $datos['partido'],
+                $datos['codigo_postal']
+            );
             echo json_encode(["success" => true, "mensaje" => "Datos personales actualizados"]);
             break;
 
@@ -39,10 +54,10 @@ try {
         case 'guardar_email':
             $datos = $userPanel->bringInputFromForm();
             $nuevo_email = $datos['email'];
+            $verificacion = $register->verifyMail($nuevo_email);
 
-
-            if (!$register->verifyMail($nuevo_email)) {
-                echo json_encode(["success" => false, "error" => "El email ya está en uso"]);
+             if (!$verificacion['success']) {
+                echo json_encode(["success" => false, "error" => $verificacion['error']]);
                 break;
             }
 
@@ -56,27 +71,37 @@ try {
             echo json_encode($resultadoEnvio);
             break;
 
-        case 'cambiar_contraseña':
+        case 'cambiar_contra':
             $datos = $userPanel->bringInputFromForm();
 
             if ($datos['password'] !== $datos['confirmpassword']) {
                 echo json_encode(["success" => false, "error" => "Las contraseñas no coinciden"]);
                 break;
             }
-
-            $hash_guardado = $login->bringPassword($datos['email']);
-            if (!password_verify($datos['currentpassword'], $hash_guardado)) {
+            
+            $hash_guardado = $login->bringPassword($_SESSION['usuario']['email']);
+            if (!$hash_guardado || !password_verify($datos['currentpassword'], $hash_guardado)) {
                 echo json_encode(["success" => false, "error" => "Contraseña actual incorrecta"]);
                 break;
             }
-            $validacionPassword = $registro->validarPasswordFuerte($datos['password']);
             $validacionPassword = $register->validarPasswordFuerte($datos['password']);
             if (!$validacionPassword["valido"]) {
-                echo json_encode(["error" => "Contraseña débil: " . implode(", ", $validacionPassword["errores"])]);
+                echo json_encode(["success" => false, "error" => "Contraseña débil: " . implode(", ", $validacionPassword["errores"])]);
                 break;
             }
-            $userPanel->updatePassword($nuevo_hash);
-            echo json_encode(["success" => true, "mensaje" => "Contraseña actualizada"]);
+            $nuevo_hash = password_hash($datos['password'], PASSWORD_BCRYPT);
+            $actualizado = $recover->changePassword($_SESSION['usuario']['email'], $nuevo_hash); 
+            if ($actualizado) {
+                echo json_encode(["success" => true, "mensaje" => "Contraseña actualizada"]);
+            } else {
+                echo json_encode(["success" => false, "error" => "Error al actualizar la contraseña"]);
+            }
+
+            break;
+
+        case 'traer_datos_personales':
+            $datos = $userPanel->getDatosPersonales();
+            echo json_encode(["success" => true, "datos" => $datos]);
             break;
 
         default:

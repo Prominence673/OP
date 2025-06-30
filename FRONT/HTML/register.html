@@ -41,8 +41,11 @@
         <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
           <i class="fa-solid fa-user user-icon"></i>
         </button>
+        <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+          <i class="fa-solid fa-moon" id="darkmode-icon"></i>
+        </button>
         <ul class="dropdown">
-          <li id="user1"></li>
+          <li id="user"></li>
           <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
           <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
           <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
@@ -50,7 +53,6 @@
           <li><a href="#" id="logout">Cerrar Sesion</a></li>
         </ul>
       </div>
-    </div>
   </header>
 
   <main>
@@ -71,6 +73,9 @@
           <i class="fa-solid fa-user-secret input-icon"></i>
           <input type="password" id="password" name="password" max="16" required placeholder=" " />
           <label for="password">Contraseña</label>
+          <span class="toggle-password" onclick="togglePasswordVisibility('password', this)">
+            <i class="fa-solid fa-eye"></i>
+          </span>
           <div id="password-rules">
             <p id="min-length">8 caracteres</p>
             <p id="lowercase">Una minúscula</p>
@@ -79,14 +84,13 @@
             <p id="special">Un carácter especial @ # $ ^ & + = . ! ? - _ *</p>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group password-wrapper">
           <i class="fa-solid fa-fingerprint input-icon"></i>
           <input type="password" id="confirm" name="confirm" required placeholder=" " />
           <label for="confirm">Confirmar contraseña</label>
-        </div>
-        <div class="custom-checkbox-group">
-          <input type="checkbox" id="show-password" name="show-password" />
-          <label for="show-password">Mostrar contraseña</label>
+          <span class="toggle-password" onclick="togglePasswordVisibility('confirm', this)">
+            <i class="fa-solid fa-eye"></i>
+          </span>
         </div>
         <div id="mensajeDiv"></div>
         <button type="submit">Registrarse</button>
@@ -144,20 +148,36 @@
       <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
     <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
       <a href="#" class="footer-link">Términos</a>
       <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
     </div>
     <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
     <p>&copy; 2025 KAPIFLY. Todos los derechos reservados.</p>
   </div>
 </footer>
+<script>
+function togglePasswordVisibility(inputId, iconSpan) {
+  const input = document.getElementById(inputId);
+  const icon = iconSpan.querySelector('i');
+  if (input.type === "password") {
+    input.type = "text";
+    icon.classList.remove('fa-eye');
+    icon.classList.add('fa-eye-slash');
+  } else {
+    input.type = "password";
+    icon.classList.remove('fa-eye-slash');
+    icon.classList.add('fa-eye');
+  }
+}
+</script>
+<script src="../JS DISEÑO/darkmode.js"></script>
 </body>
 </html>

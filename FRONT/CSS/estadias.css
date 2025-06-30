@@ -1,7 +1,28 @@
 @import url('../CSS/fonts.css');
 
+:root {
+  --main-bg: #ffffff;
+  --card-bg: #fff;
+  --card-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  --card-border: 10px solid;
+  --card-border-gradient: linear-gradient(to right, #0074D9, #7FDBFF) 1;
+  --card-radius: 12px;
+  --title-color: #0074D9;
+  --subtitle-color: #001f3f;
+  --text-color: #333;
+  --section-title-color: #0074D9;
+  --section-title-gradient: linear-gradient(90deg, #ff914d 0%, #ffe066 100%);
+  --add-btn-bg: #27ae60;
+  --add-btn-bg-hover: #219150;
+  --add-btn-text: #fff;
+  --input-border: #ccc;
+  --input-bg: #fff;
+  --input-radius: 6px;
+}
+
 body {
-  background: linear-gradient(to bottom, #ffffff, #b5d8fd);
+  background: var(--main-bg);
+  color: var(--text-color);
 }
 
 main {
@@ -13,22 +34,25 @@ main {
 .estadias-hero {
   text-align: center;
   margin-bottom: 2.5rem;
-  padding: 2rem 1rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  padding: 15px 30px;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+  border-image: var(--card-border-gradient);
+  clip-path: inset(0 round 10px);
 }
 
 .estadias-hero h2 {
   font-family: 'Helvetica';
   font-size: 2rem;
-  color: #0074D9;
+  color: var(--title-color);
   margin-bottom: 0.5rem;
 }
 
 .estadias-hero p {
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -40,24 +64,56 @@ main {
 }
 
 .hotel {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.521);
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .hotel:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.18);
 }
 
-.hotel img {
+.hotel-img-container {
+  position: relative;
   width: 100%;
   height: 200px;
+  overflow: hidden;
+}
+
+.hotel-img-portada,
+.hotel-img-interior {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.4s;
+}
+
+.hotel-img-portada {
+  z-index: 2;
+  opacity: 1;
+}
+
+.hotel-img-interior {
+  z-index: 1;
+  opacity: 0;
+}
+
+.hotel:hover .hotel-img-portada {
+  opacity: 0;
+}
+
+.hotel:hover .hotel-img-interior {
+  opacity: 1;
 }
 
 .hotel-info {
@@ -65,26 +121,30 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  background: var(--card-bg);
+  position: relative;
+  z-index: 3;
 }
 
 .hotel-info h4 {
   font-family: 'Quicksand';
   font-weight: 900;
   font-size: 1.2rem;
-  color: #001f3f;
+  color: var(--subtitle-color);
   margin: 0;
 }
 
 .hotel-info p {
   margin: 0;
   line-height: 1.5;
+  color: var(--text-color);
 }
 
 .hoteles-argentina h3,
 .hoteles-internacionales h3 {
   font-size: 1.8rem;
   font-family: 'Helvetica';
-  color: #0074D9;
+  color: var(--section-title-color);
   margin-bottom: 5.5rem;
   text-align: center;
   position: relative;
@@ -101,44 +161,7 @@ main {
   width: 150px;
   height: 4px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #ff914d 0%, #ffe066 100%);
-}
-
-.hotel-img-container {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
-.hotel-img-portada,
-.hotel-img-interior {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.4s;
-}
-
-.hotel-img-interior {
-  opacity: 0;
-  z-index: 2;
-}
-
-.hotel:hover .hotel-img-interior {
-  opacity: 1;
-}
-
-.hotel:hover .hotel-img-portada {
-  opacity: 0;
-}
-
-.estadias-hero{
-  padding: 15px 30px;
-  border: 10px solid;
-  border-image: linear-gradient(to right, #0074D9, #7FDBFF) 1;
-  clip-path: inset(0 round 10px);
+  background: var(--section-title-gradient);
 }
 
 .estadias-admin h3 {
@@ -161,4 +184,68 @@ main {
   height: 4px;
   border-radius: 2px;
   background: linear-gradient(90deg, #0077cc 0%, #ff914d 100%);
+}
+
+/* =================== MODO OSCURO =================== */
+body.dark-mode {
+  --main-bg: #2E382E;
+  --card-bg: #263026;
+  --card-shadow: 0 8px 16px rgba(80,201,206,0.08);
+  --card-border: 10px solid;
+  --card-border-gradient: linear-gradient(to right, #50C9CE, #FFB347) 1;
+  --card-radius: 12px;
+  --title-color: #50C9CE;
+  --subtitle-color: #50C9CE;
+  --text-color: #50C9CE;
+  --section-title-color: #50C9CE;
+  --section-title-gradient: linear-gradient(90deg, #FFB347 0%, #50C9CE 100%);
+  --add-btn-bg: #50C9CE;
+  --add-btn-bg-hover: #2E382E;
+  --add-btn-text: #2E382E;
+  --input-border: #50C9CE;
+  --input-bg: #223122;
+  --input-radius: 6px;
+}
+
+body.dark-mode {
+  background: var(--main-bg);
+  color: var(--text-color);
+}
+
+body.dark-mode .estadias-hero,
+body.dark-mode .hotel,
+body.dark-mode .hoteles-lista {
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--card-shadow);
+  border-image: var(--card-border-gradient);
+}
+
+body.dark-mode .estadias-hero h2,
+body.dark-mode .hotel-info h4,
+body.dark-mode .hoteles-argentina h3,
+body.dark-mode .hoteles-internacionales h3 {
+  color: var(--title-color);
+}
+
+body.dark-mode .hoteles-argentina h3::after,
+body.dark-mode .hoteles-internacionales h3::after {
+  background: var(--section-title-gradient);
+}
+
+body.dark-mode .hotel-info p {
+  color: var(--text-color);
+}
+
+body.dark-mode .hotel-img-portada,
+body.dark-mode .hotel-img-interior {
+  filter: brightness(0.9);
+}
+
+body.dark-mode .hotel-img-portada {
+  z-index: 2;
+}
+
+body.dark-mode .hotel-img-interior {
+  z-index: 1;
 }

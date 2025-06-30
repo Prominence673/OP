@@ -81,17 +81,6 @@ class recoverPassModel {
             return ["success" => false, "error" => "Excepción: " . $e->getMessage()];
         }
     }
-
-    public function changePasswordById($id_usuario, $hash) {
-        $stmt = $this->conn->prepare("UPDATE usuarios SET contraseña = ? WHERE id_usuario = ?");
-        $stmt->bind_param("si", $hash, $id_usuario);
-        if ($stmt->execute()) {
-            return ['success' => true];
-        } else {
-            return ['success' => false, 'error' => $stmt->error];
-        }
-    }
-
     public function deleteToken($token) {
         $stmt = $this->conn->prepare("DELETE FROM password_resets WHERE token = ?");
         $stmt->bind_param("s", $token);

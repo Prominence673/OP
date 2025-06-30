@@ -1,25 +1,14 @@
 ---- NUEVA PETICIÓN ----
 GET: Array
 (
+    [tipo] => coches
 )
 
 POST: Array
 (
 )
 
-RESPUESTA: {"error":"Tipo no v\u00e1lido. Usar ?tipo=paquetes|coches|estadias|pasajes"}
-
----- NUEVA PETICIÓN ----
-GET: Array
-(
-    [paquetes] => 
-)
-
-POST: Array
-(
-)
-
-RESPUESTA: {"error":"Tipo no v\u00e1lido. Usar ?tipo=paquetes|coches|estadias|pasajes"}
+RESPUESTA: [{"id_autos":"1","nombre":"CHEVROLET ONIX","imagen":"..\/..\/SOURCE\/RESOURCES\/COCHES\/onix.avif","tipo":"Econ\u00f3mico","capacidad":"5","precio":"18000.00","imagen_interior":"..\/..\/SOURCE\/RESOURCES\/COCHES\/onix-interior.jpg"},{"id_autos":"3","nombre":"TOYOTA COROLLA","imagen":"..\/..\/SOURCE\/RESOURCES\/COCHES\/corolla.jpeg","tipo":"Sed\u00e1n","capacidad":"5","precio":"25000.00","imagen_interior":"..\/..\/SOURCE\/RESOURCES\/COCHES\/corolla-interior.jpeg"},{"id_autos":"4","nombre":"RENAULT DUSTER","imagen":"..\/..\/SOURCE\/RESOURCES\/COCHES\/duster.webp","tipo":"SUV","capacidad":"5","precio":"28000.00","imagen_interior":"..\/..\/SOURCE\/RESOURCES\/COCHES\/duster-interior.jpg"},{"id_autos":"5","nombre":"FORD MUSTANG","imagen":"..\/..\/SOURCE\/RESOURCES\/COCHES\/mustang.avif","tipo":"Deportivo","capacidad":"4","precio":"120000.00","imagen_interior":"..\/..\/SOURCE\/RESOURCES\/COCHES\/mustang-interior.jpg"},{"id_autos":"6","nombre":"JEEP WRANGLER","imagen":"..\/..\/SOURCE\/RESOURCES\/COCHES\/wrangler.png","tipo":"SUV 4x4","capacidad":"5","precio":"160000.00","imagen_interior":"..\/..\/SOURCE\/RESOURCES\/COCHES\/wrangler-interior.jpg"}]
 
 ---- NUEVA PETICIÓN ----
 GET: Array

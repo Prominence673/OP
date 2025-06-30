@@ -30,15 +30,16 @@ class userPanel {
   public function bringInputFromForm() {
     $raw = file_get_contents("php://input");
     $datos = json_decode($raw, true);
-      if (!is_array($datos)) {
-            return [null, null, null];
-        }
+    if (!is_array($datos)) {
+        return [null, null, null];
+    }
 
     $nombre = $datos['name'] ?? '';
     $apellido = $datos['surname'] ?? '';
     $dia = $datos['dia'] ?? '';
     $mes = $datos['mes'] ?? '';
     $anio = $datos['anio'] ?? '';
+    $dni = $datos['dni'] ?? '';
     $genero = $datos['genero'] ?? '';
     $telefono = trim($datos['telefono'] ?? '');
     $email = trim($datos['email'] ?? '');
@@ -46,6 +47,10 @@ class userPanel {
     $contraseña_actual = trim($datos['currentpassword'] ?? '');
     $contraseña_nueva = trim($datos['password'] ?? '');
     $contraseña_confirmacion = trim($datos['confirmpassword'] ?? '');
+    $provincia = $datos['provincia'] ?? '';
+    $localidad = $datos['localidad'] ?? '';
+    $partido = $datos['partido'] ?? '';
+    $codigo_postal  = $datos["codigo_postal"] ?? '';
 
     $fecha_nacimiento = '';
     if ($dia && $mes && $anio) {
@@ -56,13 +61,18 @@ class userPanel {
       'nombre' => $nombre,
       'apellido' => $apellido,
       'fecha_nacimiento' => $fecha_nacimiento,
+      'dni'=> $dni,
       'genero' => $genero,
       'telefono' => $telefono,
       'email' => $email,
       'action'=> $action,
       'currentpassword' => $contraseña_actual,
       'password' => $contraseña_nueva,
-      'confirmpassword' => $contraseña_confirmacion
+      'confirmpassword' => $contraseña_confirmacion,
+      'provincia' => $provincia,
+      'localidad' => $localidad,
+      'partido' => $partido,
+      'codigo_postal' => $codigo_postal
     ];
   }
   public function updateEmail($email){
@@ -99,24 +109,32 @@ class userPanel {
       throw new Exception("Error al ejecutar: " . $stmt->error);
     }
   }
- public function uploadData($nombre, $apellido, $fecha_nacimiento, $genero) {
+ public function uploadData($nombre, $apellido, $fecha_nacimiento, $genero, $dni, $provincia, $localidad, $partido, $codigo_postal) {
     $this->ensureSessionStarted();
     $id_usuario = $_SESSION['usuario']['id'];
-    if (!$nombre) throw new Exception("Falta el nombre");
-    if (!$apellido) throw new Exception("Falta el apellido");
-    if (!$fecha_nacimiento) throw new Exception("Falta la fecha de nacimiento");
-    if (!$genero) throw new Exception("Falta el género");
-    $stmt = $this->conn->prepare("CALL SPUpdateInfo(?, ?, ?, ?, ?)");
-    $stmt->bind_param("issss", 
-      $id_usuario, 
-      $nombre, 
-      $apellido, 
-      $fecha_nacimiento, 
-      $genero
+
+    $stmt = $this->conn->prepare(
+        "UPDATE datos_personales 
+         SET nombre=?, apellido=?, fecha_nacimiento=?, sexo=?, dni=?, id_provincia=?, id_localidad=?, id_partido=?, codigo_postal=?
+         WHERE id_usuario=?"
+    );
+    $stmt->bind_param(
+        "sssssiisii",
+        $nombre,
+        $apellido,
+        $fecha_nacimiento,
+        $genero,
+        $dni,
+        $provincia,  
+        $localidad,  
+        $partido,    
+        $codigo_postal,
+        $id_usuario
     );
     if (!$stmt->execute()) {
-    throw new Exception("Error al ejecutar: " . $stmt->error);
+        throw new Exception("Error al ejecutar: " . $stmt->error);
     }
+    $stmt->close();
 }
 public function uploadPhone($telefono){
     if (!$telefono) {
@@ -168,6 +186,12 @@ public function uploadPhone($telefono){
         $stmt->execute();
         $stmt->close();
     }
+    public function setUsuarioVerificado($id_usuario, $exito) {
+        $stmt = $this->conn->prepare("CALL SPSetUsuarioVerificado(?, ?)");
+        $stmt->bind_param("ib", $id_usuario, $exito);
+        $stmt->execute();
+        $stmt->close();
+    }
 public function sendVerifyEmail($email, $token) {
         $mail = new PHPMailer(true);
         try {
@@ -213,6 +237,17 @@ public function insertEmailResetToken($nuevo_email, $token, $expires) {
     $stmt->bind_param("isss", $id_usuario, $nuevo_email, $token, $expires);
     $stmt->execute();
     $stmt->close();
+}
+public function getDatosPersonales() {
+    $this->ensureSessionStarted();
+    $id_usuario = $_SESSION['usuario']['id'];
+    $stmt = $this->conn->prepare("SELECT nombre, apellido, fecha_nacimiento, sexo, telefono, dni, id_provincia, id_localidad, id_partido, codigo_postal FROM datos_personales WHERE id_usuario = ?");
+    $stmt->bind_param("i", $id_usuario);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    $data = $res->fetch_assoc();
+    $stmt->close();
+    return $data ?: [];
 }
 }
 ?>

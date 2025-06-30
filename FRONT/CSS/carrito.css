@@ -1,5 +1,205 @@
 /* /op/FRONT/CSS/carrito.css */
 
+/* =================== VARIABLES =================== */
+:root {
+    --carrito-bg: #fafdff;
+    --carrito-text: #222;
+    --carrito-card-bg: #fff;
+    --carrito-border: #e0e0e0;
+    --carrito-title: #2c3e50;
+    --carrito-highlight: #004aad;
+    --carrito-btn-finalizar: #28a745;
+    --carrito-btn-finalizar-hover: #218838;
+    --carrito-btn-finalizar-active: #1e7e34;
+    --carrito-btn-finalizar-disabled: #95a5a6;
+    --carrito-btn-eliminar: #dc3545;
+    --carrito-btn-eliminar-hover: #c82333;
+    --carrito-btn-eliminar-active: #b02a37;
+    --carrito-btn-cantidad-bg: #f0f4f8;
+    --carrito-btn-cantidad-hover: #d9e2ec;
+    --carrito-btn-cantidad-active: #c0ccda;
+    --carrito-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    --carrito-item-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    --carrito-toast-bg: #004aad;
+    --carrito-toast-text: #fff;
+    --carrito-total: #2c3e50;
+}
+
+/* =================== MODO OSCURO =================== */
+body.dark-mode {
+    --carrito-bg: #2E382E;
+    --carrito-text: #50C9CE;
+    --carrito-card-bg: #263026;
+    --carrito-border: #50C9CE;
+    --carrito-title: #50C9CE;
+    --carrito-highlight: #FFB347;
+    --carrito-btn-finalizar: #50C9CE;
+    --carrito-btn-finalizar-hover: #2E382E;
+    --carrito-btn-finalizar-active: #1B2221;
+    --carrito-btn-finalizar-disabled: #95a5a6;
+    --carrito-btn-eliminar: #dc3545;
+    --carrito-btn-eliminar-hover: #c82333;
+    --carrito-btn-eliminar-active: #b02a37;
+    --carrito-btn-cantidad-bg: #223122;
+    --carrito-btn-cantidad-hover: #263026;
+    --carrito-btn-cantidad-active: #1B2221;
+    --carrito-shadow: 0 6px 20px rgba(80,201,206,0.08);
+    --carrito-item-shadow: 0 4px 12px rgba(80,201,206,0.05);
+    --carrito-toast-bg: #50C9CE;
+    --carrito-toast-text: #2E382E;
+    --carrito-total: #FFB347;
+}
+
+/* =================== BASE =================== */
+body {
+    background: var(--carrito-bg);
+    color: var(--carrito-text);
+    transition: background 0.5s, color 0.5s;
+}
+
+.carrito-container {
+    background: var(--carrito-bg);
+    color: var(--carrito-text);
+    transition: background 0.5s, color 0.5s;
+}
+
+/* Título del carrito */
+.carrito-container h1 {
+    color: var(--carrito-title);
+    transition: color 0.5s;
+}
+
+/* Resumen del carrito */
+.resumen-carrito {
+    background: var(--carrito-card-bg);
+    border: 1px solid var(--carrito-border);
+    box-shadow: var(--carrito-shadow);
+    color: var(--carrito-text);
+    transition: background 0.5s, color 0.5s, border 0.5s;
+}
+
+.resumen-carrito h2 {
+    color: var(--carrito-highlight);
+    transition: color 0.5s;
+}
+
+/* Cada item individual del carrito */
+.item-carrito {
+    background: var(--carrito-card-bg);
+    border: 1px solid var(--carrito-border);
+    box-shadow: var(--carrito-item-shadow);
+    color: var(--carrito-text);
+    transition: background 0.5s, color 0.5s, border 0.5s;
+}
+
+.item-carrito::before {
+    background-color: var(--carrito-highlight);
+    transition: background 0.5s;
+}
+
+/* Info del producto */
+.info-item h3 {
+    color: var(--carrito-title);
+    transition: color 0.5s;
+}
+
+.info-item p {
+    color: var(--carrito-text);
+    transition: color 0.5s;
+}
+
+.info-item .precio-unitario {
+    color: var(--carrito-highlight);
+    transition: color 0.5s;
+}
+
+/* Controles de cantidad */
+.cantidad-item {
+    border: 1px solid var(--carrito-border);
+    transition: border 0.5s;
+}
+
+.cantidad-item input {
+    color: var(--carrito-text);
+    background: var(--carrito-card-bg);
+    transition: color 0.5s, background 0.5s;
+}
+
+/* Botones de cantidad (+/-) */
+.btn-cantidad {
+    background-color: var(--carrito-btn-cantidad-bg);
+    color: var(--carrito-highlight);
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-cantidad:hover {
+    background-color: var(--carrito-btn-cantidad-hover);
+    color: var(--carrito-title);
+}
+
+.btn-cantidad:active {
+    background-color: var(--carrito-btn-cantidad-active);
+}
+
+/* Botón de eliminar */
+.eliminar-item {
+    background-color: var(--carrito-btn-eliminar);
+    color: #fff;
+    transition: background 0.3s, color 0.3s;
+}
+
+.eliminar-item:hover {
+    background-color: var(--carrito-btn-eliminar-hover);
+}
+
+.eliminar-item:active {
+    background-color: var(--carrito-btn-eliminar-active);
+}
+
+/* Total y botón finalizar */
+.total-container {
+    color: var(--carrito-total);
+    transition: color 0.5s;
+}
+
+/* Botón de finalizar compra */
+.btn-finalizar {
+    background-color: var(--carrito-btn-finalizar);
+    color: #fff;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.btn-finalizar:hover {
+    background-color: var(--carrito-btn-finalizar-hover);
+    color: var(--carrito-highlight);
+}
+
+.btn-finalizar:active {
+    background-color: var(--carrito-btn-finalizar-active);
+}
+
+.btn-finalizar:disabled {
+    background-color: var(--carrito-btn-finalizar-disabled);
+    color: #fff;
+}
+
+/* Efecto de carga para botón finalizar */
+.btn-finalizar.procesando {
+    background-color: var(--carrito-highlight);
+}
+
+#toast-msg {
+    background: var(--carrito-toast-bg);
+    color: var(--carrito-toast-text);
+    transition: background 0.5s, color 0.5s;
+}
+
+/* Estados especiales */
+.carrito-vacio, .cargando, .error-carrito {
+    color: var(--carrito-text);
+    transition: color 0.5s;
+}
+
 /* Contenedor principal del carrito */
 .carrito-container {
     max-width: 1200px;
@@ -34,41 +234,45 @@
 
 /* Resumen del carrito */
 .resumen-carrito {
-    flex: 1; /* Ocupa menos espacio */
-    min-width: 280px; /* Ancho mínimo */
-    max-width: 350px; /* Ancho máximo */
-    padding: 2rem; /* Más padding */
-    background: #ffffff; /* Fondo blanco */
-    border-radius: 12px; /* Bordes más redondeados */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Sombra más pronunciada */
-    border: 1px solid #e0e0e0; /* Borde sutil */
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    padding: 2rem;
+    background: var(--carrito-card-bg); /* Usar variable */
+    border-radius: 12px;
+    box-shadow: var(--carrito-shadow);  /* Usar variable */
+    border: 1px solid var(--carrito-border); /* Usar variable */
     display: flex;
     flex-direction: column;
-    align-self: flex-start; /* Alineado arriba */
+    align-self: flex-start;
+    color: var(--carrito-text); /* Usar variable */
+    transition: background 0.5s, color 0.5s, border 0.5s, box-shadow 0.5s;
 }
 
 .resumen-carrito h2 {
     margin-top: 0;
     margin-bottom: 1.5rem;
-    color: #004aad; /* Color azul para el título */
+    color: var(--carrito-highlight); /* Usar variable */
     font-size: 1.8rem;
     font-weight: 700;
     text-align: center;
+    transition: color 0.5s;
 }
 
 /* Cada item individual del carrito */
 .item-carrito {
     display: flex;
     align-items: center;
-    padding: 1.2rem; /* Más padding */
-    border: 1px solid #e0e0e0;
+    padding: 1.2rem;
+    border: 1px solid var(--carrito-border); /* Usar variable */
     border-radius: 10px;
-    gap: 1.5rem; /* Espacio entre elementos */
-    background: #ffffff;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra sutil */
+    gap: 1.5rem;
+    background: var(--carrito-card-bg); /* Usar variable */
+    transition: all 0.3s ease, background 0.5s, border 0.5s;
+    box-shadow: var(--carrito-item-shadow); /* Usar variable */
     position: relative;
-    overflow: hidden; /* Para el borde lateral */
+    overflow: hidden;
+    color: var(--carrito-text); /* Usar variable */
 }
 
 .item-carrito::before {
@@ -77,9 +281,10 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 6px; /* Ancho del borde lateral */
-    background-color: #0077cc; /* Color del borde lateral */
+    width: 6px;
+    background-color: var(--carrito-highlight); /* Usar variable */
     border-radius: 10px 0 0 10px;
+    transition: background 0.5s;
 }
 
 /* Info del producto */
@@ -91,20 +296,23 @@
 .info-item h3 {
     margin-top: 0;
     margin-bottom: 0.4rem;
-    color: #333;
+    color: var(--carrito-title); /* Usar variable */
     font-size: 1.3rem;
     font-weight: 600;
+    transition: color 0.5s;
 }
 
 .info-item p {
     margin: 0.1rem 0;
-    color: #666;
+    color: var(--carrito-text); /* Usar variable */
     font-size: 0.95rem;
+    transition: color 0.5s;
 }
 
 .info-item .precio-unitario {
     font-weight: 500;
-    color: #004aad;
+    color: var(--carrito-highlight); /* Usar variable */
+    transition: color 0.5s;
 }
 
 /* Controles de cantidad */
@@ -112,9 +320,11 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--carrito-border); /* Usar variable */
     border-radius: 8px;
     overflow: hidden;
+    transition: border 0.5s;
+    background: var(--carrito-card-bg); /* Usar variable */
 }
 
 .cantidad-item input {
@@ -124,79 +334,22 @@
     padding: 0.6rem 0;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
-}
-
-.cantidad-item input::-webkit-outer-spin-button,
-.cantidad-item input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Botones de cantidad (+/-) */
-.btn-cantidad {
-    background-color: #f0f4f8;
-    border: none;
-    padding: 0.6rem 0.9rem;
-    color: #004aad;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    min-width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-cantidad:hover {
-    background-color: #d9e2ec;
-    color: #005fa3;
-}
-
-.btn-cantidad:active {
-    background-color: #c0ccda;
-    transform: scale(0.98);
-}
-
-/* Botón de eliminar */
-.eliminar-item {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 8px; /* Más redondeado */
-    font-size: 1rem;
-    padding: 0.8rem 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-    margin-left: auto; /* Alinea a la derecha */
-}
-
-.eliminar-item:hover {
-    background-color: #c82333;
-    transform: translateY(-2px);
-}
-
-.eliminar-item:active {
-    background-color: #b02a37;
-    transform: scale(0.98);
+    color: var(--carrito-text); /* Usar variable */
+    background: var(--carrito-card-bg); /* Usar variable */
+    transition: color 0.5s, background 0.5s;
 }
 
 /* Total y botón finalizar */
 .total-container {
     display: flex;
     justify-content: space-between;
-    font-size: 1.5rem; /* Más grande */
-    margin: 2rem 0; /* Más margen */
-    font-weight: 700; /* Más negrita */
-    padding-top: 1.5rem; /* Más padding */
-    border-top: 1px solid #e0e0e0; /* Borde más suave */
-    color: #2c3e50;
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    font-weight: 700;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--carrito-border); /* Usar variable */
+    color: var(--carrito-total); /* Usar variable */
+    transition: color 0.5s, border 0.5s;
 }
 
 /* Botón de finalizar compra */
@@ -258,7 +411,7 @@
     text-align: center;
     padding: 3rem;
     font-size: 1.4rem;
-    color: #7f8c8d;
+    color: var(--carrito-text); /* Usar variable */
     width: 100%;
     font-weight: 500;
 }
@@ -308,17 +461,19 @@
         flex-direction: column;
         margin: 2rem auto;
         gap: 2rem;
+        background: var(--carrito-bg); /* Usar variable */
     }
     
     .resumen-carrito {
         width: 100%;
         max-width: 100%;
-        order: -1; /* Mueve el resumen arriba en móviles */
+        order: -1;
         margin-bottom: 1.5rem;
+        background: var(--carrito-card-bg); /* Usar variable */
     }
     
     #lista-carrito {
-        min-width: unset; /* Elimina el min-width para móviles */
+        min-width: unset;
         width: 100%;
     }
 
@@ -327,10 +482,12 @@
         align-items: flex-start;
         gap: 1rem;
         padding: 1rem;
+        background: var(--carrito-card-bg); /* Usar variable */
     }
     
     .item-carrito::before {
-        width: 4px; /* Borde lateral más delgado en móviles */
+        width: 4px;
+        background-color: var(--carrito-highlight); /* Usar variable */
     }
 
     .info-item {
@@ -342,6 +499,7 @@
         width: 100%;
         justify-content: center;
         margin-top: 0.5rem;
+        background: var(--carrito-card-bg); /* Usar variable */
     }
 
     .eliminar-item {
@@ -353,6 +511,7 @@
 
     .total-container {
         font-size: 1.3rem;
+        color: var(--carrito-total); /* Usar variable */
     }
 
     .btn-finalizar {
@@ -370,6 +529,7 @@
     }
     .item-carrito {
         padding: 0.8rem;
+        background: var(--carrito-card-bg); /* Usar variable */
     }
     .info-item h3 {
         font-size: 1.1rem;

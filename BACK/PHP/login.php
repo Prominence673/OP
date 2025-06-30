@@ -40,12 +40,13 @@ if ($rememberme) {
 session_start();
 
 $id_user = $login->bringUser($mail);
-
+$verificado = $login->bringVerificationStatus($mail);
 $_SESSION['usuario'] = [
     "id" => $id_user['id'],
     "nombre" => $id_user['nombre'],
     "email" => $mail,
-    "id_rol" => $id_user['rol']
+    "id_rol" => $id_user['rol'],
+    "verificado" => $verificado
 ];
 $login->closeConn();
 

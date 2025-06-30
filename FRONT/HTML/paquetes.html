@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="../CSS/paquetes.css"/>
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
   <link rel="stylesheet" href="../CSS/toast.css"/>
+  <link rel="stylesheet" href="../CSS/filter.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 <body>
 <style>
@@ -19,11 +19,9 @@
   border: 1px solid #ddd;
   margin-bottom: 20px;
 }
-
 .paquete.extendible:hover {
   background-color: #f4f4f4;
 }
-
 .paquete .add-to-cart {
   background-color: #27ae60;
   color: white;
@@ -33,7 +31,6 @@
   margin-left: 10px;
   cursor: pointer;
 }
-
 .paquete .add-to-cart:hover {
   background-color: #219653;
 }
@@ -69,6 +66,9 @@
       <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
         <i class="fa-solid fa-user user-icon"></i>
       </button>
+        <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+          <i class="fa-solid fa-moon" id="darkmode-icon"></i>
+        </button>
       <ul class="dropdown">
         <li id="user"></li>
         <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
@@ -79,42 +79,48 @@
       </ul>
     </div>
 </header>
-  <main>
-    <h2 class="paquetes-titulo">Paquetes de viajes</h2>
+<main>
+  <h2 class="paquetes-titulo">Paquetes de viajes</h2>
 
-    <!-- Barra de búsqueda y filtros -->
-    <div id="filtros-productos" style="margin-bottom: 1em; display: flex; gap: 1em;">
-      <input type="text" id="busqueda-producto" placeholder="Buscar por nombre..." style="padding: 6px; width: 200px;">
+  <!-- Barra de búsqueda y filtros -->
+  <div style="margin-bottom: 1em;">
+    <button id="btn-filtros-paquetes" type="button"><i class="fa-solid fa-filter"></i></button>
+    <div id="filtros-paquetes" class="filtros-panel" style="display:none; margin-top:0.7em; background:#f7f7f7; padding:1em; border-radius:8px;">
+      <label>Nombre: <input type="text" id="busqueda-producto" placeholder="Buscar por nombre..." style="padding: 6px; width: 200px;"></label>
+      <label>Duración: <input type="text" id="filtro-duracion-paquetes" placeholder="Ej: 7 días"></label>
+      <label>Incluye: <input type="text" id="filtro-incluye-paquetes" placeholder="Ej: hotel"></label>
+      <label>Precio máx: <input type="number" id="filtro-precio-max-paquetes" min="0" placeholder="Precio máximo"></label>
       <select id="filtro-precio">
-        <option value="">Filtrar por precio</option>
+        <option value="">Ordenar por precio</option>
         <option value="menor">Menor a mayor</option>
         <option value="mayor">Mayor a menor</option>
       </select>
+      <button type="button" onclick="limpiarFiltrosPaquetes()">Limpiar</button>
     </div>
+  </div>
 
-    <section class="paquetes" id="paquetes-container">
-    </section>
+  <section class="paquetes" id="paquetes-container">
+  </section>
 
-
-  <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
-  <script>
-    const actions = new SessionActions();
-    actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
-    actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
-    actions.InsertData("#user", "nombre");
-    actions.AdminOnlyToggle(["#panel_admin"], []);
-    document.getElementById("logout").addEventListener("click", () => actions.logoutSession());
-  </script>
-  <script src="../JS DISEÑO/menu.js"></script>
-  <script src="../../BACK/JS LOGICA/carrito.js"></script>
-  <script>
+<script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+<script>
+const actions = new SessionActions();
+actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
+actions.InsertData("#user", "nombre");
+actions.AdminOnlyToggle(["#panel_admin"], []);
+document.getElementById("logout").addEventListener("click", () => actions.logoutSession());
+</script>
+<script src="../JS DISEÑO/menu.js"></script>
+<script src="../../BACK/JS LOGICA/carrito.js"></script>
+<script>
 let paquetesOriginales = [];
 
 async function cargarPaquetes() {
   const cont = document.getElementById('paquetes-container');
   cont.innerHTML = "<p>Cargando...</p>";
   try {
-    const res = await fetch("../../BACK/PHP/productos_api.php?paquetes");
+    const res = await fetch("../../BACK/PHP/productos_api.php?tipo=paquetes");
     const paquetes = await res.json();
     if (paquetes.error) {
       cont.innerHTML = "<p>Error: " + paquetes.error + "</p>";
@@ -131,13 +137,27 @@ function mostrarPaquetesFiltrados() {
   const cont = document.getElementById('paquetes-container');
   let data = [...paquetesOriginales];
 
-  // Filtro de búsqueda
+
   const busqueda = document.getElementById("busqueda-producto").value.toLowerCase();
   if (busqueda) {
     data = data.filter(p => (p.nombre_viaje || "").toLowerCase().includes(busqueda));
   }
 
-  // Filtro de precio
+  const duracion = document.getElementById("filtro-duracion-paquetes").value.toLowerCase();
+  if (duracion) {
+    data = data.filter(p => (p.duracion || "").toLowerCase().includes(duracion));
+  }
+
+  const incluye = document.getElementById("filtro-incluye-paquetes").value.toLowerCase();
+  if (incluye) {
+    data = data.filter(p => (p.incluye || "").toLowerCase().includes(incluye));
+  }
+
+  const precioMax = document.getElementById("filtro-precio-max-paquetes").value;
+  if (precioMax) {
+    data = data.filter(p => parseFloat(p.precio_aprox) <= parseFloat(precioMax));
+  }
+
   const filtroPrecio = document.getElementById("filtro-precio").value;
   if (filtroPrecio) {
     data.sort((a, b) => {
@@ -171,12 +191,12 @@ function mostrarPaquetesFiltrados() {
         </div>
       </div>
     `;
-    // Al hacer clic, se expande el formulario
+ 
     article.addEventListener("click", () => {
       const formContainer = article.querySelector(".form-container");
       formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
     });
-    // Manejo del submit
+   
     article.querySelector('.add-cart-form').addEventListener('submit', async function(e) {
       e.stopPropagation();
       e.preventDefault();
@@ -203,13 +223,29 @@ function mostrarPaquetesFiltrados() {
   });
 }
 
-// Espera a que el DOM esté listo antes de agregar listeners y cargar paquetes
+function limpiarFiltrosPaquetes() {
+  document.getElementById("busqueda-producto").value = "";
+  document.getElementById("filtro-duracion-paquetes").value = "";
+  document.getElementById("filtro-incluye-paquetes").value = "";
+  document.getElementById("filtro-precio-max-paquetes").value = "";
+  document.getElementById("filtro-precio").value = "";
+  mostrarPaquetesFiltrados();
+}
+
+document.getElementById("btn-filtros-paquetes").onclick = function() {
+  const panel = document.getElementById("filtros-paquetes");
+  panel.style.display = panel.style.display === "none" ? "block" : "none";
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("busqueda-producto").addEventListener("input", mostrarPaquetesFiltrados);
+  document.getElementById("filtro-duracion-paquetes").addEventListener("input", mostrarPaquetesFiltrados);
+  document.getElementById("filtro-incluye-paquetes").addEventListener("input", mostrarPaquetesFiltrados);
+  document.getElementById("filtro-precio-max-paquetes").addEventListener("input", mostrarPaquetesFiltrados);
   document.getElementById("filtro-precio").addEventListener("change", mostrarPaquetesFiltrados);
   cargarPaquetes();
 });
-  </script>
+</script>
 </main>
 <footer class="site-footer">
   <div class="footer-container">
@@ -218,15 +254,15 @@ document.addEventListener("DOMContentLoaded", () => {
       <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
     <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
       <a href="#" class="footer-link">Términos</a>
       <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
     </div>
     <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -236,5 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 <div id="toast-msg"></div>
 <script src="../JS DISEÑO/toast.js"></script>
+<script src="../JS DISEÑO/darkmode.js"></script>
 </body>
 </html>
+

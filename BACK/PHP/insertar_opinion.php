@@ -1,10 +1,15 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-require_once 'connection.php';
+$host = "localhost";
+$user = "root";
+$pass = "";
+$dbname = "paquetes_viajes";
+$mysqli = new mysqli($host, $user, $pass, $dbname);
 
-if (!isset($_SESSION['usuario'])) {
-    echo json_encode(['error' => 'No hay sesión activa']);
+if ($mysqli->connect_errno) {
+    http_response_code(500);
+    echo json_encode(["error" => "Error de conexión a la base de datos: " . $mysqli->connect_error]);
     exit;
 }
 

@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pasajes Aéreos | Travel Rock Argentina</title>
+  <title>Pasajes Aéreos | KAPIFLY</title>
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
   <link rel="stylesheet" href="../CSS/pasajes.css"/>
   <link rel="stylesheet" href="../CSS/toast.css"/>
+  <link rel="stylesheet" href="../CSS/filter.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -41,9 +42,12 @@
       <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
         <i class="fa-solid fa-user user-icon"></i>
       </button>
-      <ul class="dropdown">
-        <li id="user"></li>
-        <li><a href="panel_usuario.html">Panel</a></li>
+       <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+          <i class="fa-solid fa-moon" id="darkmode-icon"></i>
+        </button>
+        <ul class="dropdown">
+          <li id="user"></li>
+          <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
         <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
@@ -52,10 +56,27 @@
     </div>
   </div>
 </header>
-
 <main>
   <section class="pasajes-admin">
   <h3>Pasajes de avión</h3>
+
+  <div style="margin-bottom:1em;">
+    <button id="btn-filtros-pasajes" type="button"><i class="fa-solid fa-filter"></i></button>
+    <div id="filtros-pasajes" class="filtros-panel" style="display:none;">
+      <label>Nombre: <input type="text" id="filtro-nombre-pasajes"></label>
+      <label>Aerolínea: <input type="text" id="filtro-aerolinea-pasajes"></label>
+      <label>Clase: <input type="text" id="filtro-clase-pasajes"></label>
+      <label>Precio máx: <input type="number" id="filtro-precio-pasajes" min="0"></label>
+      <label>
+        <select id="filtro-precio-pasajes-orden">
+          <option value="">Ordenar por precio</option>
+          <option value="menor">Menor a mayor</option>
+          <option value="mayor">Mayor a menor</option>
+        </select>
+      </label>
+      <button type="button" onclick="limpiarFiltroPasajes()">Limpiar</button>
+    </div>
+  </div>
   <div id="pasajes-admin-lista" class="vuelos-lista-horizontal"></div>
 </section>
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
@@ -75,21 +96,31 @@
   <script src="../JS DISEÑO/menu.js"></script>
   <script src="../JS DISEÑO/pasajes.js"></script>
   <script>
-document.addEventListener("DOMContentLoaded", async () => {
+let pasajesOriginales = [];
+function mostrarPasajesFiltrados() {
   const cont = document.getElementById('pasajes-admin-lista');
-  try {
-    const res = await fetch('../../BACK/PHP/productos_api.php?tipo=pasajes');
-    const pasajes = await res.json();
-    if (!pasajes.length) {
-      cont.innerHTML = "<p>No hay pasajes cargados aún.</p>";
-      return;
-    }
-
-    pasajes.forEach(p => {
-      const article = document.createElement("article");
-      article.className = "vuelo horizontal-vuelo vuelo-expandido extendible";
-
-      article.innerHTML = `
+  let data = [...pasajesOriginales];
+  const nombre = document.getElementById("filtro-nombre-pasajes").value.toLowerCase();
+  const aerolinea = document.getElementById("filtro-aerolinea-pasajes").value.toLowerCase();
+  const clase = document.getElementById("filtro-clase-pasajes").value.toLowerCase();
+  const precio = document.getElementById("filtro-precio-pasajes").value;
+  const orden = document.getElementById("filtro-precio-pasajes-orden").value;
+  if (nombre) data = data.filter(p => (p.nombre || "").toLowerCase().includes(nombre));
+  if (aerolinea) data = data.filter(p => (p.aerolinea || "").toLowerCase().includes(aerolinea));
+  if (clase) data = data.filter(p => (p.clase || "").toLowerCase().includes(clase));
+  if (precio) data = data.filter(p => p.precio_desde <= precio);
+  if (orden) {
+    data.sort((a, b) => orden === "menor" ? a.precio_desde - b.precio_desde : b.precio_desde - a.precio_desde);
+  }
+  cont.innerHTML = "";
+  if (!data.length) {
+    cont.innerHTML = "<p>No se encontraron pasajes.</p>";
+    return;
+  }
+  data.forEach(p => {
+    const article = document.createElement("article");
+    article.className = "vuelo horizontal-vuelo vuelo-expandido extendible";
+    article.innerHTML = `
         <div class="vuelo-info">
           <div class="vuelo-info-textos">
             <h4>${p.nombre}</h4>
@@ -109,50 +140,52 @@ document.addEventListener("DOMContentLoaded", async () => {
           <img src="${p.imagen}" alt="${p.nombre}" class="vuelo-img-portada">
         </div>
       `;
-
-      // Toggle form display al hacer clic en el article completo
-      article.addEventListener("click", () => {
-        const formContainer = article.querySelector(".formulario-compra");
-        formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
-      });
-
-      // Evitar que clics dentro del form cierren el form
-      article.querySelector(".add-cart-form").addEventListener("click", e => {
-        e.stopPropagation();
-      });
-
-      // Manejo del submit del form
-      article.querySelector(".add-cart-form").addEventListener("submit", async function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const session = await fetch('../../BACK/PHP/checkSession.php').then(r => r.json());
-        if (!session.loggedIn) {
-          window.location.href = "login.html";
-          return;
-        }
-
-        const formData = new FormData(this);
-        formData.append('tipo', 'pasaje');
-        formData.append('cantidad', 1); // Siempre 1 unidad
-        const res = await fetch('../../BACK/PHP/carrito_api.php', {
-          method: 'POST',
-          body: formData
-        });
-        const data = await res.json();
-        if (data.error) {
-          showToast(data.error, "#dc3545");
-        } else {
-          showToast(data.mensaje || "Agregado al carrito", "#28a745");
-        }
-      });
-
-      cont.appendChild(article);
+    article.querySelector(".add-cart-form").addEventListener("click", e => {
+      e.stopPropagation();
     });
-
+    article.querySelector(".add-cart-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const session = await fetch('../../BACK/PHP/checkSession.php').then(r => r.json());
+      if (!session.loggedIn) {
+        window.location.href = "login.html";
+        return;
+      }
+      const formData = new FormData(this);
+      formData.append('tipo', 'pasaje');
+      formData.append('cantidad', 1);
+      const res = await fetch('../../BACK/PHP/carrito_api.php', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data.error) {
+        showToast(data.error, "#dc3545");
+      } else {
+        showToast(data.mensaje || "Agregado al carrito", "#28a745");
+      }
+    });
+    cont.appendChild(article);
+  });
+}
+function aplicarFiltroPasajes() { mostrarPasajesFiltrados(); }
+document.getElementById("btn-filtros-pasajes").onclick = function() {
+  const panel = document.getElementById("filtros-pasajes");
+  panel.style.display = panel.style.display === "none" ? "flex" : "none";
+};
+["filtro-nombre-pasajes","filtro-aerolinea-pasajes","filtro-clase-pasajes","filtro-precio-pasajes","filtro-precio-pasajes-orden"].forEach(id => {
+  document.getElementById(id).addEventListener("input", mostrarPasajesFiltrados);
+  document.getElementById(id).addEventListener("change", mostrarPasajesFiltrados);
+});
+document.addEventListener("DOMContentLoaded", async () => {
+  const cont = document.getElementById('pasajes-admin-lista');
+  try {
+    const res = await fetch('../../BACK/PHP/productos_api.php?tipo=pasajes');
+    const pasajes = await res.json();
+    pasajesOriginales = pasajes;
+    mostrarPasajesFiltrados();
   } catch (e) {
     cont.innerHTML = "<p>Error al cargar los pasajes.</p>";
-    console.error("Error al cargar pasajes:", e);
   }
 });
 </script>
@@ -165,22 +198,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
     <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
       <a href="#" class="footer-link">Términos</a>
       <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
     </div>
     <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
     <p>&copy; 2025 KAPIFLY. Todos los derechos reservados.</p>
   </div>
 </footer>
-<div id="toast-msg"></div>
-<script src="../JS DISEÑO/toast.js"></script>
+  <div id="toast-msg"></div>
+  <script src="../JS DISEÑO/toast.js"></script>
+  <script src="../JS DISEÑO/darkmode.js"></script>
 </body>
 </html>

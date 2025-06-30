@@ -1,6 +1,21 @@
 /* ==== Paquetes.css ==== */
-body{
-  background: linear-gradient(to bottom, #ffffff, #b5d8fd);
+:root {
+  --main-bg: #ffffff;
+  --card-bg: #fff;
+  --card-shadow: 0 10px 8px rgba(0, 0, 0, 0.12);
+  --card-shadow-hover: 0 10px 8px rgba(0, 0, 0, 0.4);
+  --title-color: #0077cc;
+  --subtitle-color: #001f3f;
+  --text-color: #333;
+  --section-title-gradient: linear-gradient(90deg, #0077cc 0%, #ff914d 100%);
+  --btn-bg: #0074D9;
+  --btn-bg-hover: #005fa3;
+  --btn-text: #fff;
+}
+
+body {
+  background: var(--main-bg);
+  color: var(--text-color);
 }
 
 main {
@@ -19,11 +34,17 @@ main {
   text-align: center;
   font-size: 2.3rem;
   font-weight: bold;
-  color: #0077cc;
+  color: var(--title-color);
   margin-top: 100px;
   margin-bottom: 1.5rem;
   position: relative;
   font-family: 'Quicksand', 'Vardena', Arial, sans-serif;
+  background: linear-gradient(10deg, #0077cc 20%, #ff914d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-bottom: 0.5rem;
+  z-index: 1;
 }
 
 .paquetes-titulo::after {
@@ -33,14 +54,14 @@ main {
   width: 180px;
   height: 4px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #0077cc 0%, #ff914d 100%);
+  background: var(--section-title-gradient);
 }
 
 .paquete {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.521);
+  box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -48,7 +69,7 @@ main {
 
 .paquete:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .paquete .imagen img {
@@ -66,7 +87,7 @@ main {
 
 .paquete h2 {
   font-size: 1.4rem;
-  color: #001f3f;
+  color: var(--subtitle-color);
   margin: 0;
 }
 
@@ -79,8 +100,8 @@ main {
   align-self: flex-start;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #0074D9;
-  color: white;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -89,5 +110,37 @@ main {
 }
 
 .paquete button:hover {
-  background-color: #005fa3;
+  background-color: var(--btn-bg-hover);
+}
+
+/* =================== MODO OSCURO =================== */
+body.dark-mode {
+  --main-bg: #2E382E;
+  --card-bg: #263026;
+  --card-shadow: 0 10px 8px rgba(80,201,206,0.12);
+  --card-shadow-hover: 0 10px 8px rgba(80,201,206,0.25);
+  --title-color: #50C9CE;
+  --subtitle-color: #50C9CE;
+  --text-color: #50C9CE;
+  --section-title-gradient: linear-gradient(90deg, #FFB347 0%, #50C9CE 100%);
+  --btn-bg: #50C9CE;
+  --btn-bg-hover: #2E382E;
+  --btn-text: #2E382E;
+}
+
+body.dark-mode {
+  background: var(--main-bg);
+  color: var(--text-color);
+}
+
+body.dark-mode .paquetes-titulo {
+  color: var(--title-color);
+  background: linear-gradient(10deg, #50C9CE 20%, #FFB347 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .paquete h2 {
+  color: var(--subtitle-color);
 }

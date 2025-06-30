@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
   <link rel="stylesheet" href="../CSS/estadias.css"/>
   <link rel="stylesheet" href="../CSS/toast.css"/>
+  <link rel="stylesheet" href="../CSS/filter.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -41,9 +42,13 @@
       <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
         <i class="fa-solid fa-user user-icon"></i>
       </button>
-      <ul class="dropdown">
-        <li id="user"></li>
-        <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
+         <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
+          <i class="fa-solid fa-moon" id="darkmode-icon"></i>
+        </button>
+        <ul class="dropdown">
+          <li id="user"></li>
+          <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
+          <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
         <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
         <li id="register_panel"><a href="register.html">Registrarse</a></li>
         <li><a href="#" id="logout">Cerrar Sesion</a></li>
@@ -66,91 +71,138 @@
 </style>
 <section class="estadias-admin">
   <h3>Estadias</h3>
+
+  <div style="margin-bottom:1em;">
+    <button id="btn-filtros-estadias" type="button"><i class="fa-solid fa-filter"></i></button>
+    <div id="filtros-estadias" class="filtros-panel" style="display:none;">
+      <label>Nombre: <input type="text" id="filtro-nombre-estadias"></label>
+      <label>Ubicación: <input type="text" id="filtro-ubicacion-estadias"></label>
+      <label>Precio máx: <input type="number" id="filtro-precio-estadias" min="0"></label>
+      <label>
+        <select id="filtro-precio-estadias-orden">
+          <option value="">Ordenar por precio</option>
+          <option value="menor">Menor a mayor</option>
+          <option value="mayor">Mayor a menor</option>
+        </select>
+      </label>
+      <button type="button" onclick="limpiarFiltroEstadias()">Limpiar</button>
+    </div>
+  </div>
   <div id="estadias-admin-lista" class="hoteles-lista"></div>
 </section>
-  <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
  <script>
+let estadiasOriginales = [];
+function mostrarEstadiasFiltradas() {
+  const cont = document.getElementById('estadias-admin-lista');
+  let data = [...estadiasOriginales];
+  const nombre = document.getElementById("filtro-nombre-estadias").value.toLowerCase();
+  const ubicacion = document.getElementById("filtro-ubicacion-estadias").value.toLowerCase();
+  const precio = document.getElementById("filtro-precio-estadias").value;
+  const orden = document.getElementById("filtro-precio-estadias-orden").value;
+  if (nombre) data = data.filter(e => (e.nombre || "").toLowerCase().includes(nombre));
+  if (ubicacion) data = data.filter(e => (e.ubicacion || "").toLowerCase().includes(ubicacion));
+  if (precio) data = data.filter(e => e.precio <= precio);
+  if (orden) {
+    data.sort((a, b) => orden === "menor" ? a.precio - b.precio : b.precio - a.precio);
+  }
+  cont.innerHTML = "";
+  if (!data.length) {
+    cont.innerHTML = "<p>No se encontraron estadías.</p>";
+    return;
+  }
+  data.forEach(e => {
+    const article = document.createElement("article");
+    article.className = "hotel extendible";
+    article.innerHTML = `
+      <div class="hotel-img-container">
+        <img src="${e.imagen}" alt="${e.nombre}" class="hotel-img-portada">
+        <img src="${e.imagen_interior}" alt="Interior ${e.nombre}" class="hotel-img-interior">
+      </div>
+      <div class="hotel-info">
+        <h4>${e.nombre}</h4>
+        <p><strong>Ubicación:</strong> ${e.ubicacion}</p>
+        <p>${e.descripcion}</p>
+        <p><strong>Precio desde:</strong> AR$ ${parseInt(e.precio).toLocaleString('es-AR')} por noche</p>
+        <div class="formulario-compra" style="display: none; margin-top: 10px;">
+          <form class="add-cart-form">
+            <input type="hidden" name="id_estadia" value="${e.id_estadias}">
+            <button type="submit" class="add-to-cart">Añadir al carrito</button>
+          </form>
+        </div>
+      </div>
+    `;
+    article.addEventListener("click", () => {
+      const formContainer = article.querySelector(".formulario-compra");
+      formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
+    });
+    article.querySelector(".add-cart-form").addEventListener("click", e => {
+      e.stopPropagation();
+    });
+    article.querySelector(".add-cart-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const session = await fetch('../../BACK/PHP/checkSession.php').then(r => r.json());
+      if (!session.loggedIn) {
+        window.location.href = "login.html";
+        return;
+      }
+      const formData = new FormData(this);
+      formData.append('tipo', 'estadia');
+      formData.append('cantidad', 1);
+      const res = await fetch('../../BACK/PHP/carrito_api.php', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data.error) {
+        showToast(data.error, "#dc3545");
+      } else {
+        showToast(data.mensaje || "Agregado al carrito", "#28a745");
+      }
+    });
+    cont.appendChild(article);
+  });
+}
+function aplicarFiltroEstadias() { mostrarEstadiasFiltradas(); }
+function limpiarFiltroEstadias() {
+  document.getElementById("filtros-estadias").querySelectorAll("input").forEach(i => i.value = "");
+  document.getElementById("filtro-precio-estadias-orden").value = "";
+  mostrarEstadiasFiltradas();
+}
+document.getElementById("btn-filtros-estadias").onclick = function() {
+  const panel = document.getElementById("filtros-estadias");
+  panel.style.display = panel.style.display === "none" ? "flex" : "none";
+};
+["filtro-nombre-estadias","filtro-ubicacion-estadias","filtro-precio-estadias","filtro-precio-estadias-orden"].forEach(id => {
+  document.getElementById(id).addEventListener("input", mostrarEstadiasFiltradas);
+  document.getElementById(id).addEventListener("change", mostrarEstadiasFiltradas);
+});
 document.addEventListener("DOMContentLoaded", async () => {
   const cont = document.getElementById('estadias-admin-lista');
   try {
     const res = await fetch('../../BACK/PHP/productos_api.php?tipo=estadias');
     const estadias = await res.json();
-
-    if (!estadias.length) {
-      cont.innerHTML = "<p>No hay estadías cargadas aún.</p>";
-      return;
-    }
-
-    estadias.forEach(e => {
-      const article = document.createElement("article");
-      article.className = "hotel extendible";
-
-      article.innerHTML = `
-        <div class="hotel-img-container">
-          <img src="${e.imagen}" alt="${e.nombre}" class="hotel-img-portada">
-          <img src="${e.imagen_interior}" alt="Interior ${e.nombre}" class="hotel-img-interior">
-        </div>
-        <div class="hotel-info">
-          <h4>${e.nombre}</h4>
-          <p><strong>Ubicación:</strong> ${e.ubicacion}</p>
-          <p>${e.descripcion}</p>
-          <p><strong>Precio desde:</strong> AR$ ${parseInt(e.precio).toLocaleString('es-AR')} por noche</p>
-          <div class="formulario-compra" style="display: none; margin-top: 10px;">
-            <form class="add-cart-form">
-              <input type="hidden" name="id_estadia" value="${e.id_estadias}">
-              <button type="submit" class="add-to-cart">Añadir al carrito</button>
-            </form>
-          </div>
-        </div>
-      `;
-
-     
-      article.addEventListener("click", () => {
-        const formContainer = article.querySelector(".formulario-compra");
-        formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
-      });
-
-   
-      article.querySelector(".add-cart-form").addEventListener("click", e => {
-        e.stopPropagation();
-      });
-
-
-      article.querySelector(".add-cart-form").addEventListener("submit", async function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const session = await fetch('../../BACK/PHP/checkSession.php').then(r => r.json());
-        if (!session.loggedIn) {
-          window.location.href = "login.html";
-          return;
-        }
-
-        const formData = new FormData(this);
-        formData.append('tipo', 'estadia');
-        formData.append('cantidad', 1); // Siempre 1 unidad
-        const res = await fetch('../../BACK/PHP/carrito_api.php', {
-          method: 'POST',
-          body: formData
-        });
-        const data = await res.json();
-        if (data.error) {
-          showToast(data.error, "#dc3545");
-        } else {
-          showToast(data.mensaje || "Agregado al carrito", "#28a745");
-        }
-      });
-
-      cont.appendChild(article);
-    });
+    estadiasOriginales = estadias;
+    mostrarEstadiasFiltradas();
   } catch (e) {
-    console.error("Error al cargar las estadías:", e);
     cont.innerHTML = "<p>Error al cargar las estadías.</p>";
   }
 });
-actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
-actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
 </script>
+<script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
+  <script>
+  const actions = new SessionActions();
+  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
+  actions.InsertData("#user", "nombre");
+  actions.AdminOnlyToggle(["#panel_admin"], []);
+  actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
+  const logout = document.getElementById("logout");
+
+  logout.addEventListener("click", () => {
+    actions.logoutSession();
+  });
+  </script>
 </main>
 <footer class="site-footer">
   <div class="footer-container">
@@ -159,15 +211,15 @@ actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
       <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
     <div class="footer-links">
-      <a href="/contacto" class="footer-link">Contacto</a>
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
       <a href="#" class="footer-link">Términos</a>
       <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Preguntas frecuentes</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
     </div>
     <div class="footer-social">
-      <a href="#" class="footer-social-link" title="Kapifly en Twister"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en Instapic"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="footer-social-link" title="Kapifly en TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -176,5 +228,6 @@ actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
 </footer>
 <div id="toast-msg"></div>
 <script src="../JS DISEÑO/toast.js"></script>
+<script src="../JS DISEÑO/darkmode.js"></script>
 </body>
 </html>
