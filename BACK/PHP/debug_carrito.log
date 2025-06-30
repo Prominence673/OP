@@ -28,3 +28,9 @@ Array
     [tipo] => pasaje
     [cantidad] => 1
 )
+Array
+(
+    [id_auto] => 1
+    [tipo] => auto
+    [cantidad] => 1
+)

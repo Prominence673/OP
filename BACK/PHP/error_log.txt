@@ -241,3 +241,8 @@
 
 [28-Jun-2025 19:52:26 Europe/Berlin] PHP Warning:  Undefined array key "usuario_nombre" in C:\xampp\htdocs\OPs\BACK\PHP\loginModel.php on line 35
 [28-Jun-2025 19:52:26 Europe/Berlin] PHP Warning:  Undefined array key "id_rol" in C:\xampp\htdocs\OPs\BACK\PHP\loginModel.php on line 36
+[30-Jun-2025 08:29:55 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[30-Jun-2025 08:29:55 Europe/Berlin] Items encontrados: Array
+(
+)
+
