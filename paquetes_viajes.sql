@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-06-2025 a las 09:24:10
+-- Tiempo de generación: 30-06-2025 a las 14:51:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -476,14 +476,6 @@ CREATE TABLE `carrito_items` (
   `id_producto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `carrito_items`
---
-
-INSERT INTO `carrito_items` (`id_item`, `id_carrito`, `tipo`, `cantidad`, `id_producto`) VALUES
-(35, 27, 'paquete', 1, 2),
-(36, 27, 'auto', 1, 9);
-
 -- --------------------------------------------------------
 
 --
@@ -501,15 +493,17 @@ CREATE TABLE `datos_personales` (
   `id_pasajero` int(11) DEFAULT NULL,
   `dni` varchar(15) NOT NULL,
   `id_localidad` int(11) DEFAULT NULL,
-  `codigo_postal` varchar(8) DEFAULT NULL
+  `codigo_postal` varchar(8) DEFAULT NULL,
+  `id_provincia` int(11) DEFAULT NULL,
+  `id_partido` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `datos_personales`
 --
 
-INSERT INTO `datos_personales` (`id_dato`, `id_usuario`, `nombre`, `apellido`, `fecha_nacimiento`, `sexo`, `telefono`, `id_pasajero`, `dni`, `id_localidad`, `codigo_postal`) VALUES
-(2, 47, 'Lautaro', 'Souza', '2007-05-20', 'Masculino', '541161623274', NULL, '', NULL, NULL);
+INSERT INTO `datos_personales` (`id_dato`, `id_usuario`, `nombre`, `apellido`, `fecha_nacimiento`, `sexo`, `telefono`, `id_pasajero`, `dni`, `id_localidad`, `codigo_postal`, `id_provincia`, `id_partido`) VALUES
+(2, 47, 'Lautaro', 'Souza', '2007-05-20', 'Masculino', '541161623274', NULL, '47941303', 649001001, '1828', 6, 6490);
 
 -- --------------------------------------------------------
 
@@ -611,7 +605,7 @@ CREATE TABLE `email_resets` (
 --
 
 INSERT INTO `email_resets` (`id`, `id_usuario`, `nuevo_email`, `token`, `expires_at`, `creado_en`) VALUES
-(9, 47, 'safarakiri@gmail.com', 'd6259b69c5dc6f23d625c9145ac248af6c29b3cb88c78f6dca3a85d166931e5e', '2025-06-30 08:41:17', '2025-06-30 02:41:17');
+(10, 47, 'nuevo@gmail.com', '00d3b3a56b09005ed03fa2a09dcee479a6439e4b0ef941d12d7411730bce6199', '2025-06-30 10:41:21', '2025-06-30 04:41:21');
 
 -- --------------------------------------------------------
 
@@ -4531,21 +4525,46 @@ INSERT INTO `localidad` (`id_localidad`, `nombre`, `id_partido`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `motivo`
+--
+
+CREATE TABLE `motivo` (
+  `id_motivo` int(11) NOT NULL,
+  `motivo` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `motivo`
+--
+
+INSERT INTO `motivo` (`id_motivo`, `motivo`) VALUES
+(1, 'Consulta'),
+(2, 'Reclamo'),
+(3, 'Sugerencia'),
+(4, 'Otro');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `opiniones`
 --
 
 CREATE TABLE `opiniones` (
   `id_opinion` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `opinion` varchar(100) DEFAULT NULL
+  `Nombre` varchar(100) NOT NULL,
+  `mail` varchar(100) NOT NULL,
+  `id_motivo` int(11) DEFAULT NULL,
+  `telefono` varchar(25) DEFAULT NULL,
+  `opinion` text NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `opiniones`
 --
 
-INSERT INTO `opiniones` (`id_opinion`, `id_usuario`, `opinion`) VALUES
-(1, 39, 'buena pagina');
+INSERT INTO `opiniones` (`id_opinion`, `Nombre`, `mail`, `id_motivo`, `telefono`, `opinion`, `fecha`) VALUES
+(3, 'Lautaro', 'safarakiri@gmail.com', 3, '541161623274', 'dadwadad', '2025-06-30 09:48:57');
 
 -- --------------------------------------------------------
 
@@ -5509,7 +5528,9 @@ ALTER TABLE `datos_personales`
   ADD PRIMARY KEY (`id_dato`),
   ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_pasajero` (`id_pasajero`),
-  ADD KEY `fk_datos_localidad` (`id_localidad`);
+  ADD KEY `fk_datos_localidad` (`id_localidad`),
+  ADD KEY `fk_dp_provincia` (`id_provincia`),
+  ADD KEY `fk_dp_partido` (`id_partido`);
 
 --
 -- Indices de la tabla `descuento`
@@ -5566,11 +5587,17 @@ ALTER TABLE `localidad`
   ADD KEY `fk_localidad_partido` (`id_partido`);
 
 --
+-- Indices de la tabla `motivo`
+--
+ALTER TABLE `motivo`
+  ADD PRIMARY KEY (`id_motivo`);
+
+--
 -- Indices de la tabla `opiniones`
 --
 ALTER TABLE `opiniones`
   ADD PRIMARY KEY (`id_opinion`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `fk_motivo` (`id_motivo`);
 
 --
 -- Indices de la tabla `pagometodo`
@@ -5716,7 +5743,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `carrito_items`
 --
 ALTER TABLE `carrito_items`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_personales`
@@ -5746,7 +5773,7 @@ ALTER TABLE `detalle_pedido`
 -- AUTO_INCREMENT de la tabla `email_resets`
 --
 ALTER TABLE `email_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `estadias`
@@ -5773,10 +5800,16 @@ ALTER TABLE `localidad`
   MODIFY `id_localidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483648;
 
 --
+-- AUTO_INCREMENT de la tabla `motivo`
+--
+ALTER TABLE `motivo`
+  MODIFY `id_motivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `opiniones`
 --
 ALTER TABLE `opiniones`
-  MODIFY `id_opinion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_opinion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `pagometodo`
@@ -5898,7 +5931,9 @@ ALTER TABLE `carrito_items`
 ALTER TABLE `datos_personales`
   ADD CONSTRAINT `datos_personales_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
   ADD CONSTRAINT `datos_personales_ibfk_2` FOREIGN KEY (`id_pasajero`) REFERENCES `pasajeros` (`id_pasajero`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_datos_localidad` FOREIGN KEY (`id_localidad`) REFERENCES `localidad` (`id_localidad`);
+  ADD CONSTRAINT `fk_datos_localidad` FOREIGN KEY (`id_localidad`) REFERENCES `localidad` (`id_localidad`),
+  ADD CONSTRAINT `fk_dp_partido` FOREIGN KEY (`id_partido`) REFERENCES `partido` (`id_partido`),
+  ADD CONSTRAINT `fk_dp_provincia` FOREIGN KEY (`id_provincia`) REFERENCES `provincia` (`id_provincia`);
 
 --
 -- Filtros para la tabla `detalle_pedido`
@@ -5924,7 +5959,8 @@ ALTER TABLE `localidad`
 -- Filtros para la tabla `opiniones`
 --
 ALTER TABLE `opiniones`
-  ADD CONSTRAINT `opiniones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_motivo` FOREIGN KEY (`id_motivo`) REFERENCES `motivo` (`id_motivo`),
+  ADD CONSTRAINT `fk_opinion_motivo` FOREIGN KEY (`id_motivo`) REFERENCES `motivo` (`id_motivo`);
 
 --
 -- Filtros para la tabla `pagometodo`

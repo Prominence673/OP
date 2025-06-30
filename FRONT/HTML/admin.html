@@ -123,16 +123,6 @@
           <option value="pasajes">Pasajes</option>
         </select>
 
-        <!-- Para productos -->
-        <button id="btn-filtros-productos" class="btn-filtro" type="button">
-          <i class="fa-solid fa-filter"></i> Filtros
-        </button>
-        <div id="filtros-productos" class="filtros-panel" style="display:none; margin-bottom:1em;">
-          <label>Nombre: <input type="text" id="filtro-nombre-producto"></label>
-          <label>Precio máx: <input type="number" id="filtro-precio-producto" min="0"></label>
-          <button type="button" onclick="limpiarFiltroProductos()">Limpiar</button>
-        </div>
-
         <div id="tabla-productos-container" style="margin-top:1em;"></div>
       </div>
 
@@ -221,16 +211,6 @@
             <option value="partido">Partido</option>
           </select>
 
-          <!-- Para usuarios -->
-          <button id="btn-filtros-usuarios" class="btn-filtro" type="button">
-            <i class="fa-solid fa-filter"></i> Filtros
-          </button>
-          <div id="filtros-usuarios" class="filtros-panel" style="display:none; margin-bottom:1em;">
-            <label>Nombre: <input type="text" id="filtro-nombre-usuario"></label>
-            <label>Email: <input type="text" id="filtro-mail-usuario"></label>
-            <button type="button" onclick="limpiarFiltroUsuarios()">Limpiar</button>
-          </div>
-
           <div id="tabla-usuarios-resultados"></div>
         </div>
 
@@ -307,11 +287,11 @@
       
 </body>
 </html>
-<!-- Unifica y limpia todos los scripts JS de admin.html -->
+
 <script>
 // ========== FORMULARIOS PRODUCTOS Y USUARIOS ==========
 document.addEventListener("DOMContentLoaded", () => {
-  // Formulario dinámico de productos
+
   const camposPorTabla = {
     autos: `
       <label>Nombre: <input name="nombre" required></label>
@@ -352,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
   selectTabla.addEventListener("change", mostrarCampos);
   mostrarCampos();
 
-  // Formulario dinámico de usuarios
+
   const camposPorTablaUsuario = {
     usuarios: `
       <label>Mail: <input name="mail" required></label>
@@ -403,7 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
   selectModificarUsuario.addEventListener("change", () => mostrarCamposUsuario(selectModificarUsuario, camposModificarDiv));
   mostrarCamposUsuario(selectModificarUsuario, camposModificarDiv);
 
-  // Eliminar producto: campo dinámico
+
   const eliminarPor = document.getElementById("eliminar-por");
   const campoEliminar = document.getElementById("campo-eliminar");
   function mostrarCampoEliminar() {
@@ -416,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
   eliminarPor.addEventListener("change", mostrarCampoEliminar);
   mostrarCampoEliminar();
 
-  // Eliminar usuario: campo dinámico
+ 
   const campoEliminarUsuario = document.getElementById("campo-eliminar-usuario");
   document.getElementById("eliminar-usuario-por").addEventListener("change", e => {
     campoEliminarUsuario.innerHTML = e.target.value === "id"
@@ -425,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ========== NAVEGACIÓN ENTRE SECCIONES ==========
-  // Mostrar sección productos y subsección "ver productos" por defecto al entrar a productos
+
   document.querySelectorAll('.admin-nav a[data-section="productos"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -437,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (verProductos) verProductos.hidden = false;
     });
   });
-  // Mostrar sección usuarios y subsección "ver usuarios" por defecto al entrar a usuarios
+
   document.querySelectorAll('.admin-nav a[data-section="usuarios"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -635,47 +615,15 @@ function abrirAgregarUsuario(tabla) {
   document.getElementById('tabla-insertar-usuario').dispatchEvent(new Event('change'));
 }
 
-// --- Filtros productos ---
-document.getElementById("btn-filtros-productos").onclick = function() {
-  const panel = document.getElementById("filtros-productos");
-  panel.style.display = panel.style.display === "none" ? "flex" : "none";
-};
-["filtro-nombre-producto","filtro-precio-producto"].forEach(id => {
-  document.getElementById(id).addEventListener("input", mostrarProductosFiltrados);
-  document.getElementById(id).addEventListener("change", mostrarProductosFiltrados);
+// --- Productos ---
+selectProducto.addEventListener("change", () => {
+  cargarProductos(selectProducto.value);
 });
-function limpiarFiltroProductos() {
-  document.getElementById("filtros-productos").querySelectorAll("input").forEach(i => i.value = "");
-  mostrarProductosFiltrados();
-}
-function mostrarProductosFiltrados() {
-  let filtrados = productosData;
-  const nombre = document.getElementById("filtro-nombre-producto").value.toLowerCase();
-  const precio = document.getElementById("filtro-precio-producto").value;
-  if (nombre) filtrados = filtrados.filter(p => (p.nombre || p.nombre_viaje || "").toLowerCase().includes(nombre));
-  if (precio) filtrados = filtrados.filter(p => (p.precio || p.precio_aprox || p.precio_desde || 0) <= precio);
-  renderTable(selectProducto.value, filtrados);
-}
+cargarProductos(selectProducto.value);
 
-// --- Filtros usuarios ---
-document.getElementById("btn-filtros-usuarios").onclick = function() {
-  const panel = document.getElementById("filtros-usuarios");
-  panel.style.display = panel.style.display === "none" ? "flex" : "none";
-};
-["filtro-nombre-usuario","filtro-mail-usuario"].forEach(id => {
-  document.getElementById(id).addEventListener("input", mostrarUsuariosFiltrados);
-  document.getElementById(id).addEventListener("change", mostrarUsuariosFiltrados);
+// --- Usuarios ---
+selectTablaVer.addEventListener("change", () => {
+  cargarTablaUsuarios(selectTablaVer.value);
 });
-function limpiarFiltroUsuarios() {
-  document.getElementById("filtros-usuarios").querySelectorAll("input").forEach(i => i.value = "");
-  mostrarUsuariosFiltrados();
-}
-function mostrarUsuariosFiltrados() {
-  let filtrados = usuariosData;
-  const nombre = document.getElementById("filtro-nombre-usuario").value.toLowerCase();
-  const mail = document.getElementById("filtro-mail-usuario").value.toLowerCase();
-  if (nombre) filtrados = filtrados.filter(u => (u.nombre || "").toLowerCase().includes(nombre));
-  if (mail) filtrados = filtrados.filter(u => (u.mail || "").toLowerCase().includes(mail));
-  renderUsuariosPaginados(selectTablaVer.value, filtrados);
-}
+cargarTablaUsuarios(selectTablaVer.value);
 </script>
