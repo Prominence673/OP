@@ -65,46 +65,12 @@ class userPanel {
       'confirmpassword' => $contraseña_confirmacion
     ];
   }
-  public function saveImagePathToDB($rutaImagen) {
-      $this->ensureSessionStarted();
-      $id_usuario = $_SESSION['usuario']['id'];
-
-      if (!$rutaImagen) {
-          throw new Exception("No se proporcionó una ruta de imagen válida.");
-      }
-
-      $stmt = $this->conn->prepare("CALL SPUpdateImg(?, ?)");
-      $stmt->bind_param("is", $id_usuario, $rutaImagen);
-
-      if (!$stmt->execute()) {
-          throw new Exception("Error al guardar la imagen en la base de datos: " . $stmt->error);
-      }
-
-      $stmt->close();
-  }
-  public function uploadFile() {
-      if (!isset($_FILES['imagen_usuario'])) {
-          return null;
-      }
-
-      $archivo = $_FILES['imagen_usuario'];
-      if ($archivo['error'] !== UPLOAD_ERR_OK) {
-          return null;
-      }
-
-      $nombreArchivo = basename($archivo['name']);
-      $rutaDestino = "uploads/" . uniqid("img_") . "_" . $nombreArchivo;
-
-      if (move_uploaded_file($archivo['tmp_name'], $rutaDestino)) {
-          $this->saveImagePathToDB($rutaDestino);
-          return $rutaDestino;
-      } else {
-          return null;
-      }
-  }
   public function updateEmail($email){
      $this->ensureSessionStarted();
     $id_usuario = $_SESSION['usuario']['id'];
+    if ($id_usuario) {
+      throw new Exception("No se inicio sesión.");
+    } 
     if (!$email) {
       throw new Exception("Faltan Email.");
     }

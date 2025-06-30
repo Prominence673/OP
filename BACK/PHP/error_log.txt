@@ -239,6 +239,68 @@
 
 )
 
+<<<<<<< HEAD
+[30-Jun-2025 03:34:47 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[30-Jun-2025 03:34:47 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 12
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 216000
+        )
+
+)
+
+[30-Jun-2025 03:34:47 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 2
+[30-Jun-2025 03:34:47 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 12
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 216000
+        )
+
+)
+
+[30-Jun-2025 03:34:49 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 3
+[30-Jun-2025 03:34:49 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 12
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 216000
+        )
+
+)
+
+[30-Jun-2025 03:35:05 Europe/Berlin] Query ejecutada para carrito 26, pagometodo 1
+[30-Jun-2025 03:35:05 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 8
+            [cantidad] => 12
+            [tipo] => auto
+            [nombre] => CHEVROLET ONIX
+            [precio] => 18000.00
+            [total] => 216000
+        )
+
+)
+
+=======
 [28-Jun-2025 19:52:26 Europe/Berlin] PHP Warning:  Undefined array key "usuario_nombre" in C:\xampp\htdocs\OPs\BACK\PHP\loginModel.php on line 35
 [28-Jun-2025 19:52:26 Europe/Berlin] PHP Warning:  Undefined array key "id_rol" in C:\xampp\htdocs\OPs\BACK\PHP\loginModel.php on line 36
 [30-Jun-2025 08:29:55 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1

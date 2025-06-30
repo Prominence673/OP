@@ -97,6 +97,7 @@
               <label for="surname">Apellidos</label>
               <input type="text" id="surname" name="surname" placeholder="Como figura en el documento" required maxlength="50"/>
             </div>
+            
           </div>
           
           <div class="form-grid">
@@ -119,10 +120,12 @@
                 </label>
               </div>
             </div>
+            <div id="divDatos"></div>
           </div>
           
           <button class="btn-outline" type="submit">Guardar cambios</button>
         </div>
+        
       </form>
 
       <div class="form-section">
@@ -140,6 +143,8 @@
               <label for="telefono">Número de teléfono</label>
               <input type="tel" name="telefono" id="telefono" placeholder="Ej: +54 9 11 1234-5678" required>
             </div>
+            <div id="divTelefono"></div>
+
           </div>
           <button class="btn-primary" type="submit">Guardar teléfono</button>
         </form>
@@ -156,6 +161,7 @@
               <label for="email">Nuevo email</label>
               <input type="email" name="email" id="email" placeholder="nuevo@email.com" required>
             </div>
+            <div id="divEmail"></div>
           </div>
           <button class="btn-outline" type="submit">
             <i class="fas fa-paper-plane"></i> Cambiar Email
@@ -192,6 +198,7 @@
           <div class="form-group checkbox-group">
             <input type="checkbox" id="show-password">
             <label for="show-password">Mostrar contraseñas</label>
+            <div id="divPass"></div>
           </div>
           <button class="btn-primary" type="submit">Actualizar contraseña</button>
         </form>
@@ -282,28 +289,28 @@ document.addEventListener("DOMContentLoaded", () => {
   new FormHandler({
     formSelector: "#formDatos", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: document.createElement('div'),
+    messageTarget: divDatos
     
   });
   
   new FormHandler({
     formSelector: "#telefonoForm", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: document.createElement('div'),
+    messageTarget: divTelefono
    
   });
   
   new FormHandler({
     formSelector: "#formEmail", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: document.createElement('div'),
+    messageTarget: divEmail
    
   });
   
   new FormHandler({
     formSelector: "#formPass", 
     endpoint: "../../BACK/PHP/user_panel.php",  
-    messageTarget: document.createElement('div'),
+    messageTarget: divPass
     
   });
 });

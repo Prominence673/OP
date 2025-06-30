@@ -9,10 +9,19 @@ class registerModel{
         return password_hash($password, PASSWORD_DEFAULT);
     }
     public function verifyMail($email){
+         try {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return ["success" => false, "error" => "Email inválido"];
             }
         return ["success" => true];
+         } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() === 1062) {
+                
+            return ["success" => false, "error" => "El email ya está en uso"];
+            }
+          
+            return ["success" => false, "error" => "Excepción: " . $e->getMessage()];
+        }
         }
     public function verifyInput($user , $email, $password, $confirm){
              if ($user === '' || $email === '' || $password === '' || $confirm === '') {
@@ -24,6 +33,7 @@ class registerModel{
             }
 
             return ["success" => true];
+            
     }
     function validarPasswordFuerte(string $password): array {
             $errores = [];
