@@ -81,6 +81,17 @@
 </header>
   <main>
     <h2 class="paquetes-titulo">Paquetes de viajes</h2>
+
+    <!-- Barra de búsqueda y filtros -->
+    <div id="filtros-productos" style="margin-bottom: 1em; display: flex; gap: 1em;">
+      <input type="text" id="busqueda-producto" placeholder="Buscar por nombre..." style="padding: 6px; width: 200px;">
+      <select id="filtro-precio">
+        <option value="">Filtrar por precio</option>
+        <option value="menor">Menor a mayor</option>
+        <option value="mayor">Mayor a menor</option>
+      </select>
+    </div>
+
     <section class="paquetes" id="paquetes-container">
     </section>
 
@@ -97,76 +108,107 @@
   <script src="../JS DISEÑO/menu.js"></script>
   <script src="../../BACK/JS LOGICA/carrito.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      const contenedor = document.getElementById("paquetes-container");
+let paquetesOriginales = [];
 
-      try {
-        const res = await fetch("../../BACK/PHP/productos_api.php?tipo=paquetes");
-        const paquetes = await res.json();
-
-       paquetes.forEach(p => {
-  const article = document.createElement("article");
-  article.className = "paquete extendible";
-
-  article.innerHTML = `
-    <div class="imagen">
-      <img src="${p.imagen}" alt="${p.nombre_viaje}" class="auto-img-portada"/>
-    </div>
-    <div class="info">
-      <h2>${p.nombre_viaje}</h2>
-      <p><strong>Duración:</strong> ${p.duracion}</p>
-      <p><strong>Incluye:</strong> ${p.incluye}</p>
-      <p><strong>Precio aprox:</strong> AR$ ${parseInt(p.precio_aprox).toLocaleString('es-AR')}</p>
-      <div class="form-container" style="display: none; margin-top: 10px;">
-        <form class="add-cart-form">
-          <input type="hidden" name="id_paquete" value="${p.id_paquetes}">
-          <button type="submit" class="add-to-cart">Añadir al carrito</button>
-        </form>
-      </div>
-    </div>
-  `;
-
-  // Al hacer clic, se expande el formulario
-  article.addEventListener("click", () => {
-    const formContainer = article.querySelector(".form-container");
-    formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
-  });
-
-  // Manejo del submit
-  article.querySelector('.add-cart-form').addEventListener('submit', async function(e) {
-    e.stopPropagation(); // Evita que el click cierre el form
-    e.preventDefault();
-
-    const session = await fetch('../../BACK/PHP/checkSession.php').then(r => r.json());
-    if (!session.loggedIn) {
-      window.location.href = "login.html";
+async function cargarPaquetes() {
+  const cont = document.getElementById('paquetes-container');
+  cont.innerHTML = "<p>Cargando...</p>";
+  try {
+    const res = await fetch("../../BACK/PHP/productos_api.php?paquetes");
+    const paquetes = await res.json();
+    if (paquetes.error) {
+      cont.innerHTML = "<p>Error: " + paquetes.error + "</p>";
       return;
     }
+    paquetesOriginales = paquetes;
+    mostrarPaquetesFiltrados();
+  } catch (e) {
+    cont.innerHTML = "<p>Error al cargar los paquetes.</p>";
+  }
+}
 
-    const formData = new FormData(this);
-    formData.append('tipo', 'paquete');
-    formData.append('cantidad', 1); // Siempre 1 unidad
+function mostrarPaquetesFiltrados() {
+  const cont = document.getElementById('paquetes-container');
+  let data = [...paquetesOriginales];
 
-    const res = await fetch('../../BACK/PHP/carrito_api.php', {
-      method: 'POST',
-      body: formData
+  // Filtro de búsqueda
+  const busqueda = document.getElementById("busqueda-producto").value.toLowerCase();
+  if (busqueda) {
+    data = data.filter(p => (p.nombre_viaje || "").toLowerCase().includes(busqueda));
+  }
+
+  // Filtro de precio
+  const filtroPrecio = document.getElementById("filtro-precio").value;
+  if (filtroPrecio) {
+    data.sort((a, b) => {
+      if (filtroPrecio === "menor") return a.precio_aprox - b.precio_aprox;
+      else return b.precio_aprox - a.precio_aprox;
     });
-    const data = await res.json();
-    if (data.error) {
-      showToast(data.error, "#dc3545");
-    } else {
-      showToast(data.mensaje || "Agregado al carrito", "#28a745");
-    }
-  });
+  }
 
-  contenedor.appendChild(article);
-});
-
-      } catch (error) {
-        contenedor.innerHTML = `<p>Error al cargar paquetes.</p>`;
-        console.error("Error al traer paquetes:", error);
+  cont.innerHTML = "";
+  if (!data.length) {
+    cont.innerHTML = "<p>No se encontraron paquetes.</p>";
+    return;
+  }
+  data.forEach(p => {
+    const article = document.createElement("article");
+    article.className = "paquete extendible";
+    article.innerHTML = `
+      <div class="imagen">
+        <img src="${p.imagen}" alt="${p.nombre_viaje}" class="auto-img-portada"/>
+      </div>
+      <div class="info">
+        <h2>${p.nombre_viaje}</h2>
+        <p><strong>Duración:</strong> ${p.duracion}</p>
+        <p><strong>Incluye:</strong> ${p.incluye}</p>
+        <p><strong>Precio aprox:</strong> AR$ ${parseInt(p.precio_aprox).toLocaleString('es-AR')}</p>
+        <div class="form-container" style="display: none; margin-top: 10px;">
+          <form class="add-cart-form">
+            <input type="hidden" name="id_paquete" value="${p.id_paquetes}">
+            <button type="submit" class="add-to-cart">Añadir al carrito</button>
+          </form>
+        </div>
+      </div>
+    `;
+    // Al hacer clic, se expande el formulario
+    article.addEventListener("click", () => {
+      const formContainer = article.querySelector(".form-container");
+      formContainer.style.display = (formContainer.style.display === "none") ? "block" : "none";
+    });
+    // Manejo del submit
+    article.querySelector('.add-cart-form').addEventListener('submit', async function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      const session = await fetch('../../BACK/PHP/checkSession.php').then(r => r.json());
+      if (!session.loggedIn) {
+        window.location.href = "login.html";
+        return;
+      }
+      const formData = new FormData(this);
+      formData.append('tipo', 'paquete');
+      formData.append('cantidad', 1);
+      const res = await fetch('../../BACK/PHP/carrito_api.php', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data.error) {
+        showToast(data.error, "#dc3545");
+      } else {
+        showToast(data.mensaje || "Agregado al carrito", "#28a745");
       }
     });
+    cont.appendChild(article);
+  });
+}
+
+// Espera a que el DOM esté listo antes de agregar listeners y cargar paquetes
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("busqueda-producto").addEventListener("input", mostrarPaquetesFiltrados);
+  document.getElementById("filtro-precio").addEventListener("change", mostrarPaquetesFiltrados);
+  cargarPaquetes();
+});
   </script>
 </main>
 <footer class="site-footer">

@@ -1,4 +1,21 @@
 <?php
+// Debug: loguea todo lo que recibe y responde el PHP
+$debugFile = __DIR__ . '/debug_productos_api.txt';
+
+// Loguea los parámetros recibidos
+file_put_contents($debugFile, "---- NUEVA PETICIÓN ----\n", FILE_APPEND);
+file_put_contents($debugFile, "GET: " . print_r($_GET, true) . "\n", FILE_APPEND);
+file_put_contents($debugFile, "POST: " . print_r($_POST, true) . "\n", FILE_APPEND);
+
+// Función para loguear la respuesta antes de enviarla
+function log_and_echo($data) {
+    global $debugFile;
+    $json = json_encode($data);
+    file_put_contents($debugFile, "RESPUESTA: $json\n\n", FILE_APPEND);
+    echo $json;
+    exit;
+}
+
 header('Content-Type: application/json');
 include 'connection.php';
 
@@ -58,18 +75,18 @@ $tipo = $_GET['tipo'] ?? '';
 
 switch ($tipo) {
     case 'paquetes':
-        echo json_encode($api->getPaquetes());
+        log_and_echo($api->getPaquetes());
         break;
     case 'coches':
-        echo json_encode($api->getCoches());
+        log_and_echo($api->getCoches());
         break;
     case 'estadias':
-        echo json_encode($api->getEstadias());
+        log_and_echo($api->getEstadias());
         break;
     case 'pasajes':
-        echo json_encode($api->getPasajes());
+        log_and_echo($api->getPasajes());
         break;
     default:
-        echo json_encode(['error' => 'Tipo no válido. Usar ?tipo=paquetes|coches|estadias|pasajes']);
+        log_and_echo(['error' => 'Tipo no válido. Usar ?tipo=paquetes|coches|estadias|pasajes']);
         break;
 }
