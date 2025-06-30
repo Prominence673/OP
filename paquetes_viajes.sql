@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2025 a las 22:45:03
+-- Tiempo de generación: 30-06-2025 a las 04:38:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -626,15 +626,19 @@ CREATE TABLE `localidad` (
 CREATE TABLE `opiniones` (
   `id_opinion` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `opinion` varchar(100) DEFAULT NULL
+  `opinion` varchar(100) DEFAULT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `id_tipo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `opiniones`
 --
 
-INSERT INTO `opiniones` (`id_opinion`, `id_usuario`, `opinion`) VALUES
-(1, 39, 'buena pagina');
+INSERT INTO `opiniones` (`id_opinion`, `id_usuario`, `opinion`, `nombre`, `email`, `telefono`, `id_tipo`) VALUES
+(1, 39, 'buena pagina', '', '', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -913,6 +917,17 @@ INSERT INTO `tarjeta` (`id_tarjeta`, `id_usuario`, `numero`, `nombre_tarjeta`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_opinion`
+--
+
+CREATE TABLE `tipo_opinion` (
+  `id_tipo` int(11) NOT NULL,
+  `tipo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `transportes`
 --
 
@@ -1062,7 +1077,8 @@ ALTER TABLE `localidad`
 --
 ALTER TABLE `opiniones`
   ADD PRIMARY KEY (`id_opinion`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `fk_opiniones_tipo` (`id_tipo`);
 
 --
 -- Indices de la tabla `pagometodo`
@@ -1147,6 +1163,12 @@ ALTER TABLE `rol`
 ALTER TABLE `tarjeta`
   ADD PRIMARY KEY (`id_tarjeta`),
   ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `tipo_opinion`
+--
+ALTER TABLE `tipo_opinion`
+  ADD PRIMARY KEY (`id_tipo`);
 
 --
 -- Indices de la tabla `transportes`
@@ -1336,6 +1358,12 @@ ALTER TABLE `tarjeta`
   MODIFY `id_tarjeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_opinion`
+--
+ALTER TABLE `tipo_opinion`
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `transportes`
 --
 ALTER TABLE `transportes`
@@ -1403,6 +1431,7 @@ ALTER TABLE `localidad`
 -- Filtros para la tabla `opiniones`
 --
 ALTER TABLE `opiniones`
+  ADD CONSTRAINT `fk_opiniones_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_opinion` (`id_tipo`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `opiniones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
 
 --
