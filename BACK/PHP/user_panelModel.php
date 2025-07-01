@@ -188,7 +188,7 @@ public function uploadPhone($telefono){
     }
     public function setUsuarioVerificado($id_usuario, $exito) {
         $stmt = $this->conn->prepare("CALL SPSetUsuarioVerificado(?, ?)");
-        $stmt->bind_param("ib", $id_usuario, $exito);
+        $stmt->bind_param("ii", $id_usuario, $exito);
         $stmt->execute();
         $stmt->close();
     }
@@ -203,13 +203,13 @@ public function sendVerifyEmail($email, $token) {
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom($_ENV['EMAIL_USER'], 'Soporte TravelAir');
+            $mail->setFrom($_ENV['EMAIL_USER'], 'Soporte KAPIFLY');
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = 'Email Verification - TravelAir';
+            $mail->Subject = 'Email Verification - KAPIFLY';
 
-            $recoveryLink = "http://localhost/OP/BACK/PHP/verifyEmail.php?token=" . urlencode($token);
+            $recoveryLink = "http://localhost/OP/BACK/PHP/verifyRegisterEmail.php?token=" . urlencode($token);
 
             $mail->Body = "
             <div style='font-family: Arial, sans-serif; max-width: 600px; margin: auto; border-radius: 8px; overflow: hidden;'>

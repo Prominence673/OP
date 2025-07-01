@@ -112,5 +112,28 @@ class registerModel{
     public function closeConn(){
         $this->conn->close();
     }
+    public function getUserIdByEmail($email) {
+        $stmt = $this->conn->prepare("SELECT id_usuario FROM usuarios WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+        return $row ? $row['id_usuario'] : null;
+    }
+
+    public function insertEmailToken($id_usuario, $email, $token, $expires_at) {
+        $stmt = $this->conn->prepare("INSERT INTO email_resets (id_usuario, nuevo_email, token, expires_at, creado_en) VALUES (?, ?, ?, ?, NOW())");
+        $stmt->bind_param("isss", $id_usuario, $email, $token, $expires_at);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function enviarMailVerificacion($email, $enlace) {
+        // Usa PHPMailer para enviar el correo
+        $userPanel = new userPanel($this->conn);
+        $token = ''; // Si lo necesitas, pásalo como parámetro
+        $userPanel->sendVerifyEmail($email, $enlace);
+    }
 }
 ?>

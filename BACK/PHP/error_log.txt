@@ -58,3 +58,147 @@
 
 )
 
+[01-Jul-2025 18:17:20 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 18:17:20 Europe/Berlin] PHP Warning:  Undefined array key "usuario" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[01-Jul-2025 18:17:20 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[01-Jul-2025 18:23:26 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 18:39:25 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 18:39:25 Europe/Berlin] PHP Warning:  Undefined array key "usuario" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[01-Jul-2025 18:39:25 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[01-Jul-2025 19:56:44 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 19:56:44 Europe/Berlin] PHP Warning:  Undefined array key "usuario" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[01-Jul-2025 19:56:44 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[01-Jul-2025 20:02:12 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 20:02:12 Europe/Berlin] PHP Warning:  Undefined array key "usuario" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[01-Jul-2025 20:02:12 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[01-Jul-2025 21:41:38 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 21:41:42 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 21:41:46 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 21:41:49 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 21:41:53 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 21:56:10 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[01-Jul-2025 22:00:27 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 1
+[01-Jul-2025 22:00:27 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 4
+            [cantidad] => 8
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 960000
+        )
+
+)
+
+[01-Jul-2025 22:00:29 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 2
+[01-Jul-2025 22:00:29 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 4
+            [cantidad] => 8
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 960000
+        )
+
+)
+
+[01-Jul-2025 22:00:29 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 3
+[01-Jul-2025 22:00:29 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 4
+            [cantidad] => 8
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 960000
+        )
+
+)
+
+[01-Jul-2025 22:00:37 Europe/Berlin] Query ejecutada para carrito 28, pagometodo 1
+[01-Jul-2025 22:00:37 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 4
+            [cantidad] => 8
+            [tipo] => paquete
+            [nombre] => Buenos Aires - Tigre Delta
+            [precio] => 120000.00
+            [total] => 960000
+        )
+
+)
+
+[01-Jul-2025 22:06:00 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:06:00 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[01-Jul-2025 22:06:03 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:06:03 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[01-Jul-2025 22:06:11 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:06:11 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[01-Jul-2025 22:06:22 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:06:22 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[01-Jul-2025 22:08:51 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:08:51 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[01-Jul-2025 22:10:56 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:10:56 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[01-Jul-2025 22:10:58 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:10:58 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[01-Jul-2025 22:15:04 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:15:04 Europe/Berlin] Items encontrados: Array
+(
+)
+
+[01-Jul-2025 22:15:06 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[01-Jul-2025 22:15:06 Europe/Berlin] Items encontrados: Array
+(
+)
+

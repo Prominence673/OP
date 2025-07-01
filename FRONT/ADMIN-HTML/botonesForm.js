@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
 const API_CRUD = "../../BACK/PHP/tabla_crud.php";
 let selectedRowId = null;
 
+function showToast(msg, duration = 2500) {
+  const toast = document.getElementById('toast-msg');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, duration);
+}
 // Cierra todos los formularios de acción
 function cerrarTodosLosFormularios() {
   document.getElementById('form-hard-delete').style.display = 'none';
@@ -123,14 +132,14 @@ document.getElementById('confirm-add').onclick = async function() {
     body: JSON.stringify({ tabla: window.tablaActual, accion: "add", data })
   });
   const r = await res.json();
-  alert(r.ok ? "Registro añadido" : (r.error || "Error"));
+  showToast(r.ok ? "Registro añadido" : (r.error || "Error"));
   cerrarTodosLosFormularios();
   if (window.cargarTabla) window.cargarTabla(window.tablaActual);
 };
 
 // Modificar
 document.getElementById('confirm-edit').onclick = async function() {
-  if (!selectedRowId) return alert("Selecciona una fila para modificar.");
+  if (!selectedRowId) return showToast("Selecciona una fila para modificar.");
   const form = document.querySelector("#form-edit form");
   const data = {};
   form.querySelectorAll("input[name]").forEach(inp => data[inp.name] = inp.value);
@@ -140,35 +149,35 @@ document.getElementById('confirm-edit').onclick = async function() {
     body: JSON.stringify({ tabla: window.tablaActual, accion: "edit", id: selectedRowId, data })
   });
   const r = await res.json();
-  alert(r.ok ? "Registro modificado" : (r.error || "Error"));
+  showToast(r.ok ? "Registro modificado" : (r.error || "Error"));
   cerrarTodosLosFormularios();
   if (window.cargarTabla) window.cargarTabla(window.tablaActual);
 };
 
 // Soft delete
 document.getElementById('confirm-soft-delete').onclick = async function() {
-  if (!selectedRowId) return alert("Selecciona una fila para eliminar (soft).");
+  if (!selectedRowId) return showToast("Selecciona una fila para eliminar (soft).");
   const res = await fetch(API_CRUD, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ tabla: window.tablaActual, accion: "soft_delete", id: selectedRowId })
   });
   const r = await res.json();
-  alert(r.ok ? "Registro desactivado" : (r.error || "Error"));
+  showToast(r.ok ? "Registro desactivado" : (r.error || "Error"));
   cerrarTodosLosFormularios();
   if (window.cargarTabla) window.cargarTabla(window.tablaActual);
 };
 
 // Hard delete
 document.getElementById('confirm-hard-delete').onclick = async function() {
-  if (!selectedRowId) return alert("Selecciona una fila para eliminar (hard).");
+  if (!selectedRowId) return showToast("Selecciona una fila para eliminar (hard).");
   const res = await fetch(API_CRUD, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ tabla: window.tablaActual, accion: "hard_delete", id: selectedRowId })
   });
   const r = await res.json();
-  alert(r.ok ? "Registro eliminado" : (r.error || "Error"));
+  showToast(r.ok ? "Registro eliminado" : (r.error || "Error"));
   cerrarTodosLosFormularios();
   if (window.cargarTabla) window.cargarTabla(window.tablaActual);
 };

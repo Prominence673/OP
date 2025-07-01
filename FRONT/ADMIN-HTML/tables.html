@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kapifly - MyAdminDash</title>
+  <title>Kapifly - Admin</title>
 
   <!-- Bulma is included -->
   <link rel="stylesheet" href="../ADMIN-CSS/main.css">
   <link rel="stylesheet" href="../CSS/header-footer.css">
-  <!-- Fonts -->
+  <link rel="stylesheet" href="../CSS/toast.css">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 </head>
@@ -30,11 +30,11 @@
       <div class="navbar-end">
         <a href="../HTML/contacto.html" title="About" class="navbar-item has-divider is-desktop-icon-only">
           <span class="icon"><i class="mdi mdi-help-circle-outline"></i></span>
-          <span>About</span>
+          <span>Contacto</span>
         </a>
         <a href="../HTML/index.html" title="Log out" class="navbar-item is-desktop-icon-only">
           <span class="icon"><i class="mdi mdi-exit-to-app"></i></span>
-          <span>Exit</span>
+          <span>Salir</span>
         </a>
       </div>
     </div>
@@ -42,11 +42,11 @@
   <aside class="aside is-placed-left is-expanded">
     <div class="aside-tools">
       <div class="aside-tools-label">
-        <span style="font-size: 20px;">Kapi<b>Fly</b> MyAdminDash</span>
+        <span style="font-size: 20px;">Kapi<b>Fly</b> Dashboard</span>
       </div>
     </div>
     <div class="menu is-menu-main">
-      <p class="menu-label">General</p>
+      <p class="menu-label">Admin</p>
       <ul class="menu-list">
         <li>
           <a href="index.html" class="has-icon">
@@ -55,37 +55,15 @@
           </a>
         </li>
       </ul>
-      <p class="menu-label">Examples</p>
       <ul class="menu-list">
         <li>
           <a href="tables.html" class="is-active router-link-active has-icon">
             <span class="icon has-update-mark"><i class="mdi mdi-table"></i></span>
-            <span class="menu-item-label">Tables</span>
+            <span class="menu-item-label">Tablas</span>
           </a>
-        </li>
-        <li>
-          <a class="has-icon has-dropdown-icon">
-            <span class="icon"><i class="mdi mdi-view-list"></i></span>
-            <span class="menu-item-label">Submenus</span>
-            <div class="dropdown-icon">
-              <span class="icon"><i class="mdi mdi-plus"></i></span>
-            </div>
-          </a>
-          <ul>
-            <li>
-              <a href="#void">
-                <span>Sub-item One</span>
-              </a>
-            </li>
-            <li>
-              <a href="#void">
-                <span>Sub-item Two</span>
-              </a>
-            </li>
-          </ul>
         </li>
       </ul>
-      <p class="menu-label">About</p>
+      <p class="menu-label">Repositorio</p>
       <ul class="menu-list">
         <li>
           <a href="https://github.com/Prominence673/OP" target="_blank" class="has-icon">
@@ -102,7 +80,7 @@
         <div class="level-item">
           <ul>
             <li>Admin</li>
-            <li>Tables</li>
+            <li>Tablas</li>
           </ul>
         </div>
       </div>
@@ -142,7 +120,7 @@
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
-          Clients
+          Clientes
         </p>
         <a href="#" class="card-header-icon">
           <span class="icon"><i class="mdi mdi-reload"></i></span>
@@ -623,5 +601,6 @@
 <script type="text/javascript" src="../../BACK/JS LOGICA ADMIN/main.js"></script>
 <!-- Icons below are for demo only. Feel free to use any icon pack. Docs: https://bulma.io/documentation/elements/icon/ -->
 <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
+<div id="toast-msg"></div>
 </body>
 </html>
