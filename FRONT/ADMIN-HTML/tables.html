@@ -171,7 +171,7 @@
               </thead>
               <tbody>
               <tr>
-                <td class="is-checkbox-cell">
+                <td>1</td>
                   <label class="b-checkbox checkbox">
                     <input type="checkbox" value="false">
                     <span class="check"></span>
@@ -532,20 +532,72 @@
                       <span>Eliminar (Hard)</span>
                     </button>
     </div>
-    <div class="card has-table">
-      <div class="card-content">
-        <section class="section">
-          <div class="content has-text-grey has-text-centered">
-            <p>
-              <span class="icon is-large"><i class="mdi mdi-emoticon-sad mdi-48px"></i></span>
-            </p>
-            <p>Nada aqui…</p></div>
-        </section>
-      </div>
-    </div>
   </section>
+</div>
 
- <footer class="site-footer">
+ <!-- Formularios de acción ocultos por defecto -->
+<div id="form-hard-delete" class="box" style="display:none; margin-top:1em;">
+  <form>
+    <h3 class="title is-5">Eliminar (Hard)</h3>
+    <p>¿Seguro que deseas eliminar este registro permanentemente?</p>
+    <div class="field is-grouped is-grouped-right">
+      <p class="control">
+        <button type="button" class="button is-danger" id="confirm-hard-delete">Eliminar</button>
+      </p>
+      <p class="control">
+        <button type="button" class="button is-light" onclick="document.getElementById('form-hard-delete').style.display='none'">Cancelar</button>
+      </p>
+    </div>
+  </form>
+</div>
+
+<div id="form-soft-delete" class="box" style="display:none; margin-top:1em;">
+  <form>
+    <h3 class="title is-5">Eliminar (Soft)</h3>
+    <p>¿Seguro que deseas marcar este registro como inactivo?</p>
+    <div class="field is-grouped is-grouped-right">
+      <p class="control">
+        <button type="button" class="button is-warning" id="confirm-soft-delete">Desactivar</button>
+      </p>
+      <p class="control">
+        <button type="button" class="button is-light" onclick="document.getElementById('form-soft-delete').style.display='none'">Cancelar</button>
+      </p>
+    </div>
+  </form>
+</div>
+
+<div id="form-add" class="box" style="display:none; margin-top:1em;">
+  <form>
+    <h3 class="title is-5">Añadir registro</h3>
+    <!-- Los inputs se generan por JS -->
+    <div class="field is-grouped is-grouped-right">
+      <p class="control">
+        <button type="button" class="button is-success confirm-action" id="confirm-add" disabled>Añadir</button>
+      </p>
+      <p class="control">
+        <button type="button" class="button is-light" onclick="document.getElementById('form-add').style.display='none'">Cancelar</button>
+      </p>
+    </div>
+  </form>
+</div>
+
+<div id="form-edit" class="box" style="display:none; margin-top:1em;">
+  <form>
+    <h3 class="title is-5">Modificar registro</h3>
+    <!-- Los inputs se generan por JS -->
+    <div class="field is-grouped is-grouped-right">
+      <p class="control">
+        <button type="button" class="button is-info confirm-action" id="confirm-edit" disabled>Modificar</button>
+      </p>
+      <p class="control">
+        <button type="button" class="button is-light" onclick="document.getElementById('form-edit').style.display='none'">Cancelar</button>
+      </p>
+    </div>
+  </form>
+</div>
+<script src="tables.js"></script>
+<script src="botonesForm.js"></script>
+  <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
         <img src="../../SOURCE/KAPIFLY.png" alt="KAPIFLY Logo" class="footer-logo-img" style="height:48px;">      
@@ -567,27 +619,6 @@
       <p>&copy; 2025 KAPIFLY. Todos los derechos reservados.</p>
     </div>
   </footer>
-
-  <div id="sample-modal" class="modal">
-    <div class="modal-background jb-modal-close"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Confirm action</p>
-        <button class="delete jb-modal-close" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <p>This will permanently delete <b>Some Object</b></p>
-        <p>This is sample modal</p>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button jb-modal-close">Cancel</button>
-        <button class="button is-danger jb-modal-close">Delete</button>
-      </footer>
-    </div>
-    <button class="modal-close is-large jb-modal-close" aria-label="close"></button>
-  </div>
-</div>
-<script src="tables.js"></script>
 <!-- Scripts below are for demo only -->
 <script type="text/javascript" src="../../BACK/JS LOGICA ADMIN/main.js"></script>
 <!-- Icons below are for demo only. Feel free to use any icon pack. Docs: https://bulma.io/documentation/elements/icon/ -->

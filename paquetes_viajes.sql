@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2025 a las 07:58:43
+-- Tiempo de generación: 01-07-2025 a las 16:48:23
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -353,6 +353,25 @@ CREATE TABLE `acciones_admins` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `activo`
+--
+
+CREATE TABLE `activo` (
+  `id_activo` int(11) NOT NULL,
+  `activo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `activo`
+--
+
+INSERT INTO `activo` (`id_activo`, `activo`) VALUES
+(1, 'Activo'),
+(2, 'Inactivo');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `admins`
 --
 
@@ -373,7 +392,8 @@ CREATE TABLE `alojamientos` (
   `direccion` varchar(255) DEFAULT NULL,
   `ciudad` varchar(100) DEFAULT NULL,
   `tipo` varchar(50) DEFAULT NULL,
-  `estrellas` int(11) DEFAULT NULL
+  `estrellas` int(11) DEFAULT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -390,19 +410,20 @@ CREATE TABLE `autos` (
   `capacidad` int(11) DEFAULT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
   `id_producto` int(11) DEFAULT NULL,
-  `imagen_interior` varchar(255) NOT NULL
+  `imagen_interior` varchar(255) NOT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `autos`
 --
 
-INSERT INTO `autos` (`id_autos`, `nombre`, `imagen`, `tipo`, `capacidad`, `precio`, `id_producto`, `imagen_interior`) VALUES
-(1, 'CHEVROLET ONIX', '../../SOURCE/RESOURCES/COCHES/onix.avif', 'Económico', 5, 18000.00, NULL, '../../SOURCE/RESOURCES/COCHES/onix-interior.jpg'),
-(3, 'TOYOTA COROLLA', '../../SOURCE/RESOURCES/COCHES/corolla.jpeg', 'Sedán', 5, 25000.00, NULL, '../../SOURCE/RESOURCES/COCHES/corolla-interior.jpeg'),
-(4, 'RENAULT DUSTER', '../../SOURCE/RESOURCES/COCHES/duster.webp', 'SUV', 5, 28000.00, NULL, '../../SOURCE/RESOURCES/COCHES/duster-interior.jpg'),
-(5, 'FORD MUSTANG', '../../SOURCE/RESOURCES/COCHES/mustang.avif', 'Deportivo', 4, 120000.00, NULL, '../../SOURCE/RESOURCES/COCHES/mustang-interior.jpg'),
-(6, 'JEEP WRANGLER', '../../SOURCE/RESOURCES/COCHES/wrangler.png', 'SUV 4x4', 5, 160000.00, NULL, '../../SOURCE/RESOURCES/COCHES/wrangler-interior.jpg');
+INSERT INTO `autos` (`id_autos`, `nombre`, `imagen`, `tipo`, `capacidad`, `precio`, `id_producto`, `imagen_interior`, `id_activo`) VALUES
+(1, 'CHEVROLET ONIX', '../../SOURCE/RESOURCES/COCHES/onix.avif', 'Económico', 5, 18000.00, NULL, '../../SOURCE/RESOURCES/COCHES/onix-interior.jpg', 1),
+(3, 'TOYOTA COROLLA', '../../SOURCE/RESOURCES/COCHES/corolla.jpeg', 'Sedán', 5, 25000.00, NULL, '../../SOURCE/RESOURCES/COCHES/corolla-interior.jpeg', 1),
+(4, 'RENAULT DUSTER', '../../SOURCE/RESOURCES/COCHES/duster.webp', 'SUV', 5, 28000.00, NULL, '../../SOURCE/RESOURCES/COCHES/duster-interior.jpg', 1),
+(5, 'FORD MUSTANG', '../../SOURCE/RESOURCES/COCHES/mustang.avif', 'Deportivo', 4, 120000.00, NULL, '../../SOURCE/RESOURCES/COCHES/mustang-interior.jpg', 1),
+(6, 'JEEP WRANGLER', '../../SOURCE/RESOURCES/COCHES/wrangler.png', 'SUV 4x4', 5, 160000.00, NULL, '../../SOURCE/RESOURCES/COCHES/wrangler-interior.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -414,41 +435,42 @@ CREATE TABLE `carrito` (
   `id_carrito` int(11) NOT NULL,
   `id_usuario` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT current_timestamp(),
-  `estado` enum('activo','comprado','cancelado') DEFAULT 'activo'
+  `estado` enum('activo','comprado','cancelado') DEFAULT 'activo',
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `carrito`
 --
 
-INSERT INTO `carrito` (`id_carrito`, `id_usuario`, `fecha_creacion`, `estado`) VALUES
-(1, NULL, '2025-06-25 11:15:39', 'activo'),
-(2, NULL, '2025-06-25 11:37:11', 'activo'),
-(3, NULL, '2025-06-25 11:41:54', 'activo'),
-(4, NULL, '2025-06-25 11:42:18', 'activo'),
-(5, NULL, '2025-06-25 11:42:20', 'activo'),
-(6, NULL, '2025-06-25 11:42:22', 'activo'),
-(7, NULL, '2025-06-25 11:42:23', 'activo'),
-(8, NULL, '2025-06-25 16:50:44', 'activo'),
-(9, NULL, '2025-06-25 16:50:49', 'activo'),
-(10, NULL, '2025-06-25 16:52:15', 'activo'),
-(11, NULL, '2025-06-25 16:52:55', 'activo'),
-(12, NULL, '2025-06-25 16:53:08', 'activo'),
-(13, 39, '2025-06-25 16:55:06', 'comprado'),
-(14, 39, '2025-06-26 02:00:57', 'comprado'),
-(15, 39, '2025-06-26 03:32:08', 'comprado'),
-(16, 39, '2025-06-26 04:30:08', 'comprado'),
-(17, 39, '2025-06-26 04:35:31', 'comprado'),
-(18, 39, '2025-06-26 04:47:50', 'comprado'),
-(19, 39, '2025-06-26 04:51:56', 'comprado'),
-(20, 39, '2025-06-26 05:00:49', 'comprado'),
-(21, 39, '2025-06-26 05:06:09', 'comprado'),
-(22, 39, '2025-06-26 05:12:36', 'comprado'),
-(23, 39, '2025-06-26 05:15:05', 'comprado'),
-(24, 39, '2025-06-26 05:21:53', 'comprado'),
-(25, 39, '2025-06-26 05:24:58', 'comprado'),
-(26, 47, '2025-06-29 22:32:03', 'comprado'),
-(27, 47, '2025-06-29 23:19:34', 'activo');
+INSERT INTO `carrito` (`id_carrito`, `id_usuario`, `fecha_creacion`, `estado`, `id_activo`) VALUES
+(1, NULL, '2025-06-25 11:15:39', 'activo', 1),
+(2, NULL, '2025-06-25 11:37:11', 'activo', 1),
+(3, NULL, '2025-06-25 11:41:54', 'activo', 1),
+(4, NULL, '2025-06-25 11:42:18', 'activo', 1),
+(5, NULL, '2025-06-25 11:42:20', 'activo', 1),
+(6, NULL, '2025-06-25 11:42:22', 'activo', 1),
+(7, NULL, '2025-06-25 11:42:23', 'activo', 1),
+(8, NULL, '2025-06-25 16:50:44', 'activo', 1),
+(9, NULL, '2025-06-25 16:50:49', 'activo', 1),
+(10, NULL, '2025-06-25 16:52:15', 'activo', 1),
+(11, NULL, '2025-06-25 16:52:55', 'activo', 1),
+(12, NULL, '2025-06-25 16:53:08', 'activo', 1),
+(13, 39, '2025-06-25 16:55:06', 'comprado', 1),
+(14, 39, '2025-06-26 02:00:57', 'comprado', 1),
+(15, 39, '2025-06-26 03:32:08', 'comprado', 1),
+(16, 39, '2025-06-26 04:30:08', 'comprado', 1),
+(17, 39, '2025-06-26 04:35:31', 'comprado', 1),
+(18, 39, '2025-06-26 04:47:50', 'comprado', 1),
+(19, 39, '2025-06-26 04:51:56', 'comprado', 1),
+(20, 39, '2025-06-26 05:00:49', 'comprado', 1),
+(21, 39, '2025-06-26 05:06:09', 'comprado', 1),
+(22, 39, '2025-06-26 05:12:36', 'comprado', 1),
+(23, 39, '2025-06-26 05:15:05', 'comprado', 1),
+(24, 39, '2025-06-26 05:21:53', 'comprado', 1),
+(25, 39, '2025-06-26 05:24:58', 'comprado', 1),
+(26, 47, '2025-06-29 22:32:03', 'comprado', 1),
+(27, 47, '2025-06-29 23:19:34', 'activo', 1);
 
 --
 -- Disparadores `carrito`
@@ -473,15 +495,16 @@ CREATE TABLE `carrito_items` (
   `id_carrito` int(11) DEFAULT NULL,
   `tipo` varchar(20) NOT NULL,
   `cantidad` int(11) DEFAULT 1,
-  `id_producto` int(11) DEFAULT NULL
+  `id_producto` int(11) DEFAULT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `carrito_items`
 --
 
-INSERT INTO `carrito_items` (`id_item`, `id_carrito`, `tipo`, `cantidad`, `id_producto`) VALUES
-(38, 27, 'auto', 6, 8);
+INSERT INTO `carrito_items` (`id_item`, `id_carrito`, `tipo`, `cantidad`, `id_producto`, `id_activo`) VALUES
+(38, 27, 'auto', 6, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -523,21 +546,22 @@ CREATE TABLE `descuento` (
   `razon` varchar(255) DEFAULT NULL,
   `porcentaje` decimal(5,2) DEFAULT NULL,
   `inicio` date DEFAULT NULL,
-  `fin` date DEFAULT NULL
+  `fin` date DEFAULT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `descuento`
 --
 
-INSERT INTO `descuento` (`id_descuento`, `razon`, `porcentaje`, `inicio`, `fin`) VALUES
-(1, 'Descuento por pago en efectivo', 10.00, '2025-06-01', '2025-12-31'),
-(2, 'Descuento por tarjeta de débito', 5.00, '2025-06-01', '2025-12-31'),
-(3, 'Promoción de invierno', 15.00, '2025-07-01', '2025-08-31'),
-(4, 'Cyber Monday', 20.00, '2025-11-04', '2025-11-06'),
-(5, 'Descuento exclusivo para estudiantes', 12.50, '2025-06-01', '2025-09-30'),
-(6, 'Descuento por transferencia bancaria', 7.00, '2025-06-01', '2025-12-31'),
-(7, 'Sin descuento', 0.00, '2025-01-01', '2026-01-01');
+INSERT INTO `descuento` (`id_descuento`, `razon`, `porcentaje`, `inicio`, `fin`, `id_activo`) VALUES
+(1, 'Descuento por pago en efectivo', 10.00, '2025-06-01', '2025-12-31', 1),
+(2, 'Descuento por tarjeta de débito', 5.00, '2025-06-01', '2025-12-31', 1),
+(3, 'Promoción de invierno', 15.00, '2025-07-01', '2025-08-31', 1),
+(4, 'Cyber Monday', 20.00, '2025-11-04', '2025-11-06', 1),
+(5, 'Descuento exclusivo para estudiantes', 12.50, '2025-06-01', '2025-09-30', 1),
+(6, 'Descuento por transferencia bancaria', 7.00, '2025-06-01', '2025-12-31', 1),
+(7, 'Sin descuento', 0.00, '2025-01-01', '2026-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -549,7 +573,8 @@ CREATE TABLE `destinos` (
   `id_destino` int(11) NOT NULL,
   `ciudad` varchar(100) DEFAULT NULL,
   `pais` varchar(100) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL
+  `descripcion` text DEFAULT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -565,32 +590,33 @@ CREATE TABLE `detalle_pedido` (
   `cantidad` int(11) NOT NULL,
   `precio_unitario` decimal(10,2) DEFAULT 0.00,
   `total` decimal(10,2) NOT NULL,
-  `id_estado` int(11) DEFAULT NULL
+  `id_estado` int(11) DEFAULT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `detalle_pedido`
 --
 
-INSERT INTO `detalle_pedido` (`id_detallepedido`, `id_pedido`, `id_producto`, `cantidad`, `precio_unitario`, `total`, `id_estado`) VALUES
-(11, 3, 9, 1, 25000.00, 25000.00, 1),
-(12, 3, 10, 1, 28000.00, 28000.00, 1),
-(13, 3, 8, 1, 18000.00, 18000.00, 1),
-(14, 4, 2, 1, 266000.00, 266000.00, 1),
-(15, 4, 3, 1, 220000.00, 220000.00, 1),
-(16, 4, 1, 1, 250000.00, 250000.00, 1),
-(17, 5, 3, 1, 220000.00, 220000.00, 1),
-(18, 5, 2, 1, 266000.00, 266000.00, 1),
-(19, 6, 10, 1, 28000.00, 28000.00, 1),
-(20, 7, 12, 2, 160000.00, 320000.00, 1),
-(21, 7, 11, 1, 120000.00, 120000.00, 1),
-(22, 8, 3, 1, 220000.00, 220000.00, 1),
-(23, 9, 9, 2, 25000.00, 50000.00, 1),
-(24, 10, 9, 1, 25000.00, 25000.00, 1),
-(25, 11, 16, 1, 95000.00, 95000.00, 1),
-(26, 12, 16, 1, 95000.00, 95000.00, 1),
-(27, 13, 2, 1, 266000.00, 266000.00, 1),
-(28, 14, 8, 12, 18000.00, 216000.00, 1);
+INSERT INTO `detalle_pedido` (`id_detallepedido`, `id_pedido`, `id_producto`, `cantidad`, `precio_unitario`, `total`, `id_estado`, `id_activo`) VALUES
+(11, 3, 9, 1, 25000.00, 25000.00, 1, 1),
+(12, 3, 10, 1, 28000.00, 28000.00, 1, 1),
+(13, 3, 8, 1, 18000.00, 18000.00, 1, 1),
+(14, 4, 2, 1, 266000.00, 266000.00, 1, 1),
+(15, 4, 3, 1, 220000.00, 220000.00, 1, 1),
+(16, 4, 1, 1, 250000.00, 250000.00, 1, 1),
+(17, 5, 3, 1, 220000.00, 220000.00, 1, 1),
+(18, 5, 2, 1, 266000.00, 266000.00, 1, 1),
+(19, 6, 10, 1, 28000.00, 28000.00, 1, 1),
+(20, 7, 12, 2, 160000.00, 320000.00, 1, 1),
+(21, 7, 11, 1, 120000.00, 120000.00, 1, 1),
+(22, 8, 3, 1, 220000.00, 220000.00, 1, 1),
+(23, 9, 9, 2, 25000.00, 50000.00, 1, 1),
+(24, 10, 9, 1, 25000.00, 25000.00, 1, 1),
+(25, 11, 16, 1, 95000.00, 95000.00, 1, 1),
+(26, 12, 16, 1, 95000.00, 95000.00, 1, 1),
+(27, 13, 2, 1, 266000.00, 266000.00, 1, 1),
+(28, 14, 8, 12, 18000.00, 216000.00, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -634,26 +660,27 @@ CREATE TABLE `estadias` (
   `ubicacion` varchar(150) DEFAULT NULL,
   `descripcion` text DEFAULT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
-  `id_producto` int(11) DEFAULT NULL
+  `id_producto` int(11) DEFAULT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `estadias`
 --
 
-INSERT INTO `estadias` (`id_estadias`, `nombre`, `imagen`, `imagen_interior`, `ubicacion`, `descripcion`, `precio`, `id_producto`) VALUES
-(1, 'Alvear Palace Hotel', '../../SOURCE/RESOURCES/ESTADIAS/alvear-palace-hotel.jpg', '../../SOURCE/RESOURCES/ESTADIAS/alvear-palace-hotel-interior.webp', 'Buenos Aires', 'Un ícono de lujo en la ciudad, con spa, restaurantes gourmet y vistas a la Recoleta.', 120000.00, NULL),
-(2, 'Llao Llao Hotel & Resort', '../../SOURCE/RESOURCES/ESTADIAS/hotel-llao-llao.jpg', '../../SOURCE/RESOURCES/ESTADIAS/hotel-llao-llao-interior.webp', 'Bariloche', 'Rodeado de lagos y montañas, ideal para escapadas románticas y actividades al aire libre.', 95000.00, NULL),
-(3, 'Cavas Wine Lodge', '../../SOURCE/RESOURCES/ESTADIAS/cavas-wine-lodge.jpg', '../../SOURCE/RESOURCES/ESTADIAS/cavas-wine-lodge-interior.webp', 'Mendoza', 'Hotel boutique en viñedos, con spa, degustaciones y experiencias gourmet.', 110000.00, NULL),
-(4, 'Hotel Faena', '../../SOURCE/RESOURCES/ESTADIAS/faena-hotel-interior.jpg', '../../SOURCE/RESOURCES/ESTADIAS/faena-hotel-interior.jpg', 'Buenos Aires', 'Lujo moderno en Puerto Madero, con piscina al aire libre y experiencias gastronómicas únicas.', 130000.00, NULL),
-(5, 'Arakur Ushuaia Resort & Spa', '../../SOURCE/RESOURCES/ESTADIAS/arakur-hotel.jpg', '../../SOURCE/RESOURCES/ESTADIAS/Arakur-hotel-interior.webp', 'Ushuaia', 'Resort de montaña con vistas panorámicas al Canal Beagle y spa de primer nivel.', 115000.00, NULL),
-(6, 'Hotel Amerian Portal del Iguazú', '../../SOURCE/RESOURCES/ESTADIAS/hotel-amerian.jpg', '../../SOURCE/RESOURCES/ESTADIAS/hotel-amerian-interior.avif', 'Misiones', 'A pasos de las Cataratas, ideal para familias y amantes de la naturaleza.', 80000.00, NULL),
-(7, 'Ritz Paris', '../../SOURCE/RESOURCES/ESTADIAS/Hôtel_Ritz.jpg', '../../SOURCE/RESOURCES/ESTADIAS/hotel-ritz-interior.jpg', 'París, Francia', 'Elegancia y tradición en el corazón de París, con spa, restaurantes y suites de lujo.', 1000000.00, NULL),
-(8, 'Burj Al Arab', '../../SOURCE/RESOURCES/ESTADIAS/burjalarab-dubai.webp', '../../SOURCE/RESOURCES/ESTADIAS/burjalarab-interior.webp', 'Dubái, Emiratos Árabes Unidos', 'El hotel más lujoso del mundo, con suites exclusivas y servicio de mayordomo 24 hs.', 1200000.00, NULL),
-(9, 'Marina Bay Sands', '../../SOURCE/RESOURCES/ESTADIAS/marina-bay.webp', '../../SOURCE/RESOURCES/ESTADIAS/marina-bay-interior.avif', 'Singapur', 'Famoso por su piscina infinita en la azotea y vistas panorámicas de la ciudad.', 600000.00, NULL),
-(10, 'The Plaza Hotel', '../../SOURCE/RESOURCES/ESTADIAS/luxury-hotel.webp', '../../SOURCE/RESOURCES/ESTADIAS/hotel-plaza-interior.jpeg', 'Nueva York, EE.UU.', 'Histórico hotel de lujo frente a Central Park, símbolo de elegancia neoyorquina.', 900000.00, NULL),
-(11, 'Hotel Atlantis The Palm', '../../SOURCE/RESOURCES/ESTADIAS/atlantis.jpeg', '../../SOURCE/RESOURCES/ESTADIAS/atlantis-interior.jpg', 'Dubái, Emiratos Árabes Unidos', 'Resort icónico en la isla Palm Jumeirah, con parque acuático y acuario.', 700000.00, NULL),
-(12, 'Hotel Bellagio', '../../SOURCE/RESOURCES/ESTADIAS/bellagio-hotel.jpg', '../../SOURCE/RESOURCES/ESTADIAS/bellagio-interior.png', 'Las Vegas, EE.UU.', 'Famoso por su espectáculo de fuentes y casino, en el corazón del Strip.', 400000.00, NULL);
+INSERT INTO `estadias` (`id_estadias`, `nombre`, `imagen`, `imagen_interior`, `ubicacion`, `descripcion`, `precio`, `id_producto`, `id_activo`) VALUES
+(1, 'Alvear Palace Hotel', '../../SOURCE/RESOURCES/ESTADIAS/alvear-palace-hotel.jpg', '../../SOURCE/RESOURCES/ESTADIAS/alvear-palace-hotel-interior.webp', 'Buenos Aires', 'Un ícono de lujo en la ciudad, con spa, restaurantes gourmet y vistas a la Recoleta.', 120000.00, NULL, 1),
+(2, 'Llao Llao Hotel & Resort', '../../SOURCE/RESOURCES/ESTADIAS/hotel-llao-llao.jpg', '../../SOURCE/RESOURCES/ESTADIAS/hotel-llao-llao-interior.webp', 'Bariloche', 'Rodeado de lagos y montañas, ideal para escapadas románticas y actividades al aire libre.', 95000.00, NULL, 1),
+(3, 'Cavas Wine Lodge', '../../SOURCE/RESOURCES/ESTADIAS/cavas-wine-lodge.jpg', '../../SOURCE/RESOURCES/ESTADIAS/cavas-wine-lodge-interior.webp', 'Mendoza', 'Hotel boutique en viñedos, con spa, degustaciones y experiencias gourmet.', 110000.00, NULL, 1),
+(4, 'Hotel Faena', '../../SOURCE/RESOURCES/ESTADIAS/faena-hotel-interior.jpg', '../../SOURCE/RESOURCES/ESTADIAS/faena-hotel-interior.jpg', 'Buenos Aires', 'Lujo moderno en Puerto Madero, con piscina al aire libre y experiencias gastronómicas únicas.', 130000.00, NULL, 1),
+(5, 'Arakur Ushuaia Resort & Spa', '../../SOURCE/RESOURCES/ESTADIAS/arakur-hotel.jpg', '../../SOURCE/RESOURCES/ESTADIAS/Arakur-hotel-interior.webp', 'Ushuaia', 'Resort de montaña con vistas panorámicas al Canal Beagle y spa de primer nivel.', 115000.00, NULL, 1),
+(6, 'Hotel Amerian Portal del Iguazú', '../../SOURCE/RESOURCES/ESTADIAS/hotel-amerian.jpg', '../../SOURCE/RESOURCES/ESTADIAS/hotel-amerian-interior.avif', 'Misiones', 'A pasos de las Cataratas, ideal para familias y amantes de la naturaleza.', 80000.00, NULL, 1),
+(7, 'Ritz Paris', '../../SOURCE/RESOURCES/ESTADIAS/Hôtel_Ritz.jpg', '../../SOURCE/RESOURCES/ESTADIAS/hotel-ritz-interior.jpg', 'París, Francia', 'Elegancia y tradición en el corazón de París, con spa, restaurantes y suites de lujo.', 1000000.00, NULL, 1),
+(8, 'Burj Al Arab', '../../SOURCE/RESOURCES/ESTADIAS/burjalarab-dubai.webp', '../../SOURCE/RESOURCES/ESTADIAS/burjalarab-interior.webp', 'Dubái, Emiratos Árabes Unidos', 'El hotel más lujoso del mundo, con suites exclusivas y servicio de mayordomo 24 hs.', 1200000.00, NULL, 1),
+(9, 'Marina Bay Sands', '../../SOURCE/RESOURCES/ESTADIAS/marina-bay.webp', '../../SOURCE/RESOURCES/ESTADIAS/marina-bay-interior.avif', 'Singapur', 'Famoso por su piscina infinita en la azotea y vistas panorámicas de la ciudad.', 600000.00, NULL, 1),
+(10, 'The Plaza Hotel', '../../SOURCE/RESOURCES/ESTADIAS/luxury-hotel.webp', '../../SOURCE/RESOURCES/ESTADIAS/hotel-plaza-interior.jpeg', 'Nueva York, EE.UU.', 'Histórico hotel de lujo frente a Central Park, símbolo de elegancia neoyorquina.', 900000.00, NULL, 1),
+(11, 'Hotel Atlantis The Palm', '../../SOURCE/RESOURCES/ESTADIAS/atlantis.jpeg', '../../SOURCE/RESOURCES/ESTADIAS/atlantis-interior.jpg', 'Dubái, Emiratos Árabes Unidos', 'Resort icónico en la isla Palm Jumeirah, con parque acuático y acuario.', 700000.00, NULL, 1),
+(12, 'Hotel Bellagio', '../../SOURCE/RESOURCES/ESTADIAS/bellagio-hotel.jpg', '../../SOURCE/RESOURCES/ESTADIAS/bellagio-interior.png', 'Las Vegas, EE.UU.', 'Famoso por su espectáculo de fuentes y casino, en el corazón del Strip.', 400000.00, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -4615,20 +4642,21 @@ CREATE TABLE `paquetes` (
   `duracion` varchar(50) DEFAULT NULL,
   `incluye` text DEFAULT NULL,
   `precio_aprox` decimal(10,2) DEFAULT NULL,
-  `id_producto` int(11) DEFAULT NULL
+  `id_producto` int(11) DEFAULT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `paquetes`
 --
 
-INSERT INTO `paquetes` (`id_paquetes`, `nombre_viaje`, `imagen`, `duracion`, `incluye`, `precio_aprox`, `id_producto`) VALUES
-(1, 'Bariloche - Villa La Angostura', '../../SOURCE/RESOURCES/bariloche.jpeg', '5 días / 4 noches', 'Vuelo, hotel 4 estrellas, traslados, excursiones opcionales.', 250000.00, NULL),
-(3, 'Cataratas del Iguazú - Puerto Iguazú', '../../SOURCE/RESOURCES/iguazu.jpeg', '4 días / 3 noches', 'Vuelo, alojamiento, visitas guiadas a las cataratas.', 266000.00, NULL),
-(4, 'Mendoza - Valle de Uco', '../../SOURCE/RESOURCES/valle-de-uco.webp', ' 4 días / 3 noches', ' Vuelo, hotel, tours de bodegas y degustaciones.', 220000.00, NULL),
-(5, 'Buenos Aires - Tigre Delta', '../../SOURCE/RESOURCES/tigre-delta.jpg', '4 dias / 5 noches', 'Hotel, city tour, paseo por el delta.', 120000.00, NULL),
-(6, 'El Calafate - Glaciar Perito Moreno', '../../SOURCE/RESOURCES/atractivo-glaciar-perito-moreno-1.jpg', '4 días / 3 noches', 'Vuelos, hotel, excursión al glaciar.', 350000.00, NULL),
-(7, 'Buenos Aires - Mar del Plata', '../../SOURCE/RESOURCES/mar-del-plata.jpg', '5 días / 4 noches', 'Bus semicama, hotel frente al mar, desayuno incluido, city tour.', 270000.00, NULL);
+INSERT INTO `paquetes` (`id_paquetes`, `nombre_viaje`, `imagen`, `duracion`, `incluye`, `precio_aprox`, `id_producto`, `id_activo`) VALUES
+(1, 'Bariloche - Villa La Angostura', '../../SOURCE/RESOURCES/bariloche.jpeg', '5 días / 4 noches', 'Vuelo, hotel 4 estrellas, traslados, excursiones opcionales.', 250000.00, NULL, 1),
+(3, 'Cataratas del Iguazú - Puerto Iguazú', '../../SOURCE/RESOURCES/iguazu.jpeg', '4 días / 3 noches', 'Vuelo, alojamiento, visitas guiadas a las cataratas.', 266000.00, NULL, 1),
+(4, 'Mendoza - Valle de Uco', '../../SOURCE/RESOURCES/valle-de-uco.webp', ' 4 días / 3 noches', ' Vuelo, hotel, tours de bodegas y degustaciones.', 220000.00, NULL, 1),
+(5, 'Buenos Aires - Tigre Delta', '../../SOURCE/RESOURCES/tigre-delta.jpg', '4 dias / 5 noches', 'Hotel, city tour, paseo por el delta.', 120000.00, NULL, 1),
+(6, 'El Calafate - Glaciar Perito Moreno', '../../SOURCE/RESOURCES/atractivo-glaciar-perito-moreno-1.jpg', '4 días / 3 noches', 'Vuelos, hotel, excursión al glaciar.', 350000.00, NULL, 1),
+(7, 'Buenos Aires - Mar del Plata', '../../SOURCE/RESOURCES/mar-del-plata.jpg', '5 días / 4 noches', 'Bus semicama, hotel frente al mar, desayuno incluido, city tour.', 270000.00, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -5442,6 +5470,13 @@ CREATE TABLE `transportes` (
   `descripcion` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Volcado de datos para la tabla `transportes`
+--
+
+INSERT INTO `transportes` (`id_transporte`, `tipo`, `empresa`, `descripcion`) VALUES
+(1, '10', 'Marquelor', 'dsadsadasda');
+
 -- --------------------------------------------------------
 
 --
@@ -5455,22 +5490,22 @@ CREATE TABLE `usuarios` (
   `contraseña` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_rol` int(11) DEFAULT NULL,
   `id_dato` int(11) DEFAULT NULL,
-  `id_verify` int(11) DEFAULT NULL
+  `id_verify` int(11) DEFAULT NULL,
+  `id_activo` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `usuario_nombre`, `email`, `contraseña`, `id_rol`, `id_dato`, `id_verify`) VALUES
-(39, 'Hooooooz', 'blablabla@gmail.com', '$2y$10$0wBks12fU4fyLhs7Xc.8NuDZ/Uxa9cM9OzWCRVB6ZMLH3VT6WTqGW', NULL, NULL, NULL),
-(40, 'Hola', 'lautarobenjaminsouza@gmail.com', '$2y$10$icZPr7PAXihKx2Y7cd.4deTY.QG0lZT1o055Q4wfR46VZQBpBYt.C', NULL, NULL, NULL),
-(41, 'dsadsadsad', 'lautarobenjaminsouz23232a@gmail.com', '$2y$10$x0fzivN4VhblfFRfwFzgWexfD89gmpW0Vyp7EU6K17.Xa7XB.QJye', NULL, NULL, NULL),
-(42, 'Hoooooozhgyt', 'cuentag54r5644x@gmail.com', '$2y$10$QwuM8xYRsC/YYmBU9k7HFuQdLPXXZznpnO79abz2n1sCbM1/TMW5q', NULL, NULL, NULL),
-(43, 'Hoooooozhgyt', 'safarakir232155135i@gmail.com', '$2y$10$G4EXISm/qTYl1tjY65yYTeHM1OyaciDh6SxlT7CNHPiegVH7s9rVm', NULL, NULL, NULL),
-(44, 'blabla2', 'mamacenso@gmail.com', '$2y$10$RBXWHtoRikz6CVdwvImxgugPmsjDuZprMIwpoVNPVShLdhPt2Xwzm', NULL, NULL, NULL),
-(47, 'Admin', 'lautarosouza58@gmail.com', '$2y$10$JRDmbK1KDFhuqHrOXwP7ueAzDETrJNOmy05oW0R4dXiNf2ifn/2JK', 1, NULL, 2),
-(49, 'Admin', 'zetazetazeta@gmail.com', '$2y$10$elUJ3lU5YEZ8W4pG6gBA3upB3cv5uF0VGM/WnnXmnaIt9n42M/skC', 2, NULL, NULL);
+INSERT INTO `usuarios` (`id_usuario`, `usuario_nombre`, `email`, `contraseña`, `id_rol`, `id_dato`, `id_verify`, `id_activo`) VALUES
+(39, 'Hooooooz', 'blablabla@gmail.com', '$2y$10$0wBks12fU4fyLhs7Xc.8NuDZ/Uxa9cM9OzWCRVB6ZMLH3VT6WTqGW', NULL, NULL, NULL, 1),
+(40, 'Hola', 'lautarobenjaminsouza@gmail.com', '$2y$10$icZPr7PAXihKx2Y7cd.4deTY.QG0lZT1o055Q4wfR46VZQBpBYt.C', NULL, NULL, NULL, 1),
+(41, 'dsadsadsad', 'lautarobenjaminsouz23232a@gmail.com', '$2y$10$x0fzivN4VhblfFRfwFzgWexfD89gmpW0Vyp7EU6K17.Xa7XB.QJye', NULL, NULL, NULL, 1),
+(42, 'Hoooooozhgyt', 'cuentag54r5644x@gmail.com', '$2y$10$QwuM8xYRsC/YYmBU9k7HFuQdLPXXZznpnO79abz2n1sCbM1/TMW5q', NULL, NULL, NULL, 1),
+(44, 'blabla2', 'mamacenso@gmail.com', '$2y$10$RBXWHtoRikz6CVdwvImxgugPmsjDuZprMIwpoVNPVShLdhPt2Xwzm', NULL, NULL, NULL, 1),
+(47, 'Admin', 'lautarosouza58@gmail.com', '$2y$10$JRDmbK1KDFhuqHrOXwP7ueAzDETrJNOmy05oW0R4dXiNf2ifn/2JK', 1, NULL, 2, 1),
+(49, 'Admin', 'zetazetazeta@gmail.com', '$2y$10$elUJ3lU5YEZ8W4pG6gBA3upB3cv5uF0VGM/WnnXmnaIt9n42M/skC', 2, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -5503,6 +5538,12 @@ ALTER TABLE `acciones_admins`
   ADD KEY `id_admin` (`id_admin`);
 
 --
+-- Indices de la tabla `activo`
+--
+ALTER TABLE `activo`
+  ADD PRIMARY KEY (`id_activo`);
+
+--
 -- Indices de la tabla `admins`
 --
 ALTER TABLE `admins`
@@ -5513,20 +5554,23 @@ ALTER TABLE `admins`
 -- Indices de la tabla `alojamientos`
 --
 ALTER TABLE `alojamientos`
-  ADD PRIMARY KEY (`id_alojamiento`);
+  ADD PRIMARY KEY (`id_alojamiento`),
+  ADD KEY `fk_alojamientos_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `autos`
 --
 ALTER TABLE `autos`
-  ADD PRIMARY KEY (`id_autos`);
+  ADD PRIMARY KEY (`id_autos`),
+  ADD KEY `fk_autos_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `carrito`
 --
 ALTER TABLE `carrito`
   ADD PRIMARY KEY (`id_carrito`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `fk_carrito_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `carrito_items`
@@ -5534,7 +5578,8 @@ ALTER TABLE `carrito`
 ALTER TABLE `carrito_items`
   ADD PRIMARY KEY (`id_item`),
   ADD KEY `id_carrito` (`id_carrito`),
-  ADD KEY `fk_carrito_items_producto` (`id_producto`);
+  ADD KEY `fk_carrito_items_producto` (`id_producto`),
+  ADD KEY `fk_carritoitems_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `datos_personales`
@@ -5551,13 +5596,15 @@ ALTER TABLE `datos_personales`
 -- Indices de la tabla `descuento`
 --
 ALTER TABLE `descuento`
-  ADD PRIMARY KEY (`id_descuento`);
+  ADD PRIMARY KEY (`id_descuento`),
+  ADD KEY `fk_descuento_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `destinos`
 --
 ALTER TABLE `destinos`
-  ADD PRIMARY KEY (`id_destino`);
+  ADD PRIMARY KEY (`id_destino`),
+  ADD KEY `fk_destinos_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `detalle_pedido`
@@ -5566,7 +5613,8 @@ ALTER TABLE `detalle_pedido`
   ADD PRIMARY KEY (`id_detallepedido`),
   ADD KEY `fk_detalle_pedido_pedido` (`id_pedido`),
   ADD KEY `fk_detalle_pedido_producto` (`id_producto`),
-  ADD KEY `fk_detalle_pedido_estado` (`id_estado`);
+  ADD KEY `fk_detalle_pedido_estado` (`id_estado`),
+  ADD KEY `fk_detallepedido_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `email_resets`
@@ -5579,7 +5627,8 @@ ALTER TABLE `email_resets`
 -- Indices de la tabla `estadias`
 --
 ALTER TABLE `estadias`
-  ADD PRIMARY KEY (`id_estadias`);
+  ADD PRIMARY KEY (`id_estadias`),
+  ADD KEY `fk_estadias_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `estado_pedido`
@@ -5625,7 +5674,8 @@ ALTER TABLE `pagometodo`
 -- Indices de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
-  ADD PRIMARY KEY (`id_paquetes`);
+  ADD PRIMARY KEY (`id_paquetes`),
+  ADD KEY `fk_paquetes_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `partido`
@@ -5712,7 +5762,8 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_datos_personales` (`id_dato`),
   ADD KEY `fk_roles` (`id_rol`) USING BTREE,
-  ADD KEY `fk_usuarios_verify` (`id_verify`);
+  ADD KEY `fk_usuarios_verify` (`id_verify`),
+  ADD KEY `fk_usuarios_activo` (`id_activo`);
 
 --
 -- Indices de la tabla `verify_email`
@@ -5896,13 +5947,13 @@ ALTER TABLE `tarjeta`
 -- AUTO_INCREMENT de la tabla `transportes`
 --
 ALTER TABLE `transportes`
-  MODIFY `id_transporte` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `verify_email`
@@ -5927,10 +5978,23 @@ ALTER TABLE `admins`
   ADD CONSTRAINT `fk_admin_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
 
 --
+-- Filtros para la tabla `alojamientos`
+--
+ALTER TABLE `alojamientos`
+  ADD CONSTRAINT `fk_alojamientos_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`);
+
+--
+-- Filtros para la tabla `autos`
+--
+ALTER TABLE `autos`
+  ADD CONSTRAINT `fk_autos_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`);
+
+--
 -- Filtros para la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `fk_carrito_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`);
 
 --
 -- Filtros para la tabla `carrito_items`
@@ -5938,6 +6002,7 @@ ALTER TABLE `carrito`
 ALTER TABLE `carrito_items`
   ADD CONSTRAINT `carrito_items_ibfk_1` FOREIGN KEY (`id_carrito`) REFERENCES `carrito` (`id_carrito`),
   ADD CONSTRAINT `fk_carrito_items_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_carritoitems_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`),
   ADD CONSTRAINT `fk_id_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE CASCADE;
 
 --
@@ -5951,12 +6016,31 @@ ALTER TABLE `datos_personales`
   ADD CONSTRAINT `fk_dp_provincia` FOREIGN KEY (`id_provincia`) REFERENCES `provincia` (`id_provincia`);
 
 --
+-- Filtros para la tabla `descuento`
+--
+ALTER TABLE `descuento`
+  ADD CONSTRAINT `fk_descuento_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`);
+
+--
+-- Filtros para la tabla `destinos`
+--
+ALTER TABLE `destinos`
+  ADD CONSTRAINT `fk_destinos_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`);
+
+--
 -- Filtros para la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
   ADD CONSTRAINT `fk_detalle_pedido_estado` FOREIGN KEY (`id_estado`) REFERENCES `estado_pedido` (`id_estado`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_detalle_pedido_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_detalle_pedido_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_detalle_pedido_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_detallepedido_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`);
+
+--
+-- Filtros para la tabla `estadias`
+--
+ALTER TABLE `estadias`
+  ADD CONSTRAINT `fk_estadias_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`);
 
 --
 -- Filtros para la tabla `facturacion`
@@ -5982,6 +6066,12 @@ ALTER TABLE `opiniones`
 --
 ALTER TABLE `pagometodo`
   ADD CONSTRAINT `fk_orden_descuento` FOREIGN KEY (`id_descuento`) REFERENCES `descuento` (`id_descuento`);
+
+--
+-- Filtros para la tabla `paquetes`
+--
+ALTER TABLE `paquetes`
+  ADD CONSTRAINT `fk_paquetes_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`);
 
 --
 -- Filtros para la tabla `partido`
@@ -6020,6 +6110,7 @@ ALTER TABLE `tarjeta`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `fk_datos_personales` FOREIGN KEY (`id_dato`) REFERENCES `datos_personales` (`id_dato`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_usuarios_activo` FOREIGN KEY (`id_activo`) REFERENCES `activo` (`id_activo`),
   ADD CONSTRAINT `fk_usuarios_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`),
   ADD CONSTRAINT `fk_usuarios_verify` FOREIGN KEY (`id_verify`) REFERENCES `verify_email` (`id_verify`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;

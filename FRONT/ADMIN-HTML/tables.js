@@ -38,6 +38,7 @@ async function cargarSelectorTablas() {
 // Renderizar la tabla seleccionada con paginación
 async function cargarTabla(nombre) {
   tablaActual = nombre;
+  window.tablaActual = nombre;
   const card = document.querySelector(".card.has-table");
   if (!card) return;
   const cardContent = card.querySelector(".card-content");
@@ -181,3 +182,5 @@ function capitalizeFirstLetter(str) {
 }
 
 document.addEventListener("DOMContentLoaded", cargarSelectorTablas);
+window.tablaActual = tablaActual;
+window.cargarTabla = cargarTabla;
