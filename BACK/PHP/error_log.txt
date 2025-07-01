@@ -1,5 +1,5 @@
-[30-Jun-2025 19:22:45 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
-[30-Jun-2025 19:22:45 Europe/Berlin] Items encontrados: Array
+[01-Jul-2025 07:45:38 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
+[01-Jul-2025 07:45:38 Europe/Berlin] Items encontrados: Array
 (
     [0] => Array
         (
@@ -13,8 +13,8 @@
 
 )
 
-[30-Jun-2025 19:22:46 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 3
-[30-Jun-2025 19:22:46 Europe/Berlin] Items encontrados: Array
+[01-Jul-2025 07:45:39 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 2
+[01-Jul-2025 07:45:39 Europe/Berlin] Items encontrados: Array
 (
     [0] => Array
         (
@@ -28,8 +28,8 @@
 
 )
 
-[30-Jun-2025 19:22:47 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 2
-[30-Jun-2025 19:22:47 Europe/Berlin] Items encontrados: Array
+[01-Jul-2025 07:45:40 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 3
+[01-Jul-2025 07:45:40 Europe/Berlin] Items encontrados: Array
 (
     [0] => Array
         (
@@ -43,8 +43,8 @@
 
 )
 
-[30-Jun-2025 19:22:47 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
-[30-Jun-2025 19:22:47 Europe/Berlin] Items encontrados: Array
+[01-Jul-2025 07:45:48 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
+[01-Jul-2025 07:45:48 Europe/Berlin] Items encontrados: Array
 (
     [0] => Array
         (
@@ -58,79 +58,3 @@
 
 )
 
-[30-Jun-2025 19:23:14 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
-[30-Jun-2025 19:23:14 Europe/Berlin] Items encontrados: Array
-(
-    [0] => Array
-        (
-            [id_producto] => 8
-            [cantidad] => 6
-            [tipo] => auto
-            [nombre] => CHEVROLET ONIX
-            [precio] => 18000.00
-            [total] => 108000
-        )
-
-    [1] => Array
-        (
-            [id_producto] => 31
-            [cantidad] => 1
-            [tipo] => pasaje
-            [nombre] => CÓRDOBA → MENDOZA
-            [precio] => 48000.00
-            [total] => 48000
-        )
-
-)
-
-[30-Jun-2025 19:23:15 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 3
-[30-Jun-2025 19:23:15 Europe/Berlin] Items encontrados: Array
-(
-    [0] => Array
-        (
-            [id_producto] => 8
-            [cantidad] => 6
-            [tipo] => auto
-            [nombre] => CHEVROLET ONIX
-            [precio] => 18000.00
-            [total] => 108000
-        )
-
-    [1] => Array
-        (
-            [id_producto] => 31
-            [cantidad] => 1
-            [tipo] => pasaje
-            [nombre] => CÓRDOBA → MENDOZA
-            [precio] => 48000.00
-            [total] => 48000
-        )
-
-)
-
-[30-Jun-2025 19:23:23 Europe/Berlin] Query ejecutada para carrito 27, pagometodo 1
-[30-Jun-2025 19:23:23 Europe/Berlin] Items encontrados: Array
-(
-    [0] => Array
-        (
-            [id_producto] => 8
-            [cantidad] => 6
-            [tipo] => auto
-            [nombre] => CHEVROLET ONIX
-            [precio] => 18000.00
-            [total] => 108000
-        )
-
-    [1] => Array
-        (
-            [id_producto] => 31
-            [cantidad] => 1
-            [tipo] => pasaje
-            [nombre] => CÓRDOBA → MENDOZA
-            [precio] => 48000.00
-            [total] => 48000
-        )
-
-)
-
-[30-Jun-2025 19:48:54 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47

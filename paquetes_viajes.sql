@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-06-2025 a las 14:51:01
+-- Tiempo de generación: 01-07-2025 a las 07:58:43
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -476,6 +476,13 @@ CREATE TABLE `carrito_items` (
   `id_producto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `carrito_items`
+--
+
+INSERT INTO `carrito_items` (`id_item`, `id_carrito`, `tipo`, `cantidad`, `id_producto`) VALUES
+(38, 27, 'auto', 6, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -605,7 +612,13 @@ CREATE TABLE `email_resets` (
 --
 
 INSERT INTO `email_resets` (`id`, `id_usuario`, `nuevo_email`, `token`, `expires_at`, `creado_en`) VALUES
-(10, 47, 'nuevo@gmail.com', '00d3b3a56b09005ed03fa2a09dcee479a6439e4b0ef941d12d7411730bce6199', '2025-06-30 10:41:21', '2025-06-30 04:41:21');
+(10, 47, 'nuevo@gmail.com', '00d3b3a56b09005ed03fa2a09dcee479a6439e4b0ef941d12d7411730bce6199', '2025-06-30 10:41:21', '2025-06-30 04:41:21'),
+(11, 47, '', 'f83242c387550d8ad50ccd6cda0ae1edbf92eb3aa2d9d611d2ebeae6c3896f88', '2025-07-01 07:54:10', '2025-07-01 01:54:10'),
+(12, 47, '', 'dc3b0acf8aecadaa408e5ee58683b543bb511350f021668b103ca2165dceee6a', '2025-07-01 07:54:18', '2025-07-01 01:54:18'),
+(13, 47, '', '66ab666cc2efc4fd3defb3eb08db8053c2b456fb8f4bc8b049d3bff865a16698', '2025-07-01 07:54:22', '2025-07-01 01:54:22'),
+(14, 47, '', '23c886e13988c7e862965e0969f6e6184b203b88b5f2b74b2971788957403025', '2025-07-01 07:54:25', '2025-07-01 01:54:25'),
+(15, 47, '', 'c6ecb7c40df529fc2eada9b79ae8381c4bd4152ec9e035eb7292279f03c310e7', '2025-07-01 07:54:28', '2025-07-01 01:54:28'),
+(16, 47, '', 'c73a7bb1e0a071381db2e6f45d61ab26604c555f9c1a60ed22f477834baccb25', '2025-07-01 08:10:06', '2025-07-01 02:10:06');
 
 -- --------------------------------------------------------
 
@@ -4564,7 +4577,9 @@ CREATE TABLE `opiniones` (
 --
 
 INSERT INTO `opiniones` (`id_opinion`, `Nombre`, `mail`, `id_motivo`, `telefono`, `opinion`, `fecha`) VALUES
-(3, 'Lautaro', 'safarakiri@gmail.com', 3, '541161623274', 'dadwadad', '2025-06-30 09:48:57');
+(3, 'Lautaro', 'safarakiri@gmail.com', 3, '541161623274', 'dadwadad', '2025-06-30 09:48:57'),
+(19, 'Lautaro', 'lautarosouza58@gmail.com', 2, '541161623274', 'dwadawdaw', '2025-07-01 01:46:21'),
+(20, 'Lautaro', 'cuentag4x@gmail.com', 2, '541161623274', 'dwadawdwa', '2025-07-01 01:50:33');
 
 -- --------------------------------------------------------
 
@@ -5743,7 +5758,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `carrito_items`
 --
 ALTER TABLE `carrito_items`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_personales`
@@ -5773,7 +5788,7 @@ ALTER TABLE `detalle_pedido`
 -- AUTO_INCREMENT de la tabla `email_resets`
 --
 ALTER TABLE `email_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `estadias`
@@ -5809,7 +5824,7 @@ ALTER TABLE `motivo`
 -- AUTO_INCREMENT de la tabla `opiniones`
 --
 ALTER TABLE `opiniones`
-  MODIFY `id_opinion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_opinion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `pagometodo`

@@ -4,9 +4,3 @@ Array
     [tipo] => auto
     [cantidad] => 1
 )
-Array
-(
-    [id_pasaje] => 2
-    [tipo] => pasaje
-    [cantidad] => 1
-)

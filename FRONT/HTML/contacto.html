@@ -68,10 +68,12 @@
     <section class="contacto-section">
       <div class="contacto-card">
         <h2>Contactanos</h2>
-        <form id="form-contacto" action="../../BACK/PHP/insertar_opinion.php" method="POST">
-          <div class="contacto-form-grid">
-            <div class="form-group">
-              <label for="nombre">Nombre</label>
+      <form id="form-opinion" method="post">
+        <div class="contacto-form-grid">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <div class="input-icon-group">
+              <span class="input-icon"><i class="fa-solid fa-user"></i></span>
               <input type="text" id="nombre" name="nombre" required maxlength="50" placeholder="Tu nombre">
             </div>
           </div>
@@ -89,7 +91,6 @@
             <div class="input-icon-group">
               <span class="input-icon"><i class="fa-solid fa-question-circle"></i></span>
               <select id="motivo" name="motivo" required>
-                <option value="">Selecciona una opción</option>
                 <option value="1">Consulta</option>
                 <option value="2">Reclamo</option>
                 <option value="3">Sugerencia</option>
@@ -154,22 +155,34 @@
             <span class="faq-icon"><i class="fa-solid fa-chevron-right"></i></span>
           </button>
           <div class="faq-answer">
-            Puedes dejar tu opinión utilizando el formulario de la página. Valoramos mucho tus comentarios para mejorar nuestros servicios.
+            Puedes dejar tu opinión utilizando el formulario de la pagina. Valoramos mucho tus comentarios para mejorar nuestros servicios. 
           </div>
         </li>
       </ul>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <img src="../../SOURCE/KAPIFLY.png" alt="KAPIFLY Logo" class="footer-logo-img" style="height:48px;">      
-        <span class="footer-desc">Viajes y experiencias únicas</span>
-      </div>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="../../SOURCE/KAPIFLY.png" alt="KAPIFLY Logo" class="footer-logo-img" style="height:48px;">      
+      <span class="footer-desc">Viajes y experiencias únicas</span>
     </div>
-  </footer>
-
+    <div class="footer-links">
+      <a href="../HTML/contacto.html" class="footer-link">Contacto</a>
+      <a href="#" class="footer-link">Términos</a>
+      <a href="#" class="footer-link">Privacidad</a>
+      <a href="../HTML/contacto.html" class="footer-link">Preguntas frecuentes</a>
+    </div>
+    <div class="footer-social">
+      <a href="#" class="footer-social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="footer-social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="footer-social-link" title="Tiktok"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 KAPIFLY. Todos los derechos reservados.</p>
+  </div>
+</footer>
   <script src="../../BACK/JS LOGICA/submitdata.js"></script>
   <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
    <script>
@@ -184,5 +197,43 @@
     });
   </script>
   <script src="../JS DISEÑO/menu.js"></script>
+  <script>
+    new FormHandler({
+      formSelector: "#form-opinion",
+      endpoint: "../../BACK/PHP/insertar_opinion.php",
+      messageTarget: document.getElementById("msg-contacto"),
+      onSuccess: function() {
+        document.getElementById("msg-contacto").textContent = "¡Gracias por tu opinión!";
+      }
+    });
+
+    // FAQ desplegable
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const item = this.closest('.faq-item');
+        item.classList.toggle('active');
+        // Cierra otros abiertos
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) other.classList.remove('active');
+        });
+      });
+    });
+  </script>
+  <script>
+  // Animación de aparición del formulario al hacer scroll
+  document.addEventListener("DOMContentLoaded", function() {
+    const card = document.querySelector('.contacto-card');
+    function showOnScroll() {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 80) {
+        card.classList.add('visible');
+        window.removeEventListener('scroll', showOnScroll);
+      }
+    }
+    showOnScroll();
+    window.addEventListener('scroll', showOnScroll);
+  });
+</script>
+<script src="../JS DISEÑO/darkmode.js"></script>
 </body>
 </html>
