@@ -5,115 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KAPIFLY - Panel de Administración</title>
   <link rel="stylesheet" href="../CSS/admin.css" />
-  <style>
-.tabla-productos {
-  width: 100%;
-  border-collapse: collapse;
-}
-.tabla-productos th, .tabla-productos td {
-  border: 1px solid #ccc;
-  padding: 6px 10px;
-  text-align: left;
-}
-.tabla-productos th {
-  background: #f5f5f5;
-  color: #111 !important;
-}
-.tabla-productos img {
-  display: block;
-  max-width: 80px;
-  max-height: 50px;
-}
-.btn-accion {
-  border: none;
-  background: none;
-  font-size: 1.2em;
-  cursor: pointer;
-  margin: 0 2px;
-  transition: color 0.2s;
-}
-.btn-accion:hover {
-  color: #c00;
-}
-.btn-modificar:hover { color: #0077cc; }
-.btn-agregar:hover { color: #090; }
-.btn-filtro {
-  background: #0077cc;
-  color: #fff;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.2s;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-}
-.btn-filtro:hover {
-  background: #005fa3;
-}
-.filtros-panel {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-.filtros-panel label {
-  display: block;
-  margin-bottom: 8px;
-}
-.filtros-panel input {
-  width: calc(100% - 22px);
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-</style>
+<script src="../../BACK/JS LOGICA/admin.js"></script>
 </head>
 <body>
-
 <div class="admin-container">
   <aside class="admin-sidebar">
     <h2 class="logo">Admin</h2>
     <nav class="admin-nav">
       <ul>
         <li><a href="#" data-section="inicio">Inicio</a></li>
-
-        <li>
-          <a href="#" data-section="productos" class="has-submenu">Productos</a>
-          
-        </li>
-
-        <li>
-          <a href="#" data-section="usuarios" class="has-submenu">Usuarios</a>
-          
-        </li>
-
+        <li><a href="#" data-section="productos" class="has-submenu">Productos</a></li>
+        <li><a href="#" data-section="usuarios" class="has-submenu">Usuarios</a></li>
         <li><a href="index.html">Salir</a></li>
       </ul>
     </nav>
   </aside>
-
   <main class="admin-main">
     <header class="admin-header">
       <h1>Panel de Administración</h1>
     </header>
-
-  <section id="inicio" class="contenido-seccion">
-    <div class="welcome-card">
-      <div class="welcome-icon">👋</div>
-      <div class="welcome-text">
-        <h2>¡Bienvenido, Administrador!</h2>
-        <p>Gestioná tus productos, usuarios y pedidos de forma rápida y eficiente desde este panel.</p>
+    <!-- INICIO -->
+    <section id="inicio" class="contenido-seccion">
+      <div class="welcome-card">
+        <div class="welcome-icon">👋</div>
+        <div class="welcome-text">
+          <h2>¡Bienvenido, Administrador!</h2>
+          <p>Gestioná tus productos, usuarios y pedidos de forma rápida y eficiente desde este panel.</p>
+        </div>
       </div>
-    </div>
-  </section>
-  <section id="productos" class="contenido-seccion" hidden>
-      <div id="ver-productos" class="contenido-seccion" hidden>
+    </section>
+    <!-- PRODUCTOS -->
+    <section id="productos" class="contenido-seccion" hidden>
+      <div id="ver-productos" class="contenido-subseccion" hidden>
         <h2>Listado de productos</h2>
         <label for="tipo-producto">Ver:</label>
         <select id="tipo-producto">
@@ -122,12 +45,9 @@
           <option value="estadias">Estadías</option>
           <option value="pasajes">Pasajes</option>
         </select>
-
         <div id="tabla-productos-container" style="margin-top:1em;"></div>
       </div>
-
-
-      <div id="agregar-producto" class="contenido-seccion" hidden>
+      <div id="agregar-producto" class="contenido-subseccion" hidden>
         <h2>Agregar nuevo producto</h2>
         <form id="form-insert-producto" enctype="multipart/form-data" class="form-admin">
           <label>Tabla:
@@ -143,9 +63,7 @@
           <div class="msg" id="msg-insert-producto"></div>
         </form>
       </div>
-
-
-      <div id="modificar-producto" class="contenido-seccion" hidden>
+      <div id="modificar-producto" class="contenido-subseccion" hidden>
         <h2>Modificar Producto</h2>
         <form id="form-modificar-producto" class="form-admin">
           <label>Tabla:
@@ -167,9 +85,7 @@
           <div class="msg" id="msg-modificar"></div>
         </form>
       </div>
-
-
-      <div id="eliminar-producto" class="contenido-seccion" hidden>
+      <div id="eliminar-producto" class="contenido-subseccion" hidden>
         <h2>Eliminar Producto</h2>
         <form id="form-borrar-producto" class="form-admin">
           <label>Tabla:
@@ -195,13 +111,27 @@
           <div class="msg" id="msg-borrar"></div>
         </form>
       </div>
-      </section>
-      <section id="usuarios" class="contenido-seccion" hidden>
-        <h2>Gestión de Usuarios</h2>
-        <!-- Ver usuarios -->
-        <div id="ver-usuarios" class="contenido-subseccion" hidden>
-          <h3>Listado de registros</h3>
-          <select id="tipo-usuario-ver">
+    </section>
+    <!-- USUARIOS -->
+    <section id="usuarios" class="contenido-seccion" hidden>
+      <h2>Gestión de Usuarios</h2>
+      <div id="ver-usuarios" class="contenido-subseccion" hidden>
+        <h3>Listado de registros</h3>
+        <select id="tipo-usuario-ver">
+          <option value="usuarios">Usuarios</option>
+          <option value="opiniones">Opiniones</option>
+          <option value="detalle_pedido">Detalle Pedido</option>
+          <option value="datos_personales">Datos Personales</option>
+          <option value="localidad">Localidad</option>
+          <option value="provincia">Provincia</option>
+          <option value="partido">Partido</option>
+        </select>
+        <div id="tabla-usuarios-resultados"></div>
+      </div>
+      <div id="agregar-usuario" class="contenido-subseccion" hidden>
+        <h3>Agregar</h3>
+        <form id="form-insert-usuario" class="form-admin">
+          <select name="tabla" id="tabla-insertar-usuario" required>
             <option value="usuarios">Usuarios</option>
             <option value="opiniones">Opiniones</option>
             <option value="detalle_pedido">Detalle Pedido</option>
@@ -210,15 +140,16 @@
             <option value="provincia">Provincia</option>
             <option value="partido">Partido</option>
           </select>
-
-          <div id="tabla-usuarios-resultados"></div>
-        </div>
-
-        <!-- Agregar -->
-        <div id="agregar-usuario" class="contenido-subseccion" hidden>
-          <h3>Agregar</h3>
-          <form id="form-insert-usuario" class="form-admin">
-            <select name="tabla" id="tabla-insertar-usuario" required>
+          <div id="campos-insertar-usuario"></div>
+          <button type="submit">Insertar</button>
+          <div class="msg" id="msg-insert-usuario"></div>
+        </form>
+      </div>
+      <div id="modificar-usuario" class="contenido-subseccion" hidden>
+        <h3>Modificar</h3>
+        <form id="form-modificar-usuario" class="form-admin">
+          <label>Tabla:
+            <select name="tabla" id="tabla-modificar-usuario" required>
               <option value="usuarios">Usuarios</option>
               <option value="opiniones">Opiniones</option>
               <option value="detalle_pedido">Detalle Pedido</option>
@@ -227,403 +158,44 @@
               <option value="provincia">Provincia</option>
               <option value="partido">Partido</option>
             </select>
-            <div id="campos-insertar-usuario"></div>
-            <button type="submit">Insertar</button>
-            <div class="msg" id="msg-insert-usuario"></div>
-          </form>
-        </div>
-
-        <!-- Modificar -->
-        <div id="modificar-usuario" class="contenido-subseccion" hidden>
-          <h3>Modificar</h3>
-          <form id="form-modificar-usuario" class="form-admin">
-            <label>Tabla:
-              <select name="tabla" id="tabla-modificar-usuario" required>
-                <option value="usuarios">Usuarios</option>
-                <option value="opiniones">Opiniones</option>
-                <option value="detalle_pedido">Detalle Pedido</option>
-                <option value="datos_personales">Datos Personales</option>
-                <option value="localidad">Localidad</option>
-                <option value="provincia">Provincia</option>
-                <option value="partido">Partido</option>
-              </select>
-            </label>
-            <label>ID: <input name="id" type="number" required></label>
-            <div id="campos-modificar-usuario"></div>
-            <input type="hidden" name="accion" value="modificar">
-            <button type="submit">Modificar</button>
-            <div class="msg" id="msg-modificar-usuario"></div>
-          </form>
-        </div>
-
-        <!-- Eliminar -->
-        <div id="eliminar-usuario" class="contenido-subseccion" hidden>
-          <h3>Eliminar</h3>
-          <form id="form-eliminar-usuario" class="form-admin">
-            <label>Tabla:
-              <select name="tabla" required>
-                <option value="usuarios">Usuarios</option>
-                <option value="opiniones">Opiniones</option>
-                <option value="detalle_pedido">Detalle Pedido</option>
-                <option value="datos_personales">Datos Personales</option>
-                <option value="localidad">Localidad</option>
-                <option value="provincia">Provincia</option>
-                <option value="partido">Partido</option>
-              </select>
-            </label>
-            <label>Eliminar por:
-              <select id="eliminar-usuario-por" name="eliminar_por">
-                <option value="id">ID</option>
-                <option value="nombre">Nombre</option>
-              </select>
-            </label>
-            <div id="campo-eliminar-usuario"></div>
-            <input type="hidden" name="accion" value="borrar">
-            <button type="submit">Eliminar</button>
-            <div class="msg" id="msg-eliminar-usuario"></div>
-          </form>
-        </div>
-      </section>
-      
+          </label>
+          <label>ID: <input name="id" type="number" required></label>
+          <div id="campos-modificar-usuario"></div>
+          <input type="hidden" name="accion" value="modificar">
+          <button type="submit">Modificar</button>
+          <div class="msg" id="msg-modificar-usuario"></div>
+        </form>
+      </div>
+      <div id="eliminar-usuario" class="contenido-subseccion" hidden>
+        <h3>Eliminar</h3>
+        <form id="form-eliminar-usuario" class="form-admin">
+          <label>Tabla:
+            <select name="tabla" required>
+              <option value="usuarios">Usuarios</option>
+              <option value="opiniones">Opiniones</option>
+              <option value="detalle_pedido">Detalle Pedido</option>
+              <option value="datos_personales">Datos Personales</option>
+              <option value="localidad">Localidad</option>
+              <option value="provincia">Provincia</option>
+              <option value="partido">Partido</option>
+            </select>
+          </label>
+          <label>Eliminar por:
+            <select id="eliminar-usuario-por" name="eliminar_por">
+              <option value="id">ID</option>
+              <option value="nombre">Nombre</option>
+            </select>
+          </label>
+          <div id="campo-eliminar-usuario"></div>
+          <input type="hidden" name="accion" value="borrar">
+          <button type="submit">Eliminar</button>
+          <div class="msg" id="msg-eliminar-usuario"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
 </body>
 </html>
 
-<script>
-// ========== FORMULARIOS PRODUCTOS Y USUARIOS ==========
-document.addEventListener("DOMContentLoaded", () => {
 
-  const camposPorTabla = {
-    autos: `
-      <label>Nombre: <input name="nombre" required></label>
-      <label>Tipo: <input name="tipo" required></label>
-      <label>Capacidad: <input name="capacidad" type="number" required></label>
-      <label>Precio: <input name="precio" type="number" required></label>
-      <label>Imagen (URL o nombre): <input name="imagen" required></label>
-      <label>Imagen Interior (URL o nombre): <input name="imagen_interior"></label>
-    `,
-    pasajes: `
-      <label>Nombre: <input name="nombre" required></label>
-      <label>Imagen (URL o nombre): <input name="imagen" required></label>
-      <label>Aerolínea: <input name="aerolinea" required></label>
-      <label>Duración: <input name="duracion" required></label>
-      <label>Precio desde: <input name="precio_desde" type="number" required></label>
-      <label>Clase: <input name="clase" required></label>
-    `,
-    paquetes: `
-      <label>Nombre del viaje: <input name="nombre_viaje" required></label>
-      <label>Imagen (URL o nombre): <input name="imagen" required></label>
-      <label>Duración: <input name="duracion" required></label>
-      <label>Incluye: <input name="incluye" required></label>
-      <label>Precio aprox: <input name="precio_aprox" type="number" required></label>
-    `,
-    estadias: `
-      <label>Nombre: <input name="nombre" required></label>
-      <label>Imagen (URL o nombre): <input name="imagen" required></label>
-      <label>Ubicación: <input name="ubicacion" required></label>
-      <label>Descripción: <input name="descripcion" required></label>
-      <label>Precio: <input name="precio" type="number" required></label>
-    `
-  };
-  const selectTabla = document.getElementById("tabla-insertar");
-  const camposDiv = document.getElementById("campos-insertar");
-  function mostrarCampos() {
-    camposDiv.innerHTML = camposPorTabla[selectTabla.value];
-  }
-  selectTabla.addEventListener("change", mostrarCampos);
-  mostrarCampos();
-
-
-  const camposPorTablaUsuario = {
-    usuarios: `
-      <label>Mail: <input name="mail" required></label>
-      <label>Contraseña: <input name="contrasena" type="password" required></label>
-      <label>Rol: <input name="rol" required></label>
-    `,
-    opiniones: `
-      <label>ID Usuario: <input name="id_usuario" required></label>
-      <label>Mensaje: <input name="mensaje" required></label>
-      <label>Fecha: <input name="fecha" type="date" required></label>
-    `,
-    detalle_pedido: `
-      <label>ID Pedido: <input name="id_pedido" required></label>
-      <label>Nombre Producto: <input name="nombre_producto" required></label>
-      <label>Precio: <input name="precio" type="number" required></label>
-      <label>Cantidad: <input name="cantidad" type="number" required></label>
-    `,
-    datos_personales: `
-      <label>ID Usuario: <input name="id_usuario" required></label>
-      <label>Nombre: <input name="nombre" required></label>
-      <label>Apellido: <input name="apellido" required></label>
-      <label>DNI: <input name="dni" required></label>
-      <label>Teléfono: <input name="telefono" required></label>
-      <label>Dirección: <input name="direccion" required></label>
-      <label>ID Localidad: <input name="id_localidad" required></label>
-    `,
-    localidad: `
-      <label>Nombre: <input name="nombre" required></label>
-      <label>ID Partido: <input name="id_partido" required></label>
-    `,
-    provincia: `
-      <label>Nombre: <input name="nombre" required></label>
-    `,
-    partido: `
-      <label>Nombre: <input name="nombre" required></label>
-      <label>ID Provincia: <input name="id_provincia" required></label>
-    `
-  };
-  const selectInsertarUsuario = document.getElementById("tabla-insertar-usuario");
-  const camposInsertarDiv = document.getElementById("campos-insertar-usuario");
-  const selectModificarUsuario = document.getElementById("tabla-modificar-usuario");
-  const camposModificarDiv = document.getElementById("campos-modificar-usuario");
-  function mostrarCamposUsuario(select, div) {
-    div.innerHTML = camposPorTablaUsuario[select.value] || "";
-  }
-  selectInsertarUsuario.addEventListener("change", () => mostrarCamposUsuario(selectInsertarUsuario, camposInsertarDiv));
-  mostrarCamposUsuario(selectInsertarUsuario, camposInsertarDiv);
-  selectModificarUsuario.addEventListener("change", () => mostrarCamposUsuario(selectModificarUsuario, camposModificarDiv));
-  mostrarCamposUsuario(selectModificarUsuario, camposModificarDiv);
-
-
-  const eliminarPor = document.getElementById("eliminar-por");
-  const campoEliminar = document.getElementById("campo-eliminar");
-  function mostrarCampoEliminar() {
-    if (eliminarPor.value === "id") {
-      campoEliminar.innerHTML = '<label>ID: <input name="id" type="number" required></label>';
-    } else {
-      campoEliminar.innerHTML = '<label>Nombre: <input name="nombre" required></label>';
-    }
-  }
-  eliminarPor.addEventListener("change", mostrarCampoEliminar);
-  mostrarCampoEliminar();
-
- 
-  const campoEliminarUsuario = document.getElementById("campo-eliminar-usuario");
-  document.getElementById("eliminar-usuario-por").addEventListener("change", e => {
-    campoEliminarUsuario.innerHTML = e.target.value === "id"
-      ? '<label>ID: <input name="id" type="number" required></label>'
-      : '<label>Nombre: <input name="nombre" required></label>';
-  });
-
-  // ========== NAVEGACIÓN ENTRE SECCIONES ==========
-
-  document.querySelectorAll('.admin-nav a[data-section="productos"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
-      const productosSection = document.getElementById('productos');
-      if (productosSection) productosSection.hidden = false;
-      document.querySelectorAll('#productos .contenido-subseccion').forEach(sub => sub.hidden = true);
-      const verProductos = document.getElementById('ver-productos');
-      if (verProductos) verProductos.hidden = false;
-    });
-  });
-
-  document.querySelectorAll('.admin-nav a[data-section="usuarios"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
-      const usuariosSection = document.getElementById('usuarios');
-      if (usuariosSection) usuariosSection.hidden = false;
-      document.querySelectorAll('#usuarios .contenido-subseccion').forEach(sub => sub.hidden = true);
-      const verUsuarios = document.getElementById('ver-usuarios');
-      if (verUsuarios) verUsuarios.hidden = false;
-    });
-  });
-
-  // ========== TABLA DE PRODUCTOS ==========
-  const selectProducto = document.getElementById("tipo-producto");
-  const tablaProductosContainer = document.getElementById("tabla-productos-container");
-  function renderTable(tipo, data) {
-    if (!Array.isArray(data) || data.length === 0) {
-      tablaProductosContainer.innerHTML = "<p>No hay datos para mostrar.</p>";
-      return;
-    }
-    let headers = [];
-    switch (tipo) {
-      case "coches":
-        headers = ["ID", "Nombre", "Imagen", "Tipo", "Capacidad", "Precio", "Imagen Interior", "Acciones"];
-        break;
-      case "paquetes":
-        headers = ["ID", "Nombre del viaje", "Imagen", "Duración", "Incluye", "Precio aprox", "Acciones"];
-        break;
-      case "estadias":
-        headers = ["ID", "Nombre", "Imagen", "Ubicación", "Descripción", "Precio", "Acciones"];
-        break;
-      case "pasajes":
-        headers = ["ID", "Nombre", "Imagen", "Aerolínea", "Duración", "Precio desde", "Clase", "Acciones"];
-        break;
-    }
-    let html = "<table class='tabla-productos'><thead><tr>";
-    headers.forEach(h => html += `<th>${h}</th>`);
-    html += "</tr></thead><tbody>";
-    data.forEach(row => {
-      html += "<tr>";
-      switch (tipo) {
-        case "coches":
-          html += `<td>${row.id_autos}</td>
-                   <td>${row.nombre}</td>
-                   <td><img src="${row.imagen}" alt="" style="max-width:80px;max-height:50px;"></td>
-                   <td>${row.tipo}</td>
-                   <td>${row.capacidad}</td>
-                   <td>$${row.precio}</td>
-                   <td><img src="${row.imagen_interior}" alt="" style="max-width:80px;max-height:50px;"></td>`;
-          break;
-        case "paquetes":
-          html += `<td>${row.id_paquetes}</td>
-                   <td>${row.nombre_viaje}</td>
-                   <td><img src="${row.imagen}" alt="" style="max-width:80px;max-height:50px;"></td>
-                   <td>${row.duracion}</td>
-                   <td>${row.incluye}</td>
-                   <td>$${row.precio_aprox}</td>`;
-          break;
-        case "estadias":
-          html += `<td>${row.id_estadias}</td>
-                   <td>${row.nombre}</td>
-                   <td><img src="${row.imagen}" alt="" style="max-width:80px;max-height:50px;"></td>
-                   <td>${row.ubicacion}</td>
-                   <td>${row.descripcion}</td>
-                   <td>$${row.precio}</td>`;
-          break;
-        case "pasajes":
-          html += `<td>${row.id_pasajes}</td>
-                   <td>${row.nombre}</td>
-                   <td><img src="${row.imagen}" alt="" style="max-width:80px;max-height:50px;"></td>
-                   <td>${row.aerolinea}</td>
-                   <td>${row.duracion}</td>
-                   <td>$${row.precio_desde}</td>
-                   <td>${row.clase}</td>`;
-          break;
-      }
-      html += `<td>
-        <button class="btn-accion btn-eliminar" title="Eliminar" data-id="${row.id_autos || row.id_paquetes || row.id_estadias || row.id_pasajes}" data-tipo="${tipo}" onclick="abrirEliminarProducto('${tipo}', '${row.id_autos || row.id_paquetes || row.id_estadias || row.id_pasajes}')">🗑️</button>
-        <button class="btn-accion btn-modificar" title="Modificar" data-id="${row.id_autos || row.id_paquetes || row.id_estadias || row.id_pasajes}" data-tipo="${tipo}" onclick="abrirModificarProducto('${tipo}', '${row.id_autos || row.id_paquetes || row.id_estadias || row.id_pasajes}')">✏️</button>
-        <button class="btn-accion btn-agregar" title="Añadir" data-tipo="${tipo}" onclick="abrirAgregarProducto('${tipo}')">＋</button>
-      </td>`;
-      html += "</tr>";
-    });
-    html += "</tbody></table>";
-    tablaProductosContainer.innerHTML = html;
-  }
-  function cargarProductos(tipo) {
-    fetch("../../BACK/PHP/productos_api.php?tipo=" + tipo)
-      .then(res => res.json())
-      .then(data => renderTable(tipo, data))
-      .catch(() => {
-        tablaProductosContainer.innerHTML = "<p>Error al cargar los productos.</p>";
-      });
-  }
-  selectProducto.addEventListener("change", () => {
-    cargarProductos(selectProducto.value);
-  });
-  cargarProductos(selectProducto.value);
-
-  // ========== TABLA DE USUARIOS ==========
-  let usuariosData = [];
-  let usuariosPaginaActual = 1;
-  const usuariosPorPagina = 8;
-  const selectTablaVer = document.getElementById("tipo-usuario-ver");
-  function renderUsuariosPaginados(tabla, dataOverride) {
-    const tablaResultados = document.getElementById("tabla-usuarios-resultados");
-    const data = dataOverride || usuariosData;
-    if (!Array.isArray(data) || data.length === 0) {
-      tablaResultados.innerHTML = "<p>No hay datos para mostrar.</p>";
-      return;
-    }
-    const headers = Object.keys(data[0]);
-    const inicio = (usuariosPaginaActual - 1) * usuariosPorPagina;
-    const paginados = data.slice(inicio, inicio + usuariosPorPagina);
-    let html = "<table class='tabla-productos'><thead><tr>";
-    headers.forEach(h => html += `<th>${h}</th>`);
-    html += "<th>Acciones</th></tr></thead><tbody>";
-    paginados.forEach(row => {
-      html += "<tr>";
-      headers.forEach(h => html += `<td>${row[h]}</td>`);
-      const id = row.id_usuario || row.id_dato || row.id_tarjeta || row.id_pedido || row.id_provincia || row.id_partido || row.id_localidad || row.id_detallepedido || row.id_opinion || row.id_rol;
-      html += `<td>
-        <button class='btn-accion btn-eliminar' data-id="${id}" data-tipo="${tabla}" onclick="abrirEliminarUsuario('${tabla}', ${id})">🗑️</button>
-        <button class='btn-accion btn-modificar' data-id="${id}" data-tipo="${tabla}" onclick="abrirModificarUsuario('${tabla}', ${id})">✏️</button>
-        <button class='btn-accion btn-agregar' data-tipo="${tabla}" onclick="abrirAgregarUsuario('${tabla}')">＋</button>
-      </td>`;
-      html += "</tr>";
-    });
-    html += "</tbody></table>";
-    html += `<div class='paginacion'>
-      <button onclick='cambiarPaginaUsuarios(-1)' ${usuariosPaginaActual === 1 ? "disabled" : ""}>⬅️ Anterior</button>
-      <span>Página ${usuariosPaginaActual} de ${Math.ceil(usuariosData.length / usuariosPorPagina)}</span>
-      <button onclick='cambiarPaginaUsuarios(1)' ${usuariosPaginaActual >= Math.ceil(usuariosData.length / usuariosPorPagina) ? "disabled" : ""}>Siguiente ➡️</button>
-    </div>`;
-    tablaResultados.innerHTML = html;
-  }
-  window.cambiarPaginaUsuarios = function(cambio) {
-    usuariosPaginaActual += cambio;
-    renderUsuariosPaginados(document.getElementById("tipo-usuario-ver").value);
-  };
-  function cargarTablaUsuarios(tabla) {
-    fetch(`../../BACK/PHP/admin_tablas_api.php?tabla=${tabla}`)
-      .then(r => r.json())
-      .then(data => {
-        usuariosData = data;
-        usuariosPaginaActual = 1;
-        renderUsuariosPaginados(tabla);
-      })
-      .catch(() => {
-        document.getElementById("tabla-usuarios-resultados").innerHTML = "<p>Error al cargar los datos.</p>";
-      });
-  }
-  selectTablaVer.addEventListener("change", () => cargarTablaUsuarios(selectTablaVer.value));
-  cargarTablaUsuarios(selectTablaVer.value);
-});
-
-// ========== FUNCIONES PARA ACCIONES ==========
-function abrirEliminarProducto(tabla, id) {
-  document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
-  document.getElementById('eliminar-producto').hidden = false;
-  document.querySelector('#eliminar-producto select[name="tabla"]').value = tabla === "coches" ? "autos" : tabla;
-  document.getElementById('eliminar-por').value = "id";
-  document.getElementById('campo-eliminar').innerHTML = `<label>ID: <input name="id" type="number" value="${id}" required></label>`;
-}
-function abrirModificarProducto(tabla, id) {
-  document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
-  document.getElementById('modificar-producto').hidden = false;
-  document.querySelector('#modificar-producto select[name="tabla"]').value = tabla === "coches" ? "autos" : tabla;
-  document.querySelector('#modificar-producto input[name="id"]').value = id;
-}
-function abrirAgregarProducto(tabla) {
-  document.querySelectorAll('.contenido-seccion').forEach(sec => sec.hidden = true);
-  document.getElementById('agregar-producto').hidden = false;
-  document.getElementById('tabla-insertar').value = tabla === "coches" ? "autos" : tabla;
-  document.getElementById('tabla-insertar').dispatchEvent(new Event('change'));
-}
-function abrirEliminarUsuario(tabla, id) {
-  document.querySelectorAll('.contenido-subseccion').forEach(sec => sec.hidden = true);
-  document.getElementById('eliminar-usuario').hidden = false;
-  document.querySelector('#eliminar-usuario select[name="tabla"]').value = tabla;
-  document.getElementById('eliminar-usuario-por').value = "id";
-  document.getElementById('campo-eliminar-usuario').innerHTML = `<label>ID: <input name="id" type="number" value="${id}" required></label>`;
-}
-function abrirModificarUsuario(tabla, id) {
-  document.querySelectorAll('.contenido-subseccion').forEach(sec => sec.hidden = true);
-  document.getElementById('modificar-usuario').hidden = false;
-  document.querySelector('#tabla-modificar-usuario').value = tabla;
-  document.querySelector('#form-modificar-usuario input[name="id"]').value = id;
-  document.getElementById('tabla-modificar-usuario').dispatchEvent(new Event('change'));
-}
-function abrirAgregarUsuario(tabla) {
-  document.querySelectorAll('.contenido-subseccion').forEach(sec => sec.hidden = true);
-  document.getElementById('agregar-usuario').hidden = false;
-  document.querySelector('#tabla-insertar-usuario').value = tabla;
-  document.getElementById('tabla-insertar-usuario').dispatchEvent(new Event('change'));
-}
-
-// --- Productos ---
-selectProducto.addEventListener("change", () => {
-  cargarProductos(selectProducto.value);
-});
-cargarProductos(selectProducto.value);
-
-// --- Usuarios ---
-selectTablaVer.addEventListener("change", () => {
-  cargarTablaUsuarios(selectTablaVer.value);
-});
-cargarTablaUsuarios(selectTablaVer.value);
-</script>

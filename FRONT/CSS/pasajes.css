@@ -130,6 +130,11 @@ main {
   order: -1;
 }
 
+/* Modo oscuro: mismo fondo que el body */
+body.dark-mode .vuelo-img-container {
+  background: #2E382E;
+}
+
 .vuelo-img-portada {
   width: 100%;
   height: 100%;
@@ -150,19 +155,19 @@ main {
   font-family: 'Quicksand', sans-serif;
   font-weight: 900;
   font-size: 1.2rem;
-  color: #001f3f;
+  color: var(--subtitle-color);
   margin: 0 0 0.5rem 0;
 }
 
 .vuelo-info p {
   margin: 0;
   line-height: 1.5;
-  color: #333;
+  color: var(--text-color);
   font-size: 1rem;
 }
 
 .vuelo-info p strong {
-  color: #ff914d;
+  color: #313131;
   font-weight: 700;
 }
 
@@ -291,11 +296,11 @@ body.dark-mode .vuelo-info p {
 }
 
 body.dark-mode .vuelo-info p strong {
-  color: #030303;
+  color: #50C9CE;
 }
 
 body.dark-mode .vuelo-info .vuelo-precio {
-  color: #FFB347;
+  color: #50C9CE;
 }
 
 body.dark-mode .vuelo-info .vuelo-clase {
@@ -303,7 +308,7 @@ body.dark-mode .vuelo-info .vuelo-clase {
 }
 
 body.dark-mode .vuelo-info .vuelo-aerolinea {
-  color: #FFB347;
+  color: #50C9CE;
 }
 
 body.dark-mode .vuelo-info .vuelo-duracion {
@@ -323,7 +328,7 @@ body.dark-mode .vuelo-info .add-to-cart {
 
 body.dark-mode .vuelo-info .add-to-cart:hover {
   background-color: var(--add-btn-bg-hover);
-  color: var(--section-title-color);
+  color: var(--text-color);
 }
 
 .pasajes-admin h3 {
@@ -347,10 +352,22 @@ body.dark-mode .vuelo-info .add-to-cart:hover {
   content: "";
   display: block;
   margin: 0.7rem auto 0 auto;
-  width: 100px;
-  height: 3px;
+  width: 180px;
+  height: 4px;
   border-radius: 2px;
-  background: linear-gradient(to right, #0077cc, #ff914d);
+  background: linear-gradient(90deg, #0077cc 0%, #ff914d 100%);
   position: relative;
   z-index: 0;
+}
+
+body.dark-mode .pasajes-admin h3 {
+  color: var(--title-color);
+  background: linear-gradient(10deg, #50C9CE 20%, #FFB347 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .pasajes-admin h3::after {
+  background: var(--section-title-gradient);
 }

@@ -297,6 +297,11 @@
         </button>
       </form>
     </div>
+      <form method="post" id="verificacionEmail">
+        <input type="hidden" name="action" value="verificar_email">
+        <div id="mensajeDiv"></div>
+        <button type="submit">Verificar</button>
+      </form>
 
     <div class="form-section">
       <h3><i class="fas fa-lock"></i> Contraseña</h3>
@@ -483,6 +488,12 @@ document.addEventListener("DOMContentLoaded", () => {
     formSelector: "#formPass", 
     endpoint: "../../BACK/PHP/user_panel.php",  
     messageTarget: divPass
+    
+  });
+   new FormHandler({
+    formSelector: "#verificacionEmail", 
+    endpoint: "../../BACK/PHP/user_panel.php",  
+    messageTarget: divDatos
     
   });
 });

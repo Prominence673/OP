@@ -268,7 +268,7 @@ body.dark-mode {
   --section-title-gradient: linear-gradient(90deg, #FFB347 0%, #50C9CE 100%);
   --add-btn-bg: #50C9CE;
   --add-btn-bg-hover: #2E382E;
-  --add-btn-text: #2E382E;
+  --add-btn-text: #50C9CE;
   --input-border: #50C9CE;
   --input-bg: #223122;
   --input-radius: 6px;
@@ -317,9 +317,10 @@ body.dark-mode .auto-info input[type="number"] {
 
 body.dark-mode .auto-info .add-to-cart {
   background-color: var(--add-btn-bg);
-  color: var(--add-btn-text);
+  color: var(--add-btn-bg-hover);
 }
 
 body.dark-mode .auto-info .add-to-cart:hover {
   background-color: var(--add-btn-bg-hover);
+  color: var(--add-btn-text);
 }

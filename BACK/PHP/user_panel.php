@@ -50,7 +50,7 @@ try {
             $resultadoEnvio = $userPanel->sendVerifyEmail($_SESSION['usuario']['email'], $token);
             echo json_encode($resultadoEnvio);
             break;
-
+       
         case 'guardar_email':
             $datos = $userPanel->bringInputFromForm();
             $nuevo_email = $datos['email'];

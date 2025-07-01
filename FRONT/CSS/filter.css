@@ -19,6 +19,7 @@
   border-radius: 5px;
   background: #fff;
   font-size: 1em;
+  color: #222;
 }
 .filtros-panel button {
   background: #e74c3c;
@@ -33,7 +34,10 @@
 .filtros-panel button:hover {
   background: #c0392b;
 }
-#btn-filtros-coches{
+#btn-filtros-coches,
+#btn-filtros-paquetes,
+#btn-filtros-estadias,
+#btn-filtros-pasajes {
   background: #3498db;
   color: #fff;
   border: none;
@@ -42,30 +46,79 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-#btn-filtros-paquetes{
-  background: #3498db;
-  color: #fff;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.2s;
+#btn-filtros-coches:hover,
+#btn-filtros-paquetes:hover,
+#btn-filtros-estadias:hover,
+#btn-filtros-pasajes:hover {
+  background: #217dbb;
 }
-#btn-filtros-estadias{
-  background: #3498db;
-  color: #fff;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.2s;
+
+/* =================== MODO OSCURO =================== */
+body.dark-mode .filtros-panel {
+  background: #263026;
+  box-shadow: 0 2px 8px rgba(80,201,206,0.08);
 }
-#btn-filtros-pasajes{
-  background: #3498db;
-  color: #fff;
-  border: none;
-  padding: 6px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.2s;
+
+body.dark-mode .filtros-panel label {
+  color: #50C9CE;
+}
+
+body.dark-mode .filtros-panel input,
+body.dark-mode .filtros-panel select {
+  background: #223122;
+  color: #50C9CE;
+  border: 1px solid #50C9CE;
+}
+
+body.dark-mode .filtros-panel button {
+  background: #e67e22;
+  color: #2E382E;
+}
+
+body.dark-mode .filtros-panel button:hover {
+  background: #ffb347;
+  color: #2E382E;
+}
+
+body.dark-mode #btn-filtros-coches,
+body.dark-mode #btn-filtros-paquetes,
+body.dark-mode #btn-filtros-estadias,
+body.dark-mode #btn-filtros-pasajes {
+  background: #50C9CE;
+  color: #2E382E;
+}
+
+body.dark-mode #btn-filtros-coches:hover,
+body.dark-mode #btn-filtros-paquetes:hover,
+body.dark-mode #btn-filtros-estadias:hover,
+body.dark-mode #btn-filtros-pasajes:hover {
+  background: #2E382E;
+  color: #FFB347;
+}
+
+body.dark-mode #filtros-paquetes {
+  background: #263026 !important;
+  box-shadow: 0 2px 8px rgba(80,201,206,0.08);
+  border-radius: 10px;
+}
+
+body.dark-mode #filtros-paquetes label {
+  color: #50C9CE;
+}
+
+body.dark-mode #filtros-paquetes input,
+body.dark-mode #filtros-paquetes select {
+  background: #223122;
+  color: #50C9CE;
+  border: 1px solid #50C9CE;
+}
+
+body.dark-mode #filtros-paquetes button {
+  background: #e67e22;
+  color: #2E382E;
+}
+
+body.dark-mode #filtros-paquetes button:hover {
+  background: #ffb347;
+  color: #2E382E;
 }

@@ -445,13 +445,19 @@ body.dark-mode {
   color: var(--text-color);
 }
 
+body.dark-mode .panel-container {
+  background: transparent;
+}
+
 body.dark-mode .sidebar-card,
 body.dark-mode .sidebar-menu,
 body.dark-mode .main-panel,
-body.dark-mode .payment-option {
+body.dark-mode .payment-option,
+body.dark-mode .form-section {
   background: #263026;
   border-color: var(--medium-gray);
   color: var(--text-color);
+  box-shadow: var(--shadow-sm);
 }
 
 body.dark-mode .sidebar-menu li a,
@@ -486,13 +492,19 @@ body.dark-mode .user-profile-header {
   border-bottom: 1px solid var(--medium-gray);
 }
 
-body.dark-mode .form-group label {
+body.dark-mode .form-group label,
+body.dark-mode #formDatos label {
   color: var(--primary-color);
 }
 
 body.dark-mode .form-group input,
 body.dark-mode .form-group select,
-body.dark-mode .form-group textarea {
+body.dark-mode .form-group textarea,
+body.dark-mode #formDatos input[type="text"],
+body.dark-mode #formDatos input[type="tel"],
+body.dark-mode #formDatos input[type="email"],
+body.dark-mode #formDatos select,
+body.dark-mode #formDatos input[type="password"] {
   background: #223122;
   color: var(--text-color);
   border-color: var(--medium-gray);
@@ -500,19 +512,26 @@ body.dark-mode .form-group textarea {
 
 body.dark-mode .form-group input:focus,
 body.dark-mode .form-group select:focus,
-body.dark-mode .form-group textarea:focus {
+body.dark-mode .form-group textarea:focus,
+body.dark-mode #formDatos input[type="text"]:focus,
+body.dark-mode #formDatos input[type="tel"]:focus,
+body.dark-mode #formDatos input[type="email"]:focus,
+body.dark-mode #formDatos select:focus,
+body.dark-mode #formDatos input[type="password"]:focus {
   background: #263026;
   border-color: var(--primary-color);
 }
 
-body.dark-mode .form-group input[type="checkbox"] {
+body.dark-mode .form-group input[type="checkbox"],
+body.dark-mode #formDatos input[type="checkbox"] {
   accent-color: var(--primary-color);
   border-color: var(--medium-gray);
 }
 
 body.dark-mode .btn,
 body.dark-mode .btn-primary,
-body.dark-mode .btn-outline {
+body.dark-mode .btn-outline,
+body.dark-mode #formDatos button[type="submit"] {
   background: linear-gradient(90deg, #50C9CE 0%, #2E382E 100%);
   color: #2E382E;
   box-shadow: 0 4px 18px rgba(80,201,206,0.12);
@@ -520,7 +539,8 @@ body.dark-mode .btn-outline {
 }
 
 body.dark-mode .btn-primary:hover,
-body.dark-mode .btn-primary:focus {
+body.dark-mode .btn-primary:focus,
+body.dark-mode #formDatos button[type="submit"]:hover {
   background: linear-gradient(90deg, #2E382E 0%, #50C9CE 100%);
   color: #FFB347;
 }
@@ -540,8 +560,33 @@ body.dark-mode .btn-outline:focus {
 
 body.dark-mode .btn:disabled,
 body.dark-mode .btn-primary:disabled,
-body.dark-mode .btn-outline:disabled {
+body.dark-mode .btn-outline:disabled,
+body.dark-mode #formDatos button[type="submit"]:disabled {
   background: #b0e6e8;
   color: #fff;
   opacity: 0.6;
+}
+
+body.dark-mode #formDatos {
+  background: #263026;
+  border-color: var(--medium-gray);
+  color: var(--text-color);
+  box-shadow: 0 2px 8px rgba(80,201,206,0.08);
+}
+
+body.dark-mode #formDatos label {
+  color: var(--primary-color);
+}
+
+body.dark-mode #formDatos input,
+body.dark-mode #formDatos select {
+  background: #223122;
+  color: var(--text-color);
+  border-color: var(--medium-gray);
+}
+
+body.dark-mode #formDatos input:focus,
+body.dark-mode #formDatos select:focus {
+  background: #263026;
+  border-color: var(--primary-color);
 }
