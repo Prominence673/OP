@@ -13,33 +13,45 @@ if ($mysqli->connect_errno) {
     exit;
 }
 
-$input = json_decode(file_get_contents('php://input'), true);
+$id_usuario = $_SESSION['usuario']['id'] ?? null;
 
-$nombre = trim($input["nombre"] ?? "");
-$email = trim($input["email"] ?? "");
-$id_motivo = intval($input["motivo"] ?? 0);
-$telefono = trim($input["telefono"] ?? "");
-$mensaje = trim($input["opinion"] ?? "");
+// Recibir los datos del formulario
+$nombre   = trim($_POST['nombre'] ?? '');
+$email    = trim($_POST['email'] ?? '');
+$telefono = trim($_POST['telefono'] ?? '');
+$motivo   = trim($_POST['motivo'] ?? '');
+$opinion  = trim($_POST['mensaje'] ?? '');
 
-if (!$nombre || !$email || !$id_motivo || !$mensaje) {
-    http_response_code(400);
-    echo json_encode(["error" => "Faltan campos obligatorios"]);
+// Validar campos obligatorios
+if ($nombre === '' || $email === '' || $motivo === '' || $opinion === '') {
+    echo json_encode(['error' => 'Faltan campos obligatorios']);
     exit;
 }
 
-$stmt = $mysqli->prepare("INSERT INTO opiniones (Nombre, mail, id_motivo, telefono, opinion, fecha) VALUES (?, ?, ?, ?, ?, NOW())");
-if (!$stmt) {
-    http_response_code(500);
-    echo json_encode(["error" => "Error en la preparación de la consulta: " . $mysqli->error]);
+// Mapeo del motivo textual a ID en tipo_opinion
+$mapa_tipos = [
+    "consulta"   => 1,
+    "reclamo"    => 2,
+    "sugerencia" => 3,
+    "otro"       => 4
+];
+
+$id_tipo = $mapa_tipos[$motivo] ?? null;
+
+if (!$id_tipo) {
+    echo json_encode(['error' => 'Motivo no válido']);
     exit;
 }
-$stmt->bind_param("ssiss", $nombre, $email, $id_motivo, $telefono, $mensaje);
+
+// Insertar en la tabla opiniones
+$stmt = $conn->prepare("INSERT INTO opiniones (id_usuario, opinion, nombre, email, telefono, id_tipo) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("issssi", $id_usuario, $opinion, $nombre, $email, $telefono, $id_tipo);
 
 if ($stmt->execute()) {
-    echo json_encode(["mensaje" => "¡Gracias por tu opinión!"]);
+    echo json_encode(['mensaje' => 'Gracias por tu mensaje']);
 } else {
-    http_response_code(500);
-    echo json_encode(["error" => "No se pudo guardar la opinión: " . $stmt->error]);
+    echo json_encode(['error' => 'Error al guardar en la base de datos']);
 }
+
 $stmt->close();
-$mysqli->close();
+$conn->close();
