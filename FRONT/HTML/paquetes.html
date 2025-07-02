@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Paquetes de Viajes | Travel Rock Argentina</title>
+  <title>Paquetes de Viajes | KAPIFLY</title>
   <link rel="stylesheet" href="../CSS/paquetes.css"/>
   <link rel="stylesheet" href="../CSS/header-footer.css"/>
   <link rel="stylesheet" href="../CSS/toast.css"/>
@@ -35,50 +35,51 @@
   background-color: #219653;
 }
 </style>
-<header class="site-header">
-  <div class="container header-container">
+  <header class="site-header">
+    <div class="container header-container">
       <div class="logo-titulo">
         <a href="index.html">
           <img src="../../SOURCE/KAPIFLY.png" alt="Logo Kapifly" class="logo-img-real">
         </a>
       </div>
-    <nav class="main-nav">
-      <ul class="nav-menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown-parent">
-          <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-            Paquetes <i class="fa-solid fa-chevron-down"></i>
-          </button>
-          <ul class="submenu">
-            <li><a href="coches.html">Alquiler coches</a></li>
-            <li><a href="paquetes.html">Paquetes turisticos</a></li>
-            <li><a href="estadias.html">Estadias</a></li>
-            <li><a href="pasajes.html">Pasajes aéreos</a></li>
-          </ul>
-        </li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="user-menu">
-      <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
-        <i class="fa-solid fa-cart-shopping user-icon"></i>
-      </a>
-      <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
-        <i class="fa-solid fa-user user-icon"></i>
-      </button>
+      <nav class="main-nav">
+        <ul class="nav-menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="dropdown-parent">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              Paquetes <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="submenu">
+              <li><a href="coches.html">Alquiler coches</a></li>
+              <li><a href="paquetes.html">Paquetes turisticos</a></li>
+              <li><a href="estadias.html">Estadias</a></li>
+              <li><a href="pasajes.html">Pasajes aéreos</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <a href="carrito.html" aria-label="Ir al carrito de compras" class="icon-link">
+          <i class="fa-solid fa-cart-shopping user-icon"></i>
+        </a>
+        <button id="user-menu-btn" aria-label="Menú de usuario" class="icon-btn">
+          <i class="fa-solid fa-user user-icon"></i>
+        </button>
         <button id="toggle-dark" class="darkmode-toggle" aria-label="Cambiar modo oscuro">
           <i class="fa-solid fa-moon" id="darkmode-icon"></i>
         </button>
-      <ul class="dropdown">
-        <li id="user"></li>
-        <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
-        <li id="panel_admin" style="display: none;"><a href="admin.html">Panel Admin</a></li>
-        <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
-        <li id="register_panel"><a href="register.html">Registrarse</a></li>
-        <li><a href="#" id="logout">Cerrar Sesion</a></li>
-      </ul>
+        <ul class="dropdown">
+          <li id="user"></li>
+          <li id="panel_usuario"><a href="panel_usuario.html">Panel</a></li>
+          <li id="panel_admin" style="display: none;"><a href="../ADMIN-HTML/index.html">Panel Admin</a></li>
+          <li id="login_panel"><a href="login.html">Iniciar sesión</a></li>
+          <li id="register_panel"><a href="register.html">Registrarse</a></li>
+          <li><a href="#" id="logout">Cerrar Sesion</a></li>
+        </ul>
+      </div>
     </div>
-</header>
+  </header>
 <main>
   <h2 class="paquetes-titulo">Paquetes de viajes</h2>
 
@@ -103,14 +104,19 @@
   </section>
 
 <script src="../../BACK/JS LOGICA/sessionActivate.js"></script>
-<script>
-const actions = new SessionActions();
-actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
-actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
-actions.InsertData("#user", "nombre");
-actions.AdminOnlyToggle(["#panel_admin"], []);
-document.getElementById("logout").addEventListener("click", () => actions.logoutSession());
-</script>
+  <script>
+  const actions = new SessionActions();
+  actions.Disabled(["#login_panel", "#register_panel"],"none", "0.5", "none");
+  actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
+  actions.InsertData("#user", "nombre");
+  actions.AdminOnlyToggle(["#panel_admin"], []);
+  actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
+  const logout = document.getElementById("logout");
+
+  logout.addEventListener("click", () => {
+    actions.logoutSession();
+  });
+  </script>
 <script src="../JS DISEÑO/menu.js"></script>
 <script src="../../BACK/JS LOGICA/carrito.js"></script>
 <script>
