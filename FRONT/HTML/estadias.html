@@ -196,7 +196,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
   actions.InsertData("#user", "nombre");
   actions.AdminOnlyToggle(["#panel_admin"], []);
-  actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
   const logout = document.getElementById("logout");
 
   logout.addEventListener("click", () => {

@@ -97,7 +97,6 @@
     actions.Activate(["#panel_usuario", "#logout"], "none", "0.5", "none" );
     actions.InsertData("#user", "nombre");
     actions.AdminOnlyToggle(["#panel_admin"], []);
-    actions.checkSessionAndRedirectIfNotLoggedIn("login.html");
 
     document.getElementById("logout").addEventListener("click", () => {
       actions.logoutSession();
