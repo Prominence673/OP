@@ -207,7 +207,7 @@ public function sendVerifyEmail($email, $token) {
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = 'Email Verification - KAPIFLY';
+            $mail->Subject = 'Verificacion Email - KAPIFLY';
 
             $recoveryLink = "http://localhost/OP/BACK/PHP/verifyRegisterEmail.php?token=" . urlencode($token);
 

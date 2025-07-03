@@ -82,3 +82,33 @@ Array
     [tipo] => auto
     [cantidad] => 1
 )
+Array
+(
+    [id_auto] => 3
+    [tipo] => auto
+    [cantidad] => 1
+)
+Array
+(
+    [id_auto] => 3
+    [tipo] => auto
+    [cantidad] => 1
+)
+Array
+(
+    [id_auto] => 3
+    [tipo] => auto
+    [cantidad] => 1
+)
+Array
+(
+    [id_auto] => 1
+    [tipo] => auto
+    [cantidad] => 1
+)
+Array
+(
+    [id_auto] => 10
+    [tipo] => auto
+    [cantidad] => 1
+)

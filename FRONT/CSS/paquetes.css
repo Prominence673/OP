@@ -141,6 +141,10 @@ body.dark-mode .paquetes-titulo {
   background-clip: text;
 }
 
+body.dark-mode .paquete:hover{
+  background-color: var(--card-bg) ;
+}
+
 body.dark-mode .paquete h2 {
   color: var(--subtitle-color);
 }

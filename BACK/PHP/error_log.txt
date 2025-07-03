@@ -202,3 +202,411 @@
 (
 )
 
+[02-Jul-2025 16:00:01 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 47
+[02-Jul-2025 16:00:01 Europe/Berlin] PHP Warning:  Undefined array key "usuario" in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[02-Jul-2025 16:00:01 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\OP\BACK\PHP\user_panel.php on line 49
+[03-Jul-2025 01:53:16 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[03-Jul-2025 01:53:16 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 01:53:20 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 2
+[03-Jul-2025 01:53:20 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 01:53:21 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 3
+[03-Jul-2025 01:53:21 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 01:53:36 Europe/Berlin] Query ejecutada para carrito 29, pagometodo 1
+[03-Jul-2025 01:53:36 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:07:25 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 18:07:25 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:07:59 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 3
+[03-Jul-2025 18:07:59 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:15 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 18:09:15 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:15 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 3
+[03-Jul-2025 18:09:15 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:17 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 18:09:17 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:18 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 2
+[03-Jul-2025 18:09:18 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:19 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 3
+[03-Jul-2025 18:09:19 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:19 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 2
+[03-Jul-2025 18:09:19 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:20 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 18:09:20 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:20 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 2
+[03-Jul-2025 18:09:20 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:21 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 18:09:21 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:21 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 2
+[03-Jul-2025 18:09:21 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:21 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 3
+[03-Jul-2025 18:09:21 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:22 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 18:09:22 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:38 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 2
+[03-Jul-2025 18:09:38 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 18:09:44 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 3
+[03-Jul-2025 18:09:44 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 9
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => TOYOTA COROLLA
+            [precio] => 25000.00
+            [total] => 25000
+        )
+
+)
+
+[03-Jul-2025 19:42:23 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 19:42:23 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 42
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => Hilux Gr Sport
+            [precio] => 90000.00
+            [total] => 90000
+        )
+
+)
+
+[03-Jul-2025 19:42:25 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 2
+[03-Jul-2025 19:42:25 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 42
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => Hilux Gr Sport
+            [precio] => 90000.00
+            [total] => 90000
+        )
+
+)
+
+[03-Jul-2025 19:42:25 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 19:42:25 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 42
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => Hilux Gr Sport
+            [precio] => 90000.00
+            [total] => 90000
+        )
+
+)
+
+[03-Jul-2025 19:42:28 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 2
+[03-Jul-2025 19:42:28 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 42
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => Hilux Gr Sport
+            [precio] => 90000.00
+            [total] => 90000
+        )
+
+)
+
+[03-Jul-2025 19:42:29 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 19:42:29 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 42
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => Hilux Gr Sport
+            [precio] => 90000.00
+            [total] => 90000
+        )
+
+)
+
+[03-Jul-2025 19:43:28 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 3
+[03-Jul-2025 19:43:28 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 42
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => Hilux Gr Sport
+            [precio] => 90000.00
+            [total] => 90000
+        )
+
+)
+
+[03-Jul-2025 19:43:38 Europe/Berlin] Query ejecutada para carrito 30, pagometodo 1
+[03-Jul-2025 19:43:38 Europe/Berlin] Items encontrados: Array
+(
+    [0] => Array
+        (
+            [id_producto] => 42
+            [cantidad] => 1
+            [tipo] => auto
+            [nombre] => Hilux Gr Sport
+            [precio] => 90000.00
+            [total] => 90000
+        )
+
+)
+
