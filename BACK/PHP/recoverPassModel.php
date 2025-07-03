@@ -99,11 +99,11 @@ class recoverPassModel {
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom($_ENV['EMAIL_USER'], 'Soporte KAPIFLY');
+            $mail->setFrom($_ENV['EMAIL_USER'], 'Soporte TravelAir');
             $mail->addAddress($email);
 
             $mail->isHTML(true);
-            $mail->Subject = 'Password recovery - KAPIFLY';
+            $mail->Subject = 'Password recovery - TravelAir';
 
             $recoveryLink = "http://localhost/OP/BACK/PHP/recoveryPass.php?token=" . urlencode($token);
 

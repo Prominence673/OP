@@ -248,11 +248,7 @@ body {
     color: var(--carrito-text); /* Usar variable */
     transition: background 0.5s, color 0.5s, border 0.5s, box-shadow 0.5s;
 }
-button:disabled,
-button.disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+
 .resumen-carrito h2 {
     margin-top: 0;
     margin-bottom: 1.5rem;
